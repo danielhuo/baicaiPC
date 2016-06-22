@@ -1,0 +1,26 @@
+#header{
+
+background:white url(/Style/B/skin/green/bg_body.png) repeat-x center top;
+
+}
+
+#menu_itemx_cs{
+background:url(/Style/B/skin/green/nv.png) repeat-x;
+}
+
+#menu_itemx_cs ul li{
+background:url(/Style/B/skin/green/nv_li.png) no-repeat 100% 0;
+}
+
+
+
+
+
+#menu_itemx_cs ul li:hover{background:url(/Style/B/skin/green/nv_a.png) repeat-x;}
+
+
+#menu_itemx_cs li.current{
+background:url(/Style/B/skin/green/nv_a.png) repeat-x;
+}
+
+.wp_center_contont{background:#F9FAF8;}

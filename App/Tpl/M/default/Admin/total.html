@@ -1,0 +1,54 @@
+<include file="Pub:header" /> 
+<style>
+	.table td{text-align:right;}
+</style>
+<div class="container container-block container-row-nml">
+	<div class="row">
+		<div class="col-xs-2"><i class="fa fa-user fa-lg text-blue"></i></div>
+		<div class="col-xs-5">会员总数</div>
+		<div class="col-xs-5">{$member}</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-2"></div>
+		<div class="col-xs-5">余额>1万</div>
+		<div class="col-xs-5">{$investable}</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-2"></div>
+		<div class="col-xs-5">会员总余额</div>
+		<div class="col-xs-5">{$amount}</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-2"></div>
+		<div class="col-xs-5">参投人数</div>
+		<div class="col-xs-5">{$has_invest}</div>
+		
+	</div>
+	<div class="row">
+		<div class="col-xs-2"></div>
+		<div class="col-xs-5">活跃人数(≥3次)</div>
+		<div class="col-xs-5">{$often_invest}</div>
+	</div>
+</div>
+<div class="container container-block container-row-nml">
+	<div class="row">
+		<div class="col-xs-3">募集中</div>
+		<div class="col-xs-4 text-right">{$loan_sum.2.loan_num|default=0}笔</div>
+		<div class="col-xs-5"><strong></strong>{$loan_sum.2.need|default=0}/{$loan_sum.2.loan_amount|default=0}元</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-3">待还款</div>
+		<div class="col-xs-4 text-right">{$loan_sum.7.loan_num|default=0}笔</div>
+		<div class="col-xs-5"><strong class="text-red">{$loan_sum.7.loan_amount|default=0}</strong>元</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-3">已还款</div>
+		<div class="col-xs-4 text-right">{$loan_sum.8.loan_num|default=0}笔</div>
+		<div class="col-xs-5"><strong class="text-red">{$loan_sum.8.loan_amount|default=0}</strong>元</div>
+	</div>
+</div>
+
+<script language="javascript">
+ localStorage.title="平台数据概览";
+</script>
+﻿<include file="Pub:footer" />  

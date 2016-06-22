@@ -1,0 +1,146 @@
+﻿<include file="Pub:header" />  
+	<!--  列表开始-->
+	<style>
+		.amount{color:red;}
+	</style>
+	<script>
+		$(function(){
+			$('.proces').each(function(){
+				
+				w=$(this).width()/2;
+				v=$(this).attr('value');
+				
+				drowProcess(this,w,w,w,v,'#ddd','#3EEADB','#2AA198');;
+			})	
+		})
+		function drowProcess(canvas,x,y,radius,process,backColor,proColor,fontColor){
+			if (canvas.getContext) {
+				var cts = canvas.getContext('2d');
+			}else{
+				return;
+			}
+			
+			cts.beginPath();  
+			// 坐标移动到圆心  
+			cts.moveTo(x, y);  
+			// 画圆,圆心是24,24,半径24,从角度0开始,画到2PI结束,最后一个参数是方向顺时针还是逆时针  
+			cts.arc(x, y, radius, 0, Math.PI * 2, false);  
+			cts.closePath();  
+			// 填充颜色  
+			cts.fillStyle = backColor;  
+			cts.fill();
+
+			cts.beginPath();  
+			// 画扇形的时候这步很重要,画笔不在圆心画出来的不是扇形  
+			cts.moveTo(x, y);  
+			// 跟上面的圆唯一的区别在这里,不画满圆,画个扇形  
+			cts.arc(x, y, radius, Math.PI * 1.5, Math.PI * 1.5 -  Math.PI * 2 * process / 100, true);  
+			cts.closePath();  
+			cts.fillStyle = proColor;  
+			cts.fill(); 
+			
+			//填充背景白色
+			cts.beginPath();  
+			cts.moveTo(x, y); 
+			cts.arc(x, y, radius - (radius * 0.26), 0, Math.PI * 2, true);  
+			cts.closePath();
+			cts.fillStyle = 'rgba(255,255,255,1)';  
+			cts.fill(); 
+
+			// 画一条线  
+			cts.beginPath();  
+			cts.arc(x, y, radius-(radius*0.30), 0, Math.PI * 2, true);  
+			cts.closePath();  
+			// 与画实心圆的区别,fill是填充,stroke是画线  
+			cts.strokeStyle = backColor;  
+			cts.stroke();  
+			  
+			//在中间写字 
+			cts.font = "bold 9pt Arial";  
+			cts.fillStyle = fontColor;  
+			cts.textAlign = 'center';  
+			cts.textBaseline = 'middle';  
+			cts.moveTo(x, y);  
+			cts.fillText(Math.round(process * 10)/10+"%", x, y);  
+			
+		}
+
+	</script>
+	<h2 id="title">我的借款</h2>
+	<div class="main">
+		<div class="bList">
+			<volist name="list.list" id='vo'>
+			<table cellspacing="0">
+				<tr>
+					<td colspan="2" class="title1" >
+					    
+						<a href="__ROOT__/M/loaninvest/detail?id={$vo.id}" >JK{$vo.id}{$vo.loan_name|cnsubstr=###,17}</a>
+						
+					</td>
+					<td colspan="2" class="title1" >
+					    
+						<canvas class="proces" width=40 height=40 value="{$vo.progress}"></canvas>
+					</td>
+					
+				</tr>
+				<tr>
+					<th>配资金额:</th><td class="amount">{$vo.loan_amount}</td>
+					<th>还款期限:</th><td>{$vo.loan_duration}{$vo.duration_type|duration_format}</td>		
+				</tr>
+				<tr>
+				
+					<th>年　利率:</th>
+					<td>{$vo.interest_rate}%</td>
+					<th>还需资金:</th>
+					<td class="amount">{$vo.need}</td>		
+				</tr>
+				<tr >
+					<th>年　费率:</th>
+					<td>{$vo.fee_rate}%</td>
+					<th>借款状态:</th>
+					<td>{$vo.status2}</td>
+				</tr>
+			</table>
+			</volist>
+		</div>
+		<div class="fixed_div" >
+			<a href="javascript:void(0)" onclick="getInfo()" id="more"class="tz_bt">更多投资项目</a>
+	    </div>
+	</div>
+	<!-- 列表结束-->
+	
+<script type="text/javascript">
+    var nowPage = {$list.page.nowPage};
+    var total = {$list.page.total};
+	if (total == nowPage) {
+                    jQuery("#more").hide();
+                }
+    function getInfo() {
+        nextPage = nowPage+1;
+		
+        $.ajax({
+            url: location.href,
+            data:{"p":nextPage},
+            type: 'get',
+            async: true,
+            success: function (res) {
+                jQuery(".bList").append(res);
+                if (total == nextPage) {
+                    jQuery("#more").hide();
+                }
+                nowPage++;
+				$('.proces').each(function(){
+				
+					w=$(this).width()/2;
+					v=$(this).attr('value');		
+					drowProcess(this,w,w,w,v,'#ddd','#3EEADB','#2AA198');;
+			   })	
+            },
+            error: function () {
+                //document.getElementById('result').innerHTML = "";
+            }
+        });
+		
+    }
+</script>
+﻿<include file="Pub:footer" />  

@@ -1,0 +1,101 @@
+<include file="Pub:header" /> 
+
+<link rel="stylesheet" type="text/css" href="/Style/Mobile/swipe/common.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="/Style/Mobile/swipe/home-23.css" media="all" />
+<script type="text/javascript" src="/Style/Mobile/Query.js"></script>
+
+<script type="text/javascript" src="/Style/Mobile/swipe/swipe.js"></script>
+
+<script>
+		$(function(){
+			new Swipe(document.getElementById('banner_box'), {
+				speed:500,
+				auto:3000,
+				callback: function(){
+					var lis = $(this.element).next("ol").children();
+					lis.removeClass("on").eq(this.index).addClass("on");
+				}
+			});
+		});
+	</script>
+<h2 id="title">首页</h2>
+
+<div class="body" >
+	<div id="banner_box" class="box_swipe" onselectstart="return true;" ondragstart="return false;">
+		<ul>
+			<li>
+				<a onclick="return false;"><img src="/Style/Mobile/images/lunbo1.png" style="width:100%;height:160px;"></a>
+			</li>
+			<li>
+				<a onclick="return false;"><img src="/Style/Mobile/images/lunbo2.png" style="width:100%;height:160px;"></a>
+			</li>
+			<li>
+				<a onclick="return false;"><img src="/Style/Mobile/images/lunbo3.png" style="width:100%;height:160px;"></a>
+			</li>
+			
+		</ul>
+		<ol>
+			<li class="on"></li>
+			<li ></li>
+			<li ></li>
+		</ol>
+	</div>
+
+	<div class="container text-center intro">
+		<div class="row">
+			<h3>百财网</h3>
+			<p class="small">  百财网是最安全、最专业的网络理财平台之一。其主打的财日升理财产品期限短,收益高。在这里,投资者可以在短期内获得丰厚回报。</p>
+			<div class="col-xs-4">
+				<div>
+					<span class="glyphicon glyphicon-lock"></span>
+					<h5>资金安全</h5>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div>
+					<span class="glyphicon glyphicon-piggy-bank"></span>
+					<h5>收益丰厚</h5>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div>
+					<span class="glyphicon glyphicon-plane"></span>
+					<h5>短期回款</h5>
+				</div>
+			</div>
+		</div>
+	</div>
+	 <ul class="container home">
+	
+		<if condition="$uname">
+		<li>
+			<a href="{:U('M/User/index')}" class="a0 btn btn-info btn-lg">
+				<i class="fa fa-user"></i>我的百财
+			</a>
+		</li>
+		
+		<else />
+		<li>
+			<a href="{:U('M/Pub/login')}" class="a1 btn btn-primary btn-lg">
+				<i class="fa fa-pencil"></i>用户登录
+			</a>
+		</li>
+		<li>
+			<a href="{:U('M/Pub/regist')}" class="a2 btn btn-danger btn-lg">
+				<i class="fa fa-pencil"></i>免费注册
+			</a>
+		</li>
+		
+		</if>
+		<li>
+			<a href="{:U('M/Help/product_intro')}" class="a6 btn btn-warning btn-lg">
+				<i class="fa fa-book"></i>产品解读
+			</a>
+		</li>
+		
+	</ul> 
+	
+</div> 
+
+﻿<include file="Pub:footer" />  

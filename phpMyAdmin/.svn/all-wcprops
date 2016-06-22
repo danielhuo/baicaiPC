@@ -1,0 +1,599 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin
+END
+db_printview.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/db_printview.php
+END
+tbl_addfield.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_addfield.php
+END
+phpmyadmin.css.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/phpmyadmin.css.php
+END
+server_replication.php
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/server_replication.php
+END
+server_import.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/server_import.php
+END
+tbl_structure.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_structure.php
+END
+show_config_errors.php
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/show_config_errors.php
+END
+url.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/url.php
+END
+tbl_chart.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_chart.php
+END
+README.VENDOR
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/README.VENDOR
+END
+tbl_gis_visualization.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_gis_visualization.php
+END
+tbl_create.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_create.php
+END
+schema_edit.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/schema_edit.php
+END
+chk_rel.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/chk_rel.php
+END
+server_export.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/server_export.php
+END
+webapp.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/webapp.php
+END
+pmd_save_pos.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/pmd_save_pos.php
+END
+db_import.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/db_import.php
+END
+tbl_select.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_select.php
+END
+main.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/main.php
+END
+tbl_operations.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_operations.php
+END
+pmd_relation_upd.php
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/pmd_relation_upd.php
+END
+db_export.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/db_export.php
+END
+tbl_change.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_change.php
+END
+prefs_manage.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/prefs_manage.php
+END
+phpunit.xml.nocoverage
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/phpunit.xml.nocoverage
+END
+changelog.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/changelog.php
+END
+docs.css
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/docs.css
+END
+server_variables.php
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/server_variables.php
+END
+navigation.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/navigation.php
+END
+user_password.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/user_password.php
+END
+tbl_indexes.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_indexes.php
+END
+server_binlog.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/server_binlog.php
+END
+robots.txt
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/robots.txt
+END
+ChangeLog
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/ChangeLog
+END
+schema_export.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/schema_export.php
+END
+db_sql.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/db_sql.php
+END
+tbl_row_action.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_row_action.php
+END
+db_tracking.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/db_tracking.php
+END
+index.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/index.php
+END
+server_plugins.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/server_plugins.php
+END
+tbl_alter.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_alter.php
+END
+pmd_display_field.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/pmd_display_field.php
+END
+db_qbe.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/db_qbe.php
+END
+db_routines.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/db_routines.php
+END
+import_status.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/import_status.php
+END
+RELEASE-DATE-3.5.8.2
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/RELEASE-DATE-3.5.8.2
+END
+db_datadict.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/db_datadict.php
+END
+server_sql.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/server_sql.php
+END
+prefs_forms.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/prefs_forms.php
+END
+tbl_printview.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_printview.php
+END
+db_triggers.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/db_triggers.php
+END
+view_create.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/view_create.php
+END
+config.sample.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/config.sample.inc.php
+END
+print.css
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/print.css
+END
+server_privileges.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/server_privileges.php
+END
+server_synchronize.php
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/server_synchronize.php
+END
+phpinfo.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/phpinfo.php
+END
+db_structure.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/db_structure.php
+END
+favicon.ico
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/favicon.ico
+END
+db_create.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/db_create.php
+END
+server_status.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/server_status.php
+END
+pmd_pdf.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/pmd_pdf.php
+END
+enum_editor.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/enum_editor.php
+END
+tbl_import.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_import.php
+END
+tbl_replace.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_replace.php
+END
+pmd_general.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/pmd_general.php
+END
+view_operations.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/view_operations.php
+END
+tbl_relation.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_relation.php
+END
+tbl_export.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_export.php
+END
+tbl_zoom_select.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_zoom_select.php
+END
+bs_play_media.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/bs_play_media.php
+END
+db_operations.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/db_operations.php
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/LICENSE
+END
+transformation_overview.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/transformation_overview.php
+END
+server_collations.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/server_collations.php
+END
+querywindow.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/querywindow.php
+END
+sql.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/sql.php
+END
+tbl_sql.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_sql.php
+END
+tbl_move_copy.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_move_copy.php
+END
+tbl_tracking.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_tracking.php
+END
+transformation_wrapper.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/transformation_wrapper.php
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/README
+END
+db_events.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/db_events.php
+END
+import.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/import.php
+END
+db_search.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/db_search.php
+END
+server_databases.php
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/server_databases.php
+END
+file_echo.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/file_echo.php
+END
+server_engines.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/server_engines.php
+END
+bs_disp_as_mime_type.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/bs_disp_as_mime_type.php
+END
+export.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/export.php
+END
+gis_data_editor.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/gis_data_editor.php
+END
+license.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/license.php
+END
+version_check.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/version_check.php
+END
+tbl_get_field.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_get_field.php
+END
+browse_foreigners.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/browse_foreigners.php
+END
+themes.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/themes.php
+END
+pmd_relation_new.php
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/pmd_relation_new.php
+END
+tbl_triggers.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/tbl_triggers.php
+END

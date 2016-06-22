@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/BaiCai/!svn/ver/264/trunk/Style/Editor/editor
+END
+editor.js
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/264/trunk/Style/Editor/editor/editor.js
+END
+editor-min.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/BaiCai/!svn/ver/264/trunk/Style/Editor/editor/editor-min.js
+END
+editor-all-pkg.js
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/BaiCai/!svn/ver/264/trunk/Style/Editor/editor/editor-all-pkg.js
+END
+editor-core-pkg.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/BaiCai/!svn/ver/264/trunk/Style/Editor/editor/editor-core-pkg.js
+END
+editor-all-pkg-min.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/BaiCai/!svn/ver/264/trunk/Style/Editor/editor/editor-all-pkg-min.js
+END
+editor-core-pkg-min.js
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/BaiCai/!svn/ver/264/trunk/Style/Editor/editor/editor-core-pkg-min.js
+END
+editor-core-pkg-advanced-min.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/BaiCai/!svn/ver/264/trunk/Style/Editor/editor/editor-core-pkg-advanced-min.js
+END

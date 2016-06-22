@@ -1,0 +1,93 @@
+<include file="Pub:header" />  
+	<style>
+		.bList{margin-top:10px;}
+		.bList .panel>a{color:#666;}
+	    .bList [class*='col-xs']{padding-left:5px;padding-right: 0;height:20px;line-height:20px;}
+	    .btn-link{color:#fff;}
+	</style>
+	
+		<div class="bList">
+			<volist name="list.list" id='vo'>
+			<div class="panel panel-info">
+				<a href="__URL__/detail?id={$vo.id}" class="panel-body center-block">
+					<div class="col-xs-3">
+						<strong class="text-danger ">{$vo.interest_rate}</strong>
+						<small>%</small>
+					</div>
+					<div class="col-xs-3 text-danger">{$vo.loan_amount}</div>
+					<div class="col-xs-2"><small>约</small><strong class="text-danger ">{$vo.loan_duration}</strong><small>天</small></div>
+					<div class="col-xs-4">
+						<div class="progress progress-striped active">
+						   <div class="progress-bar progress-bar-success" role="progressbar" 
+						      aria-valuenow="{$vo.progress|floor=###}" aria-valuemin="0" aria-valuemax="100" 
+						      style="width:{$vo.progress|floor=###}%;">
+						      <span >{$vo.progress|floor=###}%</span>
+						   </div>
+						</div>
+					</div>
+				</a>
+			</div>
+			</volist>
+			</div>
+		
+		<div class="fixed_div text-center" style="margin-top:10px;height: 20px;">
+			<span class="loading" style="display: none;"><i class="fa fa-spinner fa-pulse"></i>加载中</span>
+		    <span class="nomore" style="display: none;">没有更多记录了</span>
+		</div>
+	
+<script type="text/javascript">
+
+	localStorage.title="投资列表";
+	
+    var nowPage = {$list.page.nowPage};
+    var total = {$list.page.total};
+	var a=0;
+    function getInfo() {
+    	
+   		var scrollTop = $(this).scrollTop();
+        var docHeight = $(document).height();
+        var windowHeight =$(window).height();
+      	var remain=(docHeight-scrollTop-windowHeight)/windowHeight;
+        if (remain==0) {
+        	
+			nextPage = nowPage+1;
+			$(".fixed_div .loading").show();
+			
+	        $.ajax({
+	            type: 'GET',
+	            url:"",
+	            dataType:"json",
+	            data:{"p":nextPage},
+	           
+	            success: function (res) {
+					for(var i in res){
+						var html="<div class='panel panel-info'>";
+							html+="<a href='__URL__/detail?id="+res[i].id+"' class='panel-body center-block'><div class='col-xs-3'><strong class='text-danger'>"+res[i].interest_rate+"</strong>";
+							html+="<small>%</small></div>";
+							html+="<div class='col-xs-3 text-danger'>"+res[i].loan_amount+"</div>";
+							html+="<div class='col-xs-2'><small>约</small><strong class='text-danger'>"+res[i].loan_duration+"</strong><small>天</small></div>";
+							html+="<div class='col-xs-4'><div class='progress progress-striped active'>";
+							html+="<div class='progress-bar progress-bar-success' role='progressbar' aria-valuenow="+Math.floor(res[i].progress)+"aria-valuemin='0' aria-valuemax='100' style='width:"+Math.floor(res[i].progress)+"%;'>";
+							html+=" <span >"+Math.floor(res[i].progress)+"%</span></div></div></div></a></div>";
+							
+							$(".bList").append(html);
+							$(".fixed_div .loading").hide();
+						}
+					nowPage++;
+	            },
+				
+	        });
+		}
+    }
+	
+	$(window).scroll(function(){
+		if(nowPage<total){
+		    getInfo();
+	    }else{
+			$(".fixed_div .loading").hide();
+			$(".fixed_div .nomore").show();
+		}
+	
+	})
+</script>
+﻿<include file="Pub:footer" />  

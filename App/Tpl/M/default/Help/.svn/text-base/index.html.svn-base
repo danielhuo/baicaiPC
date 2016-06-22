@@ -1,0 +1,29 @@
+<include file="Pub:header" />
+	<style>
+		.main{padding-top:82px;}
+		.contact{height:40px;font-size:16px;position:fixed;top:42px;width:100%}
+		.tel,.qq{width:50%;background:#2AA198;height:100%;text-align:center;line-height:40px;}
+		.tel{float:left;}
+		.qq{float:right;}
+		.contact div img{position:relative;top:3px;margin-right:8px;}
+	</style>
+	<h2 id="title">帮助中心</h2>
+	<div class="contact">
+			<div class="tel">
+				<a href="tel:0512-62853600">
+					<img src="/Style/Mobile/images/tel.png"/>0512-62853600
+				</a>
+			</div>
+			<div class="qq">
+				
+				<a href="http://wpa.qq.com/msgrd?v=3&uin=3083483550&site=qq&menu=yes">
+					<img src="/Style/Mobile/images/qq.png"/>QQ在线咨询
+				</a>
+			</div>
+	</div>
+	<div class="main">
+		
+		
+	
+	</div>
+<include file="Pub:footer" />  

@@ -1,0 +1,232 @@
+<include file="Public:_header_common" />
+<title>{$glo.index_title}</title>
+<meta property="wb:webmaster" content="37afd1196b6d28b7" />
+<script type="text/javascript" src="__ROOT__/Style/H/js/index.js"></script>
+<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>
+<script type="text/javascript" src="__ROOT__/Style/H/js/jquery.kinMaxShow-1.0.min.js"></script>
+<script type="text/javascript" src="__ROOT__/Style/M/jquery-1.7.1.js"></script>
+<meta property="qc:admins" content="30505113364651155636" />
+<meta property="wb:webmaster" content="d0d120bc5ee656d7" />
+<script type="text/javascript">
+	$(function(){
+	
+		$('#dw_ul li a:eq(0)').attr('class','nowNavItem');
+		$('.advance .col-md-3').each(function(index){
+			$(this).hover(function(){
+				$(this).find('img').attr('src','/Style/H/images/'+index+'1.png');
+			},function(){
+				$(this).find('img').attr('src','/Style/H/images/'+index+'0.png');
+			
+			})
+
+		})
+		$("#kinMaxShow").kinMaxShow({
+				height:400,
+				button:{
+					showIndex:false,
+					normal:{backgroundColor:'#E2E2E2',marginRight:'10px',border:'1px solid silver',right:'46%',bottom:'20px'},
+					focus:{backgroundColor:'#FF9966',border:'1px solid silver'}
+				},
+				callback:function(index,action){
+					switch(index){
+						case 0 :
+								if(action=='fadeIn'){
+									$(this).find('.sub_1_1').animate({left:'70px'},600)
+									$(this).find('.sub_1_2').animate({top:'60px'},600)
+									
+								}else{
+									$(this).find('.sub_1_1').animate({left:'110px'},600)
+									$(this).find('.sub_1_2').animate({top:'120px'},600)
+									
+								};
+								break;
+								
+						case 1 :
+								if(action=='fadeIn'){
+									$(this).find('.sub_2_1').animate({left:'-100px'},600)
+									$(this).find('.sub_2_2').animate({top:'60px'},600)
+								}else{
+									$(this).find('.sub_2_1').animate({left:'-160px'},600)	
+									$(this).find('.sub_2_2').animate({top:'20px'},600)
+								};
+								break;
+								
+						case 2 :
+								if(action=='fadeIn'){
+									$(this).find('.sub_3_1').animate({right:'350px'},600)
+									$(this).find('.sub_3_2').animate({left:'180px'},600)
+								}else{
+									$(this).find('.sub_3_1').animate({right:'180px'},600)	
+									$(this).find('.sub_3_2').animate({left:'30px'},600)
+								};
+								break;	
+					}
+				}
+			});
+	});
+
+</script>
+<include file="Public:_header_main" />
+<div class="ibannerbox" >
+	<div id="kinMaxShow" style="position: relative;">
+	<volist name=":get_ad(4)" id="va">
+	<div> <a href="{$va.url}"><img src="__ROOT__/{$va.img}" /></a> </div>
+	</volist>
+	
+	</div>
+	<div class="container">
+		<div class="box">
+			<p>
+				<h3>预期年化收益</h3>
+				<span class="high">9.0%-12.0%</span>
+			</p>
+			<p>
+				<h3>超短期限</h3>
+				<span class="high">3-30</span>天
+			</p>
+			<if condition="$_SESSION['u_id']">
+				<p>
+					<a  href="__APP__/member/" class="btn btn-success">您好，{:session('u_user_name')}</a>
+				</p>
+						
+			<else /> 
+				<p>
+					<a href="__ROOT__/member/common/regist" class="btn btn-danger">免费注册</a>
+				</p>
+				<p style="text-align: right;">已有账户？<a href="__ROOT__/member/common/login/" style="color:#8deeee;text-decoration:underline">立即登录</a>
+				</p>
+							
+			</if>
+			
+		
+		</div>	
+	</div>
+	
+</div>
+
+
+<div class="advance bg-white">
+	<div class="container">
+		<h2>我们的优势</h2>
+		<p>百财网由百财网络科技（苏州）有限公司开发运营,是 目前苏南地区最安全、最专业的网络信贷理财平台之一。其主打的财日升理财产品期限短,收益高。在这里,投资者可以在短期内获得丰厚回报。</p>
+		<div class="row">
+			<div class="col-md-3">
+				<div><img src="/Style/H/images/00.png"/></div>
+				<h4>资金安全</h4>
+				<span>
+    				项目借款足额抵押物担保,第三方担保机构<br>
+    				紧密合作,还款有保障</span>
+			</div>
+			<div class="col-md-3">
+				<div><img src="/Style/H/images/10.png"/></div>
+				<h4>收益丰厚</h4>
+				<span>年化收益高达10.8%左右,保证<br>投资者短期内获得高回报</span>
+			</div>
+			<div class="col-md-3">
+				<div><img src="/Style/H/images/20.png"/></div>
+				<h4>风控完备</h4>
+				<span>贷前审查到贷后管理等专业领域都有丰富的<br>经验,务求客户安心、放心、省心</span>
+			</div>
+			<div class="col-md-3">
+				<div><img src="/Style/H/images/30.png"/></div>
+				<h4>期限灵活</h4>
+				<span>期限3-30天,灵活短期,便于投资者充分,灵<br>活,高效的调度手上闲置资金</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="loanlist">
+	<div class="container ">
+		<h2>理财项目</h2>
+		<volist name="listLoan.list" id="vb">
+		<div class="row col-xs-10 col-xs-offset-1">
+				<div class="panel panel-default">
+					<div class="panel-heading" >
+						<div class="row">
+							<div class="col-xs-1"><img src="/Style/H/images/baicai.png" class="img-circle"></div>
+							<div class="col-xs-8 panel-title">
+								<a href="__APP__/Loaninvest/detail?id={$vb.id}">JK{$vb.id}{$vb.loan_name}</a></div>
+							<div class="col-xs-3">
+								<div class="progress progress-striped active">
+								   <div class="progress-bar progress-bar-success" role="progressbar" 
+								      aria-valuenow="{$vo.progress|floor=###}" aria-valuemin="0" aria-valuemax="100" 
+								      style="width:{$vb.progress|floor=###}%;">
+								      <span >{$vb.progress|floor=###}%</span>
+								   </div>
+								</div>
+							</div>
+						
+						</div>
+						
+					</div>
+					<div class="panel-body text-center">
+						<div class="col-xs-2">
+							<h3 class="text-danger">{$vb.interest_rate}<small>%</small></h3>
+							<small>(预期年化)</small>
+						</div>
+						<div class="col-xs-3">
+							<h3 class="text-danger">{$vb.loan_amount|num_format=###}<small>元</small></h3>
+							<small>(募集总额)</small>
+						</div>
+						<div class="col-xs-2">
+							<h3 class="text-danger"><small>约</small>{$vb.loan_duration}<small>{$vb.duration_type|duration_format=###}</small></h3>
+							<small>(借款期限)</small>
+						</div>
+						<div class="col-xs-2">
+							<h3><small>利随本清</small></h3>
+							<small>(还款方式)</small>
+						</div>
+						
+						<div class="col-xs-3">
+							<h3 class="text-danger">{$vb.need|num_format=###}<small>元</small></h3>
+							<small>(还需金额)</small>
+						</div>
+					</div>
+					<div class="panel-footer text-right">
+						
+						<if condition="$vb.status eq 2"> 
+		   				<a href='__APP__/Loaninvest/detail?id={$vb.id}'class="btn btn-info" >借款中</a>
+		  				<elseif condition="$vb.status eq 4"/>
+						<a href='__APP__/Loaninvest/detail?id={$vb.id}' class="btn btn-success">已满标</a>
+						<elseif condition="$vb.status eq 6"/>
+						<a href='__APP__/Loaninvest/detail?id={$vb.id}'class="btn btn-success">已满标</a>
+		    			<elseif condition="$vb.status eq 7"/>
+						<a href='__APP__/Loaninvest/detail?id={$vb.id}' class="btn btn-warning">还款中</a>
+		  				<elseif condition="$vb.status eq 8"/>
+						<a href='__APP__/Loaninvest/detail?id={$vb.id}'class="btn btn-default">已完成</a>
+						</if>
+
+					</div>
+				</div>
+		</div>
+		</volist>
+		<div class="row text-center">
+			<a href="__APP__/Loaninvest" class="btn btn-warning">点击查看更多</a>
+		</div>
+		
+
+	</div>
+</div>
+<div class="news">
+	<div class="container">
+		<h2>网站公告</h2>
+			<php>foreach($noticeList['list'] as $kx => $vn){</php>
+			<a href="{$vn.arturl}" title="{$vn.title}" >
+				<div class="row">
+					<div class="col-xs-1">
+						<i class="fa fa-circle-o text-yellow"></i>
+					</div>
+				 
+					<div class="col-xs-8">{$vn.title|cnsubstr=###,18}</div>
+					<div class="col-xs-3 text-right">{$vn.art_time|date="Y-m-d ",###}</div>
+				</div>
+			</a>
+		<php>};$noticeList=NULL;</php>
+		<div class="row text-center">
+			<a href="/gonggao/index.html" class="btn btn-primary">点击查看更多</a>
+		</div>
+	</div>
+</div>
+<include file="Public:_footer" />

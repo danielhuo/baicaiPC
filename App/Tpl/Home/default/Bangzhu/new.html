@@ -1,0 +1,119 @@
+﻿<include file="Public:_header_common" /><include file="Public:_header_main" />
+<title>{$glo.web_name}新手指引</title>
+<meta name="keywords" content="{$glo.web_keywords}" />
+<meta name="description" content="{$glo.web_descript}" />
+<link href="__ROOT__/Style/Help/css/bangzhu.css" rel="stylesheet" type="text/css">
+<SCRIPT type="text/javascript" src="__ROOT__/Style/Help/js/jquery-1.8.3.min.js"></SCRIPT>
+
+<div class="new-help">
+
+		<div class="newcome">
+        	<div class="nc-box">
+			    <div class="b-left" value="-1"></div>
+				<div class="b-right" value="1"></div>
+            	<ul id="demo">
+					<li>
+						<div class="qh-box" >
+							<div class="box-top">
+								<div style="padding-top:55px">
+									<span>第一步：会员注册</span>
+									<a href="/member/common/register/">立即注册</a>
+								</div>
+							</div>
+							<div class="box-right">
+								<img src="__ROOT__/Style/Help/images/zhuce.png"/>
+							</div>
+							<div class="box-left">
+							   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;点击首页注册按钮，进入注册页面，正确填写邮箱，用户名和密码；填写推荐人用户名，没有推荐人可不填；阅读注册协议；完成注册。</p>
+								
+							</div>
+				  
+						</div>
+					</li>
+					<li style="display:none">
+						<div class="qh-box"  >
+							<div class="box-top">
+								<div style="padding-top:55px">
+								<span>第二步：安全认证</span>
+								<a href="/member/">实名认证</a>
+								</div>
+							</div>
+						<div class="box-right">
+							<img src="__ROOT__/Style/Help/images/renzheng.png"/>
+						</div>
+						<div class="box-left">
+						   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为了确保您的资金和账户安全，请注册后及时做实名认证、手机认证、邮箱认证；以便为您以后的投资行为予以保障。</p>
+							
+						</div>
+						</div>
+					</li>
+					<li style="display:none">
+						<div class="qh-box" >
+							<div class="box-top">
+								<div style="padding-top:55px">
+								<span>第三步：在线充值</span>
+								<a href="__APP__/member/charge#fragment-1">马上充值</a>
+								</div>
+							</div>
+							<div class="box-right">
+								<img src="__ROOT__/Style/Help/images/chongzhi.png"/>
+							</div>
+							<div class="box-left">
+							   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进入充值页面，选择充值金额进行充值。为了安全考虑,系统暂不支持移动端(手机,平板等)充值,请使用电脑设备。</p>
+								
+							</div>
+						</div>
+					</li>
+					<li style="display:none">
+						<div class="qh-box"  > 
+							<div class="box-top">
+								<div style="padding-top:55px">
+								<span>第四步：投标赚钱</span>
+								<a href="__APP__/invest/index.html">开始投资</a>
+								</div>
+							</div>
+							<div class="box-right">
+								<img src="__ROOT__/Style/Help/images/touzi.png"/>
+							</div>
+							<div class="box-left">
+							   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个时候的您已经可以进行投资了，快去赚钱吧！</p>
+							</div>
+						</div>
+					</li>
+					
+				</ul>
+				<ul class="control">
+					<li class="guiding1">1</li>
+					<li class="guiding">2</li>
+					<li class="guiding">3</li>
+					<li class="guiding">4</li>
+					
+				</ul>
+            </div>
+        </div>
+        <script type="text/javascript">
+			$(function(){
+			  var t=0;
+			  var d=$("#demo li").size();
+			  $(".b-left,.b-right").click(function(){
+			    $('#demo li:eq('+t+')').hide();  
+				var str=$(this).attr('value');
+				t=(t+parseInt(str))%d;
+				$('#demo li:eq('+t+')').show();
+				  $('.control li:eq('+t+')').attr('class','guiding1').siblings().attr('class','guiding');
+			  });
+			  
+			  $(".control li").each(function(index){
+			    $(this).click(function(){
+				  t=index;
+				  $('#demo li:eq('+index+')').show().siblings().hide();
+				  $(this).attr('class','guiding1').siblings().attr('class','guiding');
+				  
+				})
+			  })
+			})
+		</script> 
+		
+    </div>
+<include file="Public:_righter" />
+<include file="Public:_footer" />

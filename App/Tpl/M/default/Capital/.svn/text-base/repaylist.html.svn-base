@@ -1,0 +1,43 @@
+<include file="Pub:header" /> 
+<h2 id="title">还款账单</h2>
+<style>
+	table{
+		width:100%;
+		border-bottom:1px dotted gray;
+	}
+	table td,table th{
+		text-align:center;
+	}
+	table td{
+		font-size: 13px;
+		color:red;	   
+	}
+
+</style>
+<div class="main">
+<table>	
+	<tr>
+		<th>金额</th>
+		<th>应还日期</th>
+		<th>项目</th>
+		<th>期号</th>
+		<th>状态</th>
+	</tr>
+	<volist name="repaylist" id="vo">		
+		<tr>
+			<td>{$vo.repay_amount}</td>
+			<td>{$vo.deadline|date="Y/m/d",###}</td>
+			<td>JK{$vo.lid}{$vo.loan_name}</td>
+			<td>{$vo.num_period}/{$vo.pay_periods}</td>
+			
+			<if condition="$vo.status eq 0">
+			<td>待还</td>
+			<elseif condition="$vo.status eq 1"/>
+			<td>已还</td>
+			</if>
+			
+		</tr>
+	 </volist>
+ </table>
+</div> 
+<include file="Pub:footer" /> 

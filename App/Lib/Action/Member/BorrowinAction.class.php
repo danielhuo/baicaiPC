@@ -1,0 +1,277 @@
+<?php
+// 本类由系统自动生成，仅供测试用途
+class BorrowinAction extends MCommonAction {
+
+    public function index(){
+		$this->display();
+    }
+
+    public function summary(){
+		$pre = C('DB_PREFIX');
+		
+		$this->assign("mx",getMemberBorrowScan($this->uid));
+		$data['html'] = $this->fetch();
+		exit(json_encode($data));
+    }
+	
+	public function borrowing(){
+		$map['borrow_uid'] = $this->uid;
+		$map['borrow_status'] = array("in","0,2");
+		
+		if($_GET['start_time2']&&$_GET['end_time2']){
+			$_GET['start_time2'] = strtotime($_GET['start_time2']." 00:00:00");
+			$_GET['end_time2'] = strtotime($_GET['end_time2']." 23:59:59");
+			
+			if($_GET['start_time2']<$_GET['end_time2']){
+				$map['add_time']=array("between","{$_GET['start_time2']},{$_GET['end_time2']}");
+				$search['start_time2'] = $_GET['start_time2'];
+				$search['end_time2'] = $_GET['end_time2'];
+			}
+		}
+		
+		$list = getBorrowList($map,10);
+		$this->assign('search',$search);
+		$this->assign("list",$list['list']);
+		$this->assign("pagebar",$list['page']);
+	
+	
+		$data['html'] = $this->fetch();
+		exit(json_encode($data));
+	}
+
+	public function borrowpaying(){
+		
+		/*
+		$map['borrow_uid'] = $this->uid;
+		$map['borrow_status'] = 6;
+		
+		if($_GET['start_time']&&$_GET['end_time']){
+			$_GET['start_time'] = strtotime($_GET['start_time']." 00:00:00");
+			$_GET['end_time'] = strtotime($_GET['end_time']." 23:59:59");
+			
+			if($_GET['start_time']<$_GET['end_time']){
+				$map['add_time']=array("between","{$_GET['start_time']},{$_GET['end_time']}");
+				$search['start_time'] = $_GET['start_time'];
+				$search['end_time'] = $_GET['end_time'];
+			}
+		}
+		$map['status'] = 7;
+		$list = getBorrowList($map,10);
+		$this->assign('search',$search);
+		$this->assign("list",$list['list']);
+		$this->assign("pagebar",$list['page']);
+	    	
+	
+		$data['html'] = $this->fetch();
+		exit(json_encode($data));
+		*/
+		
+		$per = C('DB_PREFIX');
+		$map['borrow_uid'] = $this->uid;
+		$map['borrow_status'] = 6;
+		$map['has_transfer'] = 1;
+		$map['status'] = 7;
+		
+		$list=M('Borrow_info b')
+		     ->join("lzh_borrow_investor bi ON b.id=bi.borrow_id")
+			 ->field('bi.borrow_id,bi.id,bi.investor_capital,b.borrow_name,b.borrow_interest_rate,b.borrow_duration,b.deadline,b.repayment_type')
+			 ->where("b.borrow_uid={$this->uid} and b.borrow_status=6 and b.has_transfer=1")
+			 ->select();
+		$this->assign("list",$list);
+	    $data['html'] = $this->fetch();
+		exit(json_encode($data));
+		
+	}
+
+
+	public function borrowbreak(){
+		$Wsql="";
+		if($_GET['start_time1']&&$_GET['end_time1']){
+			$_GET['start_time1'] = strtotime($_GET['start_time1']." 00:00:00");
+			$_GET['end_time1'] = strtotime($_GET['end_time1']." 23:59:59");
+			
+			if($_GET['start_time1']<$_GET['end_time1']){
+				$Wsql = " AND ( d.deadline between {$_GET['start_time1']} AND {$_GET['end_time1']} ) ";
+				$search['start_time1'] = $_GET['start_time1'];
+				$search['end_time1'] = $_GET['end_time1'];
+			}
+		}
+		
+		$list = getMBreakRepaymentList($this->uid,10,$Wsql);
+		
+		//print_r($list['list']);
+		$this->assign('search',$search);
+		$this->assign("list",$list['list']);
+		$this->assign("pagebar",$list['page']);
+	
+		$data['html'] = $this->fetch();
+		exit(json_encode($data));
+	}
+	
+	public function borrowfail(){
+		$map['borrow_uid'] = $this->uid;
+		$map['borrow_status'] = array("in","1,3,5");
+		
+		if($_GET['start_time4']&&$_GET['end_time4']){
+			$_GET['start_time4'] = strtotime($_GET['start_time4']." 00:00:00");
+			$_GET['end_time4'] = strtotime($_GET['end_time4']." 23:59:59");
+			
+			if($_GET['start_time4']<$_GET['end_time4']){
+				$map['add_time']=array("between","{$_GET['start_time4']},{$_GET['end_time4']}");
+				$search['start_time4'] = $_GET['start_time4'];
+				$search['end_time4'] = $_GET['end_time4'];
+			}
+		}
+		
+		$list = getBorrowList($map,10);
+		$this->assign('search',$search);
+		$this->assign("list",$list['list']);
+		$this->assign("pagebar",$list['page']);
+	
+	
+		$data['html'] = $this->fetch();
+		exit(json_encode($data));
+	}
+
+	
+	public function borrowfail2(){
+		$map['borrow_uid'] = $this->uid;
+		$map['borrow_status'] = 5;
+		
+		if($_GET['start_time5']&&$_GET['end_time5']){
+			$_GET['start_time5'] = strtotime($_GET['start_time5']." 00:00:00");
+			$_GET['end_time5'] = strtotime($_GET['end_time5']." 23:59:59");
+			
+			if($_GET['start_time5']<$_GET['end_time5']){
+				$map['add_time']=array("between","{$_GET['start_time5']},{$_GET['end_time5']}");
+				$search['start_time5'] = $_GET['start_time5'];
+				$search['end_time5'] = $_GET['end_time5'];
+			}
+		}
+		
+		$list = getBorrowList($map,10);
+		$this->assign('search',$search);
+		$this->assign("list",$list['list']);
+		$this->assign("pagebar",$list['page']);
+	
+	
+		$data['html'] = $this->fetch();
+		exit(json_encode($data));
+	}
+
+	
+	public function borrowfail1(){
+		$map['borrow_uid'] = $this->uid;
+		$map['borrow_status'] = 1;
+		
+		if($_GET['start_time6']&&$_GET['end_time6']){
+			$_GET['start_time6'] = strtotime($_GET['start_time6']." 00:00:00");
+			$_GET['end_time6'] = strtotime($_GET['end_time6']." 23:59:59");
+			
+			if($_GET['start_time6']<$_GET['end_time6']){
+				$map['add_time']=array("between","{$_GET['start_time6']},{$_GET['end_time6']}");
+				$search['start_time6'] = $_GET['start_time6'];
+				$search['end_time6'] = $_GET['end_time6'];
+			}
+		}
+		
+		$list = getBorrowList($map,10);
+		$this->assign('search',$search);
+		$this->assign("list",$list['list']);
+		$this->assign("pagebar",$list['page']);
+	
+	
+		$data['html'] = $this->fetch();
+		exit(json_encode($data));
+	}
+
+
+	public function borrowdone(){
+		$map['borrow_uid'] = $this->uid;
+		$map['borrow_status'] = 7;
+		
+		if($_GET['start_time8']&&$_GET['end_time8']){
+			$_GET['start_time8'] = strtotime($_GET['start_time8']." 00:00:00");
+			$_GET['end_time8'] = strtotime($_GET['end_time8']." 23:59:59");
+			
+			if($_GET['start_time8']<$_GET['end_time8']){
+				$map['add_time']=array("between","{$_GET['start_time8']},{$_GET['end_time8']}");
+				$search['start_time8'] = $_GET['start_time8'];
+				$search['end_time8'] = $_GET['end_time8'];
+			}
+		}
+		
+		$list = getBorrowList($map,10);
+		
+		$this->assign('search',$search);
+		$this->assign("list",$list['list']);
+		$this->assign("pagebar",$list['page']);
+	
+		$data['html'] = $this->fetch();
+		exit(json_encode($data));
+	}
+
+	public function cancel(){
+		$id = intval($_POST['id']);
+		//删除对应的借款记录
+		$newid = M('borrow_info')->where("borrow_uid={$this->uid} AND id={$id} AND borrow_status=0")->delete();
+		
+		if($newid) ajaxmsg("撤消成功");
+		else ajaxmsg("出错，如果您正在撤回的是还未初审的标，请重试，如已经初审，则不能撤回",0);
+			
+	}
+	
+	public function doexpired(){
+		$borrow_id = intval($_POST['bid']);
+		$sort_order = intval($_POST['sort_order']);
+		$newid = borrowRepayment($borrow_id,$sort_order);
+		if($newid===true) ajaxmsg();
+		elseif($newid===false) ajaxmsg('还款失败，请重试',0);
+		else ajaxmsg($newid,0);
+	}
+	
+	/*
+	 王胜赛
+	 追加保证金方法，页面数据注入
+	*/
+	public function adddepositUI(){
+		$per = C('DB_PREFIX');
+		//$borrow_config = require C("APP_ROOT")."Conf/borrow_config.php";
+		$borrow_id=intval($_GET['borrow_id']);
+		//$borrow_id=intval($_GET['id']);
+		$borrow_info=M('Borrow_info')->field('id,borrow_duration,borrow_money')->where("id={$borrow_id}")->find();
+		
+		$textcordon=M('Global')->field('text')->where("id=117")->find();//警戒线
+		$textunwind=M('Global')->field('text')->where("id=118")->find();//平仓线
+		$ctext=(float)$textcordon['text'];
+		$wtext=(float)$textunwind['text'];
+		
+		$borrow_money=(float)$borrow_info['borrow_money'];
+		$cordon=$ctext*$borrow_money/100;
+		$unwind=$wtext*$borrow_money/100;
+		$this->assign('cordon', $cordon);
+		$this->assign('unwind', $unwind);
+		$this->assign('borrow_info', $borrow_info);
+		$this->display();
+	}
+	public function adddeposit(){
+		$borrow_id=$_POST['borrow_id'];
+		$val_add=(float)($_POST['deposit_add']);
+		$borrow_info=M('Borrow_info')->where("id={$borrow_id}")->find();
+		$borrow_uid=$borrow_info['borrow_uid'];
+		$member_money=M('Member_money')->where("uid={$borrow_uid}")->find();
+		$account=(float)$member_money['account_money'];
+		if($account<$val_add)
+			$this->error('余额不足','addDepositUI');
+		$_freezefee = memberMoneyLog($borrow_info['borrow_uid'],19,-$val_add,"第{$borrow_id}号标追加保证金,冻结追加额");
+		if(!$_freezefee)
+			$this->error('提交失败','addDepositUI');
+		$bi=M('Borrow_info');
+		$data['id']=$borrow_id;
+		$data['deposit_addition']=(float)$borrow_info['deposit_addition']+$val_add;
+		$bi->save($data);
+		
+		$this->success("提交成功","index");
+	}
+
+}

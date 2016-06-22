@@ -1,0 +1,30 @@
+<include file="Pub:header" /> 
+<h2 id="title">平台数据统计</h2>
+<style>
+	.table td{text-align:right;}
+</style>
+<div class="container">
+    <table class="table">
+		<tr>
+			<th>会员总数</th>
+			<td>{$member}</td>
+		</tr>
+		<tr>
+			<th>有余额人数</th>
+			<td>{$investable}</td>
+		</tr>
+		<tr>
+			<th>会员总余额</th>
+			<td>{$amount}</td>
+		</tr>
+		<tr>
+			<th>已投资人数</th>
+			<td>{$has_invest}</td>
+		</tr>
+		<tr>
+			<th>投资活跃人数(≥3次)</th>
+			<td>{$often_invest}</td>
+		</tr></table>
+	</table>
+</div>
+﻿<include file="Pub:footer" />  

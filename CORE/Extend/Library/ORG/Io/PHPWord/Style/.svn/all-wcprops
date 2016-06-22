@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Style
+END
+ListItem.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Style/ListItem.php
+END
+TableFull.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Style/TableFull.php
+END
+Cell.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Style/Cell.php
+END
+Image.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Style/Image.php
+END
+Paragraph.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Style/Paragraph.php
+END
+TOC.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Style/TOC.php
+END
+Font.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Style/Font.php
+END
+Table.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Style/Table.php
+END

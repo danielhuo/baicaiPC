@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/BaiCai/!svn/ver/265/trunk/Rewrite
+END
+httpd.ini
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/BaiCai/!svn/ver/265/trunk/Rewrite/httpd.ini
+END
+httpd.parse.errors
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/BaiCai/!svn/ver/265/trunk/Rewrite/httpd.parse.errors
+END
+Rewrite.dll
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/BaiCai/!svn/ver/265/trunk/Rewrite/Rewrite.dll
+END
+readme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/BaiCai/!svn/ver/265/trunk/Rewrite/readme.txt
+END
+mtbnotif.dll
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/BaiCai/!svn/ver/265/trunk/Rewrite/mtbnotif.dll
+END

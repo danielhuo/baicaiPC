@@ -1,0 +1,67 @@
+/* CSS Document */
+*{
+	margin:0;
+	padding:0;
+   }
+.header{
+	font-size:25px;
+	height:25px;}
+.fanhui{
+	height:30px;
+	background-color:#D2DBEA;
+	width:100%;
+	}
+.totaldiv{
+	width:1000px;
+	height:800px;
+	}
+.topdiv{
+	width:800px;
+	height:100px;}
+.middlediv{
+	height:100px;
+	width:800px;}
+.middlediv table{
+	width:600px;
+	height:100px;
+	border:0;
+	}
+.bottomdiv{
+	height:200px;
+	width:800px;
+	}
+.bottomdiv table{
+	width:600px;
+	height:200px;
+	border:0
+	}
+.topdiv table{
+	width:600px;
+	height:100px;
+	border:0;
+	}
+.textinput{
+	width:100px;
+	 height:25px
+	 }
+.selectinput{
+	width:100px;
+	 height:30px}
+.bottoninput{
+	width:50px;
+	 height:30px}
+.td{
+	width:100px;
+	height:50px;
+	text-align:right}
+.topdiv1{
+	width:800px;
+	height:150px;}
+.topdiv1 table{
+	width:600px;
+	height:100px;
+	border:0;
+	}
+.bottoninput1{
+	width:80px;
+	 height:30px}

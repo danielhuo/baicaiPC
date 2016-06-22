@@ -1,0 +1,37 @@
+<include file="Pub:header" />
+<style>
+table{
+		width:100%;
+		border-bottom:1px dotted gray;
+		background-color:#fff;
+	}
+	table th{
+		text-align:center;
+	}
+
+	table td{
+		text-align:center;
+		font-size: 12px;
+		width:50%;
+		height:20px;
+		line-height:20px;
+	}
+</style>
+<div class="body">
+<table>
+<tr>
+<th>用户名</th> <th>投资金额</th>
+</tr>
+	<volist name="count" id="vo">
+<tr>
+<td>{$vo.user_name}</td> <td>{$vo.money}</td>
+</tr>
+	</volist>
+
+</table>
+
+</div>
+<script language="javascript">
+ localStorage.title="个人推广";
+</script>
+﻿<include file="Pub:footer" />  

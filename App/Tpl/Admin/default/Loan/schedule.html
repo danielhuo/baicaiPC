@@ -1,0 +1,25 @@
+<include file="Public:_header" />
+
+<div style="width:500px;height: 500px;" class="center-block">
+<h3 class="text-center"><span style="color:#ff9900;">Jk{$id}</span>进度追踪</h3>
+
+<form method="post" role="form" action="__URL__/doschedule">
+	<input type="hidden" name="id" value="{$id}"/>
+	<div class="form-group">
+		<label>注销抵押权</label>
+		<input name="cancel_warrants" value="{$cancel_warrants}" type="date" class="form-control">
+	</div>
+	<div class="form-group">
+		<label>资金托管</label>
+		<input name="fund_trust" value="{$fund_trust}" type="date" class="form-control">
+	</div>
+	<div class="form-group">
+		<label>过户</label>
+		<input name="reowner" value="{$reowner}" type="date" class="form-control">
+	</div>
+	<div class="form-group">
+		<input type="submit" value="提　交" class="btn btn-info form-control" >
+	</div>
+</form>
+</div>
+<include file="Public:_footer" />

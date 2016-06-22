@@ -1,0 +1,24 @@
+.dataTab{
+		box-shadow:1px 1px 1px 1px lightblue;
+		width:100%;
+		padding:10px;
+		background-color:#fff;
+		margin-top:20px;
+	}
+	.dataTab tr{height:50px;}
+	.dataTab th,.dataTab td{
+		border-bottom:1px dotted lightblue;
+	}
+	.dataTab th{
+		text-align:right;
+		padding-right:10px;
+	}
+	.dataTab td{
+		text-align:left;
+		padding-left:10px;	
+	}
+.dataTab input[type=submit]{
+	height:40px;line-height:20px;background:#2AA198;padding:4px 6px;
+	display:block;margin:0 auto;width:50%;color:#fff;font-size:18px;
+	font-weight:bold;
+}

@@ -1,0 +1,69 @@
+﻿<include file="Pub:header" />
+<h2 id="title">修改登录密码</h2>
+<link rel="stylesheet" href="__ROOT__/Style/M/css/login.css" />
+<div class="main">
+	<form  action="" method="post" class="loginForm" id="setpayForm">
+		
+		<div>
+			<input type="password" name='oldpass' id="oldpass" class="inpToDiv" placeholder="输入原密码" />
+		</div>
+		<div>
+			<input type="password" name="password" id="password" class="inpToDiv" placeholder="设置新密码" />
+		</div>
+		<div>
+			<input type="password" name="password2" id="password2" class="inpToDiv" placeholder="确认新密码"/>
+		</div>     
+		
+		<input type="button" id="button" class="butt" value="确定"></input>
+		
+		
+	</form>
+</div>
+<script language="javascript">
+$(function(){
+    $(".butt").click(function(){
+        var oldpass = $.trim($("#oldpass").val());
+        var password = $.trim($("#password").val());
+        var password2 = $.trim($("#password2").val());
+        if(!oldpass){
+            Apprise('<font color=red>请输入登陆密码！</font>');
+            return false;
+        }
+        if(!password){
+            Apprise('<font color=red>请输入新的密码！</font>'); 
+            return false;
+        }
+        if(!password2){
+            Apprise('<font color=red>请输入确认密码！</font>'); 
+            return false;
+        }
+        if(password2 != password){
+            Apprise('<font color=red>两次密码不相同！</font>'); 
+            return false;
+        }
+        if(password.length<6){
+            Apprise('<font color=red>密码必须大于等于6位字符</font>'); 
+            return false;
+        }
+        $.ajax({
+           type: "POST",
+           url: "",
+           data: 'oldpass='+oldpass+'&password='+password+'&password2='+password2,
+           success: function(msg){
+               if(msg=='TRUE'){
+                  Apprise("恭喜密码设置完成");
+                  $("#apprise-btn-confirm").click(function(){
+                     window.location.href="{:U('M/user/index')}";
+                  })
+               }else{
+                  Apprise('<font color=red>'+msg+'</font>');
+               }
+           },
+           error:function(err){
+               Apprise("<font color=red>提交发生错误！请重试</font>");
+           }
+       });
+    })
+})
+</script>
+﻿<include file="Pub:footer" />

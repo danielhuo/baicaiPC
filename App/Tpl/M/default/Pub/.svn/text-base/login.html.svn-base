@@ -1,0 +1,47 @@
+<include file="Pub:header" />
+<h2 id="title">会员登录</h2>
+<link rel="stylesheet" href="__ROOT__/Style/M/css/login.css" />
+
+<div class="form container" id="loginForm">
+    <div class="form-alert text-center" id="formAlert"></div>
+	<div class="form-group">
+		<input type="text" name='username' class="form-control input-lg" id="username" placeholder="用户名或手机号">
+	</div>
+	<div class="form-group">
+		<input type="password" name="password" class="form-control input-lg" id="password" placeholder="登录密码">
+	</div>
+	<div class="form-group">
+		<button class="btn btn-primary btn-block btn-lg"  id="loginBtn">登  录</button>
+	</div>
+	<div class="form-group">
+		<sapn class="text-warning">没有账号？请</sapn><a href="{:U('M/pub/regist')}" class="btn btn-link ">注册</a>
+			<a style="float:right;" class="btn btn-link" href="{:U('M/Pub/findpass')}">忘记密码？</a>
+	</div>
+</div>
+
+<script>
+$(function(){
+    $alert=$('#formAlert');
+    $("#loginBtn").click(function(){
+    	$username=$.trim($("#username").val());
+    	$password=$.trim($("#password").val());
+        $verify=$.trim($("#verify").val());
+        if(!$username||!$password)
+            return formAlert("请填写完整信息",$alert,"danger");
+        $.ajax({
+        	type:"POST",
+        	url:"",
+        	dataType:"json",
+        	data:{'username':$username,'password':$password},
+        	async:true,
+        	success:function(result){
+        		if(result.status==0){
+        			formAlert(result.message,$alert,"success");
+        			window.location.href ="{:U('/M/User/index')}";
+        		}else return formAlert(result.message,$alert,"danger");
+        	}
+        })
+    })
+})
+</script>
+﻿<include file="Pub:footer" />

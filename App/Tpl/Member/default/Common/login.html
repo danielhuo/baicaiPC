@@ -1,0 +1,84 @@
+<include file="default:Public:_header_common" group="Home" />
+<title>用户登陆</title>
+<include file="default:Public:_header_main" group="Home"/>
+<link rel="stylesheet" href="__ROOT__/Style/H/css/registerreset.css" />
+<link rel="stylesheet" href="__ROOT__/Style/H/css/registerstyle.css" />
+
+<link rel="stylesheet" href="__ROOT__/Style/H/css/login.css" />
+<script type="text/javascript">
+	$(function(){
+	$('#dw_ul li a:eq(4)').attr('class','nowNavItem');
+
+	});
+	var imgpath="__ROOT__/Style/M/";
+	var curpath="__URL__";
+	var loginpath="{$loginfrm}";
+	window.onload=setUserName;
+	function keyLogin(){
+	  if (event.keyCode==13)
+		 document.getElementById("btnReg").click();  
+	}
+</script>
+<script type="text/javascript" src="__ROOT__/Style/M/js/login.js"></script>
+<script type="text/javascript" src="__ROOT__/Style/M/jquery-1.7.1.js"></script>
+<div class="login_main" >
+	<div class="container">
+		<div class="login_form pull-right" onkeydown="keyLogin();">
+						<div class="form-group form-heading">
+							<h3>登 录</h3><span class="reg">没有账号?立即<a href="/member/common/regist">注册</a></span>
+						</div>
+						
+						<hr>
+						<div class="form-group has-feedback">
+							 <span class="glyphicon glyphicon-user form-control-feedback"></span>
+							<input type="text" id="txtUser" placeholder="用户名/手机号" name="name" class="form-control">
+						</div>
+						<div class="form-group has-feedback">	
+							<span class="glyphicon glyphicon-lock form-control-feedback"></span>		
+							<input type="password"  id="txtPwd" name="pass" class="form-control"
+							placeholder="请输入密码">
+							
+						</div>
+						<div class="form-group">
+							<input type="text" id="txtCode" class="form-control" placeholder="验证码">
+							<img onclick="this.src=this.src+'?t='+Math.random()" id="imVcode" alt="点击换一个校验码"
+								 src="/Member/common/verify">
+						</div>
+						
+						<div class="form-group">	
+							<input type="submit" value="登　录" onclick="LoginSubmit(this);" id="btnLog" class="btn btn-info form-control">
+							
+						</div>
+						<div class="form-group forgP">
+							<div id="dvUser" ></div>
+							<a href="javascript:getPassWord();" style="float:right;font-size:12px">忘记密码？</a>
+						</div>
+				</div>
+		
+	</div>
+				
+</div>
+<script >
+	$(".login_form input").keydown(function(event){
+								if(event.which==13){
+									LoginSubmit(this);
+								}
+							});
+	function getPassWord() {
+		$.jBox("get:__APP__/member/common/getpassword/", {
+			title: "找回密码",
+			closed:function(){
+			clearInterval(timer);
+			},
+			buttons: {'确定':'jfun_dogetpass()','关闭': true}
+		});   
+	}
+
+	//设定用户名
+	function setUserName() {
+		$("#txtUser").value =  '<?php echo $_COOKIE['txtUser'];?>';
+	}
+
+</script>
+
+<include file="default:Public:_footer" group="Home" />

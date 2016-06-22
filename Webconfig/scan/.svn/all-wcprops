@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/BaiCai/!svn/ver/263/trunk/Webconfig/scan
+END
+scanconfig.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/263/trunk/Webconfig/scan/scanconfig.php
+END
+scan_file_list.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/BaiCai/!svn/ver/263/trunk/Webconfig/scan/scan_file_list.php
+END
+badfile.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/BaiCai/!svn/ver/263/trunk/Webconfig/scan/badfile.php
+END

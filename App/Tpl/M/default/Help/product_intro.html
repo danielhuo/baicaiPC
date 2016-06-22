@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>产品解读</title>
+	<script src="/Style/Js/jquery.js"></script>
+	<script type="text/javascript" src="/Style/Mobile/js/jquery.touchSwipe.min.js"></script>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			
+		}
+		body{    
+			font-family: "微软雅黑",Arial,"Microsoft YaHei","Hiragino Sans GB",sans-serif;
+		}
+		.pageUl{
+			list-style: none;
+			top:0;
+			width:100%;
+			height:100%;
+			position: absolute;
+			
+		}
+		.pageUl li{
+			width:100%;
+			height:100%;
+			display: block;
+			position:relative;
+			display:none;
+		}
+		.box{
+			position:fixed;top:0px;
+			left:0px;
+			background-color:#CCC;
+			background:rgba(255,255,255,0.7);
+			width:100%;height:100px;
+			z-index:1000;
+			border-bottom:1px solid #DDD;
+		}
+		.logo{float:left;font-size:32px;margin-left:20px;line-height:100px;}
+		.nav{float:right;margin-right:-30px;}
+		.nav li{
+			float:left;list-style:none;margin-right:50px;cursor:pointer;
+			position:relative;height:100px;display:block;
+		}
+		.nav a{line-height:100px;font-size: 28px;text-decoration: none;color:#000;}
+		.nav li:hover a{color:#00A0E9;}
+		.connect_us{position:absolute;top:100px;right:-20px;
+				background-color:#fff;display:none;
+				width:600px;border-radius:5px;text-align:center;}
+		.connect_us div{float:left;width:200px;height:240px;}
+		.connect_us h2{height:80px;line-height:80px;font-size:14px;}
+		.connect_us p{padding-top:20px;}
+		.connect_us p span{margin-top:20px;}
+		
+		.pageUl div{
+			width:100%;
+			height:100%;position:absolute;
+			top:0;left:0;
+			
+		}
+		.pageUl .img1{position:absolute;left:20px;top:40%;display: none;}
+		.pageUl .img2{position:absolute;right:20px;bottom:60%;display: none;}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			$('.nav li').click(function(){
+				$(this).find('.connect_us').slideToggle();
+			})
+			var flag=false;
+			var plis=$('.pageUl li');
+			
+			var size = plis.length;
+			plis.eq(0).fadeIn(500,function(){
+					$(this).find('img').first().fadeIn(300,function showNext(){
+						nextImg=$(this).next();
+						if(nextImg.length)
+							nextImg.fadeIn(200,showNext);
+						else 
+							flag=true;
+					})
+				});
+			$('.pageUl li').each(function(index){
+				$('.pageUl li:eq('+index+')').swipe({
+					swipe:function(event, direction, distance, duration, fingerCount){
+						if(!flag||(index==0&&direction == "down")) return;
+						flag=false;
+						if(direction == "up"){
+							t =1;
+							
+						}else if(direction == "down"){
+							t =-1;
+						}
+						t=Math.max((index+t)%size,0);
+						obj_hide=$('.pageUl li:eq('+index+')');
+						obj_show=$('.pageUl li:eq('+t+')');
+						obj_hide.find('img').fadeOut(100,function(){
+							obj_hide.fadeOut(200,function(){
+								obj_show.fadeIn(500,function(){
+									$(this).find('img').first().fadeIn(300,function showNext(){
+										nextImg=$(this).next();
+										if(nextImg.length)
+											nextImg.fadeIn(200,showNext);
+										else 
+											flag=true;
+									})
+								})
+							});
+							
+						});
+					}
+				})
+			})
+		});
+    
+</script>
+</head>
+<body>
+	<div class="box">
+			<div class="logo">百财金融</div>
+			<div class="nav">
+				<ul>
+					<li><a href="/">首页</span></a>
+					<li><a href="__APP__/M/loaninvest">我要理财</a></li>
+					<li><a>联系我们</a>
+						<div class="connect_us">
+							<div class="weixin">
+								<h2>官方微信</h2>
+								<p>
+									<img src="http://www.baicai58.com/Style/A/images/erweima.png"style="width:120px;height:120px;"></img>
+								</p>
+								
+							</div>
+							<div class="qq">
+								<h2>QQ客服</h2>
+								<p>
+									<img style="width:80px;height:80px;" src="http://www.iconpng.com/png/tencentlogo/qq.png"></img><br>
+									
+									<span>3083483550</span>
+								</p>
+							</div>
+							<div class="tel">
+								<h2>客服电话</h2>
+								<p>
+									<img src="http://luyou.360.cn/resource/img/nav_phone_icon.png"></img><br>
+									<span style="color:#6A8EB2;font-size:20px;">0512-62853600</span><br>
+									<span style="font-size:12px;">(周一到周五9:00-17:00)</span>
+									
+								</p>
+							</div>
+						</div>
+					</li>			
+				</ul>			
+			</div>
+		
+	</div>
+	<div class="pages">
+		<ul class="pageUl"  >
+			
+			<li style="background-color:#FFCC99;">
+				<div>
+					
+					<img class="img1"src="/Style/Mobile/images/product_intro/ge0.png"/>
+					<img class="img2"src="/Style/Mobile/images/product_intro/ge1.png" style="margin-right:100px;margin-bottom:300px;"/>
+					<img class="img2"src="/Style/Mobile/images/product_intro/ge2.png" style="margin-right:50px;margin-bottom:250px;" />
+					<img class="img2"src="/Style/Mobile/images/product_intro/ge3.png" style="margin-right:0px;margin-bottom:200px;"/>
+					<img class="img2"src="/Style/Mobile/images/product_intro/ge4.png" style="margin-right:50px;margin-bottom:150px;"/>
+					<img class="img2"src="/Style/Mobile/images/product_intro/ge5.png" style="margin-right:100px;margin-bottom:100px;"/>
+				
+				</div>
+			</li>
+			<li style="background-color:#FFFFCC;">
+				<div>
+					<img class="img1"src="/Style/Mobile/images/product_intro/cai0.png"/>
+					<img class="img2"src="/Style/Mobile/images/product_intro/cai1.png" />
+				</div>
+			</li>
+			<li style="background-color:#CCFFFF;">
+				<div>
+					<img class="img1"src="/Style/Mobile/images/product_intro/che0.png"/>
+					<img class="img2"src="/Style/Mobile/images/product_intro/che1.png"/>
+					
+				</div>
+			</li>
+			<li style="background-color:#CCFFCC;">
+				<div>
+					<img class="img1"src="/Style/Mobile/images/product_intro/piao0.png"/>
+					<img class="img2"src="/Style/Mobile/images/product_intro/piao1.png"/>
+				</div>
+			</li>
+			<!--
+			<li style="background-color:#CCCCCC;">
+				<div>
+					
+				</div>
+			</li>-->
+			
+		</ul>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+</html>

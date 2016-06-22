@@ -1,0 +1,90 @@
+<include file="Pub:header" /> 
+<script>
+	$(function(){
+		$('header').hide();
+		$('body').css('padding-top',0);
+	});
+</script>
+    <div class="container text-center intro bg-primary">
+    	<div class="row text-center">
+            <h3>百财网</h3>
+        </div>
+
+        <div class="row">
+            <small>年化收益</small><strong class="text-red">10.8</strong><small>%</small>
+            <small>投资期限</small><strong class="text-red">8-50</strong><small>天</small>
+        </div>
+
+        <div class="col-xs-4">
+            <div>
+                <span class="glyphicon glyphicon-lock text-yellow" ></span>
+                <h6>资金安全</h6>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div>
+                <span class="glyphicon glyphicon-piggy-bank text-yellow"></span>
+                <h6>收益丰厚</h6>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div>
+                <span class="glyphicon glyphicon-plane text-yellow"></span>
+                <h6>短期回款 </h6>
+            </div>
+        </div>
+    </div>
+
+	<div class="container safe">
+            <div class="panel panel-warning">
+                <div class="panel-heading"> <h5 class="panel-title">安全保障</h5></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-2"><i class="fa fa-database text-green"></i></div>
+                        <div class="col-xs-10">足额抵押 <small>保障还款来源</small></div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2"><i class="fa fa-users text-yellow"></i></div>
+                        <div class="col-xs-10">团队专业 <small>规避业务风险</small></div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-xs-2"><i class="fa fa-cc-visa text-primary"></i></div>
+                        <div class="col-xs-10">第三方支付平台 <small>资金安全透明</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	 <div class="container home-btns">
+	
+		<if condition="$uname">
+		
+			<a href="{:U('M/User/index')}" class="btn btn-primary btn-lg center-block center-block">
+				<i class="fa fa-user fa-lg"></i>我的百财
+			</a>
+		
+		
+		<else />
+		
+			<a href="{:U('M/Pub/login')}" class="btn btn-info btn-lg center-block">
+				<i class="fa fa-user fa-lg"></i>用户登录
+			</a>
+		
+			<a href="{:U('M/Pub/regist')}" class="btn btn-danger btn-lg center-block">
+				<i class="fa fa-pencil fa-lg"></i>免费注册
+			</a>
+		
+		
+		</if>
+		
+			<a href="{:U('M/Help/product_intro')}" class="btn btn-warning btn-lg center-block">
+				<i class="fa fa-book fa-lg"></i>产品解读
+			</a>
+		
+		
+	</div> 
+	
+
+
+﻿<include file="Pub:footer" />  

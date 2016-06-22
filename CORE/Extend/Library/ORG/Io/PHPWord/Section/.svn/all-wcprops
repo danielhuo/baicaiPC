@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Section
+END
+TextBreak.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Section/TextBreak.php
+END
+TextRun.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Section/TextRun.php
+END
+ListItem.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Section/ListItem.php
+END
+MemoryImage.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Section/MemoryImage.php
+END
+Link.php
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Section/Link.php
+END
+Footer.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Section/Footer.php
+END
+Settings.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Section/Settings.php
+END
+Title.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Section/Title.php
+END
+PageBreak.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Section/PageBreak.php
+END
+Image.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Section/Image.php
+END
+Text.php
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Section/Text.php
+END
+Object.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Section/Object.php
+END
+Table.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Section/Table.php
+END
+Header.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Section/Header.php
+END

@@ -1,0 +1,15 @@
+<include file="Pub:header" /> 
+<div>
+     <table class="table">
+                <thead>
+                    <tr><th class="text-center">用户名</th><th class="text-center">注册时间</th><th class="text-center">累计投资</th></tr>
+                </thead>
+                <tbody>
+              <volist name="data" id="vo">
+                    <tr><td class="text-center">{$vo.user_name}</td><td class="text-center">{$vo.reg_time}</td><td class="text-center">{$vo.invest_total}</td></tr>
+               </volist>
+                </tbody>
+     </table>
+</div>
+
+<include file="Pub:footer" /> 

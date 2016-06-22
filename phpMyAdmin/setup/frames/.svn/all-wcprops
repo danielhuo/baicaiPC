@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/setup/frames
+END
+form.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/setup/frames/form.inc.php
+END
+menu.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/setup/frames/menu.inc.php
+END
+config.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/setup/frames/config.inc.php
+END
+index.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/setup/frames/index.inc.php
+END
+servers.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/setup/frames/servers.inc.php
+END

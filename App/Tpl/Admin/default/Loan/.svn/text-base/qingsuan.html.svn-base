@@ -1,0 +1,45 @@
+<include file="Public:_header" />
+
+<div align="center" class="verifyDiv">
+	
+	<table class="verifyTab">
+		<tr><td>{$borrower.loan_name}</td><td>JK{$borrower.id}</td></tr>
+		<tr><td>借款人:</td><td>{$borrower.user_name}</td></tr>
+		<tr><td>发标额:</td><td>{$borrower.loan_amount|num_format=###}</td></tr>
+		<tr><td>实募额:</td><td>{$borrower.has_collect|num_format=###}</td></tr>
+		<tr><td>年利率</td><td>{$borrower.interest_rate}%</td></tr>
+		<tr><td>平台费率</td><td>{$borrower.fee_rate}%</td></tr>
+		<tr><td>期  限</td><td>{$borrower.loan_duration}{$borrower.duration_type|duration_format=###}</td></tr>
+		
+	</table>
+	<table class="verifyTab">
+		
+		 <tr>
+		   <td>投资人列表</td>
+		   <td>投资人本金</td>
+		   <td>应得利息</td>
+		 </tr>
+		 <volist name="{investors}" id="investor">
+			 <tr>
+			   <td>
+				{$investor.user_name}
+			   </td>
+			   <td>
+				{$investor.invest_amount|num_format=###}
+			   </td>  
+				<td>
+				{$investor.invest_interest|num_format=###}
+			   </td>  
+			 </tr>
+		 
+		 </volist>
+		
+	</table>
+		<div style="border-bottom:1px solid #ADD8E6;width:50%;line-height:50px;font-size:20px;">
+			百财网收益:{$borrower.fee|num_format=###}元</div>
+		<div width="50%">{$plat.user_name}余额:{$plat.account_money|num_format=###}元</div>
+		<div width="50%">需还金额:{$borrower.need_repay|num_format=###}元</div>
+		<a onclick="return confirm('清算确认');" class="do" href="__URL__/doqingsuan?id={$borrower.id}">清算</a>
+		
+	
+</div>

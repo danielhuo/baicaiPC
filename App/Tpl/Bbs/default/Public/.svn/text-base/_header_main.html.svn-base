@@ -1,0 +1,190 @@
+<script language="javascript" type="text/javascript">
+    //搜索框检测代码
+    function checkinput(){
+    	var search = $('#headq');
+    	var isNull = /^[\s' ']*$/;
+    	if(search.val() == '请输入搜索内容' || search.val().length <= 0 || isNull.test(search.val())){
+    		search.focus();
+    		window.alert("请输入关键词，搜索关键词不能为空");
+    		return false;
+    	}
+    }
+	//搜索下拉列表JS
+	function drop_mouseover(pos){
+	 try{window.clearTimeout(timer);}catch(e){}
+	}
+	function drop_mouseout(pos){
+	 var posSel=document.getElementById(pos+"Sel").style.display;
+	 if(posSel=="block"){
+	  timer = setTimeout("drop_hide('"+pos+"')", 1000);
+	 }
+	}
+	function drop_hide(pos){
+	 document.getElementById(pos+"Sel").style.display="none";
+	}
+	function search_show(pos,searchType,href){
+	    document.getElementById(pos+"SearchType").value=searchType;
+	    document.getElementById(pos+"Sel").style.display="none";
+	    document.getElementById(pos+"Slected").innerHTML=href.innerHTML;
+	    document.getElementById(pos+'q').focus();
+	    var sE = document.getElementById("searchExtend");
+	    if(sE != undefined && searchType == "bar"){
+	     sE.style.display="block";
+	    }else if(sE != undefined){
+	     sE.style.display="none";
+	    }
+	 try{window.clearTimeout(timer);}catch(e){}
+	 return false;
+	}
+</script>
+<script type="text/javascript">
+
+    //循环滚动欢迎新会员
+    function AutoScroll(obj){
+            $(obj).find("ul:first").animate({
+                    marginTop:"-60px"
+            },500,function(){
+                    $(this).css({marginTop:"0px"}).find("li:first").appendTo(this);
+            });
+    }
+    $(document).ready(function(){
+    setInterval('AutoScroll(".Scroll_menber")',5000)
+    });
+</script>
+<script src="/Style/B/js/DD_roundies_min.js"></script>
+<script>
+    //定义Div圆角
+    DD_roundies.addRule('.left_block_item1', '6px 6px 6px 6px', true);
+    DD_roundies.addRule('.tiezi_category', '0px 0px 6px 6px', true);
+    DD_roundies.addRule('.block_hot', '6px 6px 6px 6px', true);
+    DD_roundies.addRule('.Recommendation', '6px 6px 6px 6px', true);
+    DD_roundies.addRule('.hot_post_top', '6px 6px 6px 6px', true);
+    DD_roundies.addRule('.left_follow', '6px 6px 6px 6px', true);
+    DD_roundies.addRule('.post_radius', '6px 6px 6px 6px', true);
+    DD_roundies.addRule('.left_post_list', '6px 6px 6px 6px', true);
+    DD_roundies.addRule('.left_post_detail', '6px 6px 6px 6px', true);
+    DD_roundies.addRule('.floor_ck', '3px 3px 3px 3px', true);
+    DD_roundies.addRule('.floor_ck_1', '3px 3px 3px 3px', true);
+    DD_roundies.addRule('.floor_ck_2', '3px 3px 3px 3px', true);
+    DD_roundies.addRule('.floor_ck_3', '3px 3px 3px 3px', true);
+    DD_roundies.addRule('.f_reply_block', '6px 6px 6px 6px', true);
+    DD_roundies.addRule('.reply_text_cf', '6px 6px 6px 6px', true);
+    DD_roundies.addRule('.rep_sub', '4px 4px 4px 4px', true);
+    DD_roundies.addRule('.rep_Reset', '4px 4px 4px 4px', true);
+    DD_roundies.addRule('.Post_Subject', '6px 6px 6px 6px', true);
+    DD_roundies.addRule('.selectBox', '3px 3px 3px 3px', true);
+    DD_roundies.addRule('.ke-container1', '5px 5px 5px 5px', true);
+</script>
+<script type="text/jscript">
+    //Tab切换
+    function setTab(name,cursel,n){
+     for(i=1;i<=n;i++){
+      var menu=document.getElementById(name+i);
+      var con=document.getElementById("con_"+name+"_"+i);
+      menu.className=(i==cursel)?"hover":"";
+      con.style.display=(i==cursel)?"block":"none";
+     }
+    }
+</script>
+<body>
+<div class="Forum_menu" id="header">
+  <div class="top_min_menu">
+    <div class="top_min_center">
+      <!--左边小导航开始-->
+      <div class="top_min_left">
+        <ul>
+          <if condition="$UID gt '0'">
+            <li>您好！<a href="/member/" style="color:#FF0000; font-weight:bold; ">{:session('u_user_name')}</a>&nbsp;|</li>
+            <li class="top_min_logion"><a href="/member/" alt="我的账户" title="我的账户">我的账户</a> &nbsp;|</li>
+            <li class="top_min_logout"><a href="/member/common/actlogout" alt="退出" title="退出"><font style="color:#999;">退出</font></a></li>
+            <else/>
+            <li>您好！欢迎访问会员社区</li>
+            <li class="top_min_logion"><a href="/member/common/login/" alt="登录" title="登录">登录</a> &nbsp;|</li>
+            <li class="top_min_reigest"><a href="/member/common/register/" alt="注册" title="注册">注册</a></li>
+          </if>
+        </ul>
+      </div>
+      <!--左边小导航结束-->
+      <!--右边小导航开始-->
+      <div class="top_min_right">
+        <ul>
+          <li class="top_min_home"><a href="/"  title="网站首页">网站首页</a> &nbsp;|</li>
+		  <li class="top_min_home"><a href="/bbs"  title="会员社区">会员社区</a> &nbsp;|</li>
+          <li class="top_min_add"><a href="javascript:window.external.AddFavorite('{:C('WEB_URL')}','加入收藏')" onClick="AddFav();" title="加入收藏">加入收藏</a></li>
+        </ul>
+      </div>
+      <!--右边小导航结束-->
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div class="Forum_menu_center">
+    <div class="top_block">
+      <!--logo模块开始-->
+      <div class="top_block_logo"><a href="/">{:get_ad(1)}</a></div>
+      <!--logo模块结束-->
+      <!--发帖按钮开始-->
+      <div class="top_ft_bot"><a href="/bbs/send" title="发帖"></a></div>
+      <!--发帖按钮结束-->
+      <!--搜索开始-->
+      <div class="top_block_search">
+        <form action="/bbs/list" method="get" name="headSearchForm" id="headSearchForm" onSubmit="return dosearch(this);">
+          <input id="headSearchType" type="hidden" name="searchType" value="title" />
+          <input class="txtSearch" id="headq" name="q" autocomplete="off" type="text" value="请输入搜索内容" onFocus="if(this.value=='请输入搜索内容'){this.value='';}"  onblur="if(this.value==''){this.value='请输入搜索内容';}" />
+          <div class="selSearch">
+            <div class="nowSearch" id="headSlected" onClick="if(document.getElementById('headSel').style.display=='none'){document.getElementById('headSel').style.display='block';}else {document.getElementById('headSel').style.display='none';};return false;" onMouseOut="drop_mouseout('head');">标题</div>
+            <div class="btnSel"> <a href="#" onClick="if(document.getElementById('headSel').style.display=='none'){document.getElementById('headSel').style.display='block';}else {document.getElementById('headSel').style.display='none';};return false;" onMouseOut="drop_mouseout('head');"></a></div>
+            <ul class="selOption" id="headSel" style="display:none;">
+              <li><a href="#" onClick="return search_show('head','title',this)" onMouseOver="drop_mouseover('head');" onMouseOut="drop_mouseout('head');">标题</a></li>
+              <li><a href="#" onClick="return search_show('head','user',this)" onMouseOver="drop_mouseover('head');" onMouseOut="drop_mouseout('head');">用户</a></li>
+            </ul>
+          </div>
+          <button type="submit" class="search-submit" onClick="return checkinput()" title="搜索" ></button>
+        </form>
+      </div>
+      <!--搜索结束-->
+    </div>
+    <!--主菜单导航模块开始-->
+    <div id="menu_itemx_cs" class="menu_itemx">
+      <ul>
+        <li class="last_x"><a href="/">网站首页</a></li>
+        <li class="last_x"><a href="/bbs">会员社区</a></li> 
+		<li class="last_x"><a href="/invest/index.html">便捷理财</a></li>
+		<li class="last_x"><a href="/bbs/list?menu=2">行业新闻</a></li>
+		<li class="last_x"><a href="/bbs/list?menu=3">常见问题</a></li>
+        <li class="last_x"><a href="/bbs/list?menu=5">客户专区</a></li>
+        <li class="last_x"><a href="/bbs/list?menu=11">投资交流</a></li>
+        <li class="last_x"><a href="/bbs/list?menu=10">投诉建议</a></li>
+        <li class="last_x"><a href="/bbs/list?menu=6">担保机构</a></li>
+		<li class="last_x"><a href="/bbs/list?menu=13">问/答</a></li>
+      </ul>
+    </div>
+    <!--主菜单导航模块结束-->
+  </div>
+  <div class="Classification_before">
+    <div class="Classification">
+      <div class="sub_ico_3"></div>
+      <div class="sub_tit"><a href="/bbs" onFocus="this.blur()"></a></div>
+      <div class="chart">
+        <ul>
+          <li>今日贴子:{$all_num.today|default=0}</li>
+          <li>全部贴子:{$all_num.all}</li>
+          <li>注册会员:{$all_num.all_user}</li>
+          <li class="menber_c">欢迎新会员:</li>
+        </ul>
+      </div>
+      <!--滚动会员模块开始-->
+      <div class="Scroll_menber">
+        <ul>
+          <volist id="ua" name="usersArr" key="k">
+            <li>{$ua.user_name}</li>
+          </volist>
+        </ul>
+      </div>
+      <!--滚动会员模块结束-->
+    </div>
+    <!--Top_Advertising 1024*60 Begin-->
+    <div class="top_banner_it"><a href="/">{:get_ad(6)}</a></div>
+    <!--Top_Advertising 1024*60 End-->
+  </div>
+</div>
+</body>

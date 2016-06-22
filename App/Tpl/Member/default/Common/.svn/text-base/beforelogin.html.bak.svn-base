@@ -1,0 +1,37 @@
+
+<div class="first_top">
+  <div class="dv_header top ">
+    <!--迷你导航-->
+    <div class="dw_bgx dw_mini">
+      <div class="Cmml00">
+        <div class="fl dw_Cbg zuo">
+          <div class="fl" >客服热线:400 115 888
+            <?php $dw_kefu=get_qq(2);echo($dw_kefu[0]["qq_num"]); ?>
+          </div>
+        </div>
+        <div class="fr">
+          <div class="fl"> <a href="__ROOT__/bangzhu/new.html" class="fl" >新手引导</a> </div>
+          <div class="fl " id="dw_qun">
+            <ul id="erji">
+              <li class=" dw_Cbg eq1">
+               <h1><a href="__ROOT__/bangzhu/index.html" class="fl" >帮助中心</a></h1>
+</li>
+              </li>
+              <li class="dw_Cbg eq2">
+               <h1><a href="__ROOT__/bangzhu/index.html" class="fl" >联系我们</a></h1>
+               
+              </li>
+            </ul>
+          </div>
+          <div class="fl" >
+            <div id="dw_kefu">
+              <div class="QQkefu"></div>
+              <div class="dw_show"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--迷你导航结束-->
+  </div>
+</div>

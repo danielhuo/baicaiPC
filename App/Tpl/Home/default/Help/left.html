@@ -1,0 +1,6 @@
+
+<ul class="nav nav-pills nav-stacked">
+   <volist name="leftlist" id="vl">
+<li class="<if condition="$vl.id eq $cid">active</if>"> <a href="{$vl.turl}" title="{$vl.type_name}">{$vl.type_name|cnsubstr2=###,8}</a> </li>
+</volist>
+</ul>

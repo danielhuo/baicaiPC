@@ -1,0 +1,42 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+	var delUrl = '__URL__/doDel';
+	var addUrl = '__URL__/add';
+	var isSearchHidden = 1;
+</script>
+<div class="so_main">
+  <div class="page_tit">投资者列表</div>
+  <div class="list">
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th style="width:30px;">
+        <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+        <label for="checkbox"></label>
+    </th>
+	<th class="line_l">融资标题</th>
+	<th class="line_l">投资人</th>
+    <th class="line_l">投资金额</th>
+
+  </tr>
+  <volist id="vo" name="list">
+      <tr overstyle='on' id="list_{$vo.bid}">
+        <td><input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.bid}"></td>
+        <td>
+		<a href="#" target="_blank">{$vo.name|cnsubstr=###,12}</a>
+		</td>
+		<td>{$vo.user_name}</td>
+		<td>{$vo.invest_amount}</td>
+      </tr>
+  </volist>
+  </table>
+  </div>
+  <div class="Toolbar_inbox">
+  	<div class="page right">{$pagebar}</div>
+	<a class="btn_a" href="javascript:history.go(-1);" onclick="">
+		<span class="search_action">返回列表</span>
+	</a>
+    <a class="btn_a" href="/admin/Reservation/addinvest?id={$r_id}"><span class="search_action">添加</span></a>
+  </div>
+</div>
+<include file="Public:_footer" />

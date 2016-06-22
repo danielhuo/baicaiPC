@@ -1,0 +1,32 @@
+<include file="Pub:header" /> 
+<div class="main">
+		
+	<table class="table">
+		<thead>
+		<tr>
+			<th>金额</th>
+			<th>应收日期</th>
+			<th>项目</th>
+			<th>期号</th>
+			<th>状态</th>
+		</tr>		
+		</thead>	
+		<tbody>
+		<volist name="returnlist" id="vo">	
+		<tr>
+			<td>{$vo.return_amount}</td>
+			<td>{$vo.deadline|date="Y/m/d",###}</td>
+			<td>JK{$vo.lid}{$vo.loan_name}</td>
+			<td>{$vo.num_period}/{$vo.pay_periods}</td>
+			<if condition="$vo.status eq 0">
+			<td>待收</td>
+			<elseif condition="$vo.status eq 1"/>
+			<td>已收</td>
+			</if>
+		</tr>
+		 </volist>
+		</tbody>
+	</table>
+	
+</div> 
+<include file="Pub:footer" /> 

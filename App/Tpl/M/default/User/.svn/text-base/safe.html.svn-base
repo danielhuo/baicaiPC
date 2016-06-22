@@ -1,0 +1,62 @@
+<include file="Pub:header" /> 
+<style type="text/css">
+table{width:100%;background-color:#fff;margin-top:20px;font-size:16px;}
+tr{height:50px;}
+th,td{text-align:left;border-bottom:5px solid #E5E5E5;}
+th{padding-left:20px;;width:50%;}
+
+</style>
+<h2 id="title">安全中心</h2>
+<div class="body" >
+		<table cellspacing="0" cellpadding="0">
+			<tr >
+				<th>实名认证:</th>
+				<td>
+					<a href='{:U("idcard")}'>
+						<if condition="$id_status eq '1'">
+						{$memberdetail.real_name}
+						<elseif condition="$id_status eq '3'"/>
+						审核中
+						<elseif condition="$id_status eq '0'"/>
+						未认证
+						</if>
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<th>登陆密码:</th>
+				<td>已设置<a href='{:U("editpass")}'>[修改]</a></td>
+			</tr>
+			<tr>
+				<th>支付密码:</th>
+				<td>
+					<empty name="paypass"><a href="{:U('setpaypass')}">尚未设置</a>
+					<else/>已设置<a href="{:U('editpaypass')}">[修改]</a></empty>
+				</td>
+			</tr>
+			<tr >
+				<th>安全问题:</th>
+				<td>
+
+				<if condition="$mstatus.safequestion_status eq '1'">已设置
+						  <else/>
+						  还未设置</if>
+				</td>
+			</tr>
+			<tr >
+				<th>手机号码：</th>
+				<td>
+				{$memberinfo.user_phone|hidecard=###,2,"还未验证"}
+				<td>
+			</tr>
+			<tr>
+				<th>电子邮箱：</th>
+				<td>{$memberinfo.user_email|default="还未验证"}
+				</td>
+			</tr>
+			
+		</table>
+ 
+</div>
+
+﻿<include file="Pub:footer" />

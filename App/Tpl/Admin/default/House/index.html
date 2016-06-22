@@ -1,0 +1,39 @@
+<include file="Public:_header" />
+<div class="container">
+	<div class="panel panel-primary">
+	    <div class="panel-heading clearfix">
+	        <span class="panel-title">房源</span>
+	    </div>
+	<table class="table">
+	    <thead>
+	        <tr><th>id</th><th>户主<th>售价</th><th>面积</th><th>户型</th><th>区域</th><th>状态</th><th>操作</th></tr>
+	    </thead>
+	    <tbody>
+	    	<volist name="houses" id="vo">
+	    	<tr>
+	    		<td>{$vo.id}</td>
+	    		<td><a onclick="loadUser({$vo.uid},'{$vo.user_name}')" class="text-info" href="javascript:void(0);">{$vo.user_name}</a></td>
+	    		<td>{$vo.price}万</td>
+	    		<td>{$vo.size}</td>
+	    		<td>{$vo.bed_room}室{$vo.live_room}厅{$vo.toilet}卫</td>
+	    		<td>{$vo.xian}-{$vo.zhen}-{$vo.village}</td>
+
+	    		<td>
+	    			<switch name="vo.status" >
+	    				<case value="0">待审核</case>
+	    				<case value="1">挂牌中</case>
+	    				<case value="1">未通过</case>
+	    				<case value="3">已关闭</case>
+	    				<default />
+	    			</switch>
+	    			
+	    		</td>
+	    		<td><a href="__URL__/edit?id={$vo.id}" class="text-warning">编辑</a></td>
+	    	</tr>
+	    	</volist>
+	    </tbody>
+	</table>
+	<div class="panel-footer text-right">{$pagebar}</div>
+	</div>
+</div>
+<include file="Public:_footer" />

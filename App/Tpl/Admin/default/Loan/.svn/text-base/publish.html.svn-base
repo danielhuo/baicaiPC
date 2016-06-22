@@ -1,0 +1,464 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>车辆抵押</title>	
+</head>
+<script src="http://www.baicai58.com/Style/Js/jquery.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/Editor/themes/default/default.css" />
+<script charset="utf-8" src="/Editor/kindeditor-min.js"></script>
+<script charset="utf-8" src="/Editor/lang/zh_CN.js"></script>
+<style>
+*{margin:0;padding:0;}
+form{margin:0 auto;width:800px;padding:20px 50px;background-color:#fff;overflow:hidden;min-height:500px;}
+.div1{height:40px;padding:0 80px;border-bottom:1px dotted silver;}
+.s1{display:inline-block;width:130px;font-size:16px;line-height:40px;color:#2AA198;}
+form div input{height:20px;margin:0 20px 0 10px;text-indent:10px;border:none;border-bottom:1px solid gray;font-size:16px;width:200px;background-color:inherit;}
+.flag{
+	           width:20px;
+			   text-indent:10px;border:none;
+			   font-size:18px;
+			   
+}
+#sumbit{
+		width:200px;
+		display:block;
+		margin:20px auto;
+		height:30px;
+		
+		background-color:#2AA198;
+		color:#fff;
+		font-size:20px;
+		box-shadow:2px 2px 0px 2px gray;
+	}
+	form input[type=text]{
+		text-align:center;
+	}
+#sumbit:hover{
+		box-shadow:none;
+}
+
+#div1{
+  display:none;
+  position:absolute;
+  top:50%;
+  left:50%;
+  background-color:white;
+  width:500px;
+  height:200px;
+  margin:-100px -250px;
+  border:1px solid yellow;
+  padding:10px 30px;
+  z-index:200;
+  -webkit-box-shadow:2px 1px 1px yellow;
+    -moz-box-shadow:2px 1px 1px yellow;
+}
+#div1 table{
+	width:100%;
+	height:100%;
+	text-align:center;
+
+}
+#div1 table th,#div1 table td{
+	width:50%;
+	border-bottom:1px dotted lightblue;
+	font-weight:bold;
+	font-size:16px;
+}
+#div1 table th{	
+	font-weight:bold;
+	font-size:16px;
+	border-right:1px dotted pink;
+}
+.drop_area{
+	width:700px;height:170px;background-color:silver;margin:5px auto;overflow:auto;position:relative;
+	
+}
+.drop_area span{
+	position:absolute;font-size:20px;color:#fff;
+	top:45%;left:35%;text-align:center;display:block;
+
+}
+
+</style>
+<script>
+  var editor;//初始化Editor
+    KindEditor.ready(function(K) {
+    editor = K.create('textarea[name="detail"]', {
+	height : "500px",
+	width:"700px",
+    resizeType : 0,//定义编辑器是否可自由控制
+    allowFileManager : true,
+	afterBlur: function(){this.sync();}//当失去焦点时执行 this.sync();
+                });
+                
+    K('a[name=reset]').click(function(e) {
+        editor.html('');//重置数据
+        });
+    });
+</script>
+<script>	
+	var minfo = new Array();
+	var linfo = new Array();
+	var binfo = new Array();
+$(function(){ 
+	$("#sumbit").click(function(){	
+		var name = $('#name').val();		
+		var status = true;		
+		$.ajax({
+			url: "__URL__/verifyname",
+			type: "post",
+			dataType: "json",
+			data: {"name":name},
+			async:false,
+			success: function(result) {
+				if (result.status == 0){
+					alert(result.message);					
+				}else if(result.status==1){
+					alert(result.message);
+				}else{
+					status = false;
+				}
+			},
+			error:function(){
+				alert('出错了');} 
+		})
+		if(status){
+		 return false;
+		}
+		var pname = $('select[name="pname"]').val();
+		var mname = $('select[name="mname"]').val();
+		var mortgage = $('#mortgage').val();
+		var loan_amount = $('#loan_amount').val();
+		var loan_duration = $('#loan_duration').val();
+		var collect_day = $('#collect_day').val();
+		var interest_rate = $('#interest_rate').val();
+		var fee_rate = $('#fee_rate').val();
+		var min_invest = $('#min_invest').val();
+		var detail = $('#editor_1').val();
+		
+		if (!pname||!mname||!name||!mortgage||!interest_rate||!fee_rate||!detail){
+			alert("信息不完整！");
+			return  false;
+		}
+		
+		if (loan_amount/1<=0||loan_amount%1!= 0) {
+			alert("借款金额必须为正整数");
+			return false;
+		}
+		
+		if (loan_duration/1<=0||loan_duration%1!= 0) {
+			alert("借款期限必须为整数");
+			return false;
+		} 
+		if (collect_day/1<=0||collect_day%1!= 0) {
+			alert("募集期限必须为整数天");
+			return false;
+		} 
+		
+		if (min_invest/1<=0||min_invest%1!= 0){
+			alert("最小投资额必须为正整数");
+			return  false;
+		} 
+
+	    $('input[type="button"]').attr("disabled",true);
+		$('input[type="button"]').val("提交中...");
+	
+		
+	    var formData = new FormData($('#Borrow')[0]);
+		var detail = $('#editor_1').val();
+		for(var i = 0;i<minfo.length;i++){
+			formData.append("minfo[]",minfo[i]);  
+		}
+		for(var i = 0;i<linfo.length;i++){
+			formData.append("linfo[]",linfo[i]);   
+		}
+		 for(var i = 0;i<binfo.length;i++)
+			formData.append("binfo[]",binfo[i]);  		
+		$.ajax(
+			{
+			
+				url: "__URL__/dopublish/",
+				type: "post",
+				dataType: "json",
+				data:formData,
+				async: false,  			
+         		cache: false,  
+				contentType: false,  
+				processData: false,  
+				success:function(result){				　	
+					$('input[type="button"]').val("提交");					
+					if(result.status == 1){					  
+						alert(result.message);
+						$('input[type="button"]').attr("disabled",false);
+						 
+					}else if(result.status==2){
+						$('input[type="button"]').css("background-color","gray");
+						alert(result.message);
+						window.location.href = window.location.href;
+					}				
+				},
+				error:function(){
+					alert('error');
+				}		
+			}	
+		);
+	});
+	
+    //阻止浏览器默认行。 
+    $(document).on({ 	  
+        dragleave:function(e){    //拖离 
+            e.preventDefault(); 
+        }, 
+        drop:function(e){  //拖后放 
+            e.preventDefault(); 
+        }, 
+        dragenter:function(e){    //拖进 
+            e.preventDefault(); 
+        }, 
+        dragover:function(e){    //拖来拖去 
+            e.preventDefault(); 
+        } 
+    }); 
+	var box = document.getElementsByClassName("drop_area");
+	var size1 = -1;
+	var size2 = -1;
+	var size3 = -1;
+    $(box).each(function(index){
+		box[index].addEventListener("drop",function(e){ 
+			e.preventDefault(); //取消默认浏览器拖拽效果 
+			var fileList = e.dataTransfer.files; //获取文件对象 
+			//alert(fileList[0]);
+			for(var i = 0;i <　fileList.length;i++){
+				//检测是否是拖拽文件到页面的操作 
+				if(fileList.length == 0){ 
+					return false; 
+				} 
+				//检测文件是不是图片 
+				if(fileList[i].type.indexOf('image') === -1){ 
+					alert("您拖的不是图片！"); 
+					return false; 
+				} 
+				if($.browser.mozilla)			
+					img= window.URL.createObjectURL(fileList[i]);
+				else
+					img = window.webkitURL.createObjectURL(fileList[i]); 
+				
+				var filename = fileList[i].name; //图片名称 
+				var filesize = Math.floor((fileList[i].size)/1024);  
+				if(index == 0){
+					minfo.push(fileList[i]);
+					size1++;
+					var str = add(size1,index,img);	
+					$(this).append(str); 
+				}else if(index == 1){
+					linfo.push(fileList[i]);
+					size2++;
+					var str = add(size2,index,img);
+					$(this).append(str); 
+				}else if(index == 2){
+					binfo.push(fileList[i]);
+					size3++;
+					var str = add(size3,index,img);
+					$(this).append(str); 
+				//formData.append("c[]",fileList[i]);		
+				}
+			}
+		},false); 
+	});
+}); 
+
+
+function a(index,size){
+	switch(index){
+	case 0:
+		minfo.splice(size,1);
+		break;
+	case 1:
+		linfo.splice(size,1);
+		break;
+	case 2:
+		binfo.splice(size,1);
+		break;
+	}		
+	$(".drop_area:eq("+index+") #img"+size).remove();		
+}
+
+function add(size,index,img){
+	var str = "<div style='margin-right:10px;float:left;' id='img"+size+"'><img src='/Style/A/images/delete.jpg' style='width:10px;height:10px;' onclick='a("+index+","+size+");'><img src='"+img+"' style='width:80px;height:80px'></div>"; 
+	return str;
+	
+
+}
+
+</script>
+
+
+
+
+<body>
+
+<div class="main" >
+	<div class="container" style="width:600px;text-align:center;overflow:hidden;margin:10px auto 0;cursor:pointer;">
+	<div style="background-color:#fff;color:blue;width:200px;height:30px;float:left;line-height:30px;">基本信息</div>
+	<div style="width:200px;height:30px;float:left;line-height:30px;">项目介绍</div>
+	<div style="width:200px;height:30px;float:left;line-height:30px;">图片资料</div>
+	</div>
+
+	<form method="post" id="Borrow" enctype="multipart/form-data">
+	<div class="box1" style="">
+		<div class="div1">
+			<span class="s1">项目名称</span><span style="font-size:18px;margin-left:10px;">
+			<select name="pname" style="width:150px;text-align:center;">
+			<option value="" >--请选择--</option>
+			<volist name="name.type" id='vo'>
+				<option value={$key}>{$vo}</option>
+			</volist>
+				
+			</select></span>
+			
+		</div>
+		
+		<div class="div1">
+			<span class="s1">还款方式选择</span><span style="font-size:18px;margin-left:10px;">
+			<select name="mname" style="width:150px;text-align:center;">
+			<option value="" >--请选择--</option>
+			<volist name="method.REPAY_TYPE" id='vo'>
+				<option value={$key}>{$vo}</option>
+			</volist>
+				
+			</select></span>
+		
+		</div>		
+		<div class="div1">
+			<span class="s1">借款人</span><input type="text" id ="name" name="name"/><span class="error_box"> </span>
+		</div>
+		<div class="div1">
+			<span class="s1">质押物估价</span><input type="text" id ="mortgage" name="mortgage"/>元
+		</div>
+		<div class="div1">
+			<span class="s1">借款金额</span><input type="text" id ="loan_amount" name="loan_amount"/>元
+		</div>
+		<div class="div1">
+			<span class="s1">借款期限</span><input type="text" id ="loan_duration" name="loan_duration" /><input type="radio" class="flag" name="radio" value="1" checked="checked">月</input>
+			<input type="radio" class="flag" name="radio" value="0">日</input>
+		</div>
+		<div class="div1">
+			<span class="s1">募集期限</span><input type="text" id ="collect_day" name="collect_day"/>天
+		</div>
+		
+		<div class="div1">
+			<span class="s1">借款利率</span><input type="text" id ="interest_rate" name="interest_rate"/>%/年
+		</div>
+		<div class="div1">
+			<span class="s1">平台费率</span><input type="text" id ="fee_rate" name="fee_rate"/>%/年
+		</div>
+		<div class="div1">
+			<span class="s1">最低投资额</span><input type="text" id ="min_invest" name="min_invest"/>元
+		</div>
+	</div>
+	
+	<div class="box1" style="display:none;">		
+		<div class="div1" style="height:auto">
+			<span class="s1">项目介绍</span>
+			<div style="height:200px;">
+						<div class="post_ueditor">
+							<textarea class="editor" id="editor_1" name="detail"></textarea>
+                        </div>	
+                            <a name="reset" class="p_rest" href="#" title="重置内容" style="display:inline-block;width:140px;height:40px;text-align:center;background-color:green;margin-top:20px;line-height:40px;text-decoration:none;">重置内容</a>
+                        
+			</div>
+			
+		</div>
+	</div>
+	
+		
+	<div class="box1" style="display:none;">	
+		<div class="drop_area" >
+			<span>拖动借款人资料图片到这里</span>
+		</div>
+		<div class="drop_area" >
+			<span>拖动债权人资料图片到这里</span>
+		</div>
+		<div class="drop_area">
+			<span>拖动担保人资料图片到这里</span>
+		</div>	
+    </div>
+
+		
+	</form>	
+</div>
+	<input type="button" value="提 交" id="sumbit"/>	
+<div id="div1" style="display:none;">
+	<table>
+		<tr>
+			<td colspan="2">借款人真实信息</td>
+		</tr>
+		<tr>
+			<th>身份证号</th><td class="td1"></td>
+		</tr>
+		<tr>
+			<th>姓名</th><td class="td2"></td>
+		</tr>
+		<tr>
+			<th>银行卡号</th><td class="td3"></td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="button" onclick="shutdown()" value="取消"></input></td>
+		</tr>	
+	</table>
+</div>
+<script>
+$(function(){
+	$('.container div').each(function(index){
+			$(this).click(function(){
+			//alert(index);
+			$('.container div:eq('+index+')').css({'color':'blue','background-color':'#fff'}).siblings().css({'color':'black','background-color':'inherit'});
+			$('.main .box1:eq('+index+')').show().siblings().hide();
+			});
+			
+		});
+});
+
+
+
+function shutdown(){
+		$("#div1").hide();
+	}
+	function setError(tip){
+		$.jBox.tip(tip);
+		return false;
+	}
+$('#name').change(function(){
+	$('.error_box').html("");
+		var name = $('#name').val();
+		
+		$.ajax({
+			url: "__URL__/verifyname",
+			type: "post",
+			dataType: "json",
+			data: {"name":name},
+			async:false,
+			success: function(result) {
+				
+				if (result.status == 0){
+					
+					$('.error_box:eq(2)').html(result.message);
+					
+				}else if(result.status==1){
+					$('.error_box:eq(2)').html(result.message);
+				}else{
+				
+				$(".td3").html(result.bank_num);
+				$(".td2").html(result.real_name);
+				$(".td1").html(result.idcard);
+				$("#div1").show();
+				}
+			},
+			error:function(){
+				alert('出错了');} 
+		})
+	})
+</script>
+</body>
+</html>

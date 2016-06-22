@@ -1,0 +1,353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>借款协议-{$glo.web_name}</title>
+<style>
+  .Lending_Agreement {
+  	width:100%;
+  	height:auto;
+  	margin:0px;
+  	padding:0px;
+  }
+  .Lending_Agreement_center {
+  	width:1024px;
+  	height:auto;
+  	margin:0 auto;
+  	border:1px solid #EEEEEE;
+  }
+  .lending_ageeement_tit {
+  	width:960px;
+  	height:45px;
+  	line-height:45px;
+  	color:#666666;
+  	font-family:Arial, Helvetica, sans-serif;
+  	font-size:16px;
+  	font-weight:bold;
+  	text-align:center;
+  	margin:0 auto;
+  	margin-top:30px;
+  	border-bottom:1px solid #EEEEEE;
+  }
+  .ageeement_content {
+  	width:1000px;
+  	height:auto;
+  	margin:0 auto;
+  	margin-top:30px;
+  	font-size:14px;
+  	font-weight:bold;
+  	color:#666666;
+  	overflow:auto;
+  	font-family:Arial, Helvetica, sans-serif;
+  }
+  .ageeement_content h3 {
+  	font-size:14px;
+  	font-weight:bold;
+  	color:#999999;
+  	font-family:Arial, Helvetica, sans-serif;
+  	padding-left:10px;
+  }
+  .font_lendig {
+  	font-size:14px;
+  	font-weight:bold;
+  	color:#666666;
+  	font-family:Arial, Helvetica, sans-serif;
+  	padding-left:10px;
+  	margin-bottom:10px;
+  	display:block;
+  	margin-top:20px;
+  }
+  .ageeement_content p {
+  	line-height:26px;
+  	font-family:Tahoma, Geneva, sans-serif;
+  	font-size:14px;
+  	color:#999999;
+  	margin:0px;
+  	font-weight:normal;
+  	padding-left:10px;
+  	margin-top:6px;
+  }
+  .ageement_tab {
+  	height:40px;
+  	line-height:40px;
+  }
+  .ageement_tab_ite {
+  	height:40px;
+  	line-height:40px;
+  	font-weight:normal;
+  }
+  .lending_top_inf {
+  	width:1000px;
+  	height:auto;
+  	margin-left:10px;
+  }
+  .lending_logo {
+  	width:1000px;
+  	height:100px;
+  	border-bottom:2px solid #EEEEEE;
+  }
+  .lenging_left_logo {
+  	width:252px;
+  	height:100px;
+  	float:left;
+  	border-bottom:2px solid #00ADEE;
+  }
+  .name_inf {
+  	width:400px;
+  	height:65px;
+  	float:left;
+  	margin-left:40px;
+  	margin-top:2px;
+  }
+  .lenging_right_inf {
+  	width:260px;
+  	height:50px;
+  	float:left;
+  	margin-top:9px;
+  }
+  .lenging_right_inf ul {
+  	margin:0px;
+  	padding:0px;
+  }
+  .lenging_right_inf ul li {
+  	width:400px;
+  	height:25px;
+  	line-height:25px;
+  	font-family:Arial, Helvetica, sans-serif;
+  	font-size:14px;
+  	color:#999999;
+  	list-style:none;
+  	float:left;
+  	padding-left:0px;
+  }
+  .lenging_right_inf ul li a {
+  	color:#999999;
+  	text-decoration:none;
+  }
+  .lenging_right_inf ul li a:hover {
+  	color:#FF9900;
+  	text-decoration:none;
+  }
+  .Seal {
+  	width:auto;
+  	height:auto;
+  	margin-right:20px;
+  	float:right;
+  	text-align:center;
+  }
+  .seal_text {
+  	font-family:Arial, Helvetica, sans-serif;
+  	font-size:13px;
+  	color:#999999;
+  	margin-top:6px;
+  	margin-bottom:40px;
+  	display:block;
+  	font-weight:normal;
+  }
+  .Agreement_pic {
+  	width:200px;
+  	height:45px;
+  	margin:0 auto;
+  }
+  a,a:visited{color: #E67714; text-decoration:none;}
+</style>
+<script type="text/javascript" language="javascript">
+	function printht(){
+		window.print();
+	} 
+</script>
+</head>
+<body>
+<div class="Lending_Agreement">
+<div class="Lending_Agreement_center">
+  <!--顶部信息开始-->
+  <div class="lending_top_inf">
+    <div class="lending_logo">
+      <div class="lenging_left_logo"><a href="/" target="_blank">{:get_ad(1)}</a></div>
+      <div class="name_inf"></div>
+      <div class="lenging_right_inf">
+        <ul>
+          <li class="tel400"><!-- {:get_ad(3)} -->
+            </p>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--顶部信息结束-->
+  <div class="lending_ageeement_tit"><span class="Agreement_pic">借款协议</span><span style="float:right; padding-right:10px;"><a href="javascrīpt:void(0);" onclick="printht();" target="_self">【打印合同】</a> </span></div>
+  <div class="ageeement_content">
+    <p align="left">合同编号：<u><strong>{$bid}{$iinfo.add_time|date="Ymd",###}{$iinfo['id']}</strong></u> </p>
+    <p align="left">本借款协议（下称“本协议”）由以下各方于{$binfo.second_verify_time|date="Y年m月d日",###}签署</p>
+	<p align="left">甲方(出借人)：</p>
+	<table width="800" border="1" cellspacing="0" >
+  <tr>
+    <th width="120">百财用户名</th>
+    <th width="120">出借金额</th>
+    <th width="120">借款期限</th>
+    <th width="120">每月应收利息</th>
+  </tr>
+  <tr>
+    <td>{$mInvest.user_name}</td>
+    <td>{$iinfo.investor_capital}</td>
+    <td>{$binfo.borrow_duration}
+          <if condition="$binfo.repayment_type eq 1">天
+            <else/>
+            个月</if></td>
+    <td>{$detail.interest}</td>
+  </tr>
+  <tr>
+    <td>总计：</td>
+    <td>{$iinfo.investor_capital}</td>
+    <td></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="4"><p>注：因计算中存在四舍五入，最后一期应收本息与之前略有不同</p></td>
+  </tr>
+</table>
+    <p align="left">乙方（借款人）： </p>
+	<p>真实姓名:{$name}</p>
+	<p>身份证号：{$card_s}</p>
+	<p>百财用户名：{$mBorrow.user_name}</p>
+    <p align="left">丙方：百财网络科技（苏州）有限公司 </p>
+	<p>联系地址：苏州市工业园区苏雅璐318号明天翔国际大厦1504室</p>
+    <p align="left">生效日期：<u>{$binfo.second_verify_time|date="Y年m月d日",###}</u> </p>
+    <p>&nbsp;</p>
+	<p>&nbsp;</p>
+    <strong class="font_lendig">第一条 总则</strong>
+    <p class="font_lendig">鉴于：</p>
+	<p>1. 甲方承诺对本协议涉及的借款具有完全的支配能力，是其自有闲散资金，为其合法所得；并承诺其提供给丙方的信息是完全真实有效的；</p>
+	<p>2. 乙方有借款需求，甲方亦同意借款，双方有意建立借贷关系。</p>
+	<p>3. 乙方已在百财网站注册，并承诺其提供给丙方的信息是完全真实有效的；</p>
+	<p>4. 丙方是一家在苏州市合法成立并有效存续的有限责任公司，拥有www.baicai58.com 网站（下称“百财网”）的经营权，提供信用咨询，为交易提供信息服务；</p>
+	<p>5. 甲、乙双方在本协议签署之前已阅读并充分了解丙方放置在百财网上的本协议版本。</p>
+	<p class="font_lendig">据此，各方经协商一致，达成如下协议，以资共同遵照履行：</p>
+	
+    <strong class="font_lendig">第二条 合作方式 </strong>
+    <p>1. 乙方以保证金方式取得甲方股票交易账户的操作权限，且乙方独立承担操盘的全部风险。甲方授权给乙方操盘的股票交易账户可交易金额为乙方保证金的一定比例。具体约定如下：<br/>
+	<table border="1" cellspacing="0"  width="800">
+  <tr>
+    <th width="164">项目名称</th>
+    <td width="440">JK {$binfo.id} 股票抵押借款</td>
+  </tr>
+  <tr>
+    <th width="164">乙方保证金金额 </th>
+    <td width="440">{$binfo.borrow_deposit}</td>
+  </tr>
+  <tr>
+    <th >甲方股票交易账户初始金额 </th>
+    <td >{$iinfo.investor_capital}</td>
+  </tr>
+  <tr>
+    <th >支付月利息</th>
+    <td >{$iinfo.investor_interest}</td>
+  </tr>
+  <tr>
+    <th >账户管理费 </th>
+    <td >{$binfo.borrow_fee}</td>
+  </tr>
+  <tr>
+    <th >借款期限</th>
+    <td >{$binfo.second_verify_time|date="Y年m月d日",###}至{$binfo.deadline|date="Y年m月d日",###}止 </td>
+  </tr>
+  <tr>
+    <th >还息日 </th>
+    <td >{$binfo.second_verify_time|date="Y年m月d日",###}.（24:00前，节假日不顺延）</td>
+  </tr>
+  <tr>
+    <th >还息方式 </th>
+    <td >每月利息提前支付 </td>
+  </tr>
+</table></p>
+	<p>乙方提交融资计划之日，乙方不可撤销的授权第三方支付机构宝付科技有限公司（以下简称“宝付科技”）通过乙方已经在宝付科技开立的资金账户（下称“乙方资金账户”）将应向甲方支付的全部利息和应向丙方支付的全部服务费划入丙方在宝付科技指定的资金账户（下称“丙方资金账户”）内。</p>
+    <p>2. 乙方可以使用上述股票交易账户内资金总额购买上海或深圳证券交易所交易的股票，盈利归乙方所有，亏损亦由乙方承担，即乙方对上述账户进行股票买卖等操作产生的一切风险和后果由乙方承担，与甲方、丙方无关。</p>
+    <p>3. 本协议双方合作交易股票子账号操盘交易佣金为0.8‰（万分之八）。</p>
+	<p>4. 乙方购买的股票原则上应业绩优良、流通股本规模适度、流动性好。乙方购买股票要按照以下条件：</p>
+	<p>1）不得购买S、ST、*ST、S*ST、SST、以及被交易所特别处理的股票；</p>
+	<p>2）不得购买权证类可以T+0交易的证券；</p>
+	<p>3）不得购买首日上市新股（或复牌首日股票）等当日不设涨跌停板限制的股票；</p>
+	<p>4）其他限购股票以丙方网站通知为准，乙方需及时关注丙方网站通知，丙方不再通过其他方式通知，如因乙方未能及时查看网站通知造成的损失，皆由乙方独立承担；</p>
+	<p>5）单只股票不得超过账户总资产的50%；</p>
+	<p>6）借款金额100万以上创业板单只股票不得超过账户总资产的33%（100万或以下不受限制）；</p>
+	<p>7）单只股票持仓总市值不得超过该股前5个交易日日均成交额的30%；</p>
+	<p>8）不得进行坐庄、对敲、接盘、大宗交易、内幕信息等违反股票交易法律法规及证券公司规定的交易。如按照收盘价计算，乙方在某一交易日违反第4第5条约定，否则甲方有权以任何可以成交的价格完全卖出违反本条约定之类别股票。</p>
+	<p>5. 甲方和乙方一致同意委托丙方向乙方收取保证金和利息，并对乙方进行全程账户管理和风险控制、在乙方使用股票交易账户进行投资交易的过程中，乙方愿意接受甲方及丙方的监管。</p>
+	<p>&nbsp;</p>
+    <strong class="font_lendig">第三条 警戒线与平仓线 </strong>
+    <p> 1. 当股票交易账户内的总资产低于¥{$cordon}元为警戒线，乙方只允许卖出股票，不能再买入股票。低于警戒线时需要尽快补充风险保证金，以免低于平仓线被平仓。</p>
+    <p>2. 当股票交易账户内的总资产低于¥{$unwind}元为平仓线，甲方有权修改密码并按任何价格卖出账户内所有股票，并终止协议。为避免平仓发生，请时刻关注风险保证金是否充足。</p>
+    <p>3. 当账户内某股票在某一交易日的全天成交金额低于500万元，且该股票持仓市值超过当日全天成交金额的30%，则甲方及丙方有权利要求乙方在下一交易日上午 10:30前将该股票市值降低至上一交易日该股票日成交金额的30%以内，或按照该股票持仓市值20%的金额追加额外保证金，该额外保证金不得用于购买股票。如该股票在连续5个交易日中每天的成交金额不低于500万元且满足本协议其他条款时，丙方将于下一交易日将额外保证金无息退还给乙方。</p>
+    <p>&nbsp;</p>
+    <strong class="font_lendig">第四条 保证金及担保范围 </strong>
+    <p>1. 乙方应根据本协议的约定支付保证金到甲方委托丙方指定账户，并及时补足保证金。</p>
+    <p>2. 乙方保证金担保范围包括但不限于：利息、滞纳金、违约金、损害赔偿金、诉讼费、律师费、调查费、公证费等为实现债权所发生的费用。</p>
+    <p>3. 如乙方未及时付清利息，丙方有权从本协议对应的股票交易账户内平仓出金或修改密码限制买卖，然后从本协议对应的保证金中直接收取拖欠的利息，如果本协议保证金不足以支付的，丙方有权从乙方在丙方平台账户余额或其他交易中追索拖欠的利息。</p>
+    <p>4. 乙方每次追加保证金的金额不得低于交易账户初始总资金的1%，且每个交易日最多追加5次保证金。</p>
+    <p>5. 乙方授权丙方，如果乙方未能履行本协议约定的任何义务，丙方无论是否事先通知乙方，均可直接从乙方保证金中划扣乙方应付欠款。本授权委托在本协议法定诉讼时效内不可撤销。</p>
+    <p>&nbsp;</p>
+    <strong class="font_lendig">第五条 还款和结算方式</strong>
+    <p>1. 本协议终止前，乙方须按本协议规定日期将次日利息支付到甲方授权乙方指定的银行账户，或者由丙方从乙方在丙方平台账户的余额中扣除。</p>
+    <p>2. 当股票交易账户的总资产（包括现金和证券）大于初始资金总额时，视作股票交易账户的盈利，归乙方取得，乙方有权要求丙方将盈利部分转至乙方名下账户，每次需按操盘资金的3%起提取，最低100元，每个自然日最多5次。丙方应在收到乙方出金通知之日当天内完成转账，因银行或证券公司的原因而未能在当日完成转账的除外。</p>
+    <p>3. 本协议终止时，乙方应将股票交易账户的总资产资产全部变现为货币资金，以便丙方办理子账户内资产的清算手续。丙方须在办理完毕清算手续的三日内将除甲方本金和利息之外的款项划转到乙方在丙方平台账户余额；如乙方所购股票中出现有停牌股票不能卖出，乙方可以继续支付利息延续本协议直至停牌结束，否则甲方将按停牌前最后收盘价计算乙方交易账号盈亏完成账户结算。</p>
+    <p>4. 乙方被强制平仓结算后，最近一个账号使用费支付日之前未追加足额保证金时，丙方将通知甲乙终止本协议。乙方须向甲方赔偿一个月的利息，作为甲方资金闲置缓冲期的补偿。如平仓后剩余资金不足以支付甲方利息时，甲方有权委托丙方向乙方追索利息欠款，丙方将尽最大努力协助甲方追索乙方利息欠款。</p>
+    <p>5. 本协议终止时，甲方如未能全部收回其本金及利息，甲方有权委托丙方向乙方追偿。乙方除归还甲方全部本金和利息外，还应从协议终止之日起每日以甲方本金的0.1%标准，向丙方支付追偿费用。</p>
+    <p>&nbsp;</p>
+    <strong class="font_lendig">第六条 甲方的权利、义务及违约责任</strong>
+    <p>1. 甲方保证其所用于出借的资金来源合法，甲方是该资金的合法所有人，如果第三人对资金归属、合法性问题发生争议，由甲方负责解决。如甲方未能解决，则放弃享有其所出借股票交易账户资金所带来的收益权利。</p>
+    <p>2. 甲方有权委托丙方监管股票交易账户的运作，对乙方进行账户管理和风险控制。</p>
+    <p>3. 甲方享有其所出借股票交易账户资金所带来的利息，并应主动缴纳由此所得带来的可能的税费。</p>
+    <p>4. 甲方有权委托丙方在必要时对乙方进行交易损失的违约提醒及催收工作，包括但不限于电话通知、上门通知、发律师函、对乙方提起诉讼等。</p>
+    <p>5. 甲方保证出借资金来源正当合法，不存在负债或者或有负债（指应披露而未披露结果给该笔资金的依约使用带来争议或者纠纷的负债），丙方具有对银行账户和股票交易账户使用和处理的排他性权利，并承诺在本协议执行期间不以银行账户和股票交易账户内资产（包括现金和证券）设置抵押、担保、租赁、托管等。</p>
+	<p>6. 如乙方所购股票因异常波动、上市公司涉嫌违规需要进行调查以及突发性事件或不可抗力等原因导致该证券连续停牌达到 7个交易日或者连续跌停板导致平仓无法实现，且占总市值50%以上，乙方须即时将账户内其它证券平仓，所得款项连同账户资金一并用于清偿甲方债权，不足部分由乙方自有资金偿还。同时，该证券复牌后或者连续 跌停板打开且平仓可以实现时，如乙方仍有未清偿的债务，则甲方有权直接将该证券平仓用于清偿乙方所欠甲方的债务，剩余部分返还至乙方指定账户内。当乙方所欠甲方的债务全部清偿完毕，则甲方不再收取乙方的借款利息和逾期违约金。</p>
+	<p>&nbsp;</p>
+    <strong class="font_lendig">第七条 乙方的权利、义务及违约责任</strong>
+    <p>1. 乙方可以通过丙方股票交易账户按照本协议约定进行买卖操作，有权收取使用股票交易账户内资金总额投资所得的收益，承担全部损失；无论股票交易账户盈亏如何，乙方须按本协议约定向甲方支付账号使用费。</p>
+    <p>2. 如任一股票交易账户内的所有股票出售（即清盘）后，还不足以归还该笔合作账户初始金额，乙方必须在清盘后三日内将亏损额补足归还给甲方，否则甲方有权委托丙方从乙方进行交易的其他股票交易账户中扣除相应金额。</p>
+    <p>3. 乙方不得进行坐庄、对敲、接盘、大宗交易、内幕信息等违反股票交易法律法规及证券公司规定的交易，如有任一次上述交易行为，应支付给甲方借款额10%的违约金，并直接从保证金中扣除，因此产生的一切责任和损失，由乙方承担。</p>
+	<p>4. 如因乙方违规操作、债务等原因，导致丙方指定账户（包括银行账户和股票、期货账户）被依法采取查封、冻结、划拨等强制措施，造成丙方损失的，乙方应从账户被依法处置之日起以本金及利息之和为基数按照0.1%的日利率向丙方支付违约金，如违约金不足以弥补损失的，乙方还应承担赔偿责任。借款期满,账户仍未解除强制措施的,本协议自动终止,乙方应另行全额归还给甲方出借账户初始资金、利息，并按约支付违约金。</p>
+	<p>5. 股票交易费用由乙方承担： <br />
+  1）所有费用均以交易总额为基数计算； <br />
+  2）印花税按照国家标准，由证券公司在客户交易时直接代扣代缴； <br />
+  3）交易佣金由证券公司在交易时扣收； <br />
+  4）因买入金额过少（单笔2万以下）造成实际佣金与券商注明佣金有微小差别（10%以内的差别），乙方表示无异议。 <br />
+  6. 所在营业部根据规定、规则或协议约定应收取的各项费用或代收税金等，由乙方按实承担。如果遇到政府部门出台缴纳个人资本利得税，则甲方和乙方各自承担协议期内的个人资本利得税部分，并互相保留1年的追溯权。 <br />
+  7. 如账户内持仓股票有配股权利的，在券商通知后2天内，乙方应腾出可用资金购买配股或者把该股票卖出。如果乙方未执行，丙方有权利以任何价格卖出该股票 ，如出现亏损由乙方自己承担，乙方对此确认无异议。 <br />
+  <strong class="font_lendig">第八条 丙方的权利、义务 </strong><br />
+  1. 甲方同意向乙方出借相应款项时，已委托丙方在本协议成立后将该笔借款直接划付至丙方为乙方开设的股票交易账户。甲方授权并委托丙方代其收取本协议文首所约定的出借人每月应收本息，代收后按照甲方的要求进行处置，乙方对此表示认可。 <br />
+  2. 丙方有权就为本协议所提供的服务向甲方收取综合管理费。收取比例为甲方收益的35.0%。 <br />
+  3. 甲乙双方同意丙方有权代甲方在必要时对乙方进行贷款的违约提醒及催收工作，包括但不限于电话通知、上门通知、发律师函、对乙方提起诉讼等。甲方在此确认委托丙方为其进行以上工作，并授权丙方可以将此工作委托给其他方进行。乙方对前述委托的提醒、催收事项已明确知晓并应积极配合，同时应承担因乙方逾期还款而产生的催收费用。 <br />
+  4. 丙方接受甲乙双方的委托行为所产生的法律后果由相应委托方承担。如因乙方或甲方或其他方（包括但不限于技术问题）造成的延误或错误，丙方不承担任何责任。 <br />
+  5. 丙方应对甲方和乙方的信息及本协议内容保密；如任何一方违约，或因相关权力部门要求（包括但不限于法院、仲裁机构、金融监管机构等），丙方有权披露  。 <br />
+  <strong class="font_lendig">第九条 风险揭示 </strong><br />
+  1. 甲方在签署本合同前须履行风险提示义务；乙方在签署本合同前须详细阅读本协议内容及相关风险提示，以便正确、全面了解证券合作操盘网上交易的风险。 <br />
+  2. 技术风险揭示 <br />
+  1）互联网是开放性的公众网络，网上证券交易委托除具有其他委托方式共同的风险外，还有其特有的风险，如由于互联网数据传输等原因，交易指令可能会出现中断、停顿、延迟、数据错误等情况。 <br />
+  2）互联网存在黑客恶意攻击的可能性，亦存在病毒入侵的可能性，互联网服务器可能会出现故障及其他不可预测的因素；或由于乙方不慎将密码泄露或被他人盗用，均存在乙方账户被他人盗买盗卖的风险。 <br />
+  3）乙方的电脑设备及软件系统与所提供的网上交易系统不相匹配，导致无法下达委托指令或委托失败。 <br />
+  3. 规避风险建议 <br />
+  1）乙方务必注意个人信息资料的保密，账户密码妥善保存，如意识到密码可能泄露，请及时修改密码。 <br />
+  2）乙方用于交易委托的电脑必须安装可信赖的病毒防火墙和网络防火墙软件，并确认其正常工作。 <br />
+  3）乙方如遇个人电脑系统、网络通讯或者网上交易相关软件出现异常情况，应暂时停止网上委托。 <br />
+  4. 特别提示 <br />
+  乙方签订本合同后，表明乙方已完全了解网上交易可能存在的相应风险，以及自身决策失误造成的损失，并承诺自行承担。 <br />
+  <strong class="font_lendig">第十条 协议的订立、生效 </strong><br />
+  1. 甲乙双方同意并确认自行根据百财网网站有关规则和说明在百财网签署本协议。 <br />
+  2. 甲乙双方通过上述方式接受本协议且丙方审核通过时，本协议立即生效。 <br />
+  3. 丙方可根据风控需求，对以本协议风控规则进行修订并在丙方网站发布。甲乙双方需应不时地注意甲方及具体规则的变更，若甲乙双方在本协议及具体规则内容公告变更后继续使用本服务的，表示甲乙双方已充分阅读、理解并接受修改后的协议和具体规则内容，也将遵循修改后的协议和具体规则使用本网站的服务；同时就甲乙双方在协议和具体规则修订前通过本网站进行的交易及其效力，视为您已同意并已按照本协议及有关规则进行了相应的授权和追认。 <br />
+  4. 在本协议履行过程中产生争议的，双方应当协商解决；协商不成的，由丙方所在地人民法院管辖。 <br />
+  <strong class="font_lendig">第十一条 协议终止 </strong><br />
+  1. 本协议生效之日起，最长有效期为6个自然月。协议终止时，乙方需将股票交易账户内股票全部卖出，以便甲方可以按本协议约定进行账户资金结算。 <br />
+  2. 如乙方未能及时缴纳下一个自然月的利息，甲方将在付款日后首个交易日下午14:00对合作交易账户进行结算。 <br />
+  3. 如因乙方原因提前终止本协议,乙方须向甲方额外支付一个月利息以弥补甲方损失。 <br />
+  4. 如因乙方所购买股票停牌无法及时卖出股票，乙方可以继续按时缴纳利息将本协议延续至股票停牌结束。 <br />
+  5. 如因证券公司政策原因，股票交易账户无法正常继续使用，本协议自动终止，协议三方互不追究违约责任，按本协议约定进行结算。 <br />
+  6. 乙方违法违规进行股票操作或乙方有严重违约行为的，丙方有权立即解除本协议，平仓锁定账户，收回本金，已收取账号管理费不退还给乙方，在确定不会给甲方造成损失的前提下，甲方委托丙方向乙方退回剩余保证金。 </p>
+<p>&nbsp;</p>
+<p align="left">甲方： <br />
+     乙方： <br />
+     丙方： 百财网络科技（苏州）有限公司<br />
+     签署日期： {$binfo.second_verify_time|date="Y年m月d日",###}</p>
+      
+</div>
+</body>
+</html>

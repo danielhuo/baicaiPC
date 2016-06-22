@@ -1,0 +1,217 @@
+<include file="default:Public:_header_common" group="Home" />
+<title>新用户注册-- {$glo.web_name}</title>
+<include file="default:Public:_header_main" group="Home"/>
+<link rel="stylesheet" href="__ROOT__/Style/H/css/registerreset.css" />
+<link rel="stylesheet" href="__ROOT__/Style/H/css/registerstyle.css" />
+<script type="text/javascript">
+	var imgpath="__ROOT__/Style/M/";
+	var curpath="__URL__";
+</script>
+<script type="text/javascript" src="__ROOT__/Style/M/js/reg.js"></script>
+<script type="text/javascript" src="__ROOT__/Style/Js/strength.js"></script> 
+<script type="text/javascript" src="__ROOT__/Style/Js/autoMail.js"></script>
+<style type="text/css">
+	.dv_r_4_3 { height: 30px; line-height: 30px;  width: 500px; text-align:left; font-size: 12px; margin-left: 140px; font-family: 宋体; }
+
+	.form-horizontal .form-group{height:70px;}
+</style>
+<div style="padding:10px 0;color:#222;" class="bg-primary">
+	<div class="container bg-info" style="border-radius:2px;box-shadow:1px 1px 3px 0px #000;" >
+		<div class="row" style="position: relative;border-bottom:1px solid #aaa;">
+			<div class="col-xs-6 text-right">
+				<h2>注册新用户</h2>
+			</div>
+		    <div class="col-xs-6 col-xs-offset-6 text-center" style="position: absolute;bottom: 0px;">
+				已有账号?
+				<a href="__ROOT__/member/common/login/" class="btn btn-link">立即登录
+				</a>
+		    </div>	
+		</div>
+		<div class="row" style="padding-top:50px;">
+			<div class="col-md-6 col-xs-7">
+				<form action="__URL__/regaction/" method="post" onsubmit="return cksubmit();" id="Borrow" class="form-horizontal" role="form">
+					
+					<div class="form-group">
+						<label for="txtphone" class="control-label col-md-6 col-xs-3">手机号</label>
+						<div class="col-md-6 col-xs-9">
+							<input type="text" id="txtphone" name="txtphone" class="form-control"  placeholder="您的手机号">
+						</div>
+						<div id="dvphone" class="col-md-6 col-md-offset-6 col-xs-9 col-xs-offset-3"></div>
+					</div>
+					<div class="form-group">
+						<label for="txtUser" class="control-label col-md-6 col-xs-3">用户名</label>
+						<div class="col-md-6 col-xs-9">
+							<input type="text" id="txtUser" name="txtUser" class="form-control"  placeholder="6-10个字母、汉字、数字、下划线">
+						</div>
+						<div id="dvUser" class="col-md-6 col-md-offset-6 col-xs-9 col-xs-offset-3"></div>
+					</div>
+					<div class="form-group">
+						<label for="txtPwd" class="control-label col-md-6 col-xs-3">设置密码</label>
+						<div class="col-md-6 col-xs-9">
+							<input type="password" id="txtPwd" name="txtPwd" class="form-control" onKeyUp=pwStrength(this.value) onBlur=pwStrength(this.value) placeholder="6-16个字母、数字、下划线">
+						</div>
+						<div id="dvPwd" class="col-md-6 col-md-offset-6 col-xs-9 col-xs-offset-3"></div>
+					
+					</div>
+					
+					
+					<div class="form-group">
+						<label for="txtRepwd" class="control-label col-md-6 col-xs-3">确认密码</label>
+						<div class="col-md-6 col-xs-9">
+							<input type="password" id="txtRepwd" name="txtRepwd" class="form-control" placeholder="确认输入密码">
+						</div>
+						<div id="dvRepwd" class="col-md-6 col-md-offset-6 col-xs-9 col-xs-offset-3"></div>
+					</div>
+					
+					
+					
+					<div class="form-group">
+						<label for="txtRec" class="control-label col-md-6 col-xs-3">推选人(选填)</label>
+						<div class="col-md-6 col-xs-9">
+							<input type="text" id="txtRec" name="txtRec" class="form-control" placeholder="推荐人用户名或手机号,可不填">
+						</div>
+						<div id="dvRec" class="col-md-6 col-md-offset-6 col-xs-9 col-xs-offset-3"></div>
+					</div>
+					
+					
+					
+					<div class="form-group">
+						<label for="txtCode" class="control-label col-md-6 col-xs-3">验证码</label>
+						<div class="col-md-3 col-xs-4">
+							<input id="txtCode" class="form-control" name="txtCode" type="text" class="register_check" placeholder="短信验证码">
+						</div>
+						<div class="col-md-3 col-xs-4">
+							<button type="button" class="btn btn-info" onclick="sendMobileValidSMSCode()" id="getVerifyCode">获取验证码</button> 
+						</div>	
+						<div id="dvCode" class="col-md-6 col-md-offset-6 col-xs-9 col-xs-offset-3"></div>
+					</div>
+			
+					<div class="form-group" style="margin-bottom:-20px;">		
+						
+						<div class="col-md-6 col-md-offset-6 col-xs-9 col-xs-offset-3" >
+							<label>
+								<input  type="checkbox" checked>
+								<a href="__ROOT__/Member/Common/registered" class="btn btn-link" target="_blank">同意《注册协议》</a>
+							</label>
+							
+						</div>
+						
+					
+					</div>
+					<div class="form-group">		
+						
+						<div class="col-md-6 col-md-offset-6 col-xs-9 col-xs-offset-3" >
+							<input id="Img1" type="submit" value="同意协议并注册" class="btn btn-warning" class="form-control" style="width:100%;">
+							
+						</div>
+						
+					
+					</div>		
+				</form>
+			</div>
+			<div class="col-md-4 col-md-offset-1 col-xs-5">
+				<img class="img-responsive" src="/Style/H/images/bg_register.png">
+			</div>
+		</div>
+		
+	
+	</div>
+	
+</div>
+
+<script type="text/javascript">
+
+var mbTest = /^(13|14|15|17|18)[0-9]{9}$/;
+var timer = null;
+var leftsecond = 60; //倒计时
+var msg = "";
+function sendMobileValidSMSCode() {
+	
+	var mobile = $("#txtphone").val();
+	
+	if (mobile == "") {
+		$.jBox.tip('请输入手机号！');
+		return;
+	}
+	if (mbTest.test(mobile)) {
+		$.ajax({
+		    url: "__URL__/sendphone/",
+			type: "post",
+			dataType: "json",
+			async:false,
+			data: {"phone":mobile,"type":0},
+			success: function(d) {
+				leftsecond = 60;
+				if (d.status == 1) {
+				
+					clearInterval(timer);
+					timer = setInterval(setLeftTime, 1000, "1");
+					$("#getVerifyCode").attr("disabled", true);
+				}
+				else if (d.status == 2) {
+					$.jBox.tip('该手机号码已被其他用户使用！');
+					$("#getVerifyCode").removeAttr("disabled");
+				}
+				else {
+					$.jBox.tip('校验码发送失败,请重试！');
+				}
+			}
+		});
+	}
+	else {
+		$.jBox.tip('手机号码有误！');
+	}
+}
+function setLeftTime() {
+	var second = Math.floor(leftsecond);
+	$("#getVerifyCode").html(second + "秒后可重发");
+	leftsecond--;
+	if (leftsecond < 1) {
+		$("#getVerifyCode").html("重新发送");
+		clearInterval(timer);
+		try {
+			$("#getVerifyCode").removeAttr("disabled");
+		} catch (E) { }
+		return;
+	}
+}
+
+function closeAction(){
+	window.location.href="__APP__/member/";
+}
+function jfun_dogetpass(){
+	var ux = $("#emailname").val();
+	if(ux==""){
+		$.jBox.tip('请输入用户名或者邮箱','tip');
+		return;
+	}
+	$.jBox.tip("邮件发送中......","loading");
+	$.ajax({
+		url: "__APP__/member/common/dogetpass/",
+		data: {"u":ux},
+		//timeout: 5000,
+		cache: false,
+		type: "post",
+		dataType: "json",
+		success: function (d, s, r) {
+			if(d){
+				if(d.status==1){
+					$.jBox.tip("发送成功，请去邮箱查收",'success');
+					$.jBox.close(true);
+				}else{
+					$.jBox.tip("发送失败，请重试",'fail');
+				}
+			}
+		}
+	});
+
+}
+function cksubmit(){
+	var check = $("input[type='checkbox']").attr("checked");
+	if(!check){
+		$.jBox.tip("请确认服务协议");  
+		return false;
+  	}
+}
+</script>
+<include file="default:Public:_footer" group="Home" />

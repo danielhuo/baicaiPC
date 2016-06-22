@@ -1,0 +1,66 @@
+<if condition="$id_status eq '1'">
+<!-- <div style="overflow: auto; width: 594px; height: auto; padding:20px; font-size:18px" id="mybox2_content">
+	<span style="font-size:12px;color:#999999;"><img src="__ROOT__/Style/M/images/zhuce1.gif" style="vertical-align:middle">&nbsp;&nbsp;亲爱的[{:session('u_user_name')}]，您好，您已通过身份认证</span> 
+</div>--><include file="default:Safe:idcard" group="Member"/>
+<elseif condition="$id_status eq '3'"/>
+<div style="overflow: auto; width: 594px; height: auto; text-align:center; padding:20px; font-size:18px" id="mybox2_content">
+	<span style="font-size:12px;color:#999999;"><img src="__ROOT__/Style/M/images/zhuce1.gif" style="vertical-align:middle">&nbsp;&nbsp;亲爱的[{:session('u_user_name')}]，您好，你提交的身份认证正在审核中...</span>
+</div>
+<else/>
+<div style="overflow: auto; width: 100%; height: auto;" id="mybox2_content">
+	<div style="width:50%; height:200px; line-height:30px;font-size:15px;margin:0 auto;">
+		<span style="margin:20px;display:block; text-align:left;">真实姓名:
+			<input type="text" style="width:160px;height:21px;line-height:21px;font-size:14px;font-weight:bold;margin:5px;" id="realname"/> 
+			<span style="color:red; font-size:12px;" id="realnameErr"></span><br>
+			身份证号:
+			<input type="text" onkeyup="value=this.value.replace(/[^0-9|x|X]+/g,"")" maxlength="18" style="width:160px;height:21px;line-height:21px;font-size:14px;font-weight:bold;margin:5px;ime-mode:Disabled;" id="idcard">
+			<span style="color:red; font-size:12px;" id="idcardErr"></span>
+		</span>
+		<a style="margin-left:65px;" onclick="setIdCard();" href="#1"><img src="__ROOT__/Style/M/images/yzbtn04.gif" style="vertical-align:middle;margin:10px;border:0px;"></a>
+	</div>
+	<div style="float:left">
+	<span style="font-size:12px;color:#999999;"><img src="__ROOT__/Style/M/images/zhuce1.gif" style="vertical-align:middle">&nbsp;&nbsp;请注意以下事项：</span>
+	<br><span style="font-size:12px;color:#999999;">1、我们将通过全国公民身份信息中心（NCIIC）系统对您提交的身份进行审核。</span>
+	<br><span style="font-size:12px;color:#999999;">2、实名认证是您绑定银行卡和使用{$glo.web_name}核心功能的必要条件,提现时的银行帐户名以您提交的认证信息为准。</span>
+	<br><span style="font-size:12px;color:#999999;">3、如果您在验证过程中，出现任何问题，请联系网站客服。</span>
+	</div>
+
+<!--span style="text-align:center">
+手持身份证正面照（本人照）：<br/>
+<input type="file" onchange="ajaxFileUploads3();" id="imgfile3" name="imgfile3" style="width:160px;height:21px;line-height:21px;font-size:14px;font-weight:bold;margin:5px;ime-mode:Disabled;"/><span style="margin-left:40px"><img id="loading_makeclub3" style="display:none" src="__ROOT__/Style/Js/loading.gif" /></span>
+<span style="color:red; font-size:12px; margin-left:40px" id="idimg3"></span></span>
+<br>
+身份证正面图片：<br/>
+<input type="file" onchange="ajaxFileUploads();" id="imgfile" name="imgfile" style="width:160px;height:21px;line-height:21px;font-size:14px;font-weight:bold;margin:5px;ime-mode:Disabled;"/><span style="margin-left:40px"><img id="loading_makeclub" style="display:none" src="__ROOT__/Style/Js/loading.gif" /></span>
+<span style="color:red; font-size:12px; margin-left:40px" id="idimg"></span>
+<br>
+身份证反面图片：<br/>
+<input type="file" onchange="ajaxFileUploads2();" id="imgfile2" name="imgfile2" style="width:160px;height:21px;line-height:21px;font-size:14px;font-weight:bold;margin:5px;ime-mode:Disabled;"/><span style="margin-left:40px"><img id="loading_makeclub2" style="display:none" src="__ROOT__/Style/Js/loading.gif" /></span>
+<span style="color:red; font-size:12px; margin-left:40px" id="idimg2"></span>
+<br><br>
+<a style="margin-left:5px;" onclick="setIdCard();" href="#1"><img src="__ROOT__/Style/M/images/yzbtn04.gif" style="vertical-align:middle;margin:10px;border:0px;"></a><br>
+</span></div>
+<div style="float:right ;background-color:#FFFFFF;height:470px;width:50%">
+<span style="font-size:16px;font-weight:bold"> 如何实名认证:</span><br><br>
+<ul><li>
+<span style="font-size:14px;font-weight:bold">步骤一,手持身份证照片（图片大小不要超过4M）</span><br><br>
+<div style="text-align:center"><img src="__ROOT__/Style/M/images/shouchizhao.jpg" width="140" height="80"/><br><b>1.五官可见 2.身份证信息清晰无遮挡</b></div></li><br>
+
+<li><span style="font-size:14px;font-weight:bold">步骤二,上传身份证正面（图片大小不要超过4M）</span><br><br>
+<div style="text-align:center"><img src="__ROOT__/Style/M/images/zhengmianzhao.jpg" width="140" height="80"/><br><b>证件上文字清晰可识别</b></div></li><br>
+
+<li><span style="font-size:14px;font-weight:bold">步骤三,上传身份证反面（图片大小不要超过4M）</span><br><br>
+<div style="text-align:center"><img src="__ROOT__/Style/M/images/beimianzhao.jpg" width="140" height="80"/><br><b>证件上文字清晰可识别</b></div></li><br>
+</div>
+<div style="float:left">
+	<span style="font-size:12px;color:#999999;"><img src="__ROOT__/Style/M/images/zhuce1.gif" style="vertical-align:middle">&nbsp;&nbsp;请注意以下事项：</span>
+	<br><span style="font-size:12px;color:#999999;">1、我们将通过全国公民身份信息中心（NCIIC）系统对您提交的身份进行审核。</span>
+	<br><span style="font-size:12px;color:#999999;">2、实名认证是您绑定银行卡和使用{$glo.web_name}核心功能的必要条件,提现时的银行帐户名以您提交的认证信息为准。</span>
+	<br><span style="font-size:12px;color:#999999;">3、如果您在验证过程中，出现任何问题，请联系网站客服。</span>
+
+</div-->
+</div>
+
+
+</div>
+</if>

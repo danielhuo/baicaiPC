@@ -1,0 +1,302 @@
+<include file="Pub:header" />
+<script src="__ROOT__/Style/Js/jquery-1.12.1.min.js"></script> 
+<script src="/Style/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="/Style/Mobile/js/jquery.touchSwipe.min.js"></script>
+<style>
+	.glyphicon-arrow-down{display: block;text-align: center;padding:10px 0;}
+				
+	#myTab li{
+		height:100%;
+		width:33%;
+		text-align:center;
+		color: #000;
+	}
+	#myTab li a{color: #333;}
+	#myTab li.active a{border:none;border-bottom: 2px solid #5BC0DE;color:#5BC0DE;}
+	.detail-table td{text-align: right;}
+	.panel-footer a{width: 100%;}
+	#myTabContent{padding:10px 0;}
+</style> 
+<h2 id="title">项目详情</h2>
+<div class="body">
+	<div class="panel panel-info detail-table">
+		<div class="panel-heading">
+			<h4 class="panel-title">JK{$vo.id}{$vo.loan_name}</h4>
+		</div>
+		<table class="table">
+			<tr>
+				<th>借款金额</th>
+				<td>{$vo.loan_amount|numFormat=###,0}</td></tr>
+			<tr>
+				<th>年　利率</th>
+				<td>{$vo.interest_rate}%</td></tr>
+			<tr>
+				<th>借款期限</th>
+				<td>{$vo.loan_duration}{$vo.duration_type|duration_format}</td></tr>
+			
+			<tr>
+				<th>还需资金</th>
+				<td class="money">{$vo.need|numFormat=###,0}</td></tr>
+			<tr>
+				<th>募集截止</th>
+				<td>{$vo.collect_time}</td></tr>
+			<tr>
+				<th>最小投标金额</th>
+				<td class="money">{$vo.min_invest}</td></tr>
+		</table>
+		<div class="panel-footer text-center">
+			<if condition="$_SESSION['u_user_name']">
+				<if condition="$vo.status eq '2'">
+					<a href="{:U('m/loaninvest/invest', array('id'=>$vo['id']))}" class="btn btn-info" >我要投资</a>
+				<else />
+					{$vo.status|loan_status=$vo['id'],###}
+				</if>
+			<else />
+				<a href="{:U('m/user/login')}" class="btn btn-danger" >请先登录</a>
+			</if>
+		</div>
+		
+	</div>
+		
+
+	
+<div>
+	<ul class="nav nav-tabs" id="myTab" style="float:none;">
+		<li class="active "><a href="#verify" data-toggle="tab">时间轴</a></li>
+		<li><a href="#detail" data-toggle="tab">产品介绍</a></li>
+		<li><a href="#record" data-toggle="tab">投资记录</a></li>
+	</ul>
+
+	<div id="myTabContent" class="tab-content ">
+	
+
+	 <div class="tab-pane fade in active" id="verify">
+		<div class="intro2 container">
+				<style type="text/css">
+					.media{border-left: 1px solid silver;}
+					.media-heading{font-size: 18px;}
+				</style>
+				<div class="media" >							
+					<div class="pull-left col-xs-7 text-center">
+						<i class="media-object fa fa-file-text fa-3x"  style="color:#4cae4c;"></i>
+					</div>	
+					<div class="media-body">
+						
+						<h3 class="media-heading">发布日</h3>
+						{$vo.birth_time}								
+					</div>
+				</div>
+				<span class="glyphicon glyphicon-arrow-down" style="color:#4cae4c;"></span>		
+				
+				<div class="media">
+					<if condition="$vo.status egt 6">
+						<style type="text/css">
+					
+					  .fa-line-chart{color:#4cae4c;}
+							.arrow2{color:#4cae4c; }
+				       </style>
+					</if>
+					<div class="pull-left col-xs-7 text-center">
+						<i class="media-object fa fa-line-chart fa-3x"></i>
+					</div>							
+					<div class="media-body">
+						<h3 class="media-heading">起息日</h3>
+						{$vo.interest_time}
+					</div>							
+				</div>
+				
+				<span class="glyphicon glyphicon-arrow-down arrow2"></span>	
+				
+				
+				
+				<div class="media">
+					<div class="pull-left col-xs-7 text-center" >
+					<if condition ="$schedule.cancel_warrants eq null or $schedule.cancel_warrants eq 0">	
+						<i class="media-object fa fa-chain-broken fa-3x"></i>
+						</div>							
+					<div class="media-body">
+						<h3 class="media-heading">注销抵押权</h3>
+						
+					</div>
+					<else/>
+						<style type="text/css">
+					
+					  .fa-chain-broken{color:#4cae4c;}
+							.arrow3{color:#4cae4c; }
+				       </style>
+						<i class="media-object fa fa-chain-broken fa-3x"></i>
+						</div>							
+					<div class="media-body">
+						<h3 class="media-heading">注销抵押权</h3>
+						{$schedule.cancel_warrants}
+					
+					</div>
+					</if>
+					
+				</div>
+				
+				<span class="glyphicon glyphicon-arrow-down arrow3"></span>	
+				
+				<div class="media">
+					<div class="pull-left col-xs-7 text-center">
+					<if condition ="$schedule.fund_trust eq null or $schedule.fund_trust eq 0">	
+						<i class="media-object fa fa-exchange fa-3x"></i>
+					</div>
+					
+					<div class="media-body">
+						
+						<h3 class="media-heading">资金托管</h3>
+					</div>
+					<else/>
+						<style type="text/css">
+					
+					  .fa-exchange{color:#4cae4c;}
+							.arrow4{color:#4cae4c; }
+				       </style>
+						<i class="media-object fa fa-exchange fa-3x"></i>
+					</div>
+					
+					<div class="media-body">
+						<h3 class="media-heading">资金托管</h3>
+						{$schedule.fund_trust}
+					</div>
+					</if>
+					
+				</div>
+				
+				<span class="glyphicon glyphicon-arrow-down arrow4"></span>	
+				
+				<div class="media">
+					<div class="pull-left col-xs-7 text-center">
+						<if condition ="$schedule.reowner eq null or $schedule.reowner eq 0 ">	
+						<i class="media-object fa fa-file-text fa-3x" style="color:gray;" ></i>
+					</div>
+					
+					<div class="media-body ">
+						
+					<h3 class="media-heading">过户</h3>
+					</div>
+					<else/>
+						<style type="text/css">
+					
+					  .fa-file-text{color:#4cae4c;}
+							.arrow5{color:#4cae4c; }
+				       </style>
+					<i class="media-object fa fa-file-text fa-3x"></i>
+					</div>
+					
+					<div class="media-body" >
+						<h3 class="media-heading">过户</h3>
+						{$schedule.reowner}
+					</div>
+					</if>
+					
+				</div>
+				
+				<span class="glyphicon glyphicon-arrow-down arrow5"></span>	
+				
+				
+				<div class="media">
+					<if condition="$vo.status egt 8">
+						<style type="text/css">
+					
+					  .fa-money{color:#4cae4c;}
+					
+				       </style>
+					</if>
+					<div class="pull-left col-xs-7 text-center">
+						
+						<i class="media-object fa fa-money fa-3x"></i></div>
+					
+					<div class="media-body">
+						
+						<h3 class="media-heading">收款日</h3>
+						{$vo.finish_time}
+					</div>
+					
+					</if>
+				</div>			
+		</div>
+	</div>
+	<div class="tab-pane fade" id="detail">
+	 		<div class="intro2 container">
+				<div style="width:98%;margin-top:10px;">
+					{$vo.loan_detail}
+				</div>
+			</div>
+	</div>
+	 <div class="tab-pane fade" id="record">
+		<div class="intro2 container">
+				<table class="table">
+					 <tr>
+						<th>投资人</th><th>投资时间</th><th>投资金额</th>
+					</tr>
+					<volist name="list.list" id="vb">
+					<tr>
+						<td>{$vb.user_name|hidecard=###,4}</td><td>{$vb.invest_time}</td>
+						<td>{$vb.invest_amount|num_format=###}</td>
+					</tr>
+					</volist> 
+						
+				</table>
+				<div class="list_bottom">
+					<div class="list_bottom_right">
+						<ul>
+						{$list.page}
+						</ul>
+					</div>
+				</div>		
+		</div>
+	</div>
+</div>
+		
+</div>
+
+<script type="text/javascript"> 
+	
+	$(function(){
+		var a=<?php echo json_encode($images);?>;
+		var totals=new Array();
+		var nowIndexs=new Array();
+		for (var i = a.length - 1; i >= 0; i--) {
+			if(!a[i]) continue;
+			totals[i]=a[i].length;
+			nowIndexs[i]=0;
+		};
+	$(".box").each(function(index){
+		$(this).find(".total").text(totals[index]);
+		$('.box:eq('+index+')').swipe({
+			swipe:function(event, direction, distance, duration, fingerCount){
+				if(direction == "left"){
+					nowIndexs[index]=(nowIndexs[index]+1+totals[index])%totals[index];
+					$(this).find(".nowIndex").text(nowIndexs[index]+1);
+					$(this).children("img").attr("src","/"+a[index][nowIndexs[index]].thumb_url);
+				}else if(direction == "right"){
+					nowIndexs[index]=(nowIndexs[index]+(-1)+totals[index])%totals[index];
+					$(this).find(".nowIndex").text(nowIndexs[index]+1);
+					$(this).children("img").attr("src","/"+a[index][nowIndexs[index]].thumb_url);
+				}
+			}
+			
+		});
+	});
+	$('.intro2:eq(0)').siblings().hide();
+		$(".left").click(function(){
+			$('.intro2:eq(0)').show().siblings().hide();
+				$('.left').css({"background-color":"#FFF","color":"#2AA198","text-shadow":"1px 1px 2px #808080","box-shadow":"0px 2px 0px 0px #6ED6F0 inset"}).siblings().css({"background-color":"#E5E5E5","color":"black","text-shadow":"none","box-shadow":"none"});	
+		});
+		$(".right").click(function(){
+			$('.intro2:eq(2)').show().siblings().hide();
+			$('.right').css({"background-color":"#FFF","color":"#2AA198","text-shadow":"1px 1px 2px #808080","box-shadow":"0px 2px 0px 0px #6ED6F0 inset"}).siblings().css({"background-color":"#E5E5E5","color":"black","text-shadow":"none","box-shadow":"none"});	
+		});	
+		$(".middle").click(function(){
+			$('.intro2:eq(1)').show().siblings().hide();
+			$('.middle').css({"background-color":"#FFF","color":"#2AA198","text-shadow":"1px 1px 2px #808080","box-shadow":"0px 2px 0px 0px #6ED6F0 inset"}).siblings().css({"background-color":"#E5E5E5","color":"black","text-shadow":"none","box-shadow":"none"});	
+		});
+		
+		
+	});
+
+</script>
+
+﻿<include file="Pub:footer" />  

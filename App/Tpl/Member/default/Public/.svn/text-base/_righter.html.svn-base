@@ -1,0 +1,72 @@
+﻿<div  style="position: fixed; top: 400px; right: 30px; width:70px ; ">
+
+<meta charset="UTF-8" />
+<div class="menubar">
+
+    <div class="menuitem">
+        <div style="z-index:9999;margin-top:5px;"><img src="../../../../Style/A/images/qqq.png" /></div>
+        <div class="submenu" style="margin-top:-35px;margin-left:-110px;background-color:;">
+<div style="font-size:10pt;height:9.5px"><a class="icoTc" href="http://wpa.qq.com/msgrd?v=3&uin=3083483550&site=qq&menu=yes" target="_blank">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;客服-白白</a></div></br>
+<div style="font-size:10pt;border-top:#E7EAEC solid 1px;height:9.5px"><a class="icoTc" href="http://wpa.qq.com/msgrd?v=3&uin=3111795998&site=qq&menu=yes" target="_blank">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销售-菜菜</a></div></br>
+<div style="font-size:10pt;border-top:#E7EAEC solid 1px;height:9.5px"><a class="icoTc" href="http://wpa.qq.com/msgrd?v=3&uin=2293473403&site=qq&menu=yes" target="_blank">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销售-百百</a></div></br>
+<div style="font-size:10pt;border-top:#E7EAEC solid 1px;height:9.5px"><a class="icoTc" href="http://wpa.qq.com/msgrd?v=3&uin=641172504&site=qq&menu=yes" target="_blank">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;客服-财财</a></div></br>
+        </div>
+    </div>
+    <div class="menuend"></div>
+</div>
+
+
+<div class="menubar">
+
+    <div class="menuitem">
+        <div style="z-index:9999;margin-top:5px;"><img src="../../../../Style/A/images/p.png" /></div>
+        <div class="submenu" style="margin-top:-35px;margin-left:-110px">
+              <div style="height:68px;font-size:10pt;"></br>0512-62853600</div>
+        </div>
+    </div>
+    <div class="menuend"></div>
+</div>
+
+
+
+<style type="text/css">
+    .menubar
+        {line-height: 24px;}
+    .menubar .menuend
+        {clear: both;}
+    .menuitem
+        {background: #fff;  position: relative; float: left; margin-right: 1em;width: 9.2em;top: 80px;z-index:9999}
+    .menuitem .submenu
+        {background: #FFFFFF; border: 1px solid #E7EAEC; position: absolute; top: 40px; left: -1px; width: 9.2em;}
+    /** 下面的控制显示和隐藏 **/
+    .menuitem .submenu
+        {display: none;}
+    .menuitem:hover .submenu
+        {display: block;}
+</style></div>
+
+<!-- 客服结束，客服结束，客服结束，客服结束，客服结束，客服结束，客服结束，客服结束， --> 
+
+
+
+<!--吉祥物开始  -->
+
+<div  style="position: fixed; top: 31.4%; right: 120px; width:95px ; ">
+
+<div class="menubar">
+ 
+    <div class="menuitem"style="border:none;width:215px;height:auto;background:none;">
+        <div style="z-index:9999">
+		<img src="../../../../Style/A/images/jixiangwu.png"  style="height:80px;width:80px;float:right;margin-bottom:15px;margin-right:20px;"/>
+		  
+		</div>
+    </div>	
+    <div class="menuend"></div>
+</div>
+
+</div>
+</body></html>

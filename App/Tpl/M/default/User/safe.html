@@ -1,0 +1,76 @@
+<include file="Pub:header" /> 
+<style type="text/css">
+table{width:100%;background-color:#fff;margin-top:20px;font-size:16px;}
+tr{height:50px;}
+th,td{text-align:left;border-bottom:5px solid #E5E5E5;}
+th{padding-left:20px;;width:50%;}
+
+</style>
+<div class="container container-block container-row-nml">
+    <a href="{:U("idcard")}">
+        <div class="row">
+            <div class="col-xs-1"><i class="fa fa-user-plus fa-lg text-info"></i></div>
+            <div class="col-xs-5 row-title">实名认证</div>
+            <div class="col-xs-6">
+                <if condition="$id_status eq '1'">
+						{$memberdetail.real_name}
+						<elseif condition="$id_status eq '3'"/>
+						审核中
+						<elseif condition="$id_status eq '0'"/>
+						未认证
+				</if>
+                <span class="glyphicon glyphicon-menu-right"></span>
+            </div>
+
+        </div>
+    </a>
+
+</div>
+<div class="container container-block container-row-nml">
+    <a href='{:U("editpass")}'>
+        <div class="row">
+            <div class="col-xs-1"><i class="fa fa-lock fa-lg text-yellow"></i></div>
+            <div class="col-xs-5 row-title">登录密码</div>
+            <div class="col-xs-6">
+                已设置
+                <span class="glyphicon glyphicon-menu-right"></span>
+            </div>
+        </div>
+    </a>
+    <a href="__URL__/<empty name='paypass'>setpaypass
+					<else/>editpaypass</empty>">
+        <div class="row">
+            <div class="col-xs-1"><i class="fa fa-lock fa-lg text-warning"></i></div>
+            <div class="col-xs-5 row-title">支付密码</div>
+            <div class="col-xs-6">
+                <empty name="paypass">未设置
+				<else/>已设置</empty>
+                <span class="glyphicon glyphicon-menu-right"></span>
+            </div>
+        </div>
+    </a>
+</div>
+<div class="container container-block container-row-nml">
+   <!-- <a href="{{pathFor 'editPhone'}}">-->
+        <div class="row">
+            <div class="col-xs-1"><i class="fa fa-mobile-phone fa-2x fa-lg text-blue"></i></div>
+            <div class="col-xs-5 row-title">手机号</div>
+            <div class="col-xs-6">
+                {$memberinfo.user_phone|hidecard=###,2,"还未验证"}<span class="glyphicon glyphicon-menu-right"></span>
+            </div>
+        </div>
+   <!-- </a>-->
+   <!-- <a href="{{pathFor 'editPhone'}}">-->
+        <div class="row">
+            <div class="col-xs-1"><i class="fa fa-envelope  text-yellow"></i></div>
+            <div class="col-xs-5 row-title">电子邮箱</div>
+            <div class="col-xs-6">
+                {$memberinfo.user_email|default="还未验证"}
+                <span class="glyphicon glyphicon-menu-right"></span></div>
+        </div>
+   <!-- </a>-->
+</div>
+<script>
+    localStorage.title="安全中心";
+</script>
+﻿<include file="Pub:footer" />

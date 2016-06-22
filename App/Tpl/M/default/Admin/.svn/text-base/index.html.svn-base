@@ -1,0 +1,21 @@
+﻿<include file="Pub:header" /> 
+<h2 id="title">数据统计</h2>
+<style type="text/css">
+	.nav0 li{margin-top:10px;}
+	.nav0 a{
+		display:block;height:50px;line-height:50px;font-size:20px;
+		margin:1px 0;background-color:#fff;color:#3E3E3E;
+		font-weight:bold;background-repeat:no-repeat;
+		background-position:15px center;background-size:36px 36px;padding:0 20px 0 80px;}
+	.arrow{float:right;color:#E5E5E5;font-size:28px;}
+</style>
+<div class="body">
+
+<ul class="nav0">
+	<li><a href="__URL__/total">网站统计<span class="arrow">></span></a></li>
+	<li><a href="__URL__/promotion_list">百财琅琊榜<span class="arrow">></span></a></li>
+
+</ul>
+</div>
+
+﻿<include file="Pub:footer" />  

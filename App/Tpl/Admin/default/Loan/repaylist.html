@@ -1,0 +1,45 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+
+<div class="so_main">
+	<div class="page_tit">欠款账单</div>
+		<div class="list">
+		<table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+		<th class="line_l">id</th>
+		<th class="line_l">借款项目</th>
+		<th class="line_l">融资人</th>
+		<th class="line_l">期数</th>
+		<th class="line_l">应还款</th>
+		<th class="line_l">截止时间</th>
+		<th class="line_l">操作</th>
+		</tr>
+		<volist id="vo" name="list">
+		  <tr overstyle='on' id="list_{$vo.id}">
+		    <td>{$vo.id}</td>
+		    <td>
+			<a href="__APP__/Loaninvest/detail?id={$vo.lid}" title="{$vo.name}" target="_blank">JK{$vo.lid}&nbsp;{$vo.loan_name|cnsubstr=###,12}</a>
+			</td>
+			<td><htmlA:user id="vo.uid" uname="vo.user_name" /></td>  
+		    <td>{$vo.num_period}/{$vo.pay_periods}</td>
+			<td>{$vo.repay_amount|num_format=###}</td>
+			<td>{$vo.deadline|date="Y-m-d H:i:s",###}</td>
+			<td><if condition="$vo.status eq 0"><htmlA:repay id="vo.id"/><else/>已还款</if></td>
+		  </tr>
+		</volist>
+		</table>
+
+		</div>
+
+	<div class="Toolbar_inbox">
+		<div class="page right">{$pagebar}</div>
+	<htmlA:commonBtn type="href" action="__URL__/doweek?isShow=1" value="一周内到欠款"/>
+	<htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索/筛选借款" style="search_action" />
+	</div>
+	</div>
+<script type="text/javascript">
+	function loadRepay(id){
+		ui.box.load("__URL__/repay?id="+id, {title:"详细信息"});
+	}
+</script>
+<include file="Public:_footer" />

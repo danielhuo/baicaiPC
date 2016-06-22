@@ -1,0 +1,59 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<div class="so_main">
+  <div class="page_tit">预约列表</div>
+  
+  <div class="list">
+  <if condition="$type eq 1">
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th class="line_l">预约人</th>
+	<th class="line_l">联系方式</th>
+    <th class="line_l">投资金额</th>
+	<th class="line_l">操作</th>
+  </tr>
+  
+  <volist id="vo" name="list">
+      <tr overstyle='on' id="list_{$vo.id}">
+        <td>
+		{$vo.access_name}
+		</td>
+		<td>{$vo.telephone}</td>
+		<td>{$vo.bill_amount}</td>
+		<td><if condition="$vo.status eq 0"><a style="color:blue;cursor:pointer" href="__URL__/setaccesstel?id={$vo.id}">设为已处理</a><else/>已处理</if></td>
+      </tr>
+  </volist>
+  </table>
+<else/>
+	<table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+	<th class="line_l">项目名称</th>
+    <th class="line_l">预约人</th>
+	<th class="line_l">联系方式</th>
+    <th class="line_l">投资金额</th>
+	<th class="line_l">操作</th>
+  </tr>
+  
+  <volist id="vo" name="list">
+      <tr overstyle='on' id="list_{$vo.id}">
+	  <td><a href="__APP__/reservation/detail?id={$vo.rid}" target="_blank">{$vo.name}</a></td>
+        <td>
+		{$vo.access_name}
+		</td>
+		<td>{$vo.telephone}</td>
+		<td>{$vo.bill_amount}</td>
+		<td><if condition="$vo.status eq 0"><a style="color:blue;cursor:pointer" href="__URL__/setaccesstel?id={$vo.id}">设为已处理</a><else/>已处理</if></td>
+      </tr>
+  </volist>
+  </table>
+ </if>
+
+  </div>
+  <div class="Toolbar_inbox">
+  	<div class="page right">{$pagebar}</div>
+    <a class="btn_a"><span class="search_action">添加</span></a>
+  </div>
+</div>
+
+
+<include file="Public:_footer" />

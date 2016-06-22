@@ -1,0 +1,48 @@
+<include file="Public:_header_common" />
+<title>{$vo.type_name}-{$glo.web_name}</title>
+<include file="Public:_header_main" />
+<div class="container cms_page">
+    <div class="col-xs-2">
+        <include file="left" />
+    </div>
+    <div class="col-xs-10 cms_content">
+        <div class="cms_type">
+            <h3>{$vo.type_name}</h3>
+        </div>
+        <div class="cms_details">
+            <div class="cms_ul">
+                
+                <volist name="list" id="vl">
+                <div>
+                    <span class="item-title"><a href="{$vl.arturl}" class="btn btn-link">{$vl.title}</a></span> 
+                    <span class="pull-right">{$vl.art_time|date="Y/m/d",###}</span>
+                </div>
+                </volist>
+               
+            </div>
+           
+            <div class="list_bottom_right">
+                <ul>
+                {$pagebar}
+                </ul>
+            </div>
+           
+        </div>
+    </div>
+
+</div>
+
+<script language="javascript">
+	$(function() {
+		$(".changecolor").bind("mouseover", function(){
+			$(this).css("background", "#f8f8f8");
+			$(this).css("color", "#007EB9");
+		})
+
+		$(".changecolor").bind("mouseout", function(){
+			$(this).css("background", "#fff");
+			$(this).css("color", "#737272");
+		})
+	});
+</script>
+<include file="Public:_footer" />

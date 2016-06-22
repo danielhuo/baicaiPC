@@ -1,0 +1,56 @@
+﻿<include file="Pub:header" /> 
+<link type="text/css" rel="stylesheet" href="/Style/Mobile/css/dataTab.css"/>
+</style>
+<h2 id="title">投标</h2>
+<div class="main">
+	
+	<form method="post" action="__URL__/save/" name="investForm" id="investForm" onsubmit="return detection()">
+		<input type="hidden" value="{$vo.id}" id="id" name="id"/>
+		<table class="dataTab">
+			<tr>
+				<th>账户可用余额 :</th>
+				<td>{$user_info.money|MFormt=###}</td>
+			</tr>
+			<tr>
+				<th>还需金额 :</th>
+				<td>{$vo.need|MFormt=###}/{$vo.amount|MFormt=###}</td>
+			</tr>
+			<tr >
+				<th>最小投资额 :</th>
+				<td>1元</td>
+			</tr>
+			<tr >
+				<th>投资金额 :</th>
+				<td><input type="text" name="invest_money" id="invest_money" autocomplete="off" value="" class="box7_wbk" style="height:28px;">元</td>
+			</tr>
+			<tr>
+				<th>支付密码 :</th>
+				<td>
+					<notempty name="paypass">
+						<input type="password" name="paypass" autocomplete="off" id="paypass" value="" class="box7_wbk" style="height:28px;"/> 
+					<else />
+						<a href="{:U('M/user/setpaypass')}">请先设置支付密码</a>
+					</notempty>
+				</td>
+			</tr>
+			<tr >
+				<td colspan="2"><input type="submit" id="dobutton" value="确认付款" /></td>
+			</tr>
+		</table> 
+	</form>
+	
+</div>
+<script language="javascript">
+function setError(tip){
+		$.jBox.tip(tip);
+		return false;
+	}
+function detection(){
+	var money = $('#invest_money').val();
+	var paypass = $('#paypass').val();
+	if (money < 1 ) return setError("投资金额不能小于1元！");
+	if (money%1 != 0) return setError("投资金额必须为整数！");
+	return true;
+}
+</script>
+﻿<include file="Pub:footer" /> 

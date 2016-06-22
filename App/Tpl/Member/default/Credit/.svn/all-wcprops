@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/272/trunk/App/Tpl/Member/default/Credit
+END
+auth.html
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/BaiCai/!svn/ver/272/trunk/App/Tpl/Member/default/Credit/auth.html
+END
+detail.html
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/BaiCai/!svn/ver/272/trunk/App/Tpl/Member/default/Credit/detail.html
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/BaiCai/!svn/ver/272/trunk/App/Tpl/Member/default/Credit/index.html
+END
+integraldetail.html
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/BaiCai/!svn/ver/272/trunk/App/Tpl/Member/default/Credit/integraldetail.html
+END

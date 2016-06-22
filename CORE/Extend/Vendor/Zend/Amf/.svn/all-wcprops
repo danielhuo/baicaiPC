@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Vendor/Zend/Amf
+END
+Constants.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Vendor/Zend/Amf/Constants.php
+END
+Exception.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Vendor/Zend/Amf/Exception.php
+END
+Response.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Vendor/Zend/Amf/Response.php
+END
+Server.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Vendor/Zend/Amf/Server.php
+END
+Request.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Vendor/Zend/Amf/Request.php
+END

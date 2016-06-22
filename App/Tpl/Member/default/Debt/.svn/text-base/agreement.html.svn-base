@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>转让协议-{$glo.web_name}</title>
+<style>
+  .Lending_Agreement {
+      width:100%;
+      height:auto;
+      margin:0px;
+      padding:0px;
+  }
+  .Lending_Agreement_center {
+      width:1024px;
+      height:auto;
+      margin:0 auto;
+      border:1px solid #EEEEEE;
+  }
+  .lending_ageeement_tit {
+      width:960px;
+      height:45px;
+      line-height:45px;
+      color:#666666;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:16px;
+      font-weight:bold;
+      text-align:center;
+      margin:0 auto;
+      margin-top:30px;
+      border-bottom:1px solid #EEEEEE;
+  }
+  .ageeement_content {
+      width:1000px;
+      height:auto;
+      margin:0 auto;
+      margin-top:30px;
+      font-size:14px;
+      font-weight:bold;
+      color:#666666;
+      overflow:auto;
+      font-family:Arial, Helvetica, sans-serif;
+  }
+  .ageeement_content h3 {
+      font-size:14px;
+      font-weight:bold;
+      color:#999999;
+      font-family:Arial, Helvetica, sans-serif;
+      padding-left:10px;
+  }
+  .font_lendig {
+      font-size:14px;
+      font-weight:bold;
+      color:#666666;
+      font-family:Arial, Helvetica, sans-serif;
+      padding-left:10px;
+      margin-bottom:10px;
+      display:block;
+      margin-top:20px;
+  }
+  .ageeement_content p {
+      line-height:26px;
+      font-family:Tahoma, Geneva, sans-serif;
+      font-size:14px;
+      color:#999999;
+      margin:0px;
+      font-weight:normal;
+      padding-left:10px;
+      margin-top:6px;
+  }
+  .ageement_tab {
+      height:40px;
+      line-height:40px;
+  }
+  .ageement_tab_ite {
+      height:40px;
+      line-height:40px;
+      font-weight:normal;
+  }
+  .lending_top_inf {
+      width:1000px;
+      height:auto;
+      margin-left:10px;
+  }
+  .lending_logo {
+      width:1000px;
+      height:100px;
+      border-bottom:2px solid #EEEEEE;
+  }
+  .lenging_left_logo {
+      width:252px;
+      height:100px;
+      float:left;
+      border-bottom:2px solid #00ADEE;
+  }
+  .name_inf {
+      width:400px;
+      height:65px;
+      float:left;
+      margin-left:40px;
+      margin-top:2px;
+  }
+  .lenging_right_inf {
+      width:260px;
+      height:50px;
+      float:left;
+      margin-top:9px;
+  }
+  .lenging_right_inf ul {
+      margin:0px;
+      padding:0px;
+  }
+  .lenging_right_inf ul li {
+      width:400px;
+      height:25px;
+      line-height:25px;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:14px;
+      color:#999999;
+      list-style:none;
+      float:left;
+      padding-left:0px;
+  }
+  .lenging_right_inf ul li a {
+      color:#999999;
+      text-decoration:none;
+  }
+  .lenging_right_inf ul li a:hover {
+      color:#FF9900;
+      text-decoration:none;
+  }
+  .Seal {
+      width:auto;
+      height:auto;
+      margin-right:20px;
+      float:right;
+      text-align:center;
+  }
+  .seal_text {
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:13px;
+      color:#999999;
+      margin-top:6px;
+      margin-bottom:40px;
+      display:block;
+      font-weight:normal;
+  }
+  .Agreement_pic {
+      width:200px;
+      height:45px;
+      margin:0 auto;
+  }
+  a,a:visited{color: #E67714; text-decoration:none;}
+</style>
+<script type="text/javascript" language="javascript">
+    function printht(){
+        window.print();
+    } 
+</script>
+</head>
+<body>
+<div class="Lending_Agreement">
+  <div class="Lending_Agreement_center">
+    <!--顶部信息开始-->
+    
+	<div class="lending_top_inf">
+      <div class="lending_logo">
+        <div class="lenging_left_logo"><a href="/" target="_blank">{:get_ad(1)}</a></div>
+        <div class="name_inf"></div>
+        <div class="lenging_right_inf">
+          <ul>
+            <li class="tel400"><!-- {:get_ad(3)} -->
+              </p>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--顶部信息结束-->
+    <div class="lending_ageeement_tit"><span class="Agreement_pic">债权转让及受让协议</span><span style="float:right; padding-right:10px;"><a href="javascrīpt:void(0);" onclick="printht();" target="_self">【打印合同】</a> </span></div>
+    <div class="ageeement_content">
+	<p></p>
+      <table border="1" cellspacing="0"  width="800">
+  <tr>
+    <td><p align="left">甲方（转让人）：{$name_s} </p></td>
+    <td><p align="left">乙方（受让人）：{$name_b}</p></td>
+  </tr>
+  <tr>
+    <td><p align="left">身份证号：{$card_s} </p></td>
+    <td><p align="left">身份证号：{$card_b}</p></td>
+  </tr>
+  <tr>
+    <td><p align="left">百财网用户名：{$seller.user_name} </p></td>
+    <td><p align="left">百财网用户名：{$buyer.user_name}</p></td>
+  </tr>
+</table>
+<p align="left">就甲方通过百财网络科技（苏州）有限公司运营管理的www.baicai58.com网站（下称&quot;百财网网站&quot;）向乙方转让债权事宜，双方经协商一致，达成如下协议： <br />
+  <strong>1. </strong><strong>债权转让 </strong><br />
+  1.1 标的债权信息及转让 <br />
+  甲方同意将其通过百财网的居间协助而形成的有关债权（下称&quot;标的债权&quot;）转让给乙方，乙方同意受让该等债权。标的债权具体信息如下： <br />
+  标的债权信息： </p>
+<table border="1" cellspacing="0"  width="800">
+  <tr>
+    <td width="164"><p align="left">借款人姓名 </p></td>
+    <td width="440"><p>{$name_a}</p></td>
+  </tr>
+  <tr>
+    <td width="164"><p align="left">借款金额 </p></td>
+    <td width="440"><p align="left">{$iBorrow.investor_capital}</p></td>
+  </tr>
+  <tr>
+    <td width="164"><p align="left">原借款期限 </p></td>
+    <td width="440"><p align="left">{$iBorrow.birth_time|date='Y-m-d',###}至{$iBorrow.deadline|date='Y-m-d',###}</p></td>
+  </tr>
+  <tr>
+    <td width="164"><p align="left">还息日 </p></td>
+    <td width="440"><p align="left">{$iBorrow.deadline|date='Y-m-d',###}（24:00前，节假日不顺延） </p></td>
+  </tr>
+  <tr>
+    <td width="164"><p align="left">还息方式 </p></td>
+    <td width="440"><p align="left">利息提前支付 </p></td>
+  </tr>
+</table>
+<p>标的债权转让信息： </p>
+<table border="1" cellspacing="0"   width="800">
+  <tr>
+    <td width="159"><p align="left">标的债权价值 </p></td>
+    <td width="432"><p align="left">￥{$invest_detb.money}</p></td>
+  </tr>
+  <tr>
+    <td width="159"><p align="left">转让价款 </p></td>
+    <td width="432"><p align="left">￥{$invest_detb.transfer_price}</p></td>
+  </tr>
+  <tr>
+    <td width="159"><p align="left">转让日期 </p></td>
+    <td width="432"><p>{$invest_detb.buy_time|date='Y-m-d H:i:s',###}</p></td>
+  </tr>
+  <tr>
+    <td width="159"><p align="left">还款时间 </p></td>
+    <td width="432"><p align="left">{$iBorrow.deadline|date='Y-m-d',###}</p></td>
+  </tr>
+</table>
+<p>1.2 债权转让流程 <br />
+  1.2.1 双方同意并确认，双方通过自行或授权有关方根据百财网网站有关规则和说明，在百财网网站进行债权转让和受让购买操作等方式确认签署本协议。 <br />
+  1.2.2 双方接受本协议且百财网审核通过时，本协议立即成立,并待转让价款支付完成时生效。协议成立的同时甲方不可撤销地授权百财网自行或委托第三方支付机构或合作的金融机构， 将转让价款在扣除甲方应支付给百财网的转让管理费之后划转、支付给乙方，上述转让价款划转完成即视为本协议生效且标的债权转让成功；  同时甲方不可撤销地授权百财网将其代为保管的甲方与标的债权借款人签署的电子文本形式的《借款协议》（下称&quot;借款协议&quot;）及借款人相关信息在百财网网站向乙方进行展示。 <br />
+  1.2.3 本协议生效且标的债权转让成功后，双方特此委托百财网将标的债权的转让事项及有关信息通过站内信等形式通知与标的债权对应的借款人。 <br />
+  1.3 自标的债权转让成功之日起，乙方成为标的债权的债权人，承继借款协议项下出借人的权利并承担出借人的义务。 <br />
+  <strong>2. </strong><strong>保证与承诺 </strong><br />
+  2.1 甲方保证其转让的债权系其合法、有效的债权，不存在转让的限制。甲方同意并承诺按有关协议及百财网网站的相关规则和说明向百财网支付债权转让管理费。 <br />
+  2.2 乙方保证其所用于受让标的债权的资金来源合法，乙方是该资金的合法所有人。如果第三方对资金归属、合法性问题发生争议，乙方应自行负责解决并承担相关责任。 <br />
+  <strong>3. </strong><strong>违约 </strong><br />
+  3.1 双方同意，如果一方违反其在本协议中所作的保证、承诺或任何其他义务，致使其他方遭受或发生损害、损失等责任，违约方须向守约方赔偿守约方因此遭受的一切经济损失。 <br />
+  3.2 双方均有过错的，应根据双方实际过错程度，分别承担各自的违约责任。 <br />
+  <strong>4. </strong><strong>适用法律和争议解决 </strong><br />
+  4.1 本协议的订立、效力、解释、履行、修改和终止以及争议的解决适用中国的法律。 <br />
+  4.2 本协议在履行过程中，如发生任何争执或纠纷，双方应友好协商解决；若协商不成，任何一方均有权向有管辖权的人民法院提起诉讼。 <br />
+  <strong>5. </strong><strong>其他 </strong><br />
+  5.1 双方可以书面协议方式对本协议作出修改和补充。经过双方签署的有关本协议的修改协议和补充协议是本协议组成部分，具有与本协议同等的法律效力。 <br />
+  5.2 本协议及其修改或补充均通过百财网网站以电子文本形式制成，可以有一份或者多份并且每一份具有同等法律效力；同时双方委托百财网代为保管并永久保存在百财网为此设立的专用服务器上备查。双方均认可该形式的协议效力。 <br />
+  5.3 甲乙双方均确认，本协议的签订、生效和履行以不违反中国的法律法规为前提。如果本协议中的任何一条或多条违反适用的法律法规，则该条将被视为无效，但该无效条款并不影响本协议其他条款的效力。 <br />
+  5.4 除本协议上下文另有定义外，本协议项下的用语和定义应具有百财网网站服务协议及其有关规则中定义的含义。若有冲突，则以本协议为准。</p>
+<p>甲方：<br />
+身份证号码：</p>
+<p>乙方：<br/>身份证号码： </p>
+<p>
+</p>
+    
+  </div>
+  </div>
+  
+</div>
+</body>
+</html>

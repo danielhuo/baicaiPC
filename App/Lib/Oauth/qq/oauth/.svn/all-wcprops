@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Oauth/qq/oauth
+END
+redirect_to_login.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Oauth/qq/oauth/redirect_to_login.php
+END
+get_access_token.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Oauth/qq/oauth/get_access_token.php
+END
+get_request_token.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Oauth/qq/oauth/get_request_token.php
+END

@@ -1,0 +1,2 @@
+<?php
+return array ( 'qq' => array ( 'enable' => '0', 'id' => '101050827', 'key' => 'abb742b1e8f099d730f45887f505376b', ), 'sina' => array ( 'enable' => '0', 'akey' => '204023573', 'skey' => 'fa63ba827e8ee368ba245722864ad8c6', ), 'cookie' => array ( 'key' => 'fasafdsafdsfsaf符合规范化', ), ); ?>

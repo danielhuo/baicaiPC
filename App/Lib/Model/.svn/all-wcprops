@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model
+END
+BorrowInvestorModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model/BorrowInvestorModel.class.php
+END
+VipapplyModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model/VipapplyModel.class.php
+END
+BorrowViewModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model/BorrowViewModel.class.php
+END
+TenderListViewModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model/TenderListViewModel.class.php
+END
+BorrowModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model/BorrowModel.class.php
+END
+AreaarticleModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model/AreaarticleModel.class.php
+END
+AcategoryModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model/AcategoryModel.class.php
+END
+AacategoryModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model/AacategoryModel.class.php
+END
+ArticleModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model/ArticleModel.class.php
+END
+ACommonModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model/ACommonModel.class.php
+END
+MembersModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model/MembersModel.class.php
+END
+WithdrawlogModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model/WithdrawlogModel.class.php
+END
+PaylogModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model/PaylogModel.class.php
+END
+InvestorDetailModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model/InvestorDetailModel.class.php
+END
+TborrowModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model/TborrowModel.class.php
+END
+GlobalModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model/GlobalModel.class.php
+END
+MemberdataModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Model/MemberdataModel.class.php
+END

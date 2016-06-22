@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/BaiCai/!svn/ver/346/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Writer/Word2007
+END
+DocProps.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Writer/Word2007/DocProps.php
+END
+Base.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/BaiCai/!svn/ver/346/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Writer/Word2007/Base.php
+END
+Document.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Writer/Word2007/Document.php
+END
+Footer.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Writer/Word2007/Footer.php
+END
+ContentTypes.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Writer/Word2007/ContentTypes.php
+END
+Styles.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Writer/Word2007/Styles.php
+END
+WriterPart.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Writer/Word2007/WriterPart.php
+END
+DocumentRels.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Writer/Word2007/DocumentRels.php
+END
+Rels.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Writer/Word2007/Rels.php
+END
+Header.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Writer/Word2007/Header.php
+END

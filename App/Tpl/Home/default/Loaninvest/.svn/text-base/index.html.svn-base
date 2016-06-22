@@ -1,0 +1,67 @@
+<include file="Public:_header_common" />
+<title>投资项目</title>
+<include file="Public:_header_main" />
+<script type="text/javascript">
+	$(function(){
+		$('#dw_ul li a:eq(1)').attr('class','nowNavItem');
+	});
+</script>
+<div style="height:250px;background:url('__ROOT__/Style/H/images/binvests.png') no-repeat scroll center center;width: 100%;background-size:cover;">
+</div>
+
+	<div class="loanlist" >
+		<div class="container">
+		<div class="row list_content">
+		<volist name="list.list" id="vb">
+		<table>
+			<tr>
+				<td rowspan=2 ><h4><a href="__APP__/Loaninvest/detail?id={$vb.id}" style="color:#000;">JK{$vb.id}{$vb.loan_name}</a></h4></td>
+				<td>
+					<span class="amount">{$vb.interest_rate}</span>%<br>
+					(预期年化)
+				</td>
+				<td>
+					<span class="amount">{$vb.loan_amount|num_format=###}</span>&nbsp;元<br>
+					(募集总额)
+				</td>
+				<td>
+					{$vb.loan_duration}{$vb.duration_type|duration_format=###}<br>
+					(借款期限)
+				</td>
+				<td rowspan=2>
+					<span class="ui-list-field">
+						<span class="ui-progressbar-mid ui-progressbar-mid-{$vb.progress|intval}"><em>{$vb.progress|intval}%</em></span> </span></td>
+				<td>
+					<span class="amount">{$vb.need|num_format=###}</span>&nbsp;元<br>
+					(还需金额)
+				</td>
+				<td rowspan=2>
+					<if condition="$vb.status eq 2"> 
+	   				<a href='__APP__/Loaninvest/detail?id={$vb.id}'class="btn btn-info" >借款中</a>
+	  				<elseif condition="$vb.status eq 4"/>
+					<a href='__APP__/Loaninvest/detail?id={$vb.id}' class="btn btn-success">已满标</a>
+					<elseif condition="$vb.status eq 6"/>
+					<a href='__APP__/Loaninvest/detail?id={$vb.id}'class="btn btn-success">已满标</a>
+	    			<elseif condition="$vb.status eq 7"/>
+					<a href='__APP__/Loaninvest/detail?id={$vb.id}' class="btn btn-warning">还款中</a>
+	  				<elseif condition="$vb.status eq 8"/>
+					<a href='__APP__/Loaninvest/detail?id={$vb.id}'class="btn btn-default">已完成</a>
+					</if>
+				</td>
+			</tr>
+		</table>
+		</volist>
+		</elseif>
+		</div>
+		</div>
+		<div class="list_bottom">
+	  <div class="list_bottom_right">
+	    <ul>
+	      {$list.page}
+	    </ul>
+	  </div>
+	</div>
+	</div>
+	
+
+<include file="Public:_footer" />

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/schema
+END
+Pdf_Relation_Schema.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/schema/Pdf_Relation_Schema.class.php
+END
+Visio_Relation_Schema.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/schema/Visio_Relation_Schema.class.php
+END
+Dia_Relation_Schema.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/schema/Dia_Relation_Schema.class.php
+END
+Svg_Relation_Schema.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/schema/Svg_Relation_Schema.class.php
+END
+Export_Relation_Schema.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/schema/Export_Relation_Schema.class.php
+END
+User_Schema.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/schema/User_Schema.class.php
+END
+Eps_Relation_Schema.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/schema/Eps_Relation_Schema.class.php
+END

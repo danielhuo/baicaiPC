@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/import/upload
+END
+uploadprogress.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/import/upload/uploadprogress.php
+END
+noplugin.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/import/upload/noplugin.php
+END
+apc.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/import/upload/apc.php
+END

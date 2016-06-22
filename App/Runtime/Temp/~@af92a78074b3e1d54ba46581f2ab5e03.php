@@ -1,0 +1,3 @@
+<?php
+//000012960000a:10:{i:2;a:2:{s:8:"type_nid";s:4:"news";s:8:"type_set";s:1:"1";}i:6;a:2:{s:8:"type_nid";s:10:"ruleserver";s:8:"type_set";s:1:"0";}i:7;a:2:{s:8:"type_nid";s:6:"danbao";s:8:"type_set";s:1:"1";}i:8;a:2:{s:8:"type_nid";s:7:"aboutus";s:8:"type_set";s:1:"1";}i:9;a:2:{s:8:"type_nid";s:7:"gonggao";s:8:"type_set";s:1:"1";}i:10;a:2:{s:8:"type_nid";s:7:"jianjie";s:8:"type_set";s:1:"0";}i:11;a:2:{s:8:"type_nid";s:5:"zizhi";s:8:"type_set";s:1:"0";}i:17;a:2:{s:8:"type_nid";s:5:"zcfgd";s:8:"type_set";s:1:"0";}i:23;a:2:{s:8:"type_nid";s:7:"tuandui";s:8:"type_set";s:1:"0";}i:24;a:2:{s:8:"type_nid";s:4:"lxwm";s:8:"type_set";s:1:"0";}}
+?>

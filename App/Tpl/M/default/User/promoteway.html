@@ -1,0 +1,45 @@
+<include file="Pub:header" /> 
+<style>
+	.QRcode{width:50%;margin:0 auto;display:block;}
+	#mcover {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: none;
+		z-index: 20000;
+		background:rgba(0, 0, 0, 0.7) url(/Style/Mobile/images/promote/guide.png) no-repeat right top;
+	}
+	
+</style>
+<div id="mcover" onclick="$('#mcover').hide()"></div>
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<h4 class="panel-title">推广奖励</h4>
+	</div>
+	<div class="panel-body">
+		1.向您的好友推荐并注册百财网
+		<hr>
+		2.好友注册时,推广人一览填写您的用户名或者手机号
+		<hr>
+		3.你的推广奖励:好友投资额的<span class="text-warning">1/1000</span>
+	</div>
+</div>
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<h4 class="panel-title">推广方式</h4>
+	</div>
+	<div class="panel-body">
+		<h5>1.直接复制链接推广</h5>
+		<span>http://www.baicai58.com?invite={$_SESSION['u_id']}</span>
+		<hr>
+		<h5>2.微信用户,点击下面链接,通过右上角分享列表推广</h5>
+		<button class="btn btn-info  btn-block" onclick="$('#mcover').show()"><i class="fa fa-share"></i>发送给朋友</button>
+		<hr>
+		<h5>3.发送"我的推广码"</h5>
+		<img class="QRcode" src="http://qr.liantu.com/api.php?text=http://www.baicai58.com?invite={$_SESSION['u_id']}"/>
+	</div>
+</div>
+				
+<include file="Pub:footer" /> 

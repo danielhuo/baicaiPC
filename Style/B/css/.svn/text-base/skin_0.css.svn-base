@@ -1,0 +1,8 @@
+#header{
+background:white url(/Style/B/images/bg_body.png) repeat-x center top;
+}
+.wp_center_contont{ background:#F8EFEB;}
+
+#menu_itemx_cs{
+background:url(/Style/B/images/nv.png) repeat-x;-webkit-border-radius:5px 5px 0 0;border-radius:5px 5px 0px 0px;
+}

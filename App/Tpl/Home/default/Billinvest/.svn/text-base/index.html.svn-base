@@ -1,0 +1,108 @@
+﻿<include file="Public:_header_common" />
+
+<meta name="keywords" content="{$glo.web_keywords}" />
+<meta name="description" content="{$glo.web_descript}" />
+<link href="__ROOT__/Style/H/css/binvests.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>
+<style type="text/css">
+	.tablemodel{
+		float:left;
+		height:100px;
+		width:100%;
+		border-bottom:1px dashed #8DEEEE;
+		padding-top:20px;
+	}
+	input{
+		align:center;
+		width:90px;
+	}
+</style>
+<script type="text/javascript">
+var Transfer_invest_url = "__APP__/tinvest";
+</script>
+<script type="text/javascript" src="__ROOT__/Style/H/js/area.js"></script>
+<include file="Public:_header_main" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+	$(function(){
+		$('#dw_ul li a:eq(1)').attr('class','nowNavItem');
+	});
+
+</script>
+	<div class="main">
+		<img src="__ROOT__/Style/H/images/binvests.jpg"></img>
+		<div class="binvests">
+			<volist name="list.list" id="vb">
+			<div class="binvest">
+				<table>
+					<tr>
+						<td>票据融资</td>
+						<td>年利率</td>
+						<td>融资金额</td>
+						<td>还款期限</td>
+						<td rowspan=2>
+							<span class="ui-list-field">
+								<span class="ui-progressbar-mid ui-progressbar-mid-{$vb.progress|intval}"><em>{$vb.progress|intval}%</em></span> </span></td>
+						<td>还需资额</td>
+						<td></td>
+						<td rowspan=2 ><if condition="$vb.status eq 2"> 
+	   <a href='__APP__/Billinvest/detail?id={$vb.id}'class="borowwing" >借款中</a>
+	  <elseif condition="$vb.status eq 4"/>
+	 <a href='__APP__/Billinvest/detail?id={$vb.id}' class="repaying">已满标</a>
+	  <elseif condition="$vb.status eq 7"/>
+	 <a href='__APP__/Billinvest/detail?id={$vb.id}' class="repaying">还款中</a>
+	  <elseif condition="$vb.status eq 8"/>
+		<a href='__APP__/Billinvest/detail?id={$vb.id}'class="repaying">已完成</a>
+	 </if></td>
+					</tr>
+					<tr >
+						<td ><a href="__URL__/detail?id={$vb.id}" title="{$vb.borrow_name}" >JK{$vb.id}</a></td>
+						<td><span style="color:#de002a" class="BL_time">{$vb.interest_rate}</span>&nbsp;%</td>
+						<td><span style="color:#de002a" class="BL_time">{$vb.amount|num_format=###}</span>&nbsp;元</td>
+						<td>{$vb.invest_duration}天</td>
+				
+						<td><span style="color:#de002a" class="BL_time">{$vb.need|num_format=###}</span>&nbsp;元</td>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+			</volist>
+		</div>
+	</div>
+  	
+
+
+<div class="list_bottom">
+  <div class="list_bottom_right">
+    <ul>
+      {$list.page}
+    </ul>
+  </div>
+</div>
+
+
+<script language="javascript">
+		$(function() {
+			$(".borrowlistp").bind("mouseover", function(){
+				$(this).css("background", "#fce8e1");
+			})
+
+			$(".borrowlistp").bind("mouseout", function(){
+				$(this).css("background", "#fff");
+			})
+
+
+			$(".borrowlistl").bind("mouseover", function(){
+				$(this).css("background", "#f8f8f8");
+			})
+
+			$(".borrowlistl").bind("mouseout", function(){
+				$(this).css("background", "#fff");
+			})
+		});
+
+	</script>
+<!--中部结束-->
+
+<include file="Public:_righter" />
+<include file="Public:_footer" />

@@ -1,0 +1,88 @@
+<footer>
+	<nav>
+		<ul class="fmenu">
+			<li>
+				<a href="{:U('M/Index/index')}" >
+					<i class="fa fa-home"></i>
+					<span>首页</span>
+				</a>
+			</li>
+			<li>
+				<a href="{:U('M/Loaninvest/index')}">
+					<i class="fa fa-rmb"></i>
+					<span>理财</span>
+				</a>
+			</li>
+			<li>
+				<a href="{:U('M/Help/index')}">
+					<i class="fa fa-question"></i>
+					<span>帮助</span>
+				</a>
+			</li>
+			<li>
+				<a href="{:U('M/User/index')}">
+					<i class="fa fa-user"></i>
+					<span>我</span>
+				</a>
+			</li>		
+		</ul>
+	</nav>
+	
+</footer>
+
+<script type="text/javascript">  
+	$(function () {
+			var index=readCookie('index');
+			index=index?index:0;
+			$('.fmenu>li:eq('+index+')').css({
+				'color':'#F08012'
+			}).find('a').eq(0).css({'color':'#F08012'});
+            $('.fmenu li').each(function () {
+                $(this).click(function(){
+                    writeCookie('index',$(this).index());
+				   
+				})
+            });
+
+			$("#header-title").text(localStorage.title);
+
+     })
+
+var browser = navigator.userAgent;
+function orientationChange() {
+    if(browser.indexOf('Android') > -1 || browser.indexOf('Linux') > -1){
+        manWidth(screen.width);
+    }
+    
+}
+
+addEventListener('load', function(){ 
+    orientationChange();
+    window.onorientationchange = orientationChange;
+}); 
+
+
+function writeCookie(name, value) {  
+    exp = new Date();  
+    exp.setTime(exp.getTime() + (86400 * 1000 * 30)); 
+    document.cookie = name + "=" + escape(value) + "; expires=" + exp.toGMTString() + "; path=/";  
+}  
+function readCookie(name) {  
+    var search;  
+    search = name + "=";  
+    offset = document.cookie.indexOf(search);  
+    if (offset != -1) {  
+        offset += search.length;  
+        end = document.cookie.indexOf(";", offset);  
+        if (end == -1){ 
+            end = document.cookie.length; 
+        } 
+        return unescape(document.cookie.substring(offset, end));  
+    }else{ 
+        return ""; 
+    } 
+} 
+
+</script> 
+</body>
+</html>

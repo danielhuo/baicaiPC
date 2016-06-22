@@ -1,0 +1,85 @@
+<include file="Public:_header_common" />
+<title>我的账户-- {$glo.web_name}</title>
+<include file="default:Public:_header_main" group="Home"/>
+<div class="container userCenter"> 
+	<div class="row">
+		<div class="col-xs-2 userLeft">
+			<include file="Public:_left" />
+		</div>
+		<div class="col-xs-10 userRight">
+			<switch name="type">
+		        <case value="loan">
+		            <div class="box">
+						<div class="Menubox1" id="rotate">
+							<ul class="menu ajaxdata">
+		                        <li><a id="mx2" href="#fragment-0" ajax_href="__URL__/loan?status=0">审核中的借款</a></li>
+		                        <li><a id="mx3" href="#fragment-2" ajax_href="__URL__/loan?status=2">募集中的借资</a></li>
+		                        <li><a id="mx4" href="#fragment-7" ajax_href=
+									"__URL__/loan?status=7">还款中的借款</a></li>
+		                        <li><a id="mx8" href="#fragment-8" ajax_href=
+									"__URL__/loan?status=8">已还款的借款</a></li>
+							</ul>
+						</div> 
+						<div class="contentright">
+		                    <div id="fragment-0" style="display:none">
+		                        <!--升级会员-->
+		                    </div>
+		                    <div id="fragment-2" style="display:none">
+		                        <!--升级会员-->
+		                    </div>
+		                    <div id="fragment-7" style="display:none">
+		                        <!--升级会员-->
+		                    </div>
+		                   
+		                    <div id="fragment-8" style="display:none">
+		                        <!--升级会员-->
+		                    </div>
+		                 </div>
+					</div>
+				</case>
+		        <case value="loaninvest">
+				
+					<div class="Menubox1" id="rotate">
+						<ul class="menu ajaxdata">
+	                        <li><a id="mx3" href="#fragment-2" ajax_href="__URL__/loaninvest?status=2">审核中的投资</a></li>
+							<li><a id="mx2" href="#fragment-7" ajax_href="__URL__/loaninvest?status=7">进行中的投资</a></li>
+	                        <li><a id="mx5" href="#fragment-8" ajax_href="__URL__/loaninvest?status=8">已回款的投资</a></li>
+						</ul>
+					</div> 
+					<div>
+						
+						<div id="fragment-2" style="display:none">
+							<!--升级会员-->
+						</div>
+						<div id="fragment-7" style="display:none">
+							<!--升级会员-->
+						</div>
+						
+						<div id="fragment-8" style="display:none">
+							<!--升级会员-->
+						</div>
+					</div>
+					
+				</case>
+				<case value="loandetail">
+		            <div class="box">
+						<div class="Menubox1" id="rotate">
+							<ul class="menu ajaxdata">
+		                        <li><a id="mx2" href="#fragment-0" ajax_href="__URL__/loandetail?id={$id}">投资记录</a></li>
+		                        
+							</ul>
+						</div> 
+						<div class="contentright">
+		                    <div id="fragment-0" style="display:none">
+		                        <!--升级会员-->
+		                    </div>
+		                    
+		                </div>
+					</div>
+				</case>
+		        <default />default
+		    </switch>
+    </div>
+</div>
+</div>
+<include file="default:Public:_footer" group="Home" />

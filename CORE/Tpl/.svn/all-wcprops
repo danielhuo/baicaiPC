@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Tpl
+END
+diy_trace.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Tpl/diy_trace.tpl
+END
+dispatch_jump.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Tpl/dispatch_jump.tpl
+END
+page_trace.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Tpl/page_trace.tpl
+END
+default_index.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Tpl/default_index.tpl
+END
+think_exception.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Tpl/think_exception.tpl
+END

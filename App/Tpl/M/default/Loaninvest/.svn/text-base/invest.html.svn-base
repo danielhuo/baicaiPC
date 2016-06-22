@@ -1,0 +1,68 @@
+<include file="Pub:header" /> 
+<link type="text/css" rel="stylesheet" href="/Style/Mobile/css/dataTab.css"/>
+</style>
+<h2 id="title">JK{$vo.id}项目投标</h2>
+
+<div class="form form-pay">
+	<div class="form-group form-alert text-center"  id="formAlert"></div>
+	<div class="form-group money-show">
+		<span>你的账户可用余额为:</span>
+		<span class="text-danger">{$user_info.account_money|MFormt=###}元</span>
+	</div>
+	<div class="form-group money-show">
+		<span>项目还需募集金额为:</span>
+		<span class="text-danger">{$vo.need|numFormat=###,0}元</span>
+	</div>
+	<div class="form-group input-group">
+		<span class="input-group-addon">投资金额</span>
+		<input type="text" id="invest_money" class="form-control input-lg">
+	</div>
+	<div class="form-group input-group">
+		<label class="bg-primary input-group-addon ">支付密码</label>
+		<input type="password" id="paypass" class="form-control input-lg" style="padding:10px 20px;" >
+	</div>
+	<div class="form-group container">
+		<button id="payBtn" class="btn btn-warning btn-block btn-lg">提交投资</button>
+	</div>
+</div>
+	
+
+<script>
+	$(function(){
+		$alert=$("#formAlert");
+		$("#payBtn").click(function(){
+			var money = $('#invest_money').val();
+			var paypass = $('#paypass').val();
+			if (money < 1 ||money%1 != 0) 
+				return formAlert("投资金额必须为正整数",$alert,"danger");
+			if (!paypass)
+				return formAlert("请输入支付密码",$alert,"danger");
+			$.ajax({
+                url:"__URL__/doinvest",
+                timeout: 5000,
+                data: {
+                    "id":{$vo.id},
+                    "paypass": paypass,
+                    "invest_money":money
+                },
+                type: "post",
+                dataType: "json",
+				async : false,
+                success: function (d) {
+                    if (d.status == 0) {
+                       formAlert(d.message,$alert,"success");
+                       setTimeout('window.location.href = "__URL__/detail?id={$vo.id}"',3000);
+                    }
+                    else {
+                        formAlert(d.message,$alert,"danger");
+                    }
+                },
+                error: function () {
+                    formAlert("提交出错,请重试",$alert,"danger");
+                }
+            });
+		})
+		
+	})
+</script>
+﻿<include file="Pub:footer" /> 

@@ -1,0 +1,33 @@
+
+.login_form {
+	background:#FFF;
+	width:310px;
+	padding:20px 30px 20px;
+	border-radius:2px;
+	box-shadow: 2px 2px 2px 1px gray;
+}
+.login_form hr{border-top: 1px solid #54BCDF;}
+
+#dvUser{height:100%;width:160px;display: inline-block;}
+#txtUser,#txtPwd{text-indent:30px;border: 1px solid #CBCBCB;}
+
+#txtUser:hover,#txtPwd:hover{box-shadow: 0 0 1px 0px #6599FF;}
+#txtCode{width:50%;text-transform: uppercase;display: inline-block;}
+#imVcode{
+    height:34px;
+	width:80px;
+	float: right;
+}
+
+.codeP{border:1px solid silver;width:200px;padding-left:2px;}
+.codeP a.refresh{margin-left:10px;color:#2AA198;}
+.forgP{	height:22px;line-height:22px;font-size: 12px;}
+.forgP a{
+	color:lightblue;line-height:26px;height: 26px;display:inline-block;
+}
+.forgP i{margin-right:5px;}
+.form-heading{position: relative;}
+.login_form h3{display: inline;color:#54BCDF;}
+.reg{position:absolute;right:0;bottom:0;font-size: 12px;}
+.reg a{color:#54BCDF;text-decoration: underline;margin-left: 2px;}
+.login_form  .form-control-feedback{left:0;color:#54BCDF; }

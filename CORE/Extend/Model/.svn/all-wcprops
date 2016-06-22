@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Model
+END
+AdvModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Model/AdvModel.class.php
+END
+ViewModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Model/ViewModel.class.php
+END
+RelationModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Model/RelationModel.class.php
+END
+MongoModel.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Model/MongoModel.class.php
+END

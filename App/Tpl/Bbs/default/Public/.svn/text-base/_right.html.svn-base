@@ -1,0 +1,91 @@
+        <!--右侧模块开始-->
+        <div class="right_block_item">
+        	<!--右侧发表主题按钮模块开始-->
+            <div class="r_post_new"><a href="/bbs/send" class="new_post" title="发表主题"></a></div>
+            <!--右侧发表主题按钮模块结束-->
+            <!--Tab主题切换模块开始-->
+            <div class="block_hot">
+            	<div class="cpjs">
+                	<!--Tab标题模块开始-->
+					<div class="top_tit">
+    					<ul>
+							<li id="one1" onclick="setTab('one',1,2)" class="hover">版块推荐</li>
+							<li id="one2" class="lk_bot1" onclick="setTab('one',2,2)">快捷导航</li>
+						</ul>
+					</div>
+                    <!--Tab标题模块结束-->
+					<div class="content">
+						<div id="con_one_1">
+                        	<div class="con_block_it">
+                            	<ul>
+                            		<li><a href="/bbs/list?menu=11">投资交流</a></li>
+                                	<li><a href="/bbs/list?menu=6">担保机构</a></li>
+                                    <li><a href="/bbs/list?menu=1">网站公告</a></li>
+                                    <li><a href="/bbs/list?menu=2">行业新闻</a></li>
+                                    <li><a href="/bbs/list?menu=3">常见问题</a></li>
+                                    <li><a href="/bbs/list?menu=4">爱心慈善</a></li>
+                                    <li><a href="/bbs/list?menu=12">休闲灌水</a></li>
+                                    <li><a href="/bbs/list?menu=5">客户专区</a></li>
+                                    <li><a href="/bbs/list?menu=10">投诉建议</a></li>
+                           	 	</ul>
+                            </div>
+                        </div>
+                        
+						<div id="con_one_2" style="display:none">
+                        	<div class="con_block_it">
+                            	<ul>
+                            		<li><a href="/bbs/list?menu=1">网站公告</a></li>
+                                	<li><a href="/bbs/list?menu=2">行业新闻</a></li>
+                                    <li><a href="/bangzhu/index.html">帮助中心</a></li>
+                                    <li><a href="/bbs/list?menu=11">投资交流</a></li>
+                                    <li><a href="/borrow/index.html">我要借款</a></li>
+                                    <li><a href="/invest/index.html">我要投资</a></li>
+                                    <li><a href="/shishicaiwu/finanz.html">实时财务</a></li>
+                                    <li><a href="/bbs/list?menu=12">休闲灌水</a></li>
+                                    <li><a href="/bbs/list?menu=13">问题/回答</a></li>
+                           	 	</ul>
+                            </div>
+                        </div>
+					</div>
+				</div>
+            </div>
+            <!--Tab主题切换模块结束-->
+            
+            <!--精彩推荐模块开始-->
+            <div class="Recommendation">
+            	<div class="Recommendation_tit">
+                	<div class="Rec_con"><a href="/bbs/list"></a></div>
+                    <span class="Rec_more"><a href="/bbs/list" title="更多">更多>></a></span>
+                </div>
+                
+                <div class="Recom_item">
+                	<ul>
+                    	<li><a href="/bbs/comment?aid={$tuijian.id}"><img style="width: 240px; height: 154px;" src="{:C('WEB_URL')}/{$tuijian.art_img}" border="0" /></a>
+                        	<span class="recomm_tit"><a href="/bbs/comment?aid={$tuijian.id}">{$tuijian.title|cnsubstr=###,15}</a></span>
+                            <span class="Recomm_text">{$tuijian.art_content|cnsubstr=###,70}</span>
+                        
+                        </li> 
+                    </ul>
+                </div>
+            </div> 
+            <!--精彩推荐模块结束-->
+            
+            <!--热帖排行模块开始-->
+            <div class="hot_post_top">
+            	<div class="Recommendation_tit">
+                	<div class="hot_con"><a href="/bbs/list?order=click_num"></a></div>
+                    <span class="Rec_more"><a href="/bbs/list?order=click_num" title="更多">更多>></a></span>
+                </div>
+                <!--Top10模块开始-->
+                <div class="top_item_list">
+                	<ul>
+                        <volist id="vr" name="retie" key="k">
+                    	<li><span class="top_{$k}">{$k}</span><a href="/bbs/comment?aid={$vr.id}">{$vr.title}</a></li>
+                        </volist>
+                    </ul>
+                </div>
+                <!--Top10模块结束-->
+            </div>
+            <!--热帖排行模块结束-->
+        </div>
+        <!--右侧模块结束-->

@@ -1,0 +1,87 @@
+﻿<include file="Pub:header" /> 
+<style>
+	table{
+		width:100%;
+		border-bottom:1px dotted gray;
+		background-color:#fff;
+	}
+	table th{
+		text-align:left;
+	}
+	table th:last-child{
+		text-align:right;
+	}
+	table td{
+		text-align:left;
+		font-size: 12px;
+		width:40%;
+		height:20px;
+		line-height:20px;
+	}
+	table td:nth-child(2){
+		width:30%;
+	}
+	table td:last-child{
+		text-align:right;
+	}
+	span{
+		color:black;
+		font-weight:bold;
+	}
+</style>
+<div class="body">
+	<ul class="records">
+		<volist name="list" id="vo">
+		<li>
+			<table>	
+				<tr>
+					<th>{$vo.type}</th>
+					<th><span style="font-size:15px;color:red">{$vo.affect_money|MFormt=###}</span></th>
+					<th>{$vo['add_time']}</th></tr>
+				<tr><td>可用:<span>{:MFormt($vo['account_money'])}</span></td>
+					<td>冻结:<span>{$vo.freeze_money|MFormt=###}</span></td>
+					<td>待收:<span>{$vo.collect_money|MFormt=###}</span></td></tr>
+			</table>
+		</li>
+		</volist>
+	</ul>
+	<div class="fixed_div"></div> 
+</div>
+<script type="text/javascript">
+	localStorage.title="资金记录";
+    var nowPage =1;
+	var total = {$pagebar.total};
+	
+   var windowHeight = $(this).height();
+	function scroller(){
+		var scrollTop = $(this).scrollTop();
+		var scrollHeight = $(document).height();
+        if (scrollTop + windowHeight == scrollHeight) {
+		nextPage = nowPage+1;
+		$(".fixed_div").text("加载中...");
+        $.ajax({
+            url: location.href,
+            data:{"p":nextPage},
+            type: 'get',
+            async: true,			
+            success: function (res) {
+				var res = eval('(' + res + ')');
+					for(var i in res){
+						var html ="<li><table><tr><th>"+res[i].type+"</th><th><span style='font-size:15px;color:red'>"+res[i].affect_money+"</span></th><th>"+res[i].add_time+"</th></tr><tr><td>可用:<span>"+res[i].account_money+"</span></td><td>冻结:<span>"+res[i].freeze_money+"</span></td><td>待收:<span>"+res[i].collect_money+"</span></td></tr></table></li>";
+						jQuery(".records").append(html);
+						$(".fixed_div").text("");
+					}	  
+                nowPage++;
+            }
+        });	
+		}
+	}
+	$(window).scroll(function(){
+		if(nowPage<total) scroller();
+		else $(".fixed_div").text("没有更多记录了");
+	})
+</script>
+
+
+
+﻿<include file="Pub:footer" /> 

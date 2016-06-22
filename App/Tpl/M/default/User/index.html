@@ -1,0 +1,63 @@
+﻿<include file="Pub:header" /> 
+<script>
+	$(function(){
+		$('header').hide();
+		$('body').css('padding-top',0);
+    
+	});
+</script>
+	<div class="container head-block bg-yellow text-center">
+        <a href="{:U('M/user/info')}">
+            <div class="row">
+               <img class="img-circle" width="20%;" src="{$uid|get_avatar=###}">
+            </div>
+            <div class="row text-white">{$uname}</div>
+        </a>
+    </div>
+	
+	<div class="container container-block container-row-nml">
+	    <a  href="{:U('M/Capital/index')}">
+	    	<div class="row">
+		    	<div class="col-xs-2"><i class="fa fa-credit-card fa-2x fa-lg text-green"></i></div>
+		        <div class="col-xs-8 row-title">我的账户</div>
+		        <div class="col-xs-2"> <span class="glyphicon glyphicon-menu-right"></span></div>
+	        </div>
+	    </a>
+	    <a  href="{:U('M/user/safe')}">
+	    	<div class="row">
+		    	<div class="col-xs-2"><i class="fa fa-expeditedssl fa-2x fa-lg text-yellow"></i></div>
+		        <div class="col-xs-8 row-title">安全中心</div>
+		        <div class="col-xs-2"> <span class="glyphicon glyphicon-menu-right"></span></div>
+	        </div>
+	    </a>
+	    <a  href="{:U('M/user/trade')}">
+	    	<div class="row">
+		    	<div class="col-xs-2"><i class="fa fa-exchange fa-2x fa-lg text-green"></i></div>
+		        <div class="col-xs-8 row-title">我的交易</div>
+		        <div class="col-xs-2"> <span class="glyphicon glyphicon-menu-right"></span></div>
+	        </div>
+	    </a>
+
+	    <a href="__URL__/promote">
+	    <div class="row">
+	    		<div class="col-xs-2"> <i class="fa fa-share-alt fa-2x fa-lg text-blue"></i></div>
+		        <div class="col-xs-8 row-title">我的推广</div>
+		        <div class="col-xs-2"> <span class="glyphicon glyphicon-menu-right"></span></div>
+	    </div>
+	    </a>
+	    <a  href="{:U('M/user/msg')}">
+	    	<div class="row">
+	    		<div class="col-xs-2">  <i class="fa fa-envelope fa-2x fa-lg text-yellow"></i></div>
+		        <div class="col-xs-8 row-title">站内信息</div>
+		        <div class="col-xs-2"> <span class="glyphicon glyphicon-menu-right"></span></div>
+	    	</div>
+	    </a>
+	</div>
+	<div class="container container-block">
+		
+	    <a href="{:U('M/Pub/logout')}">
+	    <div class="row row-title  text-center"><span class="text-danger">退出登录</span> </div>
+	    </a>
+	   
+	</div>
+﻿<include file="Pub:footer" /> 

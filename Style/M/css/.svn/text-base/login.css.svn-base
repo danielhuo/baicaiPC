@@ -1,0 +1,29 @@
+
+body{background-color: #333;}
+.form{margin-top:20px;}
+.dv_l_1 { width: 960px; height: 100%; overflow: hidden; margin: 0 auto; }
+.dv_l_2 { width: 650px; height: 400px; float: left; margin-left: 20px; }
+.dv_l_3 { width: 280px; height: 400px; float: left; border-right: 1px solid #cccccc; }
+
+.dv_r_6 { width: 250px; overflow: hidden; line-height: 28px; text-align: left; font-size: 14px; font-family: 宋体; }
+
+.reg_info { margin-top: 2px; font-size: 12px; background-color: #dae4ed; border: 1px solid #006699; height: 22px; line-height: 22px; }
+.reg_wrong { font-size: 12px;  border: 0px solid #ff0000; margin-top: 2px;
+              color: #ff0000; height: 22px; line-height: 22px; }
+			  
+.reg_ok {   font-size: 12px; color: #339966; padding-left: 2px; }
+
+
+.button{ padding-top:20px; cursor:pointer }
+
+	.loginForm{width:90%;padding:6px 30px 24px 30px;margin:16px auto;background-color:#fff;box-shadow:2px 2px 2px 2px gray;border-radius:2px;}
+	.loginForm input{height:36px;line-height:36px;font-size:16px;}
+	.loginForm div{margin:20px auto 0;}
+	.inpToDiv{border-width:0 0 1px 0;border-style:solid;border-color:rgb(0,160,200);width:100%;overflow:hidden;}
+	.inpToDiv input{width:50%;float:left;border:none;}
+	.inpToDiv img{float:left;margin-left:10px;height:36px;width:60px;padding:0px;}
+	.butt{width:100%;margin-top:30px;height:36px;  background:rgb(0,160,200);font-weight:bold; color:#fff; font-size:16px;border:none;letter-spacing:30px;text-indent:30px;;border-radius:2px;display:block;text-align:center;line-height:36px;}
+	.cancel{background-color:gray;margin-top:10px;}
+	.getVerifyCode{background:#B0DFE5;}
+	input[name=verify]{text-transform: uppercase}
+	.disBtn{background-color:#C2C2C2;}

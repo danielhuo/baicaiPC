@@ -1,0 +1,89 @@
+﻿<include file="Pub:header" /> 
+<style type="text/css">
+table td{
+height:40px;
+border-top:1px dashed #AECAE6;
+}
+
+</style>
+<h2 id="title">投标</h2>
+<div class="main">
+	<div class="box7">
+		
+		<form method="post" action="" name="investForm" id="investForm">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%">
+				<tr align="left" >
+					<td>可用余额：</td>
+					<td>{$user_info.money|MFormt=###}元</td>
+				</tr>
+				<tr align="left">
+					<td>利　　率：</td>
+					<td>{$borrow_info.borrow_interest_rate}%/<if condition="$vo.repayment_type eq 1">天 <else/>年</if></td>
+				</tr>
+				<tr align="left">
+					<td>还需金额：</td>
+					<td>{:MFormt($borrow_info['borrow_money']-$borrow_info['has_borrow'])}元/{$borrow_info.borrow_money|MFormt=###}</td>
+				</tr>
+				<tr align="left">
+					<td>最小投资：</td>
+					<td><if condition="$borrow_info.borrow_min eq 0">没有限制<else/>{$borrow_info.borrow_min|MFormt=###}元</if></td>
+				</tr>
+				<notempty name="$borrow_info.password ">
+					<tr align="left" >
+						<td>投资密码：</td>
+						<td>
+							<input type="passworde" name="invest_pass" autocomplete="off" id="invest_pass" value="" class="box7_wbk">
+						</td>
+					</tr>
+				</notempty>
+				<tr align="left">
+					<td>投资金额：</td>
+					<td><input type="text" name="invest_money" id="invest_money" autocomplete="off" value="" class="box7_wbk" style="height:28px;">元</td>
+				</tr>
+				<tr align="left" >
+					<td>支付密码：</td>
+					<td>
+						<notempty name="paypass">
+							<input type="password" name="paypass" autocomplete="off" id="paypass" value="" class="box7_wbk" style="height:28px;"/> 
+						<else />
+							<a href="{:U('M/user/setpaypass')}">请先设置支付密码</a>
+						</notempty>
+					</td>
+				</tr>
+				<tr align="center" height="54">
+					<td colspan="2"><input type="button" class="butt" id="dobutton" value="确认付款" style="width:100%;"/></td>
+				</tr>
+			</table> 
+		</form>
+	</div>
+</div>
+<script language="javascript">
+$(function() {
+    $("#dobutton").click(function() {
+        var e = $("#invest_pass").val(),
+            t = $("#invest_money").val(),
+            n = $("#paypass").val(),
+            r = "invest_money=" + t + "&paypass=" + n;
+        if ($("#invest_pass").lenght > 0) {
+            r = r + "&invest_pass=" + e;
+            if ($.trim($("#invest_pass").val()) == "") return Apprise("<font color=red>请输入投资密码！</font>"), !1
+        }
+        if ($.trim($("#invest_money").val()) == "") return Apprise("<font color=red>请输入投资金额!</font>"), !1;
+        if ($.trim($("#paypass").val()) == "") return Apprise("<font color=red>请输入支付密码！</font>"), !1;
+        $.ajax({
+            type: "POST",
+            url: "",
+            data: r,
+            success: function(e) {
+                e == "TRUE" ? (Apprise("恭喜您投资成功！"), $("#apprise-btn-confirm").click(function() {
+                    window.location.href = "{:U('M/user/index')}"
+                })) : Apprise("<font color=red>" + e + "</font>")
+            },
+            error: function(e) {
+                Apprise("<font color=red>提交发生错误！请重试</font>")
+            }
+        })
+    })
+})
+</script>
+﻿<include file="Pub:footer" /> 

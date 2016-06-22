@@ -1,0 +1,33 @@
+﻿<include file="Pub:header" /> 
+<link type="text/css" rel="stylesheet" href="/Style/Mobile/css/loan.css" />
+<h2 id="title">投资总表</h2>
+
+<div class="main">
+	<div class="box7">
+		<ul class="menu">
+			<li><a id="borrowing"    href="__URL__/billinvest?status=investing" >募集中</a></li>
+			<li><a id="borrowpaying" href="__URL__/billinvest?status=investpaying" >还款中</a></li>
+			<li><a id="borrowdone"   href="__URL__/billinvest?status=investdone" >已结束</a></li>
+		</ul>
+		
+		<table class="loanTab" cellpadding="0" cellspacing="0">
+			<tr>
+				<th>标号</th>
+				<th>配资额</th>
+				<th>到期日期</th>
+				
+			</tr>
+		    <volist name="list.list" id='vo'>
+		    <tr>
+		    	<td>JK{$vo.bid}</td>
+		    	<td>{$vo.amount}元</td>
+		    	<td>{$vo.deadline|date="Y-m-d",###}</td>
+		    	
+		    </tr>
+		    </volist>
+		</table>
+ </div>
+ 
+</div>
+
+﻿<include file="Pub:footer" /> 

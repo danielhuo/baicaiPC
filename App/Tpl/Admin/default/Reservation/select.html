@@ -1,0 +1,50 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<div class="so_main">
+  <div class="page_tit">预约列表</div>
+  
+  <div class="list">
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th style="width:30px;">
+        <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+        <label for="checkbox"></label>
+    </th>
+	<th class="line_l">标题</th>
+    
+    <th class="line_l">融资额</th>
+	<th class="line_l">年利率</th>
+	
+    <th class="line_l">借款期限</th>
+	<th class="line_l">进度</th>
+    <th class="line_l">操作</th>
+  </tr>
+  <volist id="vo" name="list">
+      <tr overstyle='on' id="list_{$vo.id}">
+        <td><input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.id}"></td>
+		<td><a href="__APP__/Billinvest/detail?id={$vo.id}" title="{$vo.name}" target="_blank">{$vo.name|cnsubstr=###,12}</a></td>
+        
+        
+        <td>{$vo.amount}</td>
+		<td>{$vo.interest_rate}</td>
+		
+        <td>{$vo.duration}</td>
+		<td>{$vo.has_borrow}</td>
+        <td>
+			<a href="/admin/Reservation/doapply?id={$vo.id}">预约记录</a>
+            <a href="/admin/Reservation/doinvest?id={$vo.id}">投资记录</a>
+        </td>
+      </tr>
+  </volist>
+  </table>
+
+  </div>
+  
+  <div class="Toolbar_inbox">
+  	<div class="page right">{$pagebar}</div>
+    <a class="btn_a" href="__URL__/add"><span class="search_action">添加</span></a>
+  </div>
+</div>
+
+
+<include file="Public:_footer" />

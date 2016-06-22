@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Driver/Cache
+END
+CacheSqlite.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Driver/Cache/CacheSqlite.class.php
+END
+CacheWincache.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Driver/Cache/CacheWincache.class.php
+END
+CacheMemcache.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Driver/Cache/CacheMemcache.class.php
+END
+CacheApc.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Driver/Cache/CacheApc.class.php
+END
+CacheDb.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Driver/Cache/CacheDb.class.php
+END
+CacheRedis.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Driver/Cache/CacheRedis.class.php
+END
+CacheShmop.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Driver/Cache/CacheShmop.class.php
+END
+CacheApachenote.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Driver/Cache/CacheApachenote.class.php
+END
+CacheEaccelerator.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Driver/Cache/CacheEaccelerator.class.php
+END
+CacheXcache.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Extend/Driver/Cache/CacheXcache.class.php
+END

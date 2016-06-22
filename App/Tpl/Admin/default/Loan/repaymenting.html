@@ -1,0 +1,67 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+	var delUrl = '__URL__/doDel';
+	var addUrl = '__URL__/add';
+	var isSearchHidden = 1;
+	$(function(){
+	  alert(size({vo}));
+	})
+</script>
+<div class="container">
+    <div class="panel panel-info">
+    
+    <div class="panel-heading">
+        <h4 class="panel-title">还款中的借款</h4>
+    </div>
+    <div class="panel-body">
+    <table id="area_list" class="table">
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+                    <label for="checkbox"></label>
+                </th>
+                <th >借款项目</th>
+                <th >借款人</th>
+                <th >发标额</th>
+                <th >实募额</th>
+                <th >预期期限</th>
+                <th >起息日</th>
+                <th >预期还款日</th>
+                <th >操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <volist id="vo" name="list">
+            <tr overstyle='on' id="list_{$vo.id}">
+                <td>
+                    <input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.id}">
+                </td>
+                <td>
+                    <a href="__APP__/Loaninvest/detail?id={$vo.id}" title="{$vo.name}" target="_blank">JK{$vo.id}&nbsp;{$vo.loan_name|cnsubstr=###,12}</a>
+                </td>
+                <td><htmlA:user id="vo.mid" uname="vo.user_name" /></td>
+                <td>{$vo.loan_amount|num_format=###}</td>
+                <td>{$vo.has_collect|num_format=###}</td>
+                <td>{$vo.loan_duration}{$vo.duration_type|duration_format=###}</td>
+                <td>{$vo.begin_time|date="Y-m-d",###}</td>
+                <td>{$vo.deadline|date="Y-m-d",###}</td>
+                <td>       
+                    <a href="/admin/loan/doinvest?id={$vo.id}">投资人记录</a>&nbsp;
+                    <a href="/admin/loan/schedule?id={$vo.id}">进度跟踪</a>
+                    <a href="/admin/loan/qingsuan?id={$vo.id}">清算</a>&nbsp;
+                </td>
+            </tr>
+            </volist>
+        </tbody>
+    </table>
+    </div>
+    <div class="panel-footer">
+        <a href="__URL__/doweek?isShow=1" class="btn btn-primary">一周内到期标</a>
+        <div class="pull-right">{$pagebar}</div>
+    </div>
+</div>
+    
+</div>
+<include file="Public:_footer" />

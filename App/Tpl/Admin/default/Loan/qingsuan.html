@@ -1,0 +1,104 @@
+<include file="Public:_header" />
+
+<div align="center" class="verifyDiv">
+	<div class="container">
+	<table class="table ">
+		<thead>
+	      <tr>
+	         <th>{$loan.loan_name}</th>
+	         <th>借款人</th>
+	         <th>发标额</th>
+	         <th>实募额</th>
+	         <th>年利率</th>
+	         <th>平台费率</th>
+	         <th>利息</th>
+	         <th>费用</th>
+	         <th>实际天数</th>
+	      </tr>
+	   </thead>
+	   <tbody>
+	      <tr>
+	         <td>JK{$loan.id}</td>
+	         <td>{$loan.user_name}</td>
+	         <td>{$loan.loan_amount|num_format=###}</td>
+	         <td>{$loan.has_collect|num_format=###}</td>
+	         <td>{$loan.interest_rate}%</td>
+	         <td>{$loan.fee_rate}%</td>
+	         <td>{$loan.interest}</td>
+	         <td>{$loan.fee}</td>
+	         <td class="text-center">{$loan.repaydays}</td>
+	      </tr>
+   	  </tbody>
+	</table>
+
+		
+
+	
+<!-- 	<table class="verifyTab">
+		<tr><td>{$loan.loan_name}</td><td>JK{$loan.id}</td></tr>
+		<tr><td>借款人:</td><td>{$loan.user_name}</td></tr>
+		<tr><td>发标额:</td><td>{$loan.loan_amount|num_format=###}</td></tr>
+		<tr><td>实募额:</td><td>{$loan.has_collect|num_format=###}</td></tr>
+		<tr><td>年利率</td><td>{$loan.interest_rate}%</td></tr>
+		<tr><td>平台费率</td><td>{$loan.fee_rate}%</td></tr>
+		<tr><td>利息</td><td>{$loan.interest_rate}%</td></tr>
+		<tr><td>费用</td><td>{$loan.fee_rate}%</td></tr>
+		<tr><td>实际天数</td><td>{$loan.act_days}</td></tr>
+		
+	</table> -->
+	<table class="table" style="border:2px solid #F9F9F9">
+		<thead>
+		<tr>
+		   <th>投资人列表</th>
+		   <th>投资人本金</th>
+		   <th>应得利息</th>
+		</tr>
+		</thead>
+		<tbody>
+		<volist name="{investors}" id="investor">
+			 <tr>
+			   <td>
+				{$investor.user_name}
+			   </td>
+			   <td>
+				{$investor.invest_amount|num_format=###}
+			   </td>  
+				<td>
+				{$investor.invest_interest|num_format=###}
+			   </td>  
+			 </tr>	 
+		 </volist>
+		</tbody>
+	</table>
+
+</div>
+
+	<!-- <table class="verifyTab">
+		
+		 <tr>
+		   <td>投资人列表</td>
+		   <td>投资人本金</td>
+		   <td>应得利息</td>
+		 </tr>
+		 <volist name="{investors}" id="investor">
+			 <tr>
+			   <td>
+				{$investor.user_name}
+			   </td>
+			   <td>
+				{$investor.invest_amount|num_format=###}
+			   </td>  
+				<td>
+				{$investor.invest_interest|num_format=###}
+			   </td>  
+			 </tr>	 
+		 </volist>
+		
+	</table> -->
+	
+		<div width="50%">{$plat.user_name}余额:{$plat.account_money|num_format=###}元</div>
+		<div width="50%">需还金额:{$loan.need_repay|num_format=###}元</div>
+		<a onclick="return confirm('清算确认');" class="btn btn-primary" href="__URL__/doqingsuan?id={$loan.id}">清算</a>
+		
+	
+</div>

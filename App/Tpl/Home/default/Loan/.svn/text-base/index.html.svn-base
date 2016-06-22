@@ -1,0 +1,247 @@
+﻿<include file="Public:_header_common" />
+<title>我有车辆</title>
+<include file="Public:_header_main" />
+<script>
+	$(function(){
+		$('#dw_ul>li+li+li a:eq(0)').attr('class','nowNavItem');
+		if (!("placeholder" in document.createElement("input"))) {
+		$("input[type=text][placeholder]").each(
+				function() {
+					var _this = $(this);
+					_this.val(_this.attr("placeholder")).focus(function() {
+						if (_this.val() === _this.attr("placeholder")) {
+							_this.val("").css('color', '#000');
+						}
+					}).blur(
+							function() {
+								if (_this.val().length === 0) {
+									_this.val(_this.attr("placeholder")).css(
+											'color', '#999999');
+								}
+							}).css('color', '#999999');
+				})
+	}
+		
+		
+		
+		
+		
+		
+		
+		
+	});
+	
+	
+	
+	
+	
+</script>
+
+<style>
+
+.div1{
+	background-image:url("/Style/H/images/bill/bg.png");
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	height:500px;
+	margin-top:5px;
+}
+.div2{
+	width:180px;
+    margin:0 auto;
+	position:relative;
+	top:50px;
+	left:385px;
+	background-color:#CAE0EA;
+	border-radius:20px;
+	padding:20px 25px 25px;
+}
+
+.div3{
+	width:200px;
+    margin:0 auto;
+	position:relative;
+	top:-280px;
+	left:-385px;
+	background-color:#fff;
+	border-radius:20px;
+	padding:20px 25px 25px;
+}
+
+.div2 ul{
+	margin-top:12px;
+}
+.div2 ul li{
+	list-style:none;	
+	height:50px;
+    line-height:50px;	
+	text-align:right;
+	padding-right:40px;
+	font-size:16px;
+	color:#9B9C9C;	
+	font-weight:bold;
+	background-size:32px 32px;	
+	background-position:4px 0;
+	font-family:"STHupo";
+	background-repeat:no-repeat;
+}
+
+.div2 h4{
+    text-align:center;
+	font-size:14px;
+	color:#336699;
+	font-weight:bold;
+	padding-bottom:5px;
+	border-bottom:2px solid #336699;
+	font-family:"STHupo";
+}
+.span1{
+
+	text-align:center;
+	font-weight:bold;
+	padding-bottom:5px;
+	padding-right:18px;
+	font-family:"STHupo";
+}
+.span2{
+
+	text-align:center;
+	font-weight:bold;
+	padding-bottom:5px;
+	padding-right:7px;
+	font-family:"STHupo";
+}
+.span3{
+     display:block;
+	
+	text-align:center;
+	font-weight:bold;
+	padding-bottom:15px;
+	padding-right:9px;
+	font-family:"STHupo";
+	font-size:13px;
+}
+
+.input1{
+    width:100%;
+	height:30px;
+	margin-top:10px;
+	text-align:center;
+	background-color:#A0E8FA;
+	color:#fff;
+	font-size:16px;
+	border:none;
+	box-shadow:1px 1px 1px 0px gray;
+}
+.input1:hover{opacity:0.8;box-shadow:none;}
+.input2{
+	margin-bottom:8px;
+	width:120px;
+
+}
+
+#form1 input[type=text]{
+	width:100%;
+	height:30px;
+	margin-top:10px;
+	border:none;
+	border-bottom:1px solid #666;
+	text-indent:10px;
+	background-color:inherit;
+}
+
+.div2 img{height:32px;margin:5px 15px;}
+</style>
+<div class="div1">
+	<div class="div2">
+		<h4>手上有车</h4>	
+		<ul>
+			<li class="li0"><img src="/Style/H/images/bill/index0.png"/>联系客服</li>
+			
+			<li class="li1"><img src="/Style/H/images/bill/index1.png"/>线下洽谈</li>
+			
+			<li class="li2"><img src="/Style/H/images/bill/index2.png"/>资料审核</li>
+			
+			<li class="li3"><img src="/Style/H/images/bill/index3.png"/>签订协议</li>
+			
+			<li class="li4"><img src="/Style/H/images/bill/index4.png"/>融资成功</li>
+		</ul>
+	</div>
+	
+	<div class="div3">
+		<form action="" method="" id="form1" >
+			<span class="span3">填写以下信息，方便我们联系</span>
+			
+			
+			<input type="text" name="name" id="name" placeholder="您的称呼:"/>
+				
+			<input type="text" name="price" id="price" placeholder="车辆估价(元):" />
+		
+			<input type="text" name="loan_duration" id="loan_duration"  placeholder="借款期限(月):" />
+			
+			<input type="text" name="telephone" id="tl" placeholder="您的手机号:" />
+		
+			<input type="button"  onclick="save();" value="提 交" class="input1"></button>
+		
+			<span style="display:block;text-align:center;margin-top:10px;">我们的客服电话是<span style="color:red;">0512-62853600</span>,请您留意</span>
+		</form>
+	</div>
+</div>
+ 
+<script>
+	function save(){	
+			var tl=$("#tl").val();
+			var name=$("#name").val();
+			var price=$("#price").val();
+			var loan_duration=$("#loan_duration").val();	
+			$.ajax({
+				url: "__URL__/save",
+				type:"POST",
+				dataType: "json",
+				data: {"telephone":tl,"name":name,"price":price,"loan_duration":loan_duration},
+				success: function(d){
+					if(d.status == 1){
+						$.jBox.tip("请将内容填写完整");
+					}
+					else if(d.status==2){
+						$.jBox.tip("号码输入格式错误");
+					}
+					else if(d.status==3){
+					
+						$.jBox.tip("信息提交成功,我们的客服会联系您");
+						clear();
+					}
+				}
+			});	
+	}
+	
+	function clear(){
+		if (!("placeholder" in document.createElement("input"))) {
+		$("input[type=text][placeholder]").each(
+				function() {
+					var _this = $(this);
+					_this.val(_this.attr("placeholder")).focus(function() {
+						if (_this.val() === _this.attr("placeholder")) {
+							_this.val("").css('color', '#000');
+						}
+					}).blur(
+							function() {
+								if (_this.val().length === 0) {
+									_this.val(_this.attr("placeholder")).css(
+											'color', '#999999');
+								}
+							}).css('color', '#999999');
+				})
+		}
+		else{
+		 	$("input[type=text]").each(
+				function() {
+					var _this = $(this);
+					_this.val("");
+				})
+						
+		}
+	}
+
+</script>
+<include file="Public:_footer" />

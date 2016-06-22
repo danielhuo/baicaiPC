@@ -1,0 +1,41 @@
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<div class="so_main">
+
+<div class="page_tit">添加/编辑帖子</div>
+<div class="page_tab"><span data="tab_1" class="active">基本设置</span><span data="tab_2">高级设置</span></div>
+<div class="form2">
+	<form method="post" action="__URL__/doEdit" enctype="multipart/form-data">
+	<input type="hidden" name="id" value="{$vo.id}" />
+	<div id="tab_1">
+		<dl class="lineD"><dt>帖子标题：</dt><dd><htmlA:input id="title" value="{$vo.title}" tip="*"/></dd></dl>
+		<dl class="lineD"><dt>所属栏目：</dt><dd><htmlA:select id="type_id" value="id|vo.type_id" datakey='type_list' vt='id|type_name' tip="*"/></dd></dl>
+		<dl class="lineD"><dt>所属顺序：</dt><dd><htmlA:input id="sort_order" value="{$vo.sort_order}" tip="越大越靠前"/></dd></dl>
+		<dl class="lineD"><dt>是否隐藏：</dt><dd><htmlA:radio id="is_hidden" value="key|vo.is_hidden" default="0|显示,1|隐藏" tip=''/></dd></dl>
+		<dl class="lineD"><dt>发布时间：</dt><dd><htmlA:timer id="art_time" tip='' arg="{dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true}"  class="Wdate" value="{$vo.art_time|mydate='Y-m-d H:i:s',###}"/></dd></dl>
+		
+		<dl class="lineD" style="height:120px;"><dt>缩略图：</dt>
+			<dd>
+				<input type="file" id="imgfile" name="imgfile" style="float:left"/>
+				<span style="float:left"><div style="text-align:left; clear:both; overflow:hidden; width:100px; height:100px"><div id="imgDiv"></div><if condition="$vo.art_img eq ''">无缩略图<else/><img src="__ROOT__/{$vo.art_img}" width="100" height="100" /></if></div></span>
+			</dd>
+		</dl>
+	</div>
+	
+	<div id="tab_2" style="display:none">
+		<dl class="lineD"><dt>文章内容：</dt>
+		  <dd>
+			<include file="./Style/Editor/kissy.html" />
+			<htmlA:editor id="art_content" value="{$vo.art_content|stripslashes=###}" w='780px' type='kissy'/>
+		  </dd>
+		</dl>
+	</div>
+	<div class="page_btm">
+	  <input type="submit" class="btn_b" value="确定" />
+	</div>
+	</form>
+</div>
+
+</div>
+<include file="Public:_footer" />

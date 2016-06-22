@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/gis
+END
+pma_gis_geometry.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/gis/pma_gis_geometry.php
+END
+pma_gis_linestring.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/gis/pma_gis_linestring.php
+END
+pma_gis_visualization.php
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/gis/pma_gis_visualization.php
+END
+pma_gis_multipolygon.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/gis/pma_gis_multipolygon.php
+END
+pma_gis_multipoint.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/gis/pma_gis_multipoint.php
+END
+pma_gis_factory.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/gis/pma_gis_factory.php
+END
+pma_gis_geometrycollection.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/gis/pma_gis_geometrycollection.php
+END
+pma_gis_polygon.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/gis/pma_gis_polygon.php
+END
+pma_gis_multilinestring.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/gis/pma_gis_multilinestring.php
+END
+pma_gis_point.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/gis/pma_gis_point.php
+END

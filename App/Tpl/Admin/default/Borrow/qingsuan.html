@@ -1,0 +1,100 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+
+<script type="text/javascript"; language="javascript">
+$(function(){
+	$("#button").click(function(){
+		return confirm("是否确认？");
+	    
+})
+	
+	})
+</script>
+<script>
+$(function(){
+	$('input[name=liquidate]').blur(function(){
+	  
+	  if(/^-?\d+\.?\d{0,2}$/.test($(this).val())){
+		
+		var liquidate=parseFloat($(this).val());
+		var borrow_money=parseFloat({$borrow_info.borrow_money});
+		$('input[name=remain]').val(liquidate-borrow_money);
+	  }else{
+	  
+	  $(this).val("");
+	  }
+	})
+})
+</script>
+
+
+
+<div align="center">
+<div style="width:500px;height:50px;"><h1 align="left">清算<h1></div>
+<form action="__ROOT__/admin/borrow/doqingsuan" method="post">
+ <input type="hidden" name="borrow_id" value="{$borrow_info.id}"/>
+ <input type="hidden" name="hmj_id" value="{$hmj.id}"/>
+ <div style="border:1px solid black;width:500px">
+   <table>
+      <tr height="40">
+        <td width="200">黄马甲账户：</td>
+        <td width="150"><input  id="select" class="textinput" readonly value="{$hmj.user_name}"/>
+		</td>
+      </tr>
+      <tr>
+        <td width="200">资金余额：</td>
+        <td>
+		  <input  type="text" id="textfield1"  class="textinput" value="{$hmj.account_money}"/>
+		</td>
+      </tr>
+      <tr>
+        <td width="200">余额清算：</td>
+        <td><input name="liquidate" type="text"  class="textinput"/></td>
+      </tr>
+	  <tr height="40">
+       
+        <td >借款人：</td>
+        <td >{$borrower.user_name}</td>
+        
+      </tr>
+      <tr height="40">
+		<td>结余：</td>
+        <td><input name="remain" type="text" id="textfield1"  class="textinput" /></td>
+      </tr>
+    </table>
+ </div>
+  <div >
+  <p>-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*</p>
+  </div>
+ <div style="border:1px solid black;width:500px">
+   <table>
+     <tr height="40">
+       <td width="200">投资人列表</td>
+       <td width="150">投资人本金</td>
+       
+     </tr>
+	 <volist name="{investors}" id="investor">
+	     <tr height="40">
+		   <td>
+			{$investor.user_name}</td>
+		   <td>
+		    <input name="textfield" type="text" class="textinput" value="{$investor.investor_capital}"/>
+		   </td>   
+		 </tr>
+	 
+	 </volist>
+     <volist name="{debtors}" id="debtor">
+	     <tr height="40">
+		   <td>
+			{$debtor.user_name}</td>
+		   <td>
+		    <input name="textfield" type="text" class="textinput" value="{$debtor.investor_capital}"/>
+		   </td>   
+		 </tr>
+	 
+	 </volist>  	 
+   </table> 
+ </div>
+ <input type="submit"  value="清算" id="button" class="bottoninput1"/>
+ </form>
+</div>

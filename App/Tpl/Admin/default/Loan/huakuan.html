@@ -1,0 +1,81 @@
+<include file="Public:_header" />
+
+<div align="center" class="verifyDiv">
+<div class="container">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>借款人:</th>
+				<th>发标额:</th>
+				<th>实募额:</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				 <td >{$borrower.user_name}</td>
+		 		 <td>{$borrower.loan_amount|num_format=###}</td>
+		 		 <td>{$borrower.has_collect|num_format=###}</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+	<table class="table">
+			<thead>
+				<tr>
+					<th>投资人</th>
+					<th>投资额</th>
+				</tr>
+			</thead>
+			<tbody>
+				<volist name="{investors}" id="investor">
+				<tr>
+				  <td>{$investor.user_name}</td>
+				  <td>{$investor.invest_amount|num_format=###}</td>	
+				</tr>
+				</volist>
+			</tbody>
+
+	</table>
+</div>
+
+
+
+
+
+
+<!-- 	<table class="verifyTab">
+		<tr height="50">
+			<td width="200">借款人:</td>
+			<td width="200">发标额:</td>
+			<td width="200">实募额:</td>
+		</tr>
+		<tr height="50">
+		  <td width="150">{$borrower.user_name}</td>
+		  <td>{$borrower.loan_amount|num_format=###}</td>
+		  <td>{$borrower.has_collect|num_format=###}</td>
+		</tr>
+	</table> -->
+
+
+<!-- 	<table class="verifyTab">
+		<tr height="40">
+		  <td width="200">投资人</td>
+		  <td width="200"> 投资额</td>
+		 
+		</tr>
+		<volist name="{investors}" id="investor">
+		<tr height="40">
+		  <td>{$investor.user_name}</td>
+		  <td>{$investor.invest_amount|num_format=###}</td>
+		
+		</tr>
+		</volist>
+
+	</table>
+   -->
+
+
+	<a onclick="return confirm('划款确认');" class="do" href="__URL__/dohuakuan?id={$borrower.id}">划款</a>
+  
+</div>

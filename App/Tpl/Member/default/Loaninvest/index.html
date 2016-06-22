@@ -1,0 +1,53 @@
+
+<!--<style type="text/css">
+.fontred { color: #005B9F; }
+.infolist { margin: 5px 0 10px 20px; padding: 2px; width: 715px; text-align: left; }
+.infolist table td { height: 28px; }
+.infolist .myfont { color: #ff6500; font-weight: bold; }
+#pager a.current { background-color: #ddd; border: solid 1px #ccc; color: #fff; }
+#pager a:hover { background-color: #ddd; border: solid 1px #ccc; color: red; }
+.tdHeard, .tdContent { border: solid 1px #ccc; }
+.tdHeard { background-image: url(__ROOT__/Style/M/images/thbg.jpg); height: 29px; }
+.divtitle { height: 50px; line-height: 30px; text-align: left; padding-left: 20px; font-size: 12px; text-indent: 20px; margin-top: 8px; margin-bottom: 1PX; }
+#noinfotip .tdContent{width:auto}
+.tdContent a{color:#06F;}
+</style>-->
+
+
+<table id="content" class="table">
+	<thead>
+		<tr>
+			<th>借款项目</th><th>投资金</th><th>投资日</th><th>起息日</th><th>年化利</th><th>投资期</th><th>利息</th><th>备注</th>
+		</tr>
+	</thead>
+	<tbody>
+	<volist name="list" id="vo">
+
+	<tr id="noinfotip" style="">
+		<td class="tdContent"><a target="_blank" href="{$vo.lid|getInvestUrl=###}" title="{$vo.loan_name}">{$vo.lid}{$vo.loan_name}</a></td>
+		<td class="tdContent">{$vo.invest_amount}</td>
+		<td class="tdContent">{$vo.invest_time|date="Y/m/d",###}</td>
+		<td class="tdContent">{$vo.begin_time|date="Y/m/d",###}</td>
+		<td class="tdContent">{$vo.interest_rate}%</td>
+		<td class="tdContent">约{$vo.loan_duration}<if condition="$vo.duration_type eq 1">个月<else/>天</if></td>
+		
+		<td class="tdContent">{$vo['invest_interest']}</td>
+		<td class="tdContent">
+			<if condition="$vo.status lt 7">
+				投资未出账
+				<else/>
+				<a target="_blank" href="__ROOT__/Member/agreement?invest_id={$vo.id}">投资协议</a>
+			</if>
+		
+		</td>
+	</tr>
+	</volist>
+	</tbody>
+</table>
+<div class="row">
+	<div class="col-xs-6">总额:<span class="text-red">￥{$total|default="0"}</span>,共<span class="text-red">{$num|default="0"}</span>笔投标</div>
+	<div data="fragment-{$status}" id="pager" class="text-right col-xs-6 jaxpagebar">{$pagebar}</div>
+</div>
+
+
+

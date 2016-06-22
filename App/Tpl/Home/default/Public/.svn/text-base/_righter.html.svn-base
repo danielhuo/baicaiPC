@@ -1,0 +1,193 @@
+﻿<style type="text/css">
+    .menubar
+        {line-height: 25px;}
+    
+    .menuitem
+        { position: relative; float: left; z-index:9999;}
+    .menuitem .submenu
+        {background: #FFFFFF; border: 1px solid #E7EAEC; position: absolute;width:9.0em;margin-top:-50px;margin-left:-110px;}
+    .menuitem .submenu
+        {display: none;}
+    .menuitem:hover .submenu
+        {display: block;}
+</style>
+<div  style="position: fixed; bottom: 150px; right: 0px; width:50px ; z-index:9999;">
+	<div class="menubar">
+	    <div class="menuitem"style="border:none;height:auto;background:none;">
+	        <div >
+			<img src="__ROOT__/Style/A/images/jixiangwu.png"  style="height:50px;width:50px;"/>
+			  
+			</div>
+	    </div>	
+	</div>
+	<div class="menubar">
+	    <div class="menuitem" >
+	        <div style="margin-top:5px;">
+	        	<img src="__ROOT__/Style/A/images/qqq.png"  style="height:50px;width:50px;"/>
+	        </div>
+	        <div class="submenu" >
+				<div style="font-size:10pt;height:9.5px;">
+					<a class="icoTc" href="http://wpa.qq.com/msgrd?v=3&uin=3083483550&site=qq&menu=yes" target="_blank">客服-白白</a>
+				</div><br>
+				<div style="font-size:10pt;border-top:#E7EAEC solid 1px;height:9.5px;">
+					<a class="icoTc" href="http://wpa.qq.com/msgrd?v=3&uin=3111795998&site=qq&menu=yes" target="_blank">销售-菜菜</a>
+				</div><br>
+				<div style="font-size:10pt;border-top:#E7EAEC solid 1px;height:9.5px;">
+					<a class="icoTc" href="http://wpa.qq.com/msgrd?v=3&uin=2293473403&site=qq&menu=yes" target="_blank">销售-百百</a>
+				</div><br>
+				<div style="font-size:10pt;border-top:#E7EAEC solid 1px;height:9.5px;">
+					<a class="icoTc" href="http://wpa.qq.com/msgrd?v=3&uin=641172504&site=qq&menu=yes" target="_blank">客服-财财</a>
+				</div>
+	        </div>
+	    </div>
+	   
+	</div>
+	<div class="menubar" >
+	    <div class="menuitem">
+	        <div style="margin-top:5px;">
+	        	<img src="__ROOT__/Style/A/images/p.png" style="height:50px;width:50px;"/>
+	        </div>
+	        <div class="submenu" >
+	            <div style="height:50px;font-size:10pt; padding-bottom:20px;"><br>0512-62853600</div>
+	        </div>
+	    </div>
+	    
+	</div>
+
+	<div class="menubar">
+	 	<div class="menuitem">
+	     	<div style="margin-top:5px;">
+	     		<img src="__ROOT__/Style/A/images/share.jpg" style="height:50px;width:50px;"/>
+	     	</div>
+			<div class="submenu" >
+		        <div style="height:20px"><img title="QQ空间" src="__ROOT__/Style/A/images/share.png" onclick="linkto(1);" class="img1"
+				style="margin-left:30px;margin-top:-25px;position:absolute;clip:rect(30px 40px 60px 10px);"
+				/></div><br>
+				<div style="font-size:10pt;border-top:#E7EAEC solid 1px;height:20px"><img class="img2" title="人人网"  src="__ROOT__/Style/A/images/share.png" onclick="linkto(2);" class="img2"
+				style="margin-left:-25px;margin-top:-25px;position:absolute;clip:rect(30px 95px 60px 70px);"
+				/></div><br>
+				<div style="font-size:10pt;border-top:#E7EAEC solid 1px;height:20px"><img title="新浪微博" src="__ROOT__/Style/A/images/share.png" onclick="linkto(3);" class="img3"
+				style="margin-left:-80px;margin-top:-25px;position:absolute;clip:rect(30px 160px 60px
+				124px);"
+				/></div><br>
+				<div style="font-size:10pt;border-top:#E7EAEC solid 1px;height:20px"><img title="腾讯微博" src="__ROOT__/Style/A/images/share.png" onclick="linkto(4);" class="img4"
+				style="margin-left:-140px;margin-top:-25px;position:absolute;clip:rect(30px 205px 60px 184px);"
+				/></div><br>
+				
+	        </div>
+	    </div>
+	   
+	</div>
+	<div class="menubar">
+	    <div style="z-index:9999;float:right;position:fixed; bottom: 95px;right:0px;">
+			<img src="__ROOT__/Style/H/images/top.png"  id="btt" style="height:50px;width:50px;margin-top:5px;"/>
+	    </div>	
+	</div>
+</div>
+<script>		
+	$(
+		function(){
+		    //获取视口高度
+			var cHeight=$(window).height();
+			var sTop=0;
+			var $_btt=$('#btt');
+			var timer=null;
+			var isStop=false;
+			 $_btt.fadeOut(500);
+			//滚动条滚动事件响应
+			$(window).scroll(
+				function(){
+				    //获取滚动条的垂直位置
+					sTop=$(window).scrollTop();
+                 if(isStop==true||sTop==0) 
+								clearInterval(timer);				
+					if(sTop>cHeight)
+						$_btt.fadeIn(500);
+					else $_btt.fadeOut(500);
+					isStop=true;					
+				}
+			);
+			
+			//回到顶部按钮点击事件响应
+			$_btt.click(
+				function(){
+				    isStop=false;
+					timer=setInterval(function(){												 		
+					        $(window).scrollTop(0);						
+							isStop=false;
+				          },50);
+			    }				
+			);
+			
+			$(".img1").mouseover(
+				function(){
+				   $(".img1").css({"clip":"rect(70px 40px 100px 10px)",
+				   "margin-top":"-60px"});
+				}
+			);
+			$(".img1").mouseout(
+				function(){
+				   $(".img1").css({"clip":"rect(30px 40px 60px 10px)",
+				   "margin-top":"-25px"});
+				}
+			);
+			
+				$(".img2").mouseover(
+				function(){
+				   $(".img2").css({"clip":"rect(70px 95px 100px 70px)",
+				   "margin-top":"-60px"});
+				}
+			);
+			$(".img2").mouseout(
+				function(){
+				   $(".img2").css({"clip":"rect(30px 95px 60px 70px)",
+				   "margin-top":"-25px"});
+				}
+			);
+			
+			
+			
+			$(".img3").mouseover(
+				function(){
+				   $(".img3").css({"clip":"rect(65px 160px 100px 124px)",
+				   "margin-top":"-60px"});
+				}
+			);
+			$(".img3").mouseout(
+				function(){
+				   $(".img3").css({"clip":"rect(30px 160px 60px 124px)",
+				   "margin-top":"-25px"});
+				}
+			);
+			
+			
+			$(".img4").mouseover(
+				function(){
+				   $(".img4").css({"clip":"rect(70px 205px 100px 184px)",
+				   "margin-top":"-60px"});
+				}
+			);
+			$(".img4").mouseout(
+				function(){
+				   $(".img4").css({"clip":"rect(30px 205px 60px 184px)",
+				   "margin-top":"-25px"});
+				}
+			);	
+		}
+	);
+	function linkto(id){
+		if(id==1){
+		//alert($(".img1").width());
+		location.href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.baicai58.com&title=百财网，最好用的P2P网贷网站&pics=&summary=";
+		}
+		if(id==2){
+		location.href="http://widget.renren.com/dialog/share?resourceUrl=http://www.baicai58.com&srcUrl=http://www.baicai58.com&title='百财网，最好用的P2P网贷网站'&pic=&description=";
+		}
+		if(id==3){
+		location.href="http://v.t.sina.com.cn/share/share.php?url=http://www.baicai58.com&title='百财网,最好用的P2P网贷网站'";
+		}
+		if(id==4){
+		location.href="http://v.t.qq.com/share/share.php?url=http://www.baicai58.com&title='百财网,最好用的P2P网贷网站'";
+		}	
+	}
+</script>

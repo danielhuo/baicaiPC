@@ -1,0 +1,372 @@
+﻿<include file="Public:_header_common" />
+<title>{$glo.index_title}</title>
+<meta name="keywords" content="{$glo.web_keywords}" />
+<meta name="description" content="{$glo.web_descript}" />
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/home.css" />
+<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>
+<script type="text/javascript">
+var Transfer_invest_url = "__APP__/tinvest";
+</script>
+<script type="text/javascript" src="__ROOT__/Style/H/js/area.js"></script>
+<include file="Public:_header_main" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+	$(function(){
+		$('#dw_ul li a:eq(3)').attr('class','nowNavItem');
+	
+	});
+	var url = window.location.href;
+	if(url)var allargs = url.split("?")[1];
+	if(allargs)var tab1= allargs.split("=")[1];
+	if(tab1)var tab= tab1.split("&")[0];
+
+	$(function(){ 
+		if(tab==9){
+			$('#a1').addClass("show_style");
+		}
+		if(tab==4){
+			$('#a2').addClass("show_style");
+			$('#a1').removeClass("show_style");
+		}
+		if(tab==6){
+			$('#a3').addClass("show_style");
+			$('#a1').removeClass("show_style");
+		};
+		if(tab==7){
+			$('#a4').addClass("show_style");
+			$('#a1').removeClass("show_style");
+		};
+		if(tab==10){
+			$('#a5').addClass("show_style");
+			$('#a1').removeClass("show_style");
+			$('#black').attr('style','display:block');
+			$('#con').attr('style','display:none');
+		};
+	});
+
+</script>
+<script type="text/javascript">
+function buy_debt(invest_id)
+{
+	//alert("/debt/buydebt?invest_id="+invest_id);
+    $.jBox("get:__URL__/buydebt?invest_id="+invest_id, {
+        title: "购买债权",
+        width: "auto",
+        buttons: {}
+    });
+}
+</script>
+<div>
+<div style="width:1000px; margin:10px auto 10px;border:#E7EAEC;">
+<div style=" margin:10px auto 10px;padding-bottom:10px;float:left; width:727px ">
+<div class="list_banner" style="width:727px">
+  <div class="list_banner_left" style="background-color:#f9f9f9 ">
+    <div class="list_banner_left_l">
+      <h2>筛选理财项目</h2>
+      <ul>
+        <li class="saixuanlx">标的状态</li>
+        <php>foreach($searchMap['borrow_status'] as $key=>$v){</php>
+        <php>if($key==$searchUrl['borrow_status']['cur']){</php>
+        <li class="buxz"><a>{$v}</a></li>
+        <php>}else{</php>
+        <li><a class="a_lb_2" href="__URL__/index.html?type=search&{$searchUrl.borrow_status.url}&borrow_status={$key}">{$v}</a></li>
+        <php>}</php>
+        <php>}</php>
+      </ul>
+      <!--<ul class="dierge">
+        <li  class="saixuanlx">信用等级</li>
+        <php>foreach($searchMap['leve'] as $key=>$v){</php>
+        <php>if($key==$searchUrl['leve']['cur']){</php>
+        <li class="buxz"><a>{$v}</a></li>
+        <php>}else{</php>
+        <li><a class="a_lb_2" href="__URL__/index.html?type=search&{$searchUrl.leve.url}&leve={$key}">{$v}</a></li>
+        <php>}</php>
+        <php>}</php>
+      </ul>-->
+      <ul>
+        <li class="saixuanlx">借款期限</li>
+        <php>foreach($searchMap['borrow_duration'] as $key=>$v){</php>
+        <php>if($key==$searchUrl['borrow_duration']['cur']){</php>
+        <li class="buxz"><a href="__ROOT__/invest/index.html">{$v}</a></li>
+        <php>}else{</php>
+        <li><a class="a_lb_2" href="__URL__/index.html?type=search&{$searchUrl.borrow_duration.url}&borrow_duration={$key}">{$v}</a></li>
+        <php>}</php>
+        <php>}</php>
+      </ul>
+      <!--<ul style="border-bottom:none;">
+        <form name="searchform" action="__URL__/index" method="get">
+          <li  class="saixuanlx">关键词搜索:</li>
+          <li style="width:280px;">
+            <htmlA:radio id="is_keyword" value="key|searchMap.is_keyword" default="0|不限制,1|借款用户,2|借款名称"/>
+          </li>
+          <li>
+            <input class="searchkeywords" name="searchkeywords" type="text"    value="{$searchMap.searchkeywords}" style="margin-top:6px;"/>
+          </li>
+          <li>
+            <input type="submit" name="btnSubmit" id="btnSubmit" value=" " style="height:29px; margin-left:77px; margin-top:3px; cursor: pointer;" class="btn">
+          </li>
+        </form>
+      </ul>-->
+    </div>
+  </div>
+</div>
+
+
+<div class="list_main main" style="width:727px">
+  <div class="list_main_top" style="width:727px">
+  <div class="wleft" style="width:727px"><h3 class="title_03">债权转让列表<a id="wpass" class="more" href="/tools/tool.html">理财计算器</a></h3> </div>
+
+</div>
+    <ul  style="border:#E7EAEC solid 1px;float:left;width:727px">
+      <volist name="list.data" id="vb">
+        <li>
+          <div style="height:130px;margin-left:auto;margin-right:auto;width:690px;margin-top:10px;">
+		  <div style="border-top:#E7EAEC solid 1px;border-left:#E7EAEC solid 1px;border-bottom:#E7EAEC solid 1px;float:left;width:123px;height:130px;">
+		  <div style="margin-left:auto;margin-right:auto;margin-top:5px;width:110px;height:100px;"> <img style="width: 100px; height: 100px;"  src="{$vb.uid|get_avatar=###}"/></div>
+          <!-- <div style="width:123px;height:55px;"><img style="margin-top:13px;" src="../../../../Style/H/images/awh.png" ></div>   -->
+		  </div>
+		  
+		  <div style="float:left;border:1px solid #E7EAEC;height:130px;width:560px">
+		  <div style="width:413;margin-top:5px;"><span>&nbsp;&nbsp;<a href="{$vb.id|getInvestUrl=###}"title="{$vb.borrow_name}" class="BL_name">JK{$vb.id}&nbsp;{$vb.borrow_name|cnsubstr=###,12}</a></span>
+		  </div>
+          
+		  <div  style="margin:0 auto;margin-top:5px;width:560px;height:100px; border-top:#E7EAEC solid 1px;" >
+		  <ul align="center">
+		  <li style="height:100px ;float:left;width:80px"><div class="dengji" style="margin-top:5px;">年利率</div>
+		  <div width="110" class="dengji" style="margin-top:5px;"><span style="color:#de002a" class="BL_time">{$vb.borrow_interest_rate}</span>&nbsp;%</div>
+		  </li>
+		  <li style="height:100px ;float:left;width:140px"><div class="dengji" style="margin-top:5px;">转让价格</div>
+		  <div width="100" class="dengji" style="margin-top:5px;"><span style="color:#de002a" class="BL_time">{$vb.transfer_price|getMoneyFormt=###}</span>&nbsp;元</div>
+		  </li>
+		  <li style="height:100px ;float:left;width:160px"><div class="dengji" style="margin-top:5px;">待收本息</div>
+		  <div width="100" class="dengji" style="margin-top:5px;"><span style="color:#de002a"class="BL_time">{$vb.money|getMoneyFormt=###}</span>&nbsp;元</div>
+		  </li>
+		  <li style="height:100px ;float:left;width:80px；height:100px">
+		  <div width="420px"  style="margin-top:30px" class="dengji"><if condition="$vb.status eq '2'"> 
+		  <!--<a href="{$vb.id|getInvestUrl=###}">-->
+		  <a href="/invest/detail?id={$vb.id}&invest_id={$vb.invest_id}">
+		  <img  onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"src="__ROOT__/Style/H/images/status/shourang.png" /></a><elseif condition="$vb.status eq '4'"/><img  class="anNiuHKZ" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"src="__ROOT__/Style/H/images/status/ywc.gif"  /> </if>
+		  </div>
+		  </li>		  
+		  </ul>
+		  </div>
+			  </div>
+			  </div>
+			  </li>
+			  </volist>
+			  </ul>
+
+</div>
+<div class="list_bottom">
+  <div class="list_bottom_right">
+    <ul>
+      {$list.page}
+    </ul>
+  </div>
+</div>
+</div>
+<!-- 侧面开始结束  --> 
+<div class="bd-5-r">
+    <div class="bd-5-r1">
+    	<dl class="t1">
+        	<dt>专属客服</dt>
+            <dd>全程协助解决流程中的问题</dd>
+        </dl>
+        <dl class="t2">
+        	<dt>资金管理</dt>
+            <dd>封闭管理，专款专用</dd>
+        </dl>
+        <dl class="t3">
+        	<dt>100元起投</dt>
+            <dd>投资零门槛，简单又轻松</dd>
+        </dl> 
+    </div>
+      <div class="bd-5-r2">
+    	<h3><a href="__ROOT__/bangzhu/index.html">更多></a>新手投钱攻略</h3>
+        <ul>
+        	<li><a href="__ROOT__/bangzhu/index.html">如何注册、激活本平台账户？</a></li>
+            <li><a href="__ROOT__/bangzhu/index.html">如何充值？</a></li>
+            <li><a href="__ROOT__/bangzhu/index.html">如何开始理财投资？</a></li>
+            <li><a href="__ROOT__/bangzhu/index.html">如何提现？</a></li>
+        </ul>
+    </div>
+    <div class="bd-5-r2">
+    	<h3>最新转入 </h3>                      
+        <div class="oll">
+            <ol>
+				<li>
+					<span>
+						<i></i>
+            					
+					</span>
+            		<strong></strong>
+			    </li>
+				<li>
+				    <span>
+            		    <i></i>
+            					
+            		</span>
+            		<strong></strong>
+            	</li>
+        		<li>
+				    <span>
+            		    <i></i>           		
+            		</span>
+            	    <strong></strong>
+            	</li>
+        	    <li>
+				    <span>
+            			<i></i>		
+            		</span>
+            		<strong></strong>
+            	</li>
+        		<li>
+				    <span>
+            		    <i></i>			
+            		</span>
+            		<strong></strong>
+            	</li>
+        	    <li>
+				    <span>
+            		    <i></i>	
+            		</span>
+            		<strong></strong>
+				</li>
+				<li>
+				    <span>
+						<i></i>			
+					</span>
+					<strong></strong>
+				</li>
+        		<li>
+				    <span>
+            		    <i></i>	
+            		</span>
+            		<strong></strong>
+            	</li>
+        		<li>
+				    <span>
+            			<i></i>		
+            		</span>
+            		<strong></strong>
+            	</li>
+        		<li>
+				    <span>
+            			<i></i>			
+            	    </span>
+            		<strong></strong>
+            	</li>
+        	</ol>
+        </div>
+        <script>
+		$(function(){
+            //循环轮播
+            var divObj = $('.oll');  
+			var ulObj = $('.oll ol');
+			var liObj = $('.oll ol li');			
+			var strObj =ulObj.find('strong');
+			var iObj =ulObj.find('i');
+			var jine=[100,200,300,500,800,1000,200,5000,10000,20000];
+			var phone=["139*****182",
+					   "159*****769",
+					   "189*****404",
+					   "189*****687",
+					   "189*****629",
+					   "158*****546",
+					   "139*****276",
+					   "159*****765",
+					   "139*****209",
+					   "158*****532"];
+			strObj.each(function(){		    
+						var n=parseInt(Math.random()*10);     
+						$(this).text(jine[n]);
+					});
+			iObj.each(function(){
+			            var date=new Date();
+						var hours=date.getHours();
+						var minutes=date.getMinutes();
+						var seconds=date.getSeconds();
+						if(hours<10)hours="0"+hours;
+						if(minutes<10)minutes="0"+minutes;
+						if(seconds<10)seconds="0"+seconds;
+						$(this).text(hours+":"+minutes+":"+seconds);
+						var n=parseInt(Math.random()*10);
+						$(this).after(phone[n])
+					});
+			var ulObjH = ulObj.outerHeight(true);  
+			var liObjH = ulObj.children('li').outerHeight(true);  
+			/*  setInterval(function(){  
+							ulObj.animate({top:'+'+liObjH+'px'},500,function(){  
+							ulObj.css({top:0}).children('li').last().after(ulObj.children('li').first());    					
+							});
+							strObj.each(function(){	    
+								var n=parseInt(Math.random()*7);     
+								$(this).text(jine[n]);
+							});
+							var timeRed=0;
+							var nowDate=new Date();
+							iObj.each(function(){
+								timeRed+=parseInt(Math.random()*1000*10);
+								var needDate=new Date(nowDate-timeRed);  
+								var hours=needDate.getHours();
+								var minutes=needDate.getMinutes();
+								if(hours<10)hours="0"+hours;
+								if(minutes<10)minutes="0"+minutes;
+								$(this).text(hours+":"+minutes);
+							});
+							},3*1000);*/
+				setInterval(function(){
+					var nowDate=new Date();
+					var n=parseInt(Math.random()*10);
+					var timeRed=1000*n/4;
+					var needDate=new Date(nowDate-timeRed); 
+					var hours=needDate.getHours();
+					var minutes=needDate.getMinutes();
+					var seconds=needDate.getSeconds();
+					if(hours<10)hours="0"+hours;
+					if(minutes<10)minutes="0"+minutes;
+					if(seconds<10)seconds="0"+seconds;
+					liObj.remove(':last-of-type');
+					ulObj.prepend("<li><span><i>"+
+						   hours+":"+minutes+":"+seconds+
+						   "</i>"+phone[n]+"</span><strong>"+jine[n]+"</strong></li>");
+				},3000);
+			})       
+        </script>
+    </div>	
+</div>
+
+<!-- 侧面结束  --> 
+
+
+
+
+</div>
+
+</div>
+
+  <script language="javascript">
+	$(function() {
+		$(".borrowlistp").bind("mouseover", function(){
+			$(this).css("background", "#fce8e1");
+		})
+
+		$(".borrowlistp").bind("mouseout", function(){
+			$(this).css("background", "#fff");
+		})
+
+
+		$(".borrowlistl").bind("mouseover", function(){
+			$(this).css("background", "#f8f8f8");
+		})
+
+		$(".borrowlistl").bind("mouseout", function(){
+			$(this).css("background", "#fff");
+		})
+	});
+
+</script>
+								
+<!--中部结束-->
+<include file="Public:_righter" />	
+<include file="Public:_footer" />

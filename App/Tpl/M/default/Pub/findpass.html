@@ -1,0 +1,94 @@
+<include file="Pub:header" />
+	<div class="form form-getPwd">
+        <div class="form-group form-alert text-center"  id="formAlert"></div>
+        <div class="form-group input-group">
+        	<label class="input-group-addon">您的手机号</label>
+            <input type="text" id="phone" maxlength="11" class="form-control input-lg">
+        </div>
+        <div class="form-group input-group">
+        	<label class="input-group-addon">短信验证码</label>
+            <input type="text" class="form-control input-lg"  maxlength=6 id="verify">
+            <a class="input-group-addon" id="getVerifyCode">获取验证码</a>
+        </div>
+        <div class="form-group input-group">
+        	<label class="input-group-addon">设置新密码</label>
+            <input type="password" id="password"  placeholder="6-12位字母、数字" maxlength=12 class="form-control input-lg">
+        </div>
+        <div class="form-group container">
+            <button id="getPwdBtn" class="btn btn-warning btn-block btn-lg">修改</button>
+        </div>
+	</div>
+<script language="javascript">
+	var mbTest = /^(13|14|15|18)[0-9]{9}$/;
+	var $alert=$("#formAlert");
+	var isSending=false;
+	$(function(){
+		$("#getVerifyCode").click(function() {
+			if (isSending) return false;
+			var $this=$(this);
+			var phone= $('#phone').val();
+			if (!phone) return formAlert("请输入手机号",$alert,"warning");	
+			if (mbTest.test(phone)) {
+				$this.addClass("disBtn").text("发送中...");
+				isSending=true;
+				$.ajax({
+					url: "__URL__/sendphone/",
+					type: "post",
+					dataType: "json",
+					async : false,
+					data: {"phone":phone,"type":1},
+					success: function(d) {
+						second = 60;
+						if (d.status == 0) {
+							timer = setInterval(function(){
+								$this.text(second--+"s可重发");
+	                            if (second < 1) {
+	                                $this.text("重新发送");
+	                                clearInterval(timer);
+	                                isSending=false;
+	                            }
+							},1000);
+						}else{
+							formAlert(d.message,$alert,"danger");
+							$this.removeClass("disBtn").text("获取验证码");
+							isSending=false;
+						}
+					}
+				});
+			}
+			else {
+				formAlert("手机号格式不正确",$alert,"danger");
+			}
+		})
+		$('#getPwdBtn').click(function(){
+			var phone = $.trim($("#phone").val());
+			var password = $.trim($("#password").val());
+			var verify =  $.trim($("#verify").val());
+			if(!mbTest.test(phone))
+				return formAlert("手机号格式不正确",$alert,"danger");
+			if(verify.length!=6)
+	            return formAlert("请输入6位验证码",$alert,"danger"); 
+			if(!password||password.length<6||password.length>12)
+	            return formAlert("请输入6-12位密码",$alert,"danger"); 
+			$.ajax({
+	            type: "POST",
+	            url: "__URL__/changepw",
+				dataType: "json",
+				async : false,
+	            data: {"phone":phone,"password":password,"verify":verify},
+	            success: function(e) {
+	                if(e.status==0){
+						formAlert(e.message,$alert,"success");
+	                    window.location.href = "{:U('M/user/index')}" ;
+	                }else{
+	                    return formAlert(e.message,$alert,"danger");   
+	                } 
+	            },
+	            error: function(e) {
+	                return formAlert("提交发生错误,请重试",$alert,"danger");   
+	            }
+	        })
+		});
+	})
+</script>
+﻿<include file="Pub:footer" />

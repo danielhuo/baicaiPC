@@ -1,0 +1,64 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+	var delUrl = '__URL__/doDel';
+	var addUrl = '__URL__/add';
+	var isSearchHidden = 1;
+</script>
+<div class="so_main">
+  <div class="page_tit">复审待审核借款</div>
+<!--搜索/筛选会员-->
+  <include file="search" />
+<!--搜索/筛选会员-->
+
+  <div class="Toolbar_inbox">
+  	<div class="page right">{$pagebar}</div>
+    <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索/筛选借款" style="search_action" />
+  </div>
+  
+  <div class="list">
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th style="width:30px;">
+        <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+        <label for="checkbox"></label>
+    </th>
+	<th class="line_l">标题</th>
+    <th class="line_l">融资人</th>
+    <th class="line_l">发标额</th>
+	<th class="line_l">实募额</th>
+	<th class="line_l">年利率</th>
+	<th class="line_l">年费率</th>
+    <th class="line_l">借款期限</th>
+    
+    <th class="line_l">操作</th>
+  </tr>
+  <volist id="vo" name="list">
+      <tr overstyle='on' id="list_{$vo.id}">
+        <td><input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.id}"></td>
+        <td><a href="__APP__/Loaninvest/detail?id={$vo.id}" title="{$vo.name}" target="_blank">JK{$vo.id}&nbsp;{$vo.loan_name|cnsubstr=###,12}</a></td>
+        <td><htmlA:user id="vo.borrow_uid" uname="vo.user_name" /></td>
+        <td>{$vo.loan_amount|num_format=###}</td>
+		<td>{$vo.has_collect|num_format=###}</td>
+        <td>{$vo.interest_rate}%</td>
+		<td>{$vo.fee_rate}%</td>
+        <td>{$vo.loan_duration}<if condition="$vo.duration_type eq 1">个月<else/>天</if></td>
+       
+        <td>
+            <a href="__URL__/edit?id={$vo['id']}">审核</a> 
+			<a href="/admin/loan/doinvest?id={$vo.id}">投资人记录</a>
+        </td>
+      </tr>
+  </volist>
+  </table>
+
+  </div>
+  
+  <div class="Toolbar_inbox">
+  	<div class="page right">{$pagebar}</div>
+    <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索/筛选借款" style="search_action" />
+  </div>
+</div>
+
+
+<include file="Public:_footer" />

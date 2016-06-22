@@ -1,0 +1,445 @@
+<include file="Public:_header_common" />
+<title>项目详情</title>
+<script language=javascript type="text/javascript" src="__ROOT__/Style/Js/jquery-1.12.1.min.js"></script> 
+<script src="__ROOT__/Style/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/fancybox/jquery.fancybox-1.3.2.css" media="screen" />
+<include file="Public:_header_main" />
+<style type="text/css">
+.panel-title{font-size: 18px;color:#666;}
+.tab-content{min-height:300px;background-color: #fff;padding:30px 20px;}
+
+.box{box-shadow:0 0 1px 0px silver;overflow:hidden;height:300px;text-align:center;position:relative;display:table;width:500px;margin:10px 100px 30px;}
+.box .pre{
+	position:absolute;left:0;height:100%;width:60px;background:#CCC url(/Style/H/images/arrow_left.png) no-repeat center center;
+}
+.box .next{
+	position:absolute;right:0;height:100%;width:60px;background:#CCC url(/Style/H/images/arrow_right.png) no-repeat center center
+
+}
+.box .pre:hover,.box .next:hover{
+	background-color: #8deeee;
+
+}
+.box .pagebar{
+	position:absolute;bottom:10px;left:0;width:100%;text-align:center;z-index:1;
+
+}
+.box .imgBox{
+	display:table-cell;vertical-align:middle;width:50%;overflow:hidden;
+
+}
+.box .total{background-color:inherit;}
+
+.panel{margin-top: 20px;}
+.panel-warning .fa{
+	color:#FF9966;
+	margin:20px auto;
+}
+.panel-warning .fa-angle-right{
+	color:#ff9;
+}
+.panel-body{padding:20px;}
+.panel-body .row{height: 50px;}
+.form-group{margin-bottom:30px;}
+</style>
+<script>
+	$(function(){
+		$('#dw_ul li a:eq(1)').attr('class','nowNavItem');
+
+		/*详情图片开始*/
+		var a=<?php echo json_encode($images);?>;
+		var totals=new Array();
+		var nowIndexs=new Array();
+		for (var i = a.length - 1; i >= 0; i--) {
+			if(!a[i]) continue;
+			totals[i]=a[i].length;
+			nowIndexs[i]=0;
+		};
+		
+		$(".box").each(function(index){
+			$(this).find(".total").text(totals[index]);
+			var that=$(this);
+			that.find(".pre,.next").click(function(){
+				var der=$(this).attr("class")=="pre"?-1:1;
+				nowIndexs[index]=(nowIndexs[index]+der+totals[index])%totals[index];
+				that.find(".nowIndex").text(nowIndexs[index]+1);
+			    var imgBox=that.find(".imgBox");
+			    imgBox.attr("href","__ROOT__/"+a[index][nowIndexs[index]].url);
+				imgBox.children("img").attr("src","/"+a[index][nowIndexs[index]].thumb_url);
+			})
+		})
+		/*详情图片结束*/
+	    
+		$('#investForm').on('show.bs.modal', function () {
+  			$login=<?php echo $_SESSION['u_id']?$_SESSION['u_id']:0;?>;
+		
+			if(!$login){
+				alert("请先登录");
+	            window.location.href="__APP__/member/common/login";
+	            return false;
+			}else{
+				$.ajax({
+					url: "__URL__/investcheck",
+					dataType: "json",
+					success: function(d) {	 
+						if (d.status == 1) {
+							alert("请先登录");
+						     window.location.href="__APP__/member/common/login";
+						}
+						else if(d.status == 2)// 无担保贷款多次提醒
+						{
+							alert("请先手机认证");
+						    window.location.href="__APP__/member/verify?id=1#fragment-2";
+
+						}
+						else if(d.status == 3)// 无担保贷款多次提醒
+						{
+						    alert("请先实名认证");
+						    window.location.href="__APP__/member/verify?id=1#fragment-3";
+						}else{
+
+							$("#account").text(d.message);
+
+						}
+					}
+				});
+			
+			}
+		}).on('hide.bs.modal', function () {
+  			$(this).find('input').val('');
+		});
+		$("#doinvest").click(function(){
+				 var pin = $("#pin").val();				
+		         var money = $("#investVal").val();	
+		         var id = {$loan.id};	
+				 var total=$("#account").val();
+				 var type ={$loan.loan_type};
+				 var status = {$loan.status};
+				if(!money){
+					alert("请输入购买金额");  
+					return false;
+				}
+               	var re = /^[1-9]\d*$/;  
+				if (!re.test(money)){  
+					alert("请输入正整数");  
+					return false; ;
+				}
+				if(!pin){
+					alert("请输入支付密码");  
+					return false;
+				}
+			
+				$.ajax({
+				  	url: "__URL__/toinvest",
+				  	type: "post",
+				  	dataType: "json",
+				  	async: false,
+				  	data: {"money":money,'pin':pin,'id':id,'total':total,'status':status},
+				 	success: function(d) {
+				 		alert(d.message);
+						if (d.status == 1) 
+							window.location.href="__APP__/member/user#fragment-1";
+						else if(d.status == 3)
+						 	window.location.href="/member/charge#fragment-1";
+						else if(d.status==0)
+							window.location.href="__URL__/detail?id={$loan.id}";
+					  }
+				  });
+			})		
+	})
+
+</script>
+
+<div>
+	<div class="modal fade" id="investForm" tabindex="-1" role="dialog" 
+	   aria-labelledby="myModalLabel" aria-hidden="true">
+	   	<div class="modal-dialog">
+	      	<div class="modal-content">
+	         	<div class="modal-header">
+	           		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+	                	&times;
+	            	</button>
+	           		 <h4 class="modal-title" id="myModalLabel">投标支付</h4>
+	         	</div>
+	         	<div class="modal-body form-horizontal" >
+	         		<div class="form-group">
+	         			<label for="account" class="col-sm-3 col-sm-offset-1 control-label">您的账户金额为 : </label>
+						<div class="col-sm-6">
+	         				<label id="account" class="amount control-label"></label>
+	         			</div>
+	         		</div>
+	         		<div class="form-group">
+	         			<label for="investVal" class="col-sm-3 col-sm-offset-1 control-label">投标金额 :</label>
+	         			<div class="col-sm-6">
+	         				<input type="text" name="investVal" id="investVal" class="form-control">
+	         			</div>
+	         			
+	         		</div>
+	         		<div class="form-group">
+	         			<label for="pin" class="col-sm-3 col-sm-offset-1 control-label">支付密码 :</label>
+	         			<div class="col-sm-6">
+	         				<input type="password" name="pin" id="pin" class="form-control">
+	         			</div>
+	         		</div>
+	        	</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" 
+					   data-dismiss="modal">取消
+					</button>
+					<button type="button" class="btn btn-primary" id="doinvest">
+					   提交
+					</button>
+				</div>
+	      	</div>
+		</div>
+	</div>
+	
+	<div class="panel panel-danger container">
+   		<div class="panel-heading row">
+     		<h2 class="panel-title">
+         		JK{$loan.id} {$loan.loan_name}
+      		</h2>
+  		</div>
+	   	<div class="panel-body row">
+			<div class="row">
+				<div class="col-md-4 col-xs-4">
+					预期年化 : <span class="amount">{$loan.interest_rate}</span> %
+				</div>
+				<div class="col-md-4 col-xs-4">
+					募集金额 : <span class="amount">{$loan.loan_amount|num_format=###}</span> 元
+				</div>
+				<div class="col-md-4 col-xs-4">
+					投资期限 : <small>约</small><span class="amount">{$loan.loan_duration}</span><small>天</small>
+				</div>
+	      	</div>
+	      	<div class="row">
+				<div class="col-md-4 col-xs-4">
+					还需资金 : <span class="amount">{$loan['need']|num_format=###}</span>元
+				</div>
+				<div class="col-md-4 col-xs-4">
+					募集截止 : <span style="color:#CC0000;" id="loan_time" >-- 天 -- 小时 -- 分 -- 秒</span>
+				</div>
+				<div class="col-md-4 col-xs-4">
+					<if condition="$loan.status neq '2'">
+						<button type="button" class="btn btn-default">投标已结束</button>
+					<else />
+						<button type="button" data-toggle="modal" 
+  						data-target="#investForm" id="toinvest" class="btn btn-info">
+   							立即投标
+   						</button>
+					</if>
+				</div>
+	      	</div>
+	      	<div class="row">
+				<div class="col-md-4 col-xs-4">
+					投标金额 : {$loan.min_invest|num_format=###}元起投
+				</div>
+				<div class="col-md-4 col-xs-4">
+					计息方式 : {$loan.repay_type}
+				</div>
+	      	</div>
+	  	</div>
+	</div>
+	
+	
+				
+	<div class="panel panel-warning container">	
+		<div class="panel-heading row">
+     		<h2 class="panel-title">
+         		时间轴
+      		</h2>
+  		</div>
+		<div class="panel-body row" style="text-align: center;padding-left:0px;">
+			<div class="col-md-2 col-xs-2">
+				<i class="fa fa-file-text fa-4x"></i>
+				<h5>发布日</h5>
+				<span style="font-size: 10px;">{$loan.birth_time}</span>	
+			</div>
+			<div class="col-md-2 col-xs-2">
+				<div class="row">
+					<div class="col-md-4 col-xs-4">
+						<i class="fa fa-angle-right fa-4x"></i>
+					</div>
+					<div class="col-md-8 col-xs-8">
+						<if condition="$loan.status egt 6">
+						<i class="fa fa-line-chart fa-4x"></i>
+						<h5>起息日</h5>
+						<span style="font-size: 10px;">{$loan.interest_time}</span>	
+						<else/>
+						<i class="fa fa-line-chart fa-4x" style="color:gray;"></i>
+						<h5>起息日</h5>
+						<span style="font-size: 10px;">{$loan.interest_time}</span>
+						</if>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-md-2 col-xs-2">
+				<div class="row">
+					<div class="col-md-4 col-xs-4">
+						<i class="fa fa-angle-right fa-4x"></i>
+					</div>
+					<div class="col-md-8 col-xs-8">
+						<if condition ="$schedule.cancel_warrants eq null or $schedule.cancel_warrants eq 0">	
+					<i class="fa fa-chain-broken fa-4x" style="color:gray;"></i>
+					<h5>注销抵押权</h5>	
+				<else/>
+					<i class="fa fa-chain-broken fa-4x" ></i>
+					<h5>注销抵押权</h5><span style="font-size: 10px;">{$schedule.cancel_warrants}</span>
+				</if>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-md-2 col-xs-2">
+				<div class="row">
+					<div class="col-md-4 col-xs-4">
+						<i class="fa fa-angle-right fa-4x"></i>
+					</div>
+					<div class="col-md-8 col-xs-8">
+						<if condition ="$schedule.fund_trust eq null or $schedule.fund_trust eq 0">	
+					<i class="fa fa-exchange fa-4x" style="color:gray;"></i>
+					<h5>资金托管</h5>	
+				<else/>
+					<i class="fa fa-exchange fa-4x" ></i>	
+					<h5>资金托管</h5><span style="font-size: 10px;">{$schedule.fund_trust}</span>
+				</if>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-md-2 col-xs-2">
+				<div class="row">
+					<div class="col-md-4 col-xs-4">
+						<i class="fa fa-angle-right fa-4x"></i>
+					</div>
+					<div class="col-md-8 col-xs-8">
+						<if condition ="$schedule.reowner eq null or $schedule.reowner eq 0 ">	
+					<i class="fa fa-file-text fa-4x" style="color:gray;"></i>	
+					<h5>过户</h5>	
+				<else/>
+					<i class="fa fa-file-text fa-4x" ></i>	
+					<h5>过户</h5><span style="font-size: 10px;">{$schedule.reowner}</span>
+				</if>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-md-2 col-xs-2">
+				<div class="row">
+					<div class="col-md-4 col-xs-4">
+						<i class="fa fa-angle-right fa-4x"></i>
+					</div>
+					<div class="col-md-8 col-xs-8">
+						<if condition="$loan.status egt 8">
+						<i class="fa fa-money fa-4x"></i>
+						<h5>收款日</h5>
+						<span style="font-size: 10px;">{$loan.finish_time}</span>
+						<else/>
+						<i class="fa fa-money fa-4x" style="color:gray;"></i>
+						<h5>预期收款日</h5>
+						<span style="font-size: 10px;">{$loan.finish_time}</span>
+			    		</if>
+					</div>
+				</div>
+					
+			</div>
+		</div>	
+	</div>		
+	
+	<div class="container">
+		<ul id="myTab" class="nav nav-tabs row">
+   			<li class="active"><a href="#home" data-toggle="tab">项目介绍</a></li>
+   			<li><a href="#ios" data-toggle="tab">资料审核</a></li>
+  			<li><a href="#Java" data-toggle="tab">投资记录</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content row">
+			<div class="tab-pane fade in active" id="home">
+			  {$loan.loan_detail}
+			</div>
+			<div class="tab-pane fade" id="ios">
+			  <volist name="images" id="im">
+							<notempty name="im">
+							<h4>{$img_types.$key}</h4>
+							<div class="box">
+								<a class="pre"></a>
+								<a class="imgBox" target="_blank" href="__ROOT__/{$im[0].url}">
+									<img src="__ROOT__/{$im[0].thumb_url}" />
+								</a>
+								<div class="pagebar">
+									<span class="nowIndex">1</span>/<span class="total"></span>
+								</div>
+								<a class="next"></a>
+							</div>
+							</notempty>
+							
+						</volist>
+			</div>
+	   		<div class="tab-pane fade" id="Java">
+	      		<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>投资人</th><th>投资时间</th><th>投资金额</th>
+							</tr>
+						</thead>
+						<tbody>
+							<volist name="list.list" id="vb">
+							<tr >
+								<td>{$vb.user_name|hidecard=###,4}</td>
+								<td>{$vb.invest_time|date="Y/m/d",###}</td>
+								<td>{$vb.invest_amount|num_format=###}</td>
+							</tr>
+							</volist> 
+							
+						</tbody>
+						
+				</table>
+	   		</div>
+	   
+		</div>
+	</div>
+	
+</div>
+
+<script type="text/javascript">
+	var seconds;
+	var pers = {$loan.progress|default=0}/100;
+	var timer=null;
+	if (pers >= 1) {
+		$("#loan_time").html("募集已经结束！");
+		$("#toinvest").hide();
+	}else{
+		$("#toinvest").hide();
+		setLeftTime();
+	}
+	function setLeftTime() {
+		seconds = parseInt({$loan.lefttime}, 10);
+		timer = setInterval(showSeconds,1000);
+	}
+	
+	function showSeconds() {
+		var day1 = Math.floor(seconds / (60 * 60 * 24));
+		var hour = Math.floor((seconds - day1 * 24 * 60 * 60) / 3600);
+		var minute = Math.floor((seconds - day1 * 24 * 60 * 60 - hour * 3600) / 60);
+		var second = Math.floor(seconds - day1 * 24 * 60 * 60 - hour * 3600 - minute * 60);
+		if (day1 < 0) {
+			clearInterval(timer);
+			$("#loan_time").html("募集已经结束！");
+			
+		} else if (pers >= 1) {
+			clearInterval(timer);
+			$("#loan_time").html("募集已经结束！");
+			
+		} else {
+			$("#loan_time").html(day1 + " 天 " + hour + " 小时 " + minute + " 分 " + second + " 秒");
+				$("#toinvest").show();
+			
+		}
+		seconds--;
+	}                
+	
+
+
+</script>
+
+<include file="Public:_footer" />

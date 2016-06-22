@@ -1,0 +1,843 @@
+<include file="Public:_header_common" />
+<title>发表配资-{$glo.index_title}</title>
+<meta name="keywords" content="{$glo.web_keywords}" />
+<meta name="description" content="{$glo.web_descript}" />
+<script language="javascript" src="__ROOT__/Style/H/js/borrow.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/JQtip/tip-yellowsimple/tip-yellowsimple.css" />
+<script language="javascript" src="__ROOT__/Style/JQtip/jquery.poshytip.js" type="text/javascript"></script>
+<script>
+    $(function () {
+        $('#dw_ul li a:eq(3)').attr('class','nowNavItem');
+	    //
+        var yjx_rate={$cordon};
+        var pcx_rate={$unwind};
+        var money_deposit={$money_deposit};
+        var fee_borrow;
+        var lx_rate=0;
+        var fee_borrow_0 ={$fee_borrow_0};
+        var fee_borrow_1 ={$fee_borrow_1};
+        var fee_borrow_2 ={$fee_borrow_2};
+        var fee_borrow_monthDep=parseInt({$fee_borrow_monthDep});
+        //var fee_borrow_manage={$fee_borrow_manage};
+
+        $('form').each(function(){
+            $(this).change(function(){
+
+                lx_rate=0;
+                var borrow_money=parseInt($(this).find('input[name=borrow_money]').val());
+				if (borrow_money%300 == 0){
+					var borrow_duration=$(this).find('select[name=borrow_duration]').val();
+
+					var is_day=$(this).find('input[name=is_day]').val();
+					if(!borrow_money) borrow_money=0;
+					if(!borrow_duration) borrow_duration=0;
+					borrow_duration=borrow_duration;
+					var borrow_interest_rate=parseFloat($(this).find('input[name=borrow_interest_rate]').val());
+					var bzj=borrow_money/money_deposit;
+					var cpzj=borrow_money+bzj;
+					var yjx=yjx_rate*borrow_money/100;
+					var pcx=pcx_rate*borrow_money/100;
+
+
+					$(this).find('input[name=fxbs]').val(money_deposit);
+					$(this).find('input[name=bzj]').val(bzj);
+					$(this).find('#bzj').text(bzj);
+					$(this).find('input[name=cpzj]').val(cpzj);
+					$(this).find('input[name=yjx]').val(yjx);
+					$(this).find('input[name=pcx]').val(pcx);
+					if(is_day=="yes"){
+						fee_borrow=fee_borrow_0;
+					}else{
+						if(borrow_duration==0) fee_borrow=0;
+						else if(borrow_duration>0&&borrow_duration<=fee_borrow_monthDep) fee_borrow=fee_borrow_1;
+						   else fee_borrow=fee_borrow_2;
+						lx_rate= parseFloat($(this).find('input[name=borrow_interest_rate]').val());
+
+					}
+					var glf=fee_borrow*1000*borrow_money/1000;
+					var glf_total=glf*100*borrow_duration/100;
+
+					var lx=lx_rate*100*borrow_duration*borrow_money/100/12/100;
+					var yfk=(bzj*100+glf_total*100+lx*100)/100;
+
+					$(this).find('input[name=glf]').val(glf);
+					$(this).find('#glf_total').text(glf_total);
+					$(this).find('#lx').text(lx);
+					$(this).find('#yfk').text(yfk);
+
+				}else{
+					 setError("配资金额必须是最小投资金额300整数倍！");
+					$(this).find('input[name=bzj]').val(0);
+					$(this).find('#bzj').text(0);
+					$(this).find('input[name=cpzj]').val(0);
+					$(this).find('input[name=yjx]').val(0);
+					$(this).find('input[name=pcx]').val(0);
+				}
+                
+            })
+        });
+
+
+    })
+</script>
+<script type="text/javascript">
+$(function(){
+	$('.x_input').poshytip({
+		className: 'tip-yellowsimple',
+		showOn: 'hover',
+		alignTo: 'target',
+		alignX: 'center',
+		alignY: 'top',
+		offsetX: 0,
+		offsetY: 5
+	});
+	$('.x_checkbox_c').poshytip({
+		className: 'tip-yellowsimple',
+		showOn: 'hover',
+		alignTo: 'target',
+		alignX: 'center',
+		alignY: 'top',
+		offsetX: 0,
+		offsetY: 5
+	});
+	$('.x_checkbox').poshytip({
+		className: 'tip-yellowsimple',
+		showOn: 'hover',
+		alignTo: 'target',
+		alignX: 'right',
+		alignY: 'center',
+		offsetX: 10,
+		offsetY: -25
+	});
+	$('.x_select').poshytip({
+		className: 'tip-yellowsimple',
+		showOn: 'hover',
+		alignTo: 'target',
+		alignX: 'right',
+		alignY: 'center',
+		offsetX: 10,
+		offsetY: -25
+	});
+});
+
+
+
+</script>
+<script type="text/javascript">
+	
+</script>
+<include file="Public:_header_main" />
+<tagLib name="htmlA" />
+<!--中部开始-->
+<div class="wrap2"style="width: 980px;
+margin: 10px auto; min-height:910px;
+clear: both"> 
+  <div class="title_cw">
+ <!--   <div class="zi_bg1"> <span class="post01">发布配资标</span> </div>  -->
+    <img src="__ROOT__/Style/H/images/jiekuan123.png" style="width:960px;" />
+  </div>
+  
+  		<script type="text/javascript">
+$(function(){	
+	$('.tabPan ul li').click(function(){
+		$(this).addClass('hit').siblings().removeClass('hit');
+		$('.panes>div:eq('+$(this).index()+')').show().siblings().hide();	
+	})
+})
+</script>
+
+<!--配资周期开始-->
+		<div class="bd-8-l">
+                    <dl class="dl-1">
+                        <dt>配资周期</dt>
+                        <dd><span>1~6&#20010;&#26376;</span></dd>
+                    </dl>
+                    <dl class="dl-2">
+                        <dt>最低需配</dt>
+                        <dd><strong>10,000</strong>元</dd>
+                    </dl>
+                    <dl  class="dl-3">
+                        <dt>最高可配</dt>
+                        <dd><strong>1,500,000</strong>元</dd>
+                    </dl>
+                    <dl  class="dl-4">
+                        <dt>每月利息</dt>
+                        <dd><strong>1.5~1.8</strong>%</dd>
+                    </dl>
+                </div>
+		
+		<!--配资周期结束-->
+<!-- 代码 开始 -->
+<script>
+	
+</script>
+<div style="width:600px; height:600px; margin-left:50px;margin-top:10px; ">
+
+        <div class="tabPan">
+            <ul>
+                <li class="hit">按照天数配资</li>
+                <li>按照月数配资</li>
+            </ul>
+            <div class="panes">
+                <!-- 按天配资-->
+                <div class="pan"
+                     style="display:block; margin-top:50px;height:510px;border-top: 1px solid #AAA;border-bottom: 1px solid #AAA;">
+                    <div class="title_vip_bg">
+                        <div class="borrowtip"></div>
+                        <form method="post" action="__URL__/save"  onsubmit="return cksubmit(1);" id="postBorrow1">
+                            <input type="hidden" name="vkey" value="{$vkey}"/>
+                            <input type="hidden" name="is_day" value="yes"/>
+
+                            <div class="borrow_block">
+
+                                <ul>
+                                    <div class="axbody" style="width:720px;">
+                                        <htmlA:select id="_day_option" datakey="borrow_day_time" style="display:none"/>
+                                        <htmlA:select id="_month_option" datakey="borrow_month_time"
+                                                      style="display:none"/>
+                                        <table class="borrowtable">
+                                            <tr>
+                                                <th class="" style="border:none;">标题：</th>
+                                                <td colspan="3" style="border:none;"><input type="text" class="x_input"
+                                                                                            style="width:100px; "
+                                                                                            name="borrow_name"
+                                                                                            value="股票抵押借款"
+                                                                                            readonly="readonly"/>
+                                                    <!--</br>
+                                                      是否定向标
+                                                   <input type="checkbox" class="x_checkbox_c" name="is_pass" value="1" id="is_pass" title="定向标需要配资者设置密码，投标者知道密码才能投标"/>   --
+                                                      <input type="text" style="width:150px; display:none" class="x_input_c" name="password" id="password" /></td>-->
+                                            </tr>
+
+                                            <tr>
+
+                                                <th class="col_3">申请配资金额：</th>
+                                                <td class="col_3"><input onkeyup="NumberCheck(this)" type="text"
+                                                                         class="x_input" style="color:#de002a"
+                                                                         name="borrow_money" value="0"
+                                                                         title="配资金额不能小于10000元，且必须是最小投资金额的整数倍。交易币种均为人民币。配资成功后,请按时还款 手续费请查看收费规则"/>元
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <th class="col_3" style="border:none;">风险倍数：</th>
+                                                <td class="col_3" style="border:none;">
+                                                    <input type="text" name="fxbs" readonly value=""/>&nbsp;倍
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="col_3" style="border:none;">保证金：</th>
+                                                <td class="col_3" style="border:none;">
+                                                    <input type="text" name="bzj" readonly value="0"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="col_3" style="border:none;">操盘资金：</th>
+                                                <td class="col_3" style="border:none;">
+                                                    <input type="text" name="cpzj" readonly value="0"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="col_3" style="border:none;">亏损预警线：</th>
+                                                <td class="col_3" style="border:none;">
+                                                    <input type="text" name="yjx" readonly value="0"/>&nbsp;元
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="col_3" style="border:none;">亏损平仓线：</th>
+                                                <td class="col_3" style="border:none;">
+                                                    <input type="text" name="pcx" readonly value="0"/>&nbsp;元
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="col_3">配资期限：</th>
+                                                <td class="col_4">
+                                                    <if condition="$miao eq 'yes'"><span
+                                                            style="color:#F00">标满自动还款</span>
+                                                        <else/>
+                                                        <htmlA:select id="borrow_duration" name="borrow_duration" datakey="borrow_day_time"
+                                                                      class="x_select"
+                                                                      addstr='title="您准备配资的时间。"  onchange="test_duration()"'/>
+
+                                                    </if>天
+                                                </td>
+                                            </tr>
+
+                                            <input onkeyup="NumberFloatCheck(this)" type="hidden" class="x_input"
+                                                   style="width:50px;" name="borrow_interest_rate"
+                                                   value="{$borrow_interest_rate_day}" readonly="readonly">
+
+
+                                            <tr>
+                                                <th class="col_3" style="border:none;">管理费：</th>
+                                                <td class="col_3" style="border:none;">
+                                                    <input type="text" name="glf" readonly value="0"/>&nbsp;元/每天
+                                                </td>
+                                            </tr>
+
+
+                                            <!--			<tr>
+
+                                                          <th class="col_3" id="_day_rate">年利率：</th>
+                                                          <td class="col_4"><input onkeyup="NumberFloatCheck(this)" type="text" class="x_input" name="borrow_interest_rate" value="10.8" title="填写您提供给投资者的年利率,所填写的利率是您还款的年利率。且只保留小数后最后两位。"/>
+                                                          % (<span style="color:red">利率范围：{$rate_lixt[0]}%-{$rate_lixt[1]}%</span>) </td>
+                                                          <th class="col_3"></th>
+                                                          <td class="col_4"></td>
+                                                        </tr>   -->
+
+                                            <!--th class="col_1">配资用途：</th>
+                                            <td class="col_2"><htmlA:select id="borrow_use" datakey="borrow_use" class="x_select" addstr='title="说明配资成功后的具体用途"'/></td-->
+                                            <!--              <tr>
+                                                         <th class="col_3">配资期限：</th>
+                                                         <td class="col_4"><if condition="$miao eq 'yes'"><span style="color:#F00">标满自动还款</span>
+                                                             <else/>
+                                                             <htmlA:select id="borrow_duration" datakey="borrow_month_time" class="x_select" addstr='title="配资成功后,打算以几(天)个月的时间来还清贷款。"  onchange="test_duration()"'/>
+                                                             <input type="checkbox" class="x_checkbox" name="is_day" id="is_day" style="margin-left:10px" value="yes" onclick="checkday()" title="" />
+                                                             <label for="is_day">按天</label>
+                                                           </if></td>
+                                                          <th class="col_3"></th>
+                                                          <td class="col_4"></td>
+                                                       </tr>  -->
+                                            <!--  <tr>
+                                                <th class="col_1">最低投标金额：</th>
+                                               <td class="col_2"><htmlA:select id="borrow_min" datakey="borrow_min" class="x_select" addstr='title="允许投资者对一个配资标的投标总额的限制"'/></td>
+                                               <th class="col_3">最多投标总额：</th>
+                                               <td class="col_4"><htmlA:select id="borrow_max" datakey="borrow_max" class="x_select" nodefalut="true" addstr='title="允许投资者对一个配资标的投标总额的限制"'/></td>
+                                             </tr> -->
+                                            <!--  tr>
+
+                                              <th class="col_1">有效时间：</th>
+                                              <td class="col_2"><htmlA:select id="borrow_time"  datakey="borrow_time" class="x_select" addstr='title="设置此次配资融资的天数。融资进度达到100%后直接进行网站的复审"'/></td>
+
+                                              <th class="col_3"></th>
+                                              <td class="col_4"></td>
+                                           </tr>
+                                            <tr>
+
+                                              <th class="col_3">还款方式：</th>
+                                              <td class="col_4"><if condition="$miao eq 'yes'"><span style="color:#F00">标满自动还款</span>
+                                                  <else/>
+                                                  <htmlA:select id="repayment_type" datakey="repayment_type" class="x_select" addstr='title="1.按天到期还款 是按天算利息，到期的那一天同时还本息。2.按月分期还款是指贷款者配资成功后，每月还本息。3.按季分期还款是指贷款者配资成功后,每月还息，季度还本。4.到期还本按月付息是指贷款者配资成功后,每月还息,最后一月还同时还本金。" onchange="test_duration()"'/>
+                                                </if></td>
+                                               <th class="col_3"></th>
+                                              <td class="col_4"></td>
+                                            </tr-->
+                                            <!--投标注释     <tr>
+
+                                                  <th class="col_1">是否有投标奖励：</th>
+                                                  <td class="col_2"><input type="checkbox" class="x_checkbox" name="is_reward" id="is_reward" onclick="is_reward_do();" title="如果您设置了奖励金额，将会冻结您帐户中相应的账户余额。如果要设置奖励，请确保您的帐户有足够 的账户余额。"/>   </td>
+                                                  <th class="col_3">&nbsp; </th>
+                                                  <td class="col_4"></td>
+                                                </tr>    结束-->
+                                            <!--  <tr>
+                                               <th class="col_1">是否有投标待收限制：</th>
+                                               <td class="col_2"><input type="checkbox"  style="width:100px;"class="x_checkbox" name="is_moneycollect" id="is_moneycollect" onclick="is_moneycollect_do();" title="如果您设置了投标待收金额限制，将会只允许满足待收金额限制要求的投资人投资。如果没有设置投标待收金额限制，则会员可进行自由投资。"/></td>
+                                               <th class="col_3"></th>
+                                               <td class="col_4">&nbsp;</td>
+                                               <td class="col_4" >
+                                             </tr> -->
+
+
+                                        </table>
+                                    </div>
+
+                                </ul>
+
+                            </div>
+
+                            <div class="borrow_block" id="_is_reward" style="display:none">
+                                <ul class="ax">
+                                    <li class="mn_dk"><span>投标奖励</span></li>
+                                </ul>
+                                <ul>
+                                    <div class="axbody">
+                                        <table class="borrowtable">
+                                            <tr>
+
+                                                <th class="col_3"><input type="radio" id="reward_type_1" class="x_radio"
+                                                                         name="reward_type" value="1"/>
+                                                    <label for="reward_type_1">按投标金额比例奖励</label>
+                                                    ：
+                                                </th>
+                                                <td class="col_2"><input type="text" style="width:100px" class="x_input"
+                                                                         name="reward_type_1_value"
+                                                                         onclick="reward_type_do(1)"
+                                                                         onkeyup="NumberFloatCheck(this)"
+                                                                         title="范围：0.1%~6% ，这里设置本次标的要奖励给所有投标用户的奖励比例。"/>
+                                                    %
+                                                </td>
+                                                <th class="col_3"></th>
+                                                <td class="col_4"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </ul>
+                            </div>
+                            <div class="borrow_block" id="_is_moneycollect" style="display:none">
+                                <ul class="ax">
+                                    <li class="mn_dk"><span>投标待收金额限制</span></li>
+                                </ul>
+                                <ul>
+                                    <div class="axbody">
+                                        <table class="borrowtable">
+                                            <tr>
+                                                <th class="col_1">待收金额设置：</th>
+                                                <td class="col_2"><input id="moneycollect"
+                                                                         onkeyup="NumberFloatCheck(this)" type="text"
+                                                                         class="x_input" name="moneycollect"
+                                                                         title="当您在该处设置了待收金额后，会员进行投标会需要满足自己账户的待收金额不小于该待收金额才能成功投标。"/>
+                                                    &nbsp;元
+                                                </td>
+                                                <th class="col_3">&nbsp;</th>
+                                                <td class="col_4">&nbsp;</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </ul>
+                            </div>
+                            <div class="axbody"
+                                 style="line-height:25px;font-size: 14px;color: #333;; margin-left:100px;margin-top:;">
+                                保证金&nbsp;<span class="jiey" id="bzj" style="color:#de002a">0</span>&nbsp;元&nbsp;+&nbsp;
+                                管理费&nbsp;<span class="jiey" id="glf_total" style="color:#de002a">0</span>&nbsp;元&nbsp;+&nbsp;
+                                利息&nbsp;<span class="jiey" id="lx" style="color:#de002a">0</span>&nbsp;元&nbsp;=&nbsp;
+                                应付款&nbsp;<span
+                                    class="jiey" id="yfk" style="color:#de002a">0</span>&nbsp;元
+                            </div>
+                            <!--标的详细说明-->
+                            <div class="borrow_block">
+                                <!-- <ul class="ax">
+                                  <li class="mn_dk"> <span>配资的详细说明</span> </li>
+                                </ul-->
+                                <ul>
+                                    <!--同意协议开始-->
+                                    <div class="axbody"
+                                         style="line-height:15px;color: #999; margin-left:200px;margin-top:10px;">
+                                        <input type="checkbox" style="border: 1px solid #CCC;vertical-align: middle;"
+                                               checked="checked" name="check" id="xycheck"/></input>同意<a
+                                            href="__APP__/member/agreement/borrow.html" target="_blank">《配资协议》</a>
+                                    </div>
+                                    <!--同意协议结束-->
+                                    <div class="axbody">
+                                        <!--class="borrowtable"-->
+                                        <!--tr>
+                                          <th class="" style="border:none;">标题：</th>
+                                          <td colspan="3"  style="border:none;"><input type="text" class="x_input" style="width:300px" name="borrow_name" title="填写配资的标题，写好一点能借的几率也大一点" />
+                                            是否定向标
+                                            <input type="checkbox" class="x_checkbox_c" name="is_pass" value="1" id="is_pass" title="定向标需要配资者设置密码，投标者知道密码才能投标"/>
+                                            <input type="text" style="width:300px; display:none" class="x_input_c" name="password" id="password" /></td>
+                                        </tr--></br>
+                                        <!--tr>
+                                          <th class="col_1" style="border:none;">配资说明：</th>
+                                          <td colspan="3" style="border:none;"><textarea style="width:500px; height:200px; padding:10px" name="borrow_info" id="borrow_info"></textarea></td>
+                                        </tr> -->
+                                        <tr>
+                                            <!-- <th class="col_1" style="border:none;">配资说明：</th> -->
+                                            <th class="col_3"></th>
+                                            <td class="col_4"></td>
+                                            <input class="tijiaojk" style="margin-left:200px;" type="submit" name="sub"
+                                                   value=""/></td>
+                                        </tr>
+                                    </div>
+
+                                </ul>
+                            </div>
+                            <!--标的详细说明-->
+                        </form>
+                    </div>
+
+
+                </div>
+
+                <!--按月配资-->
+                <div class="pan"
+                     style=" margin-top:50px;height:590px;border-top: 1px solid #AAA;border-bottom: 1px solid #AAA;">
+
+                    <div class="title_vip_bg">
+                        <div class="borrowtip"></div>
+                        <form method="post" action="__URL__/save" onsubmit="return cksubmit(2);" id="postBorrow2">
+                            <input type="hidden" name="vkey" value="{$vkey}"/>
+                            <input type="hidden" name="is_day" value="no"/>
+
+                            <div class="borrow_block">
+
+                                <ul>
+                                    <div class="axbody" style="width:720px;">
+                                        <htmlA:select id="_day_option" datakey="borrow_day_time" style="display:none"/>
+                                        <htmlA:select id="_month_option" datakey="borrow_month_time"
+                                                      style="display:none"/>
+                                        <table class="borrowtable">
+                                            <!--		  <tr>
+                                                        <th class="" style="border:none;">标题：</th>
+                                                        <td colspan="3"  style="border:none;"><input type="text" class="x_input" style="width:250px; " name="borrow_name" title="填写配资的标题，写好一点能借的几率也大一点" /><!--</br>
+                                                          是否定向标
+                                                          <input type="checkbox" class="x_checkbox_c" name="is_pass" value="1" id="is_pass" title="定向标需要配资者设置密码，投标者知道密码才能投标"/>
+                                                          <input type="text" style="width:150px; display:none" class="x_input_c" name="password" id="password" /></td>
+                                                      </tr>     -->
+                                            <tr>
+                                                <th class="" style="border:none;">标题：</th>
+                                                <td colspan="3" style="border:none;"><input type="text" class="x_input"
+                                                                                            style="width:100px; "
+                                                                                            name="borrow_name"
+                                                                                            value="股票抵押借款"
+                                                                                            readonly="readonly"/>
+                                                    <!--</br>
+                                                      是否定向标
+                                                   <input type="checkbox" class="x_checkbox_c" name="is_pass" value="1" id="is_pass" title="定向标需要配资者设置密码，投标者知道密码才能投标"/>   --
+                                                      <input type="text" style="width:150px; display:none" class="x_input_c" name="password" id="password" /></td>-->
+                                            </tr>
+
+                                            <tr>
+
+                                                <th class="col_3">申请配资金额：</th>
+                                                <td class="col_3"><input onkeyup="NumberCheck(this)" type="text"
+                                                                         class="x_input" style="color:#de002a"
+                                                                         name="borrow_money" value="0"
+                                                                         title="配资金额不能小于10000元，且必须是最小投资金额的整数倍。交易币种均为人民币。配资成功后,请按时还款 手续费请查看收费规则"/>元
+                                                </td>
+                                                <th class="col_3"></th>
+                                                <td class="col_4"></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="col_3" style="border:none;">风险倍数：</th>
+                                                <td class="col_3" style="border:none;">
+                                                    <input type="text" name="fxbs" readonly value=""/>&nbsp;倍
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="col_3" style="border:none;">保证金：</th>
+                                                <td class="col_3" style="border:none;">
+                                                    <input type="text" name="bzj" readonly value="0"/>&nbsp;元
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="col_3" style="border:none;">操盘资金：</th>
+                                                <td class="col_3" style="border:none;">
+                                                    <input type="text" name="cpzj" readonly value="0"/>&nbsp;元
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="col_3" style="border:none;">亏损预警线：</th>
+                                                <td class="col_3" style="border:none;">
+                                                    <input type="text" name="yjx" readonly value="0"/>&nbsp;元
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="col_3" style="border:none;">亏损平仓线：</th>
+                                                <td class="col_3" style="border:none;">
+                                                    <input type="text" name="pcx" readonly value="0"/>&nbsp;元
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="col_3">资金调用时间：</th>
+                                                <td class="col_4">
+                                                    <if condition="$miao eq 'yes'"><span
+                                                            style="color:#F00">标满自动还款</span>
+                                                        <else/>
+                                                        <htmlA:select id="borrow_duration"  name="borrow_duration" datakey="borrow_month_time"
+                                                                      class="x_select"
+                                                                      addstr='title="您准备配资的时间。"  onchange="test_duration()"'/>
+
+
+                                                    </if>
+                                                    &nbsp;月
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th class="col_3" id="_day_rate">年利率：</th>
+                                                <td class="col_4"><input onkeyup="NumberFloatCheck(this)" type="text"
+                                                                         class="x_input" style="width:50px;"
+                                                                         name="borrow_interest_rate"
+                                                                         value="{$borrow_interest_rate_month}"
+                                                                         readonly="readonly"
+                                                                         title="填写您提供给投资者的年利率,所填写的利率是您还款的年利率。且只保留小数后最后两位。"/>
+                                                    % (<span style="color:red">月利率{$borrow_interest_rate_month/12}%</span>)
+                                                </td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <th class="col_3" style="border:none;">管理费：</th>
+                                                <td class="col_3" style="border:none;">
+                                                    <input type="text" name="glf" readonly value="0"/>&nbsp;元/每月
+                                                </td>
+                                            </tr>
+
+
+                                            <!--			<tr>
+
+                                                          <th class="col_3" id="_day_rate">年利率：</th>
+                                                          <td class="col_4"><input onkeyup="NumberFloatCheck(this)" type="text" class="x_input" name="borrow_interest_rate" value="10.8" title="填写您提供给投资者的年利率,所填写的利率是您还款的年利率。且只保留小数后最后两位。"/>
+                                                          % (<span style="color:red">利率范围：{$rate_lixt[0]}%-{$rate_lixt[1]}%</span>) </td>
+                                                          <th class="col_3"></th>
+                                                          <td class="col_4"></td>
+                                                        </tr>   -->
+
+                                            <!--th class="col_1">配资用途：</th>
+                                            <td class="col_2"><htmlA:select id="borrow_use" datakey="borrow_use" class="x_select" addstr='title="说明配资成功后的具体用途"'/></td-->
+                                            <!--              <tr>
+                                                         <th class="col_3">配资期限：</th>
+                                                         <td class="col_4"><if condition="$miao eq 'yes'"><span style="color:#F00">标满自动还款</span>
+                                                             <else/>
+                                                             <htmlA:select id="borrow_duration" datakey="borrow_month_time" class="x_select" addstr='title="配资成功后,打算以几(天)个月的时间来还清贷款。"  onchange="test_duration()"'/>
+                                                             <input type="checkbox" class="x_checkbox" name="is_day" id="is_day" style="margin-left:10px" value="yes" onclick="checkday()" title="" />
+                                                             <label for="is_day">按天</label>
+                                                           </if></td>
+                                                          <th class="col_3"></th>
+                                                          <td class="col_4"></td>
+                                                       </tr>  -->
+                                            <!--  <tr>
+                                                <th class="col_1">最低投标金额：</th>
+                                               <td class="col_2"><htmlA:select id="borrow_min" datakey="borrow_min" class="x_select" addstr='title="允许投资者对一个配资标的投标总额的限制"'/></td>
+                                               <th class="col_3">最多投标总额：</th>
+                                               <td class="col_4"><htmlA:select id="borrow_max" datakey="borrow_max" class="x_select" nodefalut="true" addstr='title="允许投资者对一个配资标的投标总额的限制"'/></td>
+                                             </tr> -->
+                                            <!--  tr>
+
+                                              <th class="col_1">有效时间：</th>
+                                              <td class="col_2"><htmlA:select id="borrow_time"  datakey="borrow_time" class="x_select" addstr='title="设置此次配资融资的天数。融资进度达到100%后直接进行网站的复审"'/></td>
+
+                                              <th class="col_3"></th>
+                                              <td class="col_4"></td>
+                                           </tr>
+                                            <tr>
+
+                                              <th class="col_3">还款方式：</th>
+                                              <td class="col_4"><if condition="$miao eq 'yes'"><span style="color:#F00">标满自动还款</span>
+                                                  <else/>
+                                                  <htmlA:select id="repayment_type" datakey="repayment_type" class="x_select" addstr='title="1.按天到期还款 是按天算利息，到期的那一天同时还本息。2.按月分期还款是指贷款者配资成功后，每月还本息。3.按季分期还款是指贷款者配资成功后,每月还息，季度还本。4.到期还本按月付息是指贷款者配资成功后,每月还息,最后一月还同时还本金。" onchange="test_duration()"'/>
+                                                </if></td>
+                                               <th class="col_3"></th>
+                                              <td class="col_4"></td>
+                                            </tr-->
+                                            <!--投标注释     <tr>
+
+                                                  <th class="col_1">是否有投标奖励：</th>
+                                                  <td class="col_2"><input type="checkbox" class="x_checkbox" name="is_reward" id="is_reward" onclick="is_reward_do();" title="如果您设置了奖励金额，将会冻结您帐户中相应的账户余额。如果要设置奖励，请确保您的帐户有足够 的账户余额。"/>   </td>
+                                                  <th class="col_3">&nbsp; </th>
+                                                  <td class="col_4"></td>
+                                                </tr>    结束-->
+                                            <!--  <tr>
+                                               <th class="col_1">是否有投标待收限制：</th>
+                                               <td class="col_2"><input type="checkbox"  style="width:100px;"class="x_checkbox" name="is_moneycollect" id="is_moneycollect" onclick="is_moneycollect_do();" title="如果您设置了投标待收金额限制，将会只允许满足待收金额限制要求的投资人投资。如果没有设置投标待收金额限制，则会员可进行自由投资。"/></td>
+                                               <th class="col_3"></th>
+                                               <td class="col_4">&nbsp;</td>
+                                               <td class="col_4" >
+                                             </tr> -->
+
+
+                                        </table>
+                                    </div>
+
+                                </ul>
+
+                            </div>
+
+                            <div class="borrow_block" id="_is_reward" style="display:none">
+                                <ul class="ax">
+                                    <li class="mn_dk"><span>投标奖励</span></li>
+                                </ul>
+                                <ul>
+                                    <div class="axbody">
+                                        <table class="borrowtable">
+                                            <tr>
+
+                                                <th class="col_3"><input type="radio" id="reward_type_1" class="x_radio"
+                                                                         name="reward_type" value="1"/>
+                                                    <label for="reward_type_1">按投标金额比例奖励</label>
+                                                    ：
+                                                </th>
+                                                <td class="col_2"><input type="text" style="width:100px" class="x_input"
+                                                                         name="reward_type_1_value"
+                                                                         onclick="reward_type_do(1)"
+                                                                         onkeyup="NumberFloatCheck(this)"
+                                                                         title="范围：0.1%~6% ，这里设置本次标的要奖励给所有投标用户的奖励比例。"/>
+                                                    %
+                                                </td>
+                                                <th class="col_3"></th>
+                                                <td class="col_4"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </ul>
+                            </div>
+                            <div class="borrow_block" id="_is_moneycollect" style="display:none">
+                                <ul class="ax">
+                                    <li class="mn_dk"><span>投标待收金额限制</span></li>
+                                </ul>
+                                <ul>
+                                    <div class="axbody">
+                                        <table class="borrowtable">
+                                            <tr>
+                                                <th class="col_1">待收金额设置：</th>
+                                                <td class="col_2"><input id="moneycollect"
+                                                                         onkeyup="NumberFloatCheck(this)" type="text"
+                                                                         class="x_input" name="moneycollect"
+                                                                         title="当您在该处设置了待收金额后，会员进行投标会需要满足自己账户的待收金额不小于该待收金额才能成功投标。"/>
+                                                    &nbsp;元
+                                                </td>
+                                                <th class="col_3">&nbsp;</th>
+                                                <td class="col_4">&nbsp;</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </ul>
+                            </div>
+                            <div class="axbody"
+                                 style="line-height:25px;font-size: 14px;color: #333;; margin-left:100px;margin-top:;">
+                                保证金&nbsp;<span class="jiey" id="bzj" style="color:#de002a">0</span>&nbsp;元&nbsp;
+                                +&nbsp;管理费&nbsp;<span class="jiey" id="glf_total" style="color:#de002a">0</span>&nbsp;元&nbsp;
+                                +&nbsp;利息&nbsp;<span class="jiey" id="lx" style="color:#de002a">0</span>&nbsp;元&nbsp;
+                                =&nbsp;应付款&nbsp;<span class="jiey" id="yfk" style="color:#de002a">0</span>&nbsp;元
+                            </div>
+                            <!--标的详细说明-->
+                            <div class="borrow_block">
+                                <!-- <ul class="ax">
+                                  <li class="mn_dk"> <span>配资的详细说明</span> </li>
+                                </ul-->
+                                <ul>
+                                    <!--同意协议开始-->
+                                    <div class="axbody"
+                                         style="line-height:15px;color: #999; margin-left:200px;margin-top:10px;">
+                                        <input type="checkbox" style="border: 1px solid #CCC;vertical-align: middle;"
+                                               checked="checked" name="check" id="xycheck"/></input>同意<a
+                                            href="__APP__/member/agreement/borrow.html" target="_blank">《配资协议》</a>
+                                    </div>
+                                    <!--同意协议结束-->
+                                    <div class="axbody">
+                                        <!--class="borrowtable"-->
+                                        <!--tr>
+                                          <th class="" style="border:none;">标题：</th>
+                                          <td colspan="3"  style="border:none;"><input type="text" class="x_input" style="width:300px" name="borrow_name" title="填写配资的标题，写好一点能借的几率也大一点" />
+                                            是否定向标
+                                            <input type="checkbox" class="x_checkbox_c" name="is_pass" value="1" id="is_pass" title="定向标需要配资者设置密码，投标者知道密码才能投标"/>
+                                            <input type="text" style="width:300px; display:none" class="x_input_c" name="password" id="password" /></td>
+                                        </tr--></br>
+                                        <!--tr>
+                                          <th class="col_1" style="border:none;">配资说明：</th>
+                                          <td colspan="3" style="border:none;"><textarea style="width:500px; height:200px; padding:10px" name="borrow_info" id="borrow_info"></textarea></td>
+                                        </tr> -->
+                                        <tr>
+                                            <!-- <th class="col_1" style="border:none;">配资说明：</th> -->
+                                            <th class="col_3"></th>
+                                            <td class="col_4"></td>
+                                            <input class="tijiaojk" style="margin-left:200px;" type="submit" name="sub"
+                                                   value=""/></td>
+                                        </tr>
+                                    </div>
+
+                                </ul>
+                            </div>
+                            <!--标的详细说明-->
+                        </form>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+	
+	
+	<!-- 侧面开始结束  --> 
+<div class="bd-5-r" style="margin-top:-700px;">
+    <div class="bd-5-r1">
+    	<dl class="t1">
+        	<dt>专属客服</dt>
+            <dd>全程协助解决流程中的问题</dd>
+        </dl>
+        <dl class="t2">
+        	<dt>资金管理</dt>
+            <dd>封闭管理，专款专用</dd>
+        </dl>
+        <dl class="t3">
+        	<dt>100元起投</dt>
+            <dd>投资零门槛，简单又轻松</dd>
+        </dl> 
+    </div>
+      <div class="bd-5-r2">
+    	<h3><a href="__ROOT__/bangzhu/index.html">更多></a>新手投钱攻略</h3>
+        <ul>
+        	<li><a href="__ROOT__/bangzhu/index.html">如何注册、激活本平台账户？</a></li>
+            <li><a href="__ROOT__/bangzhu/index.html">如何充值？</a></li>
+            <li><a href="__ROOT__/bangzhu/index.html">如何开始理财投资？</a></li>
+            <li><a href="__ROOT__/bangzhu/index.html">如何提现？</a></li>
+        </ul>
+    </div>	
+</div>
+
+<!-- 侧面结束  --> 
+
+</div>
+</div>	
+
+
+
+
+
+
+
+<!-- 代码 结束 -->
+  
+  
+ </div>
+<!--中部结束-->
+<script type="text/javascript">
+<if condition="$miao eq 'yes'">
+var miao = 'yes';
+</if>
+$("#is_pass").click(function(e) {
+    if($(this).attr('checked')){
+		$("#password").show();
+	}else{
+		$("#password").hide();
+	}
+});
+function setError(tip){
+	$.jBox.tip(tip);
+	return false;
+}
+function cksubmit(n){
+	
+	
+	
+	
+	p=makevar(['borrow_money','borrow_duration','borrow_interest_rate']);
+	if(n==1){
+	  p.borrow_money=$('#postBorrow1 input[name=borrow_money]').val();
+	  p.borrow_duration=$('#postBorrow1 select[name=borrow_duration]').val();
+	  p.borrow_interest_rate=0;
+	}else{
+	  p.borrow_money=$('#postBorrow2 input[name=borrow_money]').val();
+	  p.borrow_duration=$('#postBorrow2 select[name=borrow_duration]').val();
+	  p.borrow_interest_rate=$('#postBorrow2 input[name=borrow_interest_rate]').val();
+	}
+  <!--  alert(p.borrow_interest_rate);   -->
+	if(p.borrow_money == "") 			return setError("配资金额不能为空！");
+	if(p.borrow_money<10000) 			return setError("配资金额不能小于10000元！");
+	<!--if((p.borrow_min*2>p.borrow_max)&&(p.borrow_max>0)) 			return setError("最大投资金额不能小于最小投资金额的2倍！");-->
+	if(p.borrow_money%300!=0) 	return setError("配资金额必须是最小投资金额300整数倍！");
+	if(p.borrow_money>1500000) 		return setError("配资金额不能大于1500000元！");
+	<!--if(p.borrow_interest_rate == "") 	return setError("年利率不能为空！");-->
+	<!--if(p.borrow_use == "") 				return setError("配资用途不能为空！");-->
+	if(p.borrow_duration == "" && typeof miao=="undefined") 		return setError("配资期限不能为空！");
+	<!--if(p.borrow_min == "") 				return setError("最小投资金额不能为空！");-->
+	<!--if(p.borrow_time == "") 			return setError("配资有效时间不能为空！");-->
+	<!--if(p.repayment_type == "" && typeof miao=="undefined") 			return setError("还款方式不能为空！");-->
+	<!--if(p.borrow_name == "") 			return setError("配资标题不能为空！"); -->
+	<!--if(p.borrow_info == "") 			return setError("配资内容不能为空！");-->
+	
+	var check = $('#xycheck').attr("checked");
+	if(!check)            return setError("请同意配资协议！");
+     
+	return true;
+	
+}
+
+</script>
+
+<include file="Public:_footer" />

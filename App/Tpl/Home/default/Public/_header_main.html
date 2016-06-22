@@ -1,0 +1,88 @@
+<script type=text/javascript><!--//--><![CDATA[//><!--
+function menuFix() {
+var ele_ = document.getElementById("nav");
+	if(!ele_) return;
+var sfEls = ele_.getElementsByTagName("li");
+for (var i=0; i<sfEls.length; i++) {
+sfEls[i].onmouseover=function() {
+this.className+=(this.className.length>0? " ": "") + "sfhover";
+}
+sfEls[i].onMouseDown=function() {
+this.className+=(this.className.length>0? " ": "") + "sfhover";
+}
+sfEls[i].onMouseUp=function() {
+this.className+=(this.className.length>0? " ": "") + "sfhover";
+}
+sfEls[i].onmouseout=function() {
+this.className=this.className.replace(new RegExp("( ?|^)sfhover\\b"),
+"");
+}
+}
+}
+window.onload=menuFix;
+//--><!]]>
+</script>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/H/css/home.css" />
+</head><body>
+<div class="top-box">
+	<div class="container">
+		<div class="row top">
+			<div class="col-md-6 col-xs-6" style="color:#fff;line-height:30px;">
+				<span class="glyphicon glyphicon-phone-alt"></span>
+				0512-62853600
+			</div>
+			<div class="col-md-6 col-xs-6 top-navbar top-navbar-right">
+				<ul id="erji">
+						<if condition="$_SESSION['u_id']">
+						<li>
+							<a  href="__APP__/member/" style="color:#2AA198">您好，{:session('u_user_name')}</a>
+						</li>
+						<li>
+							<a  href="__APP__/member/msg#fragment-1">
+								<span class="glyphicon glyphicon-envelope" style="color:#ff9900;top:3px;"></span>
+								<span class="badge">{$unread|default=0}</span>
+							</a>
+						</li>		    
+						<li><a href="__APP__/member/common/actlogout" class="btn btn-danger">退出</a></li>
+						
+						<else /> 
+						<li >
+							<a href="__ROOT__/member/common/login/" class="btn btn-info">立即登录</a>
+						</li>
+						<li class="">
+							<a href="__ROOT__/member/common/regist/" class="btn btn-danger">免费注册</a>
+						</li>
+							
+						</if>
+					</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="head-box bg-white">
+	<div class="container">
+		<nav class="navbar navbar-default row" role="navigation">
+			<div class="navbar-header N_logo">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" 
+		         data-target="#example-navbar-collapse">
+		         <span class="sr-only">切换导航</span>
+		         <span class="icon-bar"></span>
+		         <span class="icon-bar"></span>
+		         <span class="icon-bar"></span>
+		        </button>
+			 	<a href="/">{:get_ad(1)}</a>
+			</div>
+		   <div class="collapse navbar-collapse" id="example-navbar-collapse">
+		      <ul class="nav navbar-nav navbar-right navigation-list" id="dw_ul">
+		         <php>$typelist = getTypeList(array('type_id'=>0,'limit'=>9)); foreach($typelist as $vtype=> $va){ </php>
+							  <li class="navigation-item "> <a href="{$va.turl}" class="navigation-item-name">{$va.type_name}
+								<php>$sontypelist = getTypeList(array('type_id'=>$va['id'],'limit'=>8,'notself'=>true)); if($sontypelist != null){</php>
+								<php>}</php>
+								</a>
+							  </li>
+							  <php>}</php>
+		      </ul>
+		   </div>
+		</nav>
+	</div>
+</div>

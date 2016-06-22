@@ -1,0 +1,63 @@
+﻿<include file="Pub:header" /> 
+<style>
+a.row{display: block;height: 40px;line-height: 40px;}
+.userCenter .container{background-color: #fff;}
+.userCenter .container{margin-top:10px;}
+.userCenter a:active,.userCenter a:focus,.userCenter a:link{text-decoration: none;}
+.userCenter .container .row{margin-left: 0px;font-size: large;color:#000;}
+
+.userCenter .container:first-child .row{height:80px;line-height:80px; margin-left: -15px;}
+.userCenter .container:nth-of-type(2) .row div:first-child{padding-left: 0px;}
+.userCenter .container:nth-of-type(2) .row:not(:last-child){border-bottom: 1px solid #eee;}
+.userCenter .glyphicon-menu-right{color:#aaa;text-align: right;}
+</style>
+<h2 id="title">个人中心</h2>
+<div class="userCenter">
+	<div class="container" >
+	    <a class="row" href="{:U('M/user/info')}">
+	        <div class="col-xs-3">
+	            <img class="img-circle" height="60px;" src="{$uid|get_avatar=###}">
+	        </div>
+	        <div class="col-xs-7">{$uname}</div>
+	        <div class="col-xs-2"> <span class="glyphicon glyphicon-menu-right"></span></div>
+	    </a>
+	</div>
+	<div class="container">
+	    <a class="row" href="{:U('M/user/fund')}">
+	    	<div class="col-xs-2"><span class="glyphicon glyphicon-piggy-bank text-info"></span></div>
+	        <div class="col-xs-8">我的账户</div>
+	        <div class="col-xs-2"> <span class="glyphicon glyphicon-menu-right"></span></div>
+	    </a>
+	    <a class="row" href="{:U('M/user/safe')}">
+	    	<div class="col-xs-2"><span class="glyphicon glyphicon-lock text-info"></span></div>
+	        
+	        <div class="col-xs-8">安全中心</div>
+	        <div class="col-xs-2"> <span class="glyphicon glyphicon-menu-right"></span></div>
+	    </a>
+	    <a class="row" href="{:U('M/user/trade')}">
+	    	<div class="col-xs-2"> <span class="glyphicon glyphicon-sort text-info"></span></div>
+	       
+	        <div class="col-xs-8">我的交易</div>
+	        <div class="col-xs-2"> <span class="glyphicon glyphicon-menu-right"></span></div>
+	    </a>
+	    <a class="row" href="__URL__/promote?invite={$_SESSION['u_id']}">
+	    	<div class="col-xs-2"><span class="glyphicon glyphicon-share text-info"></span></div>
+	        
+	        <div class="col-xs-8">我的推广</div>
+	        <div class="col-xs-2"> <span class="glyphicon glyphicon-menu-right"></span></div>
+	    </a>
+	    <a class="row" href="{:U('M/user/msg')}">
+	    	<div class="col-xs-2"> <span class="glyphicon glyphicon-envelope text-info"></span></div>
+	       
+	        <div class="col-xs-8">站内信息</div>
+	        <div class="col-xs-2"> <span class="glyphicon glyphicon-menu-right"></span></div>
+	    </a>
+	</div>
+	<div class="container">
+	    <a href="{:U('M/Pub/logout')}"class="btn btn-lg btn-block text-danger">退出登录</a>
+	</div>
+	
+</div>
+
+
+﻿<include file="Pub:footer" /> 

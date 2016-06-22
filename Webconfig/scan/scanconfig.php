@@ -1,0 +1,2 @@
+<?php
+return array ( 'type' => 'php|js|html', 'func' => 'com|system|exec|eval|escapeshell|cmd|passthru|base64_decode|gzuncompress', 'code' => '', 'dir' => array ( 0 => '/Library/WebServer/Documents/App', 1 => '/Library/WebServer/Documents/CORE', 2 => '/Library/WebServer/Documents/Editor', 3 => '/Library/WebServer/Documents/Public', 4 => '/Library/WebServer/Documents/Rewrite', 5 => '/Library/WebServer/Documents/Style', 6 => '/Library/WebServer/Documents/UF', 7 => '/Library/WebServer/Documents/Webconfig', 8 => '/Library/WebServer/Documents/phpMyAdmin', ), ); ?>

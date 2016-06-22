@@ -1,0 +1,133 @@
+<include file="Public:_header" />
+<style >
+   
+</style>
+<div class="container">
+    <h4 style="border-bottom:2px solid #CCC;padding-bottom:5px;">F{$house.id}信息</h4>
+    <form class="form-horizontal" action="__URL__/doedit" style="margin-top: 20px;" method="POST">
+        <input type="hidden" name="id" value="{$house.id}">
+        <div class="form-group">
+            <label class="control-label col-xs-2">标题</label>
+            <div class="col-xs-8">
+                <input name="title" class="form-control" value="{$house.title}">
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="control-label col-xs-2">售价</label>
+            <div class="col-xs-8">
+                <div class="input-group">
+                <input name="price" type="number"  class="form-control" value="{$house.price}">
+                <label class="input-group-addon">万元</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="control-label col-xs-2">面积</label>
+            <div class="col-xs-8">
+                <div class="input-group">
+                <input name="size" type="number" class="form-control" value="{$house.size}">
+                <label class="input-group-addon">m²</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-2">装修</label>
+            <div class="col-xs-8">
+                <select name="decoration" class="form-control">
+                    <option value="精装" <eq name="house.decoration" value="精装">selected</eq>>精装</option>
+                    <option value="简装" <eq name="house.decoration" value="简装">selected</eq>>简装</option>
+                    <option value="毛坯" <eq name="house.decoration" value="毛坯">selected</eq>>毛坯</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-2">朝向</label>
+            <div class="col-xs-8">
+                <select name="direction" class="form-control">
+                    <option value="东" <eq name="house.direction" value="东">selected</eq>>东</option>
+                    <option value="南" <eq name="house.direction" value="南">selected</eq>>南</option>
+                    <option value="西" <eq name="house.direction" value="西">selected</eq>>西</option>
+                    <option value="北" <eq name="house.direction" value="北">selected</eq>>北</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group ">
+            <label class="control-label col-xs-2">房龄</label>
+            <div class="col-xs-8">
+                <div class="input-group">
+                <input name="house_age" type="number" class="form-control" value="{$house.house_age}">
+                <label class="input-group-addon">年</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="control-label col-xs-2">状态</label>
+            <div class="col-xs-5">
+                <select name="status" class="form-control">
+                    <option value="1" <eq name="house.status" value="1">selected</eq>>挂牌</option>
+                    <option value="2" <eq name="house.status" value="2">selected</eq>>撤销</option>
+                    <option value="3" <eq name="house.status" value="3">selected</eq>>关闭</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="control-label col-xs-2">楼层</label>
+            <div class="col-xs-8">
+                <div class="input-group col-xs-5">
+                <input type="number" class="form-control" name="current_floor" value="{$house.current_floor}">
+                <span class="input-group-addon">/</span>
+                <input type="number" class="form-control" name="total_floor" value="{$house.total_floor}">
+                </div>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="control-label col-xs-2">户型</label>
+            <div class="col-xs-8">
+                <div class="input-group col-xs-5">
+                <input type="number" class="form-control" name="bed_room" value="{$house.bed_room}">
+                <span class="input-group-addon">室</span>
+                <input type="number" class="form-control" name="live_room" value="{$house.live_room}">
+                <span class="input-group-addon">厅</span>
+                <input type="number" class="form-control" name="toilet" value="{$house.toilet}">
+                <span class="input-group-addon">卫</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="control-label col-xs-2">区域</label>
+            <div class="col-xs-8">
+                <div class="input-group col-xs-6">
+                <input type="number" class="form-control" name="xian" value="{$house.xian}">
+                <span class="input-group-addon">-</span>
+                <input type="number" class="form-control" name="zhen" value="{$house.zhen}">
+                <span class="input-group-addon">-</span>
+                <input type="number" class="form-control" name="village" value="{$house.village}">
+                <span class="input-group-addon">-</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-2">描述</label>
+            <div class="col-xs-8">
+                <textarea name="describe" class="form-control">{$house.describe}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-2">图片</label>
+            <div class="col-xs-8">
+            <volist name="house.imgs" id="img">
+                <div class="col-xs-3">
+                        <img src="/{$img.url}" style="max-width:100%;">
+                </div>
+             </volist>
+             </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-5 col-xs-offset-2">
+            <input type="submit" class="btn btn-info form-control" value="提交">
+            </div>
+        </div>
+    </form>
+</div>
+<include file="Public:_footer" />

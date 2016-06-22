@@ -1,0 +1,134 @@
+<include file="Pub:header" />
+<style>
+
+	.glyphicon-arrow-down{display: block;text-align: center;padding:10px 0;}
+	#myTab{border-bottom: none;}			
+	#myTab li{
+		height:100%;
+		text-align:center;
+		color: #000;
+		border-bottom: 2px solid #ddd;
+	}
+	#myTab li a{color: #333;}
+
+	#myTab li.active {border:none;border-bottom: 2px solid #5BC0DE;color:#5BC0DE;}
+	#myTab li.active a{text-decoration: none;color:#33ccff;}
+	#myTabContent{padding:10px 0;}
+	#verify .row{padding:10px 0;}
+	.loan-detail{padding-top:5px; padding-bottom: 20px;}
+	.loan-detail .progress{height:8px;}
+	.loan-detail2{padding:5px 15px;}
+	.loan-detail2 h4{margin:0px;}
+	.loan-time {}
+	.loan-time .row{padding-top: 5px;padding-bottom: 5px;margin: 0;}
+	.loan-time .row:first-child{border-bottom: 1px solid #EEE;}
+	.investBox{position: fixed;bottom: 0;z-index: 9999;width:100%;height:50px;line-height: 50px;padding:0;}
+	.investBox .btn{height: 50px;line-height:38px;width: 100%;}
+</style> 
+
+<div class="container loan-detail bg-blue text-white text-center">
+	<div class="text-left">{$vo.loan_name}JK{$vo.id}</div>
+	<div class="text-center mt-10"><small>年化收益(%)</small></div>
+	<div><h1 style="margin:2px auto 20px;">{$vo.interest_rate}</h1></div>
+	<div class="progress progress">
+	   <div class="progress-bar progress-bar-info" role="progressbar" 
+	      aria-valuenow="{$vo.progress|floor=###}" aria-valuemin="0" aria-valuemax="100" 
+	      style="width:{$vo.progress|floor=###}%;">
+	     
+		</div>
+	</div>
+	<div><small>进度{$vo.progress|floor=###}% 剩余可投{$vo.need|numFormat=###,0}元</small></div>
+</div>
+<div class="container loan-detail2 bg-white text-center">
+	<div class="row">
+		<div class="col-xs-6">
+			<small>理财期限(天)</small><br>
+			<h4 class="text-blue"><small>约</small>{$vo.loan_duration}</h4>
+		</div>
+		<div class="col-xs-6">
+			<small>起投金额(元)</small><br>
+			<h4 class="text-blue">{$vo.min_invest}</h4>
+		</div>
+	</div>
+</div>
+<div class="container bg-blue investBox">
+	
+	<if condition="$vo.status eq '2'">
+		<a href="{:U('m/loaninvest/invest', array('id'=>$vo['id']))}" class="btn btn-blue btn-block" >我要投资</a>
+	<else />
+		{$vo.status|loan_status=$vo['id'],###}
+	</if>						
+</div>
+<div class="container loan-time bg-white mt-10">
+	<div class="row"><div class="col-xs-12"><span style="color:#CCC">还款方式</span>  到期还本付息</div></div>
+</div>
+<div class="container loan-intro bg-w mt-10" style="min-height:200px;">
+    <ul class="nav nav-tabs row " id="myTab" style="float:none;">
+    	<li class="col-xs-4 active "><h5 class="text-center"><a href="#verify" data-toggle="tab">时间轴</a></h5></li>
+        <li class="col-xs-4"><h5 class="text-center"><a href="#detail" data-toggle="tab">产品介绍</a></h5></li>
+        <li class="col-xs-4"><h5 class="text-center"><a href="#record" data-toggle="tab">投资记录</a></h5></li>
+    </ul>
+    <div id="myTabContent" class="tab-content contaier">
+    	<div class="tab-pane fade in active" id="verify">
+			        <div class="row text-info">
+			            <div class="col-xs-2"><sapn class="glyphicon glyphicon-circle-arrow-down"></sapn></div>
+			            <div class="col-xs-4">发起募集</div>
+			            <div class="col-xs-5"> {$vo.birth_time}	</div>
+			        </div>
+
+			        <div class="row <if condition='$vo.status gt 6'>text-info</if>">
+			            <div class="col-xs-2"><sapn class="glyphicon glyphicon-circle-arrow-down"></sapn></div>
+			            <div class="col-xs-4">开始计息</div>
+			            <div class="col-xs-5">{$vo.interest_time}</div>
+			        </div>
+			        <div class="row <notempty name='schedule.cancel_warrants'>text-info</notempty>">
+			            <div class="col-xs-2"><sapn class="glyphicon glyphicon-circle-arrow-down"></sapn></div>
+			            <div class="col-xs-4">注销抵押权</div>
+			            <div class="col-xs-5">{$schedule.cancel_warrants}</div>
+			        </div>
+			        <div class="row <notempty name='schedule.fund_trust'>text-info</notempty>">
+			            <div class="col-xs-2"><sapn class="glyphicon glyphicon-circle-arrow-down"></sapn></div>
+			            <div class="col-xs-4">资金托管</div>
+			            <div class="col-xs-5">{$schedule.fund_trust}</div>
+			        </div>
+			        <div class="row <notempty name='schedule.reowner'>text-info</notempty>">
+			            <div class="col-xs-2"><sapn class="glyphicon glyphicon-circle-arrow-down"></sapn></div>
+			            <div class="col-xs-4">过户</div>
+			            <div class="col-xs-5">{$schedule.reowner}</div>
+			        </div>
+			        <div class="row <if condition='$vo.status eq 8'>text-info</if>">
+			            <div class="col-xs-2"><sapn class="glyphicon glyphicon-circle-arrow-down"></sapn></div>
+			            <div class="col-xs-4">预期还款</div>
+			            <div class="col-xs-5">{$vo.finish_time}</div>
+			        </div>
+	    </div>
+        <div class="tab-pane fade" id="detail">
+            {$vo.loan_detail}
+        </div>
+        <div class="tab-pane fade" id="record">
+            <table class="table">
+	            <thead>
+				<tr>
+					<th>投资人</th><th>投资时间</th><th>投资金额</th>
+				</tr>
+				</thead>
+			
+				<tbody>
+					<volist name="list.list" id="vb">
+					<tr>
+						<td>{$vb.user_name|hidecard=###,4}</td><td>{$vb.invest_time}</td>
+						<td>{$vb.invest_amount|num_format=###}</td>
+					</tr>
+					</volist> 
+				</tbody>	
+			</table>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+	$(function(){
+		localStorage.title="项目详情";
+	})	
+</script>
+﻿<include file="Pub:footer" />  

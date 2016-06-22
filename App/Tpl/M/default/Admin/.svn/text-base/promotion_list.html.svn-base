@@ -1,0 +1,94 @@
+﻿<include file="Pub:header" /> 
+<h2 id="title">百财琅琊榜</h2>
+<style>
+	form{padding: 5px 0;}
+	form select{
+		width:30%;height: 40px;margin-left:2%;
+		border-radius:10%;border:none;font-size: 16px;
+		background-color: #fff;
+		text-indent: 2px;
+	}
+	.row{display: block;height: 40px;line-height: 40px;
+		background-color: #fff;padding-right:10px;
+	}
+	.row:first-child{font-size:16px;font-weight:bold;color: #000;}
+	.row:not(:first-child){border:1px solid #666;margin-top:10px;}
+	.row span{display:block;float:left;}
+	.row span:first-child{width: 15%;text-align: center;}
+	.row span:nth-child(2){width:20%;text-align: center;}
+	.row span:nth-child(3),.row span:nth-child(4){width:20%;text-align:right;}
+	.row span:nth-child(5){width:25%;text-align:right;color:#E5E5E5;font-size:28px;}
+	.row:nth-child(2) span:first-child{font-size: 20px;color:#FF0000;font-style:italic;}
+	.row:nth-child(3) span:first-child{font-size: 18px;color:#ff0000;font-style:italic;}
+	.row:nth-child(4) span:first-child{font-size: 16px;color:#ff0000;font-style:italic;}
+	.switch{
+		overflow: hidden;
+		height: 50px;line-height: 50px;font-size: 20px;
+		font-weight: bold;
+	}
+	.left,.right{width:50%;text-align: center;}
+	.nowitem{background-color:#fff;border-top: 2px solid #ff6600;color:#ff6600;}
+	.content{padding-top: 10px;background-color: #fff;}
+</style>
+<script >
+	$(function(){
+		$('#period').val({$period});
+		$('#type').val({$type});
+		$('form').change(function(){
+			$(this).submit();
+		})
+
+	})
+	
+</script>
+<div class="body">
+	<form action="" method="post">
+		<select name="period" id="period" style="width:100px;">
+			<option value="1">所有月</option>
+			<option value="2">当前月</option>
+			<option value="3">上一月</option>
+		</select>
+		<select name="type" id="type">
+			<option value="0">金额榜</option>
+			<option value="1">人数榜</option>
+		</select>
+	</form>
+	<div>
+		<if condition="$type eq 1"><div class="content">
+			<a href="javascript:void(0);" class="row">
+				<span>排名</span>
+				<span>姓名</span>
+				<span>推广数</span>
+				<span>推广额</span>
+			</a>
+			<volist name="Des" id="vo">
+				<a href="javascript:void(0);" class="row">
+				<span>{$key+1}</span>
+				<span>{$vo.real_name}</span>
+				<span>{$vo.recommend_number}</span>
+				<span>{$vo.recommend_money|numFormat=###,0}</span>
+				<span>></span>
+				</a>
+			</volist>
+		</div><else/>
+
+		<div class="content">
+			<a href="javascript:void(0);" class="row">
+				<span>排名</span>
+				<span>姓名</span>
+				<span>推广额</span>
+				<span>推广数</span>		
+			</a>
+			<volist name="Des" id="vo">
+				<a href="javascript:void(0);" class="row">
+				<span>{$key+1}</span>
+				<span>{$vo.real_name}</span>
+				<span>{$vo.recommend_money|numFormat=###,0}</span>
+				<span>{$vo.recommend_number}</span>
+				<span>></span>
+				</a>
+			</volist>
+		</div></if>
+	</div>
+</div>
+﻿<include file="Pub:footer" />

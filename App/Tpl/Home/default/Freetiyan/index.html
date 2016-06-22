@@ -1,0 +1,54 @@
+﻿<include file="Public:_header_common" /><include file="Public:_header_main" />
+<title>{$glo.index_title}</title>
+<meta name="keywords" content="{$glo.web_keywords}" />
+<meta name="description" content="{$glo.web_descript}" />
+<link href="__ROOT__/Style/H/css/home.css" rel="stylesheet" type="text/css" />
+<SCRIPT type=text/javascript src="__ROOT__/Style/Help/js/jquery-1.8.3.min.js"></SCRIPT>
+<script language="javascript" type="text/javascript">
+ function buttonAlert(){
+ alert("名额已满，请明天再试！");
+ }
+ $(function(){
+		$('#dw_ul li a:eq(1)').attr('class','nowNavItem');
+	
+	});
+</script>
+<div class="mn-main mbg4">
+	<div class="w1001 clearfix" >
+       <div class="bd-11 clearfix" > 
+            <h4>免费体验</h4>		
+		   	<div class="bd-11-ul">          	
+                <ul>
+                	<li class="bg1">每个新用户只有一次体验机会<span>（机不可失）</span></li>
+                    <li class="bg2">百财网出<strong>2,000</strong>元<span>（完全免费）</span></li>
+                    <li class="bg3">您交<strong>1</strong>元<span>（体验费，结束后全额退还给您）</span></li>
+                    <li class="bg4">总计<strong>2,001</strong>元<span>（由您操盘）</span></li>
+                    <li class="bg5">交易<strong>2</strong>天<span>（第二个交易日14:00前必须卖出股票）</span></li>
+                    <li class="bg6">盈利全归你，亏损算我们</li>
+                </ul>
+            </div>
+			
+      <div class="bd-11-b">
+    			                	<p>亲，每位用户只能体验一次哦！</p>
+                	<button type="button" onclick="buttonAlert()" class="btn">马上体验</button>
+    			           
+						   </div>
+			
+
+         <div class="bd-10">
+                <dl>
+                    <dt>操盘须知</dt>
+    				<dd>1、股市有风险，投资需谨慎！市场风险莫测，请谨慎行事！</dd>
+                    <dd>2、全程只需要缴纳1元配资体验费，无其他任何费用，体验完成全额退还；</dd>
+                    <dd>3、体验产品资金使用期限为2天，今天买，第二个交易日14:00前必须卖出股票；</dd>
+                    <dd>4、股票操作盈利全部归您，亏损网站承担；</dd>
+                    <dd>5、不设预警线、平仓线</dd>
+                    <dd>6、申请成功，一般下一个交易日开通"股票交易账户"</dd>
+                </dl>
+               
+            </div> 
+        </div>
+		 </div>
+        </div>
+<include file="Public:_righter" />	
+<include file="Public:_footer" />

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>转让协议-{$glo.web_name}</title>
+<style>
+  .Lending_Agreement {
+  	width:100%;
+  	height:auto;
+  	margin:0px;
+  	padding:0px;
+  }
+  .Lending_Agreement_center {
+  	width:1024px;
+  	height:auto;
+  	margin:0 auto;
+  	border:1px solid #EEEEEE;
+  }
+  .lending_ageeement_tit {
+  	width:960px;
+  	height:45px;
+  	line-height:45px;
+  	color:#666666;
+  	font-family:Arial, Helvetica, sans-serif;
+  	font-size:16px;
+  	font-weight:bold;
+  	text-align:center;
+  	margin:0 auto;
+  	margin-top:30px;
+  	border-bottom:1px solid #EEEEEE;
+  }
+  .ageeement_content {
+  	width:800px;
+  	height:auto;
+  	margin:0 auto;
+  	margin-top:30px;
+  	font-size:14px;
+  	font-weight:bold;
+  	color:#666666;
+  	overflow:auto;
+  	font-family:Arial, Helvetica, sans-serif;
+  }
+  .ageeement_content h3 {
+  	font-size:14px;
+  	font-weight:bold;
+  	color:#999999;
+  	font-family:Arial, Helvetica, sans-serif;
+  	padding-left:10px;
+  }
+  .font_lendig {
+  	font-size:14px;
+  	font-weight:bold;
+  	color:#666666;
+  	font-family:Arial, Helvetica, sans-serif;
+  	padding-left:10px;
+  	margin-bottom:10px;
+  	display:block;
+  	margin-top:20px;
+  }
+  .ageeement_content p {
+  	line-height:26px;
+  	font-family:Tahoma, Geneva, sans-serif;
+  	font-size:16px;
+  	color:#999999;
+	
+  	margin:0px;
+  	font-weight:normal;
+  	padding-left:10px;
+  	margin-top:6px;
+  }
+  .ageement_tab {
+  	height:40px;
+  	line-height:40px;
+  }
+  .ageement_tab_ite {
+  	height:40px;
+  	line-height:40px;
+  	font-weight:normal;
+  }
+  .lending_top_inf {
+  	width:1000px;
+  	height:auto;
+  	margin-left:10px;
+  }
+  .lending_logo {
+  	width:1000px;
+  	height:100px;
+  	border-bottom:2px solid #EEEEEE;
+  }
+  .lenging_left_logo {
+  	width:252px;
+  	height:100px;
+  	float:left;
+  	border-bottom:2px solid #00ADEE;
+  }
+  .name_inf {
+  	width:400px;
+  	height:65px;
+  	float:left;
+  	margin-left:40px;
+  	margin-top:2px;
+  }
+  .lenging_right_inf {
+  	width:260px;
+  	height:50px;
+  	float:left;
+  	margin-top:9px;
+  }
+  .lenging_right_inf ul {
+  	margin:0px;
+  	padding:0px;
+  }
+  .lenging_right_inf ul li {
+  	width:400px;
+  	height:25px;
+  	line-height:25px;
+  	font-family:Arial, Helvetica, sans-serif;
+  	font-size:14px;
+  	color:#999999;
+  	list-style:none;
+  	float:left;
+  	padding-left:0px;
+  }
+  .lenging_right_inf ul li a {
+  	color:#999999;
+  	text-decoration:none;
+  }
+  .lenging_right_inf ul li a:hover {
+  	color:#FF9900;
+  	text-decoration:none;
+  }
+  .Seal {
+  	width:auto;
+  	height:auto;
+  	margin-right:20px;
+  	float:right;
+  	text-align:center;
+  }
+  .seal_text {
+  	font-family:Arial, Helvetica, sans-serif;
+  	font-size:13px;
+  	color:#999999;
+  	margin-top:6px;
+  	margin-bottom:40px;
+  	display:block;
+  	font-weight:normal;
+  }
+  .Agreement_pic {
+  	width:200px;
+  	height:45px;
+  	margin:0 auto;
+  }
+  a,a:visited{color: #E67714; text-decoration:none;}
+</style>
+<script type="text/javascript" language="javascript">
+	function printht(){
+		window.print();
+	} 
+</script>
+</head>
+<body>
+<div class="Lending_Agreement">
+  <div class="Lending_Agreement_center">
+    <!--顶部信息开始-->
+    <div class="lending_top_inf">
+      <div class="lending_logo">
+        <div class="lenging_left_logo"><a href="/" target="_blank">{:get_ad(1)}</a></div>
+        <div class="name_inf"></div>
+        <div class="lenging_right_inf">
+          <ul>
+            <li class="tel400"><!-- {:get_ad(3)} -->
+              </p>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--顶部信息结束-->
+    <div class="lending_ageeement_tit"><span class="Agreement_pic">应收帐款收益权转让协议</span><span style="float:right; padding-right:10px;"><a href="javascrīpt:void(0);" onclick="printht();" target="_self">【打印协议】</a> </span></div>
+    <div class="ageeement_content" >
+	 <p >协议编号：{$bid}{$bill.birthtime|date="Ymd",###}{$invest_id}</p>
+     <p >      本《应收帐款收益权转让协议》(以下简称本协议)为三方协议，签署的三方为： </p>
+		    <p > 甲方：{$mBill.user_name}<br>
+				地址：{$mBill.office_address}<br>
+				乙方：{$mInvest.real_name} <br>
+				百财网用户名：{$mInvest.user_name}<br>
+				身份证号码：{$mInvest.idcard|hidecard=###,1}<br>
+				丙方：百财网络科技（苏州）有限公司（官方网址www.baicai58.com）<br>
+				住所：苏州市工业园区苏雅路318号天翔国际大厦1505室 </p>
+		    <p >  鉴于：<br>
+				1、甲方通过丙方的互联网金融平台www.baicai58.com转让应收账款收益权，乙方通过丙方的互联网金融平台www.baicai58.com受让上述应收账款收益权，并向甲方对付所受让应收账款收益权份额本金。<br>
+				2、甲方为{$mBill.user_name}，以其买断、持有并管理的应收账款作为标的（下文简称&#8220;标的应收款&#8221;）将收益权有偿转让给乙方；乙方自愿以自有合法资金受让上述标的应收款收益权。丙方提供居间服务，并有权收取服务费用，收费标准由丙方按规定制定。<br>
+				甲乙丙三方为明确标的应收款收益权转让、服务相关事宜的权利与义务，经友好协商，特签订本协议，以兹共同遵守履行。<br>
+		  <br>
+				第一条&nbsp;转让标的<br>
+				1.1标的应收款为甲方合法持有的应收款。<br>
+				1.2标的应收款收益：包括但不限于标的应收款卖出或以其他合法方式处置变现所取得的全部收入等。<br>
+				1.3本协议约定的甲方向乙方转让的标的为：标的应收款对应的收益权中按本协议约定应由乙方享有的部分。<br>
+		  <br>
+				第二条&nbsp;转让价款及支付<br>
+				2.1&nbsp;甲方出让上述应收款收益权的转让价款总计为人民币 {$bill.amount}元。<br>
+				2.2&nbsp;乙方应在本协议签署后的一个工作日内向甲方支付转让价款 {$bill_invest.invest_amount} 元。<br>
+				2.3乙方将转让价款通过丙方平台的第三方支付渠道划付至甲方在丙方平台的账户；<br>
+				2.4乙方按照本条约定向甲方支付转让价款后，乙方享有标的应收款收益权。乙方支付转让价款之日即为转让基准日。<br>
+		  <br>
+				第三条&nbsp;投资期限及收益<br>
+				乙方受让的标的应收款收益权的投资期限为 {$bill.duration}天，年化收益为{$bill.interest_rate}%，自乙方支付转让价款之日起计算。<br>
+		  <br>
+				第四条&nbsp;标的应收款收益权的实现方式<br>
+				4.1标的应收款对应的债务人偿还债务实现的收入；<br>
+				4.2&nbsp;其他合法方式变现标的应收款所取得的收入；<br>
+				4.3&nbsp;甲方应在上述收入实现之日起，两个工作日内向乙方支付，乙方通过丙方平台的第三方支付渠道接收上述收入。<br>
+		  <br>
+				第五条&nbsp;其他约定<br>
+				5.1、乙方获得标的应收款收益权后不得再向其他第三方转让标的应收款收益权。<br>
+				5.2、本协议的投资期限内，未经乙方的书面同意，甲方不得以标的应收款向第三方进行出质。<br>
+		  <br>
+				第六条&nbsp;甲方的义务与承诺 <br>
+				6.1&nbsp;甲方保证其所出让的应收款收益权对应的标的应收款为其合法所有，且权利完整，不存在未经乙方认可的任何质押、担保或其他权利限制。如因前述原因致使乙方受到损失，甲方应当承担赔偿责任。<br>
+				6.2&nbsp;甲方应向乙方如实告知与此次应收款收益权转让有关的必要信息，涉及国家机密及甲方商业秘密的除外。<br>
+				6.3&nbsp;甲方在应收款收益权转让的过程中，无任何恶意规避法律的行为。<br>
+				6.4&nbsp;在本协议签订后，甲方承诺不采取任何直接或间接有损该应收款权益的行为，不得采取任何违背本协议约定的行动。 <br>
+		  <br>
+				第七条&nbsp;乙方的义务和承诺<br>
+				7.1&nbsp;乙方应按照本协议的约定向甲方支付应收款收益权转让款项。<br>
+		  7.2&nbsp;在本次应收款收益权转让过程中涉及甲方的商业秘密，乙方有义务承担保密责任。<br>
+		  7.3&nbsp;乙方应保证其提供的转让款项为其自有合法资金。<br>
+		  <br>
+		  第八条：&nbsp;丙方的权利和义务<br>
+		 丙方作为第三方居间方，其享有的权利和义务按照其网站上的有关条款和规则处理，对此，甲方和乙方均明确并同意。<br>
+		  <br>
+		  第九条&nbsp;信息披露与保密<br>
+		 9.1&nbsp;本协议签署后，甲乙两方应严格按照法律、法规、有关主管部门规定的时间、方式、程序及内容及本协议约定进行与本次应收款收益权转让有关的信息披露。<br>
+		 9.2&nbsp;甲乙两方就本次应收款收益权转让过程中知悉的对方的商业秘密，负有保密义务。<br>
+		 9.3&nbsp;任何一方违反本条前述义务，如果造成本方损失，责任自负，若造成对方损失，须进行赔偿。<br>
+		  <br>
+		 第十条&nbsp;适用法律、未尽事宜与争议解决<br>
+		 10.1&nbsp;本协议适用中国法律。本协议未尽事宜，由本协议各方协商解决，协商不成，依据法律法规具体规定。<br>
+		  10.2&nbsp;本协议签署后至本协议终止前，适用的法律、法规出现新的规定或变化，从而使本协议的内容与法律、法规不符，各方应根据新的法律、法规就本协议的修改达成补充协议。<br>
+		  10.3&nbsp;因履行本协议过程中发生的任何纠纷，本协议双方应当协商解决，不能协商解决时，任何一方均可向甲方所在地有管辖权的人民法院起诉。<br>
+		  <br>
+		  第十一条&nbsp;附则<br>
+		  1.本协议采用电子文本形式制成，甲乙双同意按照百财网网站要求所填写的确认信息是其合法有效的电子签名，并保留在丙方为此设立的专用服务器上备查，各方均认可该形式的协议效力。甲方、乙方应当妥善保管其在丙方所留注册信息、密码等，若因非丙方原因导致上述信息泄露而造成甲方、乙方损失，则由甲方、乙方自行承担相应责任。<br>
+		 2.本协议的任何条款因法律、法规、政策的变化而无效或不可执行时，不影响本协议的其他条款的效力。<br>
+		  3.本协议自文本最终生成之日成立，于乙方指定账户收到借款之日生效。 </p>
+		  <div>签署日期：{$bill.review|date="Y年m月d日",###}</div>
+		 <div style="float:right;height:50px">签订地点：苏州市工业园区</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

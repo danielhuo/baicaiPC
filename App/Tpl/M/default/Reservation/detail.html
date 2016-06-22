@@ -1,0 +1,257 @@
+﻿<include file="Pub:header" />
+<style>
+	.detailTab{
+		box-shadow:1px 1px 1px 1px lightblue;
+		width:100%;
+		padding:5px;
+	}
+	.detailTab tr{height:40px;}
+	.detailTab th,.detailTab td{
+		border-bottom:1px dotted lightblue;
+		width:400px;
+		
+	}
+	.detailTab th{
+		text-align:right;
+		padding-right:20px;
+	}
+	.detailTab td{
+		text-align:left;
+		padding-left:20px;	
+	}
+	
+	
+	
+.intro1 table{
+	line-height: 25px;
+	font-size: 16px;
+	padding-top: 5px;
+	margin: 10px auto;	
+	width:100%;
+}
+.intro1 table th,.intro1 table td{
+	text-align:left;
+}
+.switch{
+	position: absolute;
+	top:-40px;
+	left: 0px;
+	z-index: 1;
+	width: 100%;
+	height: 40px;
+}
+.switch div{
+	height:100%;
+	width:50%;
+	float:left;
+	
+	text-align:center;
+	font-weight:bold;
+	font-size:20px;
+	line-height:40px;
+}
+
+
+
+
+body{background-image:url(/Style/Mobile/images/bg_bill.png)}
+
+
+.formDiv{
+	position: absolute;  display:none; top: 0%;  left: 0%;  width: 100%; height:100%; background-color: black;  z-index:1000;  -moz-opacity: 0.9;  opacity:.90;  filter: alpha(opacity=90);
+}
+#form1{width:80%;margin:30px auto;background-color:#fff;padding:10px;}
+#form1 input{width:100%;height:40px;margin-top:20px;}
+#form1 input[type=text]{
+border:none;border-bottom:1px solid #666;border-radius:0;text-indent:20px;
+}
+.input1{
+	background-color:#2AA198;color:#fff;
+	font-size:20px;
+	border-radius:10px;
+}
+.input2{
+	background-color:#666;color:#fff;
+	font-size:20px;
+	border-radius:10px;
+}
+.showForm{margin-top:20px;text-align:center;}
+#form1 p{margin-top:10px;text-align:center;}
+	
+	
+</style> 
+<div class="main">
+	
+	<div class="formDiv">	
+		<form action="" method="" id="form1" >
+		
+			<input type="hidden" name="type" id="type" value="2"/>
+			<input type="hidden" name="id" id="id" value={$vo.id}></input>
+			<input type="text" name="name" id="name" placeholder="您的称呼:"/>				
+			<input type="text" name="price" id="price" placeholder="预约金额:"/>
+			<input type="text" name="telephone" id="tl"
+				placeholder="您的手机号码:"/>
+				
+			<input type="button" onclick="save();" value="提交" class="input1" />
+			<input type="button" onclick="cancel();" value="取消" class="input2" />
+		
+			<p>我们会以客服电话<span style="color:red;">0512-62853600</span>联系您<br/>请您留意接听</p>
+		</form>
+	</div>
+	<table class="detailTab">
+		<tr><th>名称 :</th><td>{$vo.name}</td></tr>
+		<tr><th>金额 :</th><td>{$vo.amount|MFormt=###}</td></tr>
+		<tr><th>利率 :</th><td>{$vo.interest_rate}</td></tr>
+		<tr><th>期限 :</th><td>{$vo.duration}</td></tr>
+		<tr><th>门槛 :</th><td>{$vo.min_invest}元</td></tr>
+		<tr><th>还需资金 :</th><td class="red">{$vo.need|MFormt=###}</td></tr>
+	
+		<tr><td colspan=2>
+			<if condition="$vo.need eq 0"> 
+					<div class="tz_bt1" >我要预约</div>
+			<else/>
+					<div class="tz_bt" >我要预约</div>
+			</if>
+				
+	    </td></tr>
+	</table>	
+
+	
+	
+	
+	<div style="margin-top:70px;position:relative;" class="div2">
+		<div class="switch">
+			<div class="left">
+			产品介绍</div>
+			<div class="right">
+			投资记录</div>
+		</div>
+	
+
+		<div style="padding:20px;background-color:#E2F7FC;">
+			<div class="intro1" style="margin:0 2px;">
+				
+				<div style="width:98%;margin-top:10px;text-align:left;font-size:20px;">{$vo.detail}</div>
+			
+			</div>
+			<div class="intro1">
+				<table>
+					 <tr>
+						<th>投资人</th><th>投资金额</th>
+					</tr>
+					<volist name="list" id="vb">
+					<tr>
+						<td>{$vb.user_name|hidecard=###,4}</td><td>{$vb.invest_amount|num_format=###}</td>
+					</tr>
+					</volist> 
+						
+				</table>
+				<div class="list_bottom">
+					<div class="list_bottom_right">
+						<ul>
+						{$list.page}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+
+<script type="text/javascript"> 
+	$(function(){
+	
+	$(".tz_bt").click(function(){
+		
+		$(".formDiv").show();
+	});
+	
+	
+	
+	
+	$('.intro1:eq(1)').hide();
+	$('.left').css({"background-color":"#E2F7FC","color":"#2AA198","text-shadow":"1px 1px 2px #808080","box-shadow":"0px 2px 0px 0px #6ED6F0 inset"});
+	
+		
+		$(".left").click(function(){
+			$('.intro1:eq(0)').show().siblings().hide();
+				$('.left').css({"background-color":"#E2F7FC","color":"#2AA198","text-shadow":"1px 1px 2px #808080","box-shadow":"0px 2px 0px 0px #6ED6F0 inset"}).siblings().css({"background-color":"#E5E5E5","color":"black","text-shadow":"none","box-shadow":"none"});
+			
+			
+		});
+		$(".right").click(function(){
+			$('.intro1:eq(1)').show().siblings().hide();
+			$('.right').css({"background-color":"#E2F7FC","color":"#2AA198","text-shadow":"1px 1px 2px #808080","box-shadow":"0px 2px 0px 0px #6ED6F0 inset"}).siblings().css({"background-color":"#E5E5E5","color":"black","text-shadow":"none","box-shadow":"none"});
+			
+			
+		
+			
+		});	
+		
+		$('#showForm').click(function(){
+	
+		$('.formDiv').show();
+	
+	})
+	$('#back_time').datepicker({
+				changeMonth : true,
+				changeYear : true,
+			});
+		
+		
+	});
+	function save(){	
+			var tl=$("#tl").val();
+			
+			var name=$("#name").val();
+			var price=$("#price").val();
+			var id=$("#id").val();
+			
+			
+			var type=$("#type").val();
+			
+			$.ajax({
+				url: "__URL__/save",
+				type:"POST",
+				dataType: "json",
+				async:false,
+				data: {"telephone":tl,"name":name,"price":price,"type":type,"id":id},
+				success: function(d){
+			
+					if(d.status == 1){
+						$.jBox.tip("内容填写不完整");
+					}
+					else if(d.status==2){
+						$.jBox.tip("号码格式错误");
+					}
+					else if(d.status==3){
+						$.jBox.tip("请输入数字");
+						
+					}
+					else if(d.status==4){
+						$.jBox.tip("信息提交成功,我们的客服会联系您");
+					}
+					else{
+					$.jBox.tip("系统出错");
+					}
+				}
+			});	
+			$(".formDiv").hide();
+	}
+	
+	function cancel(){
+		$("#tl").attr("value","");
+		$("#name").attr("value","");
+		$("#price").attr("value","");
+		$(".formDiv").hide();
+		
+	}
+
+</script>
+
+﻿<include file="Pub:footer" />  

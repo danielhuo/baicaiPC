@@ -1,0 +1,16 @@
+<?php
+// 本类由系统自动生成，仅供测试用途
+class PromotionAction extends AppAction {
+	 var $needlogin=true;
+    public function friends(){
+		
+		$field= "m.id,m.user_name,m.reg_time,sum(ml.affect_money) award";
+		$friends= M("members m")->field($field)->join(" lzh_member_moneylog ml ON m.id = ml.target_uid ")->where(" m.recommend_id ={$this->uid} AND ml.type =13")->group("ml.target_uid")->select();
+		foreach ($friends as $key => $value) {
+			$friends[$key]['reg_time']=date("Y/m/d",$value['reg_time']);
+		}
+		$data['friends']=$friends;
+		ajaxmsg($data,0);
+    }
+
+}

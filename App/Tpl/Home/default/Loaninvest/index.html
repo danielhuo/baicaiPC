@@ -1,0 +1,85 @@
+<include file="Public:_header_common" />
+<title>投资项目</title>
+<include file="Public:_header_main" />
+<script type="text/javascript">
+	$(function(){
+		$('#dw_ul li a:eq(1)').attr('class','nowNavItem');
+	});
+</script>
+<div style="height:250px;background:url('__ROOT__/Style/H/images/binvests.png') no-repeat scroll center center;width: 100%;background-size:cover;">
+</div>
+<div class="loanlist">
+	<div class="container">
+		<volist name="list.list" id="vb">
+		<div class="row col-xs-10 col-xs-offset-1">
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-1"><img src="/Style/H/images/baicai.png" class="img-circle"></div>
+							<div class="col-xs-8 panel-title">
+								<a href="__APP__/Loaninvest/detail?id={$vb.id}">JK{$vb.id}{$vb.loan_name}</a></div>
+							<div class="col-xs-3">
+								<div class="progress progress-striped active">
+								   <div class="progress-bar progress-bar-success" role="progressbar" 
+								      aria-valuenow="{$vo.progress|floor=###}" aria-valuemin="0" aria-valuemax="100" 
+								      style="width:{$vb.progress|floor=###}%;">
+								      <span >{$vb.progress|floor=###}%</span>
+								   </div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body text-center">
+						<div class="col-xs-2">
+							<h3 class="text-danger">{$vb.interest_rate}<small>%</small></h3>
+							<small>(预期年化)</small>
+						</div>
+						<div class="col-xs-3">
+							<h3 class="text-danger">{$vb.loan_amount|num_format=###}<small>元</small></h3>
+							<small>(募集总额)</small>
+						</div>
+						<div class="col-xs-2">
+							<h3 class="text-danger"><small>约</small>{$vb.loan_duration}<small>{$vb.duration_type|duration_format=###}</small></h3>
+							<small>(借款期限)</small>
+						</div>
+						<div class="col-xs-2">
+							<h3><small>利随本清</small></h3>
+							<small>(还款方式)</small>
+						</div>
+						
+						<div class="col-xs-3">
+							<h3 class="text-danger">{$vb.need|num_format=###}<small>元</small></h3>
+							<small>(还需金额)</small>
+						</div>
+					</div>
+					<div class="panel-footer text-right">
+						
+						<if condition="$vb.status eq 2"> 
+		   				<a href='__APP__/Loaninvest/detail?id={$vb.id}'class="btn btn-info" >借款中</a>
+		  				<elseif condition="$vb.status eq 4"/>
+						<a href='__APP__/Loaninvest/detail?id={$vb.id}' class="btn btn-success">已满标</a>
+						<elseif condition="$vb.status eq 6"/>
+						<a href='__APP__/Loaninvest/detail?id={$vb.id}'class="btn btn-success">已满标</a>
+		    			<elseif condition="$vb.status eq 7"/>
+						<a href='__APP__/Loaninvest/detail?id={$vb.id}' class="btn btn-warning">还款中</a>
+		  				<elseif condition="$vb.status eq 8"/>
+						<a href='__APP__/Loaninvest/detail?id={$vb.id}'class="btn btn-default">已完成</a>
+						</if>
+
+					</div>
+				</div>
+		</div>
+		</volist>
+		<div class="list_bottom">
+		<div class="list_bottom_right">
+		<ul>
+		{$list.page}
+		</ul>
+		</div>
+	</div>
+
+	</div>
+</div>
+	
+
+<include file="Public:_footer" />

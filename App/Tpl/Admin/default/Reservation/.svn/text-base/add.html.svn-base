@@ -1,0 +1,125 @@
+<include file="Public:_header" />
+ <title>发表配资-{$glo.index_title}</title>
+ <script type="text/javascript" src="__ROOT__/Style/My97DatePicker/jquery.ui.datepicker.js" language="javascript"></script>
+<link type="text/css"  rel="stylesheet" href="/Style/My97DatePicker/jquery.ui.datepicker.css"/>
+<tagLib name="htmlA" />
+<div class="so_main">
+ 
+<style>
+form{margin:10px auto;width:800px;padding:10px 50px;box-shadow:1px 1px 1px 1px lightblue;}
+form h1{text-align:center;color:#2AA198;letter-spacing:5px;text-shadow:1px 0px 1px gray;font-size:200%;}
+.div1{margin-top:5px;height:40px;padding:0 10px;}
+.s1{font-size:16px;font-weight:bold;line-height:40px;color:#2AA198}
+form div input{height:20px;margin:0 20px 0 10px;
+			   text-indent:10px;border:none;
+			   border-bottom:1px solid gray;font-size:18px;
+			   width:200px;background-color:inherit;}
+form input[type=submit]{
+		width:200px;
+		display:block;
+		margin:30px 100px;
+		height:40px;
+		background-color:#2AA198;
+		color:#fff;
+		font-size:20px;
+		box-shadow:2px 2px 0px 2px gray;
+	}
+form input[type=submit]:hover{
+		box-shadow:none;
+}
+.error_box{
+	margin-left:15px;
+	font-size:14px;
+	color:red;
+	font-weight:normal;
+	
+}
+</style>
+<div class="main">
+	<form method="post" action="__URL__/doadd/"  onsubmit="return cksubmit();" id="Borrow" enctype="multipart/form-data">
+		<h1>私募项目发布</h1>
+		<div class="div1">
+			<span class="s1">项目名称</span><input type="text" id ="name" name="name"/><span class="error_box"></span>
+		</div>
+		<div class="div1">
+			<span class="s1">募集金额</span><input type="text" id ="money" name="money"/>元<span class="error_box"> </span>
+		</div>
+		<div class="div1">
+			<span class="s1">还款期限</span><input type="text" id ="time" name="time" /><span class="error_box"> </span>
+		</div>
+		<div class="div1">
+			<span class="s1">年化收益</span><input type="text" id ="interest" name="interest"/><span class="error_box"> </span>
+		</div>
+		<div class="div1">
+			<span class="s1">投资门槛</span><input type="text" id ="min" name="min"/><span class="error_box"> </span>
+		</div>
+		<div class="div1" style="height:auto">
+			<span class="s1">详细信息</span>
+			<div style="height:400px;"><include file="./Style/Editor/kissy.html" />
+		<htmlA:editor id="detail" w='600px' h="320px" type='kissy'/>
+			</div>
+			<span class="error_box" style="display:block;margin-top:30px;"> </span>
+		</div>
+		
+			<input type="submit" value="提 交"/>
+			
+		
+	</form>
+</div>
+<script type="text/javascript">
+	function setError(tip){
+		$.jBox.tip(tip);
+		return false;
+	}
+	function cksubmit(){
+		$('.error_box').html("");
+		var name = $('#name').val();
+		var money = $('#money').val();
+		var time = $('#time').val();
+		var interest = $('#interest').val();
+		var min = $('#min').val();
+		var detail = $('#detail').val();
+		if (money=="") {
+			$('.error_box:eq(1)').html("募集金额不能为空！");
+			return  false;
+		} 
+		if (money < 1) {
+			$('.error_box:eq(1)').html("募集金额不能小于1元！");
+			return false;
+		}
+		if (money%1!= 0) {
+			$('.error_box:eq(1)').html("募集金额不能为小数！");
+			return false;
+		}
+		if (name == "") {
+			$('.error_box:eq(0)').html("项目名称不能为空！");
+			return false;
+		}
+		if (time=="") {
+			$('.error_box:eq(2)').html("还款期限不能为空！");
+			return false;
+		} 
+		if (interest=="") {
+			$('.error_box:eq(3)').html("年化收益不能为空！");
+			return false;
+		}
+		
+		if (min =="") {
+			$('.error_box:eq(4)').html("请设置最小投资额！");
+			return  false;
+		} 
+		if (min < 1) {
+			$('.error_box:eq(4)').html("最小投资额不能小于1元！");
+			return  false;
+		} 
+		if (detail.length==""){
+			$('.error_box:eq(5)').html("详细信息不能为空！");
+			return  false;
+		}
+		return true;
+	}
+</script>
+</div>
+
+
+<include file="Public:_footer" />

@@ -1,0 +1,202 @@
+<include file="Public:_header_common"/>
+<title>发表配资-{$glo.index_title}</title>
+ <script type="text/javascript" src="__ROOT__/Style/My97DatePicker/jquery.ui.datepicker.js" language="javascript"></script>
+<link type="text/css"  rel="stylesheet" href="/Style/My97DatePicker/jquery.ui.datepicker.css"/>
+<style>
+form{width:600px;margin:10px auto;min-height:400px;padding:0 50px 20px;box-shadow:1px 1px 1px 1px lightblue;}
+form td{height:50px;padding:10px 0;}
+form h1{text-align:center;color:#2AA198;letter-spacing:5px;text-shadow:1px 0px 1px gray;font-size:300%;}
+form span{font-size:18px;font-weight:bold;line-height:40px;color:#2AA198;}
+form input{height:30px;
+			   text-indent:10px;border:none;
+			   border-bottom:1px solid gray;font-size:18px;
+			   width:230px;background-color:inherit;}
+form input[type=submit]{
+		display:block;
+		width:100%;
+		height:36px;
+		line-height:36px;
+		background-color:#2AA198;
+		color:#fff;
+		font-size:20px;
+		text-indent:0;
+		box-shadow:2px 2px 2px 0px gray;
+		border-radius:2px;
+	}
+form input[type=submit]:hover{
+		box-shadow:none;
+		opacity:0.8;
+		filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
+}
+.error_box{
+	margin-left:15px;
+	font-size:14px;
+	color:red;
+	font-weight:normal;
+	
+}
+</style>
+<include file="default:Public:_header_main" group="Home"/>
+<div class="main">
+	<form method="post" action="__URL__/save/"  onsubmit="return cksubmit();" id="Borrow" enctype="multipart/form-data">
+		<table>
+			<tr><td width=100></td><td width=250><h1>票据项目发布</h1></td><td width=250></td></tr>
+			<tr>
+				<td><span>融资用户</span></td>
+				<td><input type="text" id ="name" name="name"/></td>
+				<td><span class="error_box"></span></td>
+			</tr>
+			<tr>
+				<td><span>票据金额</span></td>
+				<td><input type="text" id ="money" name="money"/>元</td>
+				<td><span class="error_box"></span></td>
+			</tr>
+			<tr>
+				<td><span>融资金额</span></td>
+				<td><input type="text" id ="amount" name="amount"/>元</td>
+				<td><span class="error_box"></span></td>
+			</tr>
+			<tr>
+				<td><span>还款期限</span></td>
+				<td><input type="text" id ="time" name="time" readonly/></td>
+				<td><span class="error_box"> </span></td>
+			</tr>
+			<tr>
+				<td><span>年化收益</span></td>
+				<td><input type="text" id ="interest" name="interest"/>%</td>
+				<td><span class="error_box"> </span></td>
+			</tr>
+			<!--
+			<tr>
+				<td><span>平台费率</span></td>
+				<td><input type="text" id ="fee" name="fee"/>%</td>
+				<td><span class="error_box"> </span></td>
+			</tr>
+			-->
+			<tr>
+				<td><span>上传图片</span></td>
+				<td><input type="file" id ="img" name="img" style="filter:alpha(opacity=0); -moz-opacity:0; opacity:0;position:absolute;top:590px;z-index:1;"/>
+			<input type="text" id="chang" style="text-align:center;color:#FF9933" value="请选择图片"/></td>
+				<td><span class="error_box"> </span></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="提 交"/></td>
+				<td></td>
+			</tr>
+		</table>
+	</form>
+</div>
+<script type="text/javascript">
+	$(function(){
+		$('#time').datepicker({
+				changeMonth : true,
+				changeYear : true,
+			});
+	})
+	
+	function setError(tip){
+		$.jBox.tip(tip);
+		return false;
+	}
+	function cksubmit(){
+		var name = $('#name').val();
+		var status = "";
+		$('input[type="submit"]').attr("disabled",true);
+		$('input[type="submit"]').val("提交中...");
+	
+		$.ajax({
+			url: "__URL__/yzname/",
+			type: "post",
+			dataType: "json",
+			data: {"name":name},
+			async:false,
+			success: function(result){
+				if (result.status == 0){
+					$('.error_box:eq(0)').html(result.message);
+					status = 1;
+				}
+			}
+		})
+		
+		if (status == 1) return false;
+		
+		var money = $('#money').val();
+		var amount = $('#amount').val();
+		var time = $('#time').val();
+		var interest = $('#interest').val();
+		var img = $('#img').val();
+		var band = $('#band').val();
+		if (name == "") {
+			$('.error_box:eq(0)').html("用户名不能为空！");
+			return false;
+		}
+		if (money=="") {
+			$('.error_box:eq(1)').html("融资金额不能为空！");
+			return  false;
+		} 
+		if (money < 1) {
+			$('.error_box:eq(1)').html("融资金额不能小于1元！");
+			return false;
+		}
+		if (money%1!= 0) {
+			$('.error_box:eq(1)').html("融资金额不能为小数！");
+			return false;
+		}
+		if (amount=="") {
+			$('.error_box:eq(2)').html("融资金额不能为空！");
+			return  false;
+		} 
+		if (amount< 1) {
+			$('.error_box:eq(2)').html("融资金额不能小于1元！");
+			return false;
+		}
+		if (amount%1!= 0) {
+			$('.error_box:eq(2)').html("融资金额不能为小数！");
+			return false;
+		}
+		
+		if (time=="") {
+			$('.error_box:eq(3)').html("还款期限不能为空！");
+			return false;
+		} 
+		if (time < 1) {
+			$('.error_box:eq(3)').html("还款期限不能小于1天！");
+			return false;
+		} 
+		if (interest=="") {
+			$('.error_box:eq(4)').html("年化收益不能为空！");
+			return false;
+		}
+		if (interest > 10) {
+			$('.error_box:eq(4)').html("年化收益不能大于10%！");
+			return false;
+		}
+		if (img =="") {
+			$('.error_box:eq(5)').html("请上传图片！");
+			return  false;
+		} 
+		return true;
+	}
+	$('#name').change(function(){
+		var name = $('#name').val();
+		$.ajax({
+			url: "__URL__/yzname/",
+			type: "post",
+			dataType: "json",
+			data: {"name":name},
+			async:false,
+			success: function(result) {
+				if (result.status == 0){
+					$('.error_box:eq(0)').html(result.message);
+				}else{
+					$('.error_box:eq(0)').html('');
+				}
+			}
+		})
+	})
+	$('#img').change(function(){
+		$('#chang').val('已选择');
+	})
+</script>
+<include file="default:Public:_footer" group="Home" />

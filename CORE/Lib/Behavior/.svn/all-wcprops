@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Lib/Behavior
+END
+ContentReplaceBehavior.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Lib/Behavior/ContentReplaceBehavior.class.php
+END
+ParseTemplateBehavior.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Lib/Behavior/ParseTemplateBehavior.class.php
+END
+CheckRouteBehavior.class - 安全更新3.0.php
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Lib/Behavior/CheckRouteBehavior.class%20-%20%E5%AE%89%E5%85%A8%E6%9B%B4%E6%96%B03.0.php
+END
+CheckTemplateBehavior.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Lib/Behavior/CheckTemplateBehavior.class.php
+END
+CheckRouteBehavior.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Lib/Behavior/CheckRouteBehavior.class.php
+END
+ShowPageTraceBehavior.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Lib/Behavior/ShowPageTraceBehavior.class.php
+END
+TokenBuildBehavior.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Lib/Behavior/TokenBuildBehavior.class.php
+END
+WriteHtmlCacheBehavior.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Lib/Behavior/WriteHtmlCacheBehavior.class.php
+END
+LocationTemplateBehavior.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Lib/Behavior/LocationTemplateBehavior.class.php
+END
+ReadHtmlCacheBehavior.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Lib/Behavior/ReadHtmlCacheBehavior.class.php
+END
+ShowRuntimeBehavior.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/BaiCai/!svn/ver/266/trunk/CORE/Lib/Behavior/ShowRuntimeBehavior.class.php
+END

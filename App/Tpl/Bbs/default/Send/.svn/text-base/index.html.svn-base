@@ -1,0 +1,138 @@
+<include file="Public:_header_common" />
+<title>社区论坛发布新帖-{$glo.index_title}</title>
+<link rel="stylesheet" href="/Editor/themes/default/default.css" />
+<script charset="utf-8" src="/Editor/kindeditor-min.js"></script>
+<script charset="utf-8" src="/Editor/lang/zh_CN.js"></script>
+<include file="Public:_header_main" />
+
+<script type="text/javascript">
+    var editor;//初始化Editor
+    KindEditor.ready(function(K) {
+    editor = K.create('textarea[name="content"]', {
+    resizeType : 0,//定义编辑器是否可自由控制
+    allowFileManager : true
+                });
+                
+    K('a[name=reset]').click(function(e) {
+        editor.html('');//重置数据
+        });
+    });
+
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//发表主题分类选择
+	$("#aa").click(function(e){
+		if(this.className == "open"){
+			this.className = "";
+            $(this.nextSibling).slideUp("fast");
+		}else{
+			this.className = "open";
+			$(this.nextSibling).slideDown("fast");
+		}
+		e.stopPropagation();
+	});
+
+    
+    $(".selectBox p a").click(function(){
+        $("#aa").html($(this).html()).attr("data",$(this).attr("data"));
+
+        $(this).siblings().removeClass("current");
+        $(this).addClass("current");
+
+        $("#aa").removeClass("open");
+        $("#aa").siblings().slideUp("fast");
+        return false;
+    });
+    if(parseInt($("#type").val())>0)     $("'.selectBox p a[data="+parseInt($("#type").val())+"]'").click();
+
+    $(".p_submit").click(function(){
+        if(parseInt($("#aa").attr("data"))>0){
+            $("#type").val($("#aa").attr("data"));
+        }else{
+            alert("发布的帖子必须选择主题");
+            return false;
+        }
+
+        if($("#title").val()!="" && $("#title").val()!="内容标题"){
+            $("#title").val($("#title").val());
+        }else{
+            alert("发布的帖子必须填写标题");
+            return false;
+        }
+
+        if(editor.html().length>=10){
+            $("#editor_1").val(editor.html());
+        }else{
+            alert("发布的帖子内容必须大于10个字");
+            return false;
+        }
+
+        document.mouse_focus.submit();
+        return false;
+    })
+});
+</script>
+
+
+</head>
+<body>
+<!--中部模块开始-->
+<div class="wp_center_contont">
+	<!--中部1024px模块开始-->
+	<div class="wp_center_M1">
+        <!--左侧帖子模块开始-->
+        <div class="left_tiezi_block">
+        	<div class="left_block_item1">
+            	<!--发表主题模块开始-->
+                <div class="Post_Subject">
+                	<!--发表主题标题模块开始-->
+                    <div class="Post_Subject_tit">发表主题</div> 
+                    <!--发表主题标题模块结束-->
+                    
+                    <!--发表主题选择模块开始-->
+                    <div class="Post_Subject_content">
+                    <form id="mouse_focus" name="mouse_focus" action="/bbs/send/doedit" method="post">
+                      <input type="hidden" name="id" id="id" value="{$article.id}"/>
+                      <input type="hidden" name="type" id="type" value="{$article.menu}"/>
+                      <div class="f_tid">
+                       	<div class="selectBox">
+                    		<a href="javascript:void(0);" id="aa" data="">请选择类别</a><p>
+                            <volist id="vo" name="list">
+                        	<a href="javascript:void(0)" data="{$vo.id}" >{$vo.type_name}</a>
+                            </volist>
+                            </p>
+						</div>
+                      </div>
+                        <div class="l_tid">
+                          <label><input type="text" name="title" id="title" class="input_text_f" onfocus="if(this.value==defaultValue) {this.value='';this.type='text'}" onblur="if(!value) {value=defaultValue; this.type='text';}" value="{$article.title|default='内容标题'}" maxlength="50"/></label>
+                          <span class="input_text_sum">标题字数50字内</span> 
+                        </div>
+                        
+                        <!--编辑器模块开始-->
+                        <div class="post_ueditor">
+							<textarea class="editor" id="editor_1" name="content">{$article.art_content|stripslashes=###}</textarea>
+                        </div>
+                        <!--编辑器模块结束-->
+                        
+                        <!--提交按钮模块开始-->
+                        <div class="p_reply_submit">
+                        	<a name="submit" class="p_submit" href="#" title="发表帖子">发表帖子</a>
+                            <a name="reset" class="p_rest" href="#" title="重置内容">重置内容</a>
+                        </div>
+                        <!--提交按钮模块结束-->
+               	    </form>
+                    </div>
+                    <!--发表主题选择模块结束-->
+                </div>
+                <!--发表主题模块结束-->
+          	</div>
+        </div>
+        <!--左侧帖子模块结束-->
+        
+        <include file="Public:_right" />
+    </div>
+	<!--中部1024px模块结束-->
+</div>
+<!--中部模块结束-->
+<include file="Public:_footer" />

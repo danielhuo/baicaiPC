@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/examples
+END
+signon.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/examples/signon.php
+END
+upgrade_tables_mysql_4_1_2+.sql
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/examples/upgrade_tables_mysql_4_1_2+.sql
+END
+openid.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/examples/openid.php
+END
+signon-script.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/examples/signon-script.php
+END
+config.manyhosts.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/examples/config.manyhosts.inc.php
+END
+create_tables.sql
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/examples/create_tables.sql
+END
+swekey.sample.conf
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/examples/swekey.sample.conf
+END
+create_tables_drizzle.sql
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/examples/create_tables_drizzle.sql
+END

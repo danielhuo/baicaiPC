@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8">
+		<title>用户列表</title>
+		<link rel="stylesheet" type="text/css" href="/Style/H/css/css.css">
+		<link rel="stylesheet" type="text/css" href="/Style/H/css/home.css">
+		<style>
+			.main{background-color:#fff;padding:10px 0;}
+			.dataTab{width:80%;padding:10px 0;margin:0 auto;}
+			.dataTab h2{text-align:center;color:#000;}
+			.dataTab table{
+				background-color:#99CCCC ;width:100%;
+				text-align:center;line-height:30px;
+				color:#000;
+				border-spacing:0 2px;}
+			.dataTab th{background-color:#336666;font-size:16px;height:40px;}
+			.dataTab td{
+				background-color:#99FFFF}
+				
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<nav>
+				<ul  class="navigation-list">
+					<li class="navigation-item"><a href="__URL__/grouplist">分组列表</a></li>
+					<li class="navigation-item"><a href="__URL__/userlist">用户列表</a></li>
+					<li class="navigation-item"><a href="__URL__/editmsg">发布信息</a></li>	
+				</ul>
+			</nav>
+			<div class="dataTab">
+				<h2>公众号分组</h2>
+				<table cellspacing=0>
+					<tr>
+						<th>id</th>
+						<th>组名</th>
+						<th>人数</th>
+						<th>操作</th>
+					</tr>
+					<volist id="ginfo" name="ginfos">
+					<tr border="1">
+						<td>{$ginfo.id}</td>
+						<td>{$ginfo.name}</td>
+						<td>{$ginfo.count}</td>
+						<td>修改组名</td>
+					</tr>
+					</volist>
+				</table>
+			
+			</div>
+			
+		</div>
+	</body>
+</html>	

@@ -1,0 +1,24 @@
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<div class="so_main">
+
+<div class="page_tit">添加/编辑帖子</div>
+<div class="page_tab"><span data="tab_1" class="active">基本设置</span></div>
+<div class="form2">
+	<form method="post" action="__URL__/doEditRepay" enctype="multipart/form-data">
+	<input type="hidden" name="id" value="{$vo.id}" />
+	<div id="tab_1">
+		<dl class="lineD"><dt>回帖人：</dt><dd>{$vo.user_name}</dd></dl>
+		<dl class="lineD"><dt>回帖时间：</dt><dd><htmlA:timer id="art_time" tip='' arg="{dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true}"  class="Wdate" value="{$vo.art_time|mydate='Y-m-d H:i:s',###}"/></dd></dl>
+		<dl class="lineD"><dt>是否隐藏：</dt><dd><htmlA:radio id="is_hidden" value="key|vo.is_hidden" default="0|显示,1|隐藏" tip=''/></dd></dl>
+		<dl class="lineD"><dt>回帖内容：</dt><dd><htmlA:text id="content" value="{$vo.content}"  tip="*"/></dd></dl>
+	</div>
+	<div class="page_btm">
+	  <input type="submit" class="btn_b" value="确定" />
+	</div>
+	</form>
+</div>
+
+</div>
+<include file="Public:_footer" />

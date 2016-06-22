@@ -1,0 +1,120 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<style type="text/css">
+  .red {font-size: 14px;color: red;}
+  #area_list th,#area_list td {text-align: center;border: 1px #DDDDDD solid;}
+</style>
+<script type="text/javascript">
+	var delUrl = '__URL__/doDel';
+	var addUrl = '__URL__/add';
+	var isSearchHidden = 1;
+	var searchName = "搜索/筛选";
+</script>
+<div class="so_main">
+  <div class="page_tit">会员待收/待还查询</div>
+<!--搜索/筛选会员-->
+  <include file="search_wd" />
+<!--搜索/筛选会员-->
+
+  <div class="Toolbar_inbox">
+    <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索/筛选会员" style="search_action" />
+  </div>
+  <div class="list">
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th class="line_l">UID</th>
+      <th class="line_l">用户名</th>
+      <th class="line_l">账户总额</th>
+      <th class="line_l">可用余额</th>
+      <th class="line_l">冻结资金</th>
+      <th class="line_l">待收金额</th>
+      <th class="line_l">待还金额</th>
+    </tr>
+    <tr overstyle='on'>
+        <td>{$search.uid}</td>
+        <td><htmlA:user id="search.uid" uname="search.user_name" /></td>
+        <td><font class="red">{$vo.total_money|default="0.00"}</font></td>
+        <td>{$vo.account_money|default="0.00"}</td>
+        <td>{$vo.freeze_money|default="0.00"}</td>
+        <td>{$vo.collect|default="0.00"}</td>
+        <td>{$vo.needpay|default="0.00"}</td>
+    </tr>
+  </table>
+  <hr/>
+  <div style="height:20px;"></div>
+   <div class="Toolbar_inbox">
+  <div style="height:30px;font-size:16px;text-align:center;">待收明细列表</div>
+  </div>
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th class="line_l">标号</th>
+      <th class="line_l">类型</th>
+      <th class="line_l">金额</th>
+      <th class="line_l">本金</th>
+      <th class="line_l">利息</th>
+      <th class="line_l">利息管理费</th>
+    </tr>
+
+    <volist id="vx" name="list1">
+    <tr overstyle='on'>
+        <td><a target="_blank" href="{$vx.id|getInvestUrl=###}">{$vx.id}</a></td>
+        <td>待收</td>
+        <td><font class="red">{$vx.money|default="0.00"}</font></td>
+        <td>{$vx.capital|default="0.00"}</td>
+        <td>{$vx.interest|default="0.00"}</td>
+        <td>{$vx.interest_fee|default="0.00"}</td>
+    </tr>
+    </volist>
+
+    <tr>
+      <th class="line_l">待收合计</th>
+      <th class="line_l"><font class="red">{$list1All.num}标</font></th>
+      <th><font class="red">{$list1All.money|default="0.00"}</font></th>
+      <th>{$list1All.capital|default="0.00"}</th>
+      <th>{$list1All.interest|default="0.00"}</th>
+      <th>{$list1All.interest_fee|default="0.00"}</th>
+    </tr>
+  </table>
+	<hr/>
+	<div style="height:20px;"></div>
+	 <div class="Toolbar_inbox">
+  <div style="height:30px;font-size:16px;text-align:center;">待还明细列表</div>
+  </div>
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th class="line_l">标号</th>
+      <th class="line_l">类型</th>
+      <th class="line_l">金额</th>
+      <th class="line_l">本金</th>
+      <th class="line_l">利息</th>
+    </tr>
+    <volist id="vo" name="list2">
+    <tr overstyle='on'>
+        <td><a target="_blank" href="{$vo.id|getInvestUrl=###}">{$vo.id}</a></td>
+        <td>待还</td>
+        <td><font class="red">{$vo.money|default="0.00"}</font></td>
+        <td>{$vo.capital|default="0.00"}</td>
+        <td>{$vo.interest|default="0.00"}</td>
+    </tr>
+    </volist>
+	<tr>
+      <th class="line_l">待还合计</th>
+      <th class="line_l"><font class="red">{$list2All.num}标</font></th>
+      <th><font class="red">{$list2All.money|default="0.00"}</font></th>
+      <th>{$list2All.capital|default="0.00"}</th>
+      <th>{$list2All.interest|default="0.00"}</th>
+    </tr>
+  </table>
+  </div>
+  <div class="Toolbar_inbox">
+    <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索/筛选会员" style="search_action" />
+  </div>
+</div>
+<script type="text/javascript">
+function showurl(url,Title){
+	ui.box.load(url, {title:Title});
+}
+</script>
+
+<include file="Public:_footer" />

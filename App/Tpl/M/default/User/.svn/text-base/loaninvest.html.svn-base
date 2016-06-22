@@ -1,0 +1,197 @@
+﻿<include file="Pub:header" />  
+	<!--  列表开始-->
+	<style>
+		.amount{color:red;}
+	</style>
+	<script>
+		$(function(){
+			$('.proces').each(function(){
+				
+				w=$(this).width()/2;
+				v=$(this).attr('value');
+				
+				drowProcess(this,w,w,w,v,'#ddd','#3EEADB','#2AA198');;
+			})	
+		})
+		function drowProcess(canvas,x,y,radius,process,backColor,proColor,fontColor){
+			if (canvas.getContext) {
+				var cts = canvas.getContext('2d');
+			}else{
+				return;
+			}
+			
+			cts.beginPath();  
+			// 坐标移动到圆心  
+			cts.moveTo(x, y);  
+			// 画圆,圆心是24,24,半径24,从角度0开始,画到2PI结束,最后一个参数是方向顺时针还是逆时针  
+			cts.arc(x, y, radius, 0, Math.PI * 2, false);  
+			cts.closePath();  
+			// 填充颜色  
+			cts.fillStyle = backColor;  
+			cts.fill();
+
+			cts.beginPath();  
+			// 画扇形的时候这步很重要,画笔不在圆心画出来的不是扇形  
+			cts.moveTo(x, y);  
+			// 跟上面的圆唯一的区别在这里,不画满圆,画个扇形  
+			cts.arc(x, y, radius, Math.PI * 1.5, Math.PI * 1.5 -  Math.PI * 2 * process / 100, true);  
+			cts.closePath();  
+			cts.fillStyle = proColor;  
+			cts.fill(); 
+			
+			//填充背景白色
+			cts.beginPath();  
+			cts.moveTo(x, y); 
+			cts.arc(x, y, radius - (radius * 0.26), 0, Math.PI * 2, true);  
+			cts.closePath();
+			cts.fillStyle = 'rgba(255,255,255,1)';  
+			cts.fill(); 
+
+			// 画一条线  
+			cts.beginPath();  
+			cts.arc(x, y, radius-(radius*0.30), 0, Math.PI * 2, true);  
+			cts.closePath();  
+			// 与画实心圆的区别,fill是填充,stroke是画线  
+			cts.strokeStyle = backColor;  
+			cts.stroke();  
+			  
+			//在中间写字 
+			cts.font = "bold 9pt Arial";  
+			cts.fillStyle = fontColor;  
+			cts.textAlign = 'center';  
+			cts.textBaseline = 'middle';  
+			cts.moveTo(x, y);  
+			cts.fillText(Math.round(process * 10)/10+"%", x, y);  
+			
+		}
+
+	</script>
+	<style>	
+	th,.JK{
+		color:#2AA198;
+		font-weight:bold;
+		font-size:16px;
+	}
+	th,td{
+	text-align:center;
+	}
+	</style>
+	<h2 id="title">我的投资</h2>
+	<table class="table table-striped">
+  
+   <thead>
+      <tr>
+         <th>投资项目</th>
+         <th>投资金额</th>
+         <th>投资状态</th>
+		  <th></th>
+      </tr>
+   </thead>
+   <tbody>
+   <volist name="list.list" id='vo'>
+      <tr onclick="href({$vo.lid});">
+         <td class="JK">JK{$vo.lid}</td>
+         <td class="amount">{$vo.invest_amount}</td>
+         <td>{$vo.status2}</td>
+		 <td>></td>
+      </tr>
+	</volist>
+   </tbody>
+</table>
+<div class="fixed_div text-center" style="margin-top:10px;">
+		<span class="loading"><i class="fa fa-spinner fa-pulse"></i>加载中</span>
+	    <span class="nomore" style="display: none;">没有更多记录了</span>
+</div>
+	
+
+
+
+	<!-- <div class="main">
+		<div class="bList">
+			<table cellspacing="0">
+				<tr>
+					<th>投资项目</th>
+					<th>投资金额</th>
+					<th>投资利率</th>
+					<th>投资期限</th>
+					<th>投资状态</th>
+				</tr>
+			</table>
+			<volist name="list.list" id='vo'>
+			
+			<table cellspacing="0">
+				<tr>
+					<td class="title1" >
+						<a href="__ROOT__/M/loaninvest/detail?id={$vo.lid}" >JK{$vo.lid}{$vo.loan_name|cnsubstr=###,17}</a>		
+					</td>
+					<td class="amount">{$vo.invest_amount}</td>
+					<td>{$vo.interest_rate}%</td>
+					<td>{$vo.loan_duration}{$vo.duration_type|duration_format}</td>
+					
+					<td>{$vo.status2}</td>
+				</tr>
+				
+			</table>
+			</volist>
+		</div>
+		<div class="fixed_div" >
+			<a href="javascript:void(0)" onclick="getInfo()" id="more"class="tz_bt">更多投资项目</a>
+	    </div>
+	</div> -->
+	<!-- 列表结束-->
+	
+<script type="text/javascript">
+function href(loan_id){
+	parent.location="__ROOT__/M/loaninvest/detail?id="+loan_id;
+
+}
+    var nowPage = {$list.page.nowPage};
+    var total = {$list.page.total};
+	if (nowPage==1) {
+         	$(".fixed_div .loading").hide();
+    }
+    function getInfo() {
+    	var scrollTop = $(this).scrollTop();
+    	var docHeight = $(document).height();
+    	var windowHeight = document.documentElement.clientHeight;
+
+		if(scrollTop+windowHeight==docHeight){			
+      		  nextPage = nowPage+1;
+      		  	$(".fixed_div .loading").show();
+        $.ajax({
+            url: location.href,
+            data:{"p":nextPage},
+            type: 'get',
+            async: false,
+            success: function (res) {
+            	var res = eval('(' + res + ')');
+              	for(var i in res){
+              		var html="<tr onclick='href("+res[i].lid+");'>";
+              		html+="<td class='JK'>JK"+res[i].lid+"</td>";
+              		html+="<td class='amount'>"+res[i].invest_amount+"</td>";
+              		html+="<td>"+res[i].status2+"</td>";
+              		html+="<td>></td>";
+
+						$(".table-striped").append(html);
+						$(".fixed_div .loading").hide();
+
+              	}
+              	nowPage++;
+             }
+        });
+	        }
+		
+    }
+
+	 $(window).scroll(function(){
+		if(nowPage<total){
+			  	$(".fixed_div .loading").show();
+		    getInfo();
+	    }else{
+			$(".fixed_div .loading").hide();
+			$(".fixed_div .nomore").show();
+		}
+	
+	})
+</script>
+﻿<include file="Pub:footer" />  

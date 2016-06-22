@@ -1,0 +1,382 @@
+<include file="Public:_header_common" />
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>私募产品-{$glo.web_name}</title>
+<meta name="keywords" content="{$glo.web_keywords}" />
+<meta name="description" content="{$glo.web_descript}" />
+<link type="text/css" rel="stylesheet" href="/Style/Mobile/css/dataTab.css"/>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/fancybox/jquery.fancybox-1.3.2.css" media="screen" />
+<link type="text/css"  rel="stylesheet" href="/Style/My97DatePicker/jquery.ui.datepicker.css"/>
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/jquery.ui.datepicker.js" language="javascript"/>
+<include file="Public:_header_main" />
+<style type="text/css">
+
+#toinvest{
+	text-align:center;
+    width: 500px;
+	margin:0 auto;
+	font-size:20px;
+	font-weight:bold;
+    background-color:#F39738;
+	color:white;
+    height:40px;	
+	line-height:40px;
+	-moz-border-radius:5px;	
+	cursor:pointer;
+	margin-top:30px;
+	
+}
+
+#toinvest1{
+	text-align:center;
+    width: 500px;
+	margin:0 auto;
+	font-size:20px;
+	font-weight:bold;
+    background-color:gray;
+	color:white;
+    height:40px;	
+	line-height:40px;
+	-moz-border-radius:5px;	
+	
+	margin-top:30px;
+	
+}
+
+#toinvest:hover{
+	color:#FBC997;
+}
+
+#first{
+	display:none;
+	position:absolute;
+	left:50%;
+	top:50%;
+	background-color:white;
+	width:300px;
+	height:300px;
+	margin:-150px -150px;
+	border:1px solid lightblue;
+	padding:10px  30px;
+	z-index:1000;
+
+}
+
+.invest img{
+	position: absolute;
+	top:-30px;
+	left: 0px;
+	z-index: 1;
+	width: 200px;
+	height: 60px;
+}
+
+.invest{
+	position:relative;	
+	padding:20px 0;
+	margin-top:50px;
+	background-color:#FBC997;
+}
+.invest table{
+	text-align: center;
+	line-height: 40px;
+	font-size: 16px;
+	padding-top: 10px;
+	width: 980px;
+	margin: 10px auto;	
+	border-bottom: 2px dashed #E2E2E2;
+	width:980px;
+}
+.invest table td{
+	width:50px;	
+}
+.invest table td[rowspan="2"]{
+	width:20px;
+}
+
+.intro1{text-align:center;}
+.intro1 table{
+	text-align: center;
+	line-height: 25px;
+	font-size: 16px;
+	padding-top: 5px;
+	width: 980px;
+	margin: 10px auto;	
+	width:980px;
+}
+.intro1 table td{
+	width:315px;
+}
+.switch{position: absolute;
+	top:-30px;
+	left: 0px;
+	z-index: 1;
+	width: 1000px;
+	height: 60px;background:url(/Style/H/images/rec_yy.png);}
+.switch div{height:100%;width:50%;float:left;}
+
+.span3{
+     display:block;	
+	text-align:center;
+	font-weight:bold;
+	padding-bottom:15px;
+	padding-right:9px;
+	font-family:"STHupo";
+	font-size:13px;
+}
+
+.input1{
+    width:100%;
+	height:30px;
+	margin-top:10px;
+	text-align:center;
+	background-color:#A0E8FA;
+	color:#fff;
+	font-size:16px;
+	border:none;
+	box-shadow:1px 1px 1px 0px gray;
+	cursor:pointer;
+}
+.input1:hover{opacity:0.8;box-shadow:none;}
+.input2{
+	margin-bottom:8px;
+	width:120px;
+
+}
+#form1 input[type=text]{
+	width:100%;
+	height:30px;
+	margin-top:10px;
+	border:none;
+	border-bottom:1px solid #666;
+	text-indent:10px;
+	background-color:inherit;
+}
+#cover{ 
+    background:gray; 
+    position:absolute; 
+    left:0px; 
+    top:0px; 
+    display:none; 
+    z-index:300; 
+    filter:alpha(opacity=60); 
+    opacity:0.6 !important; 
+    } 
+</style>
+<script>
+	$(function(){
+   
+		$('.intro1:eq(1)').hide();
+		
+		$(".left").click(function(){
+			$('.intro1:eq(0)').show().siblings().hide();
+		});
+		$(".right").click(function(){
+			$('.intro1:eq(1)').show().siblings().hide();
+		});
+		
+
+		$("#toinvest").click(function(){	
+				show();		
+			$("#first").show();
+			
+		});
+		
+	 //  $('#dw_ul li a:eq(2)').attr('class','nowNavItem');
+		if (!("placeholder" in document.createElement("input"))) {
+		$("input[type=text][placeholder]").each(
+				function() {
+					var _this = $(this);
+					_this.val(_this.attr("placeholder")).focus(function() {
+						if (_this.val() === _this.attr("placeholder")) {
+							_this.val("").css('color', '#000');
+						}
+					}).blur(
+							function() {
+								if (_this.val().length === 0) {
+									_this.val(_this.attr("placeholder")).css(
+											'color', '#999999');
+								}
+							}).css('color', '#999999');
+				})
+		}			
+})
+
+function clear(){
+if (!("placeholder" in document.createElement("input"))) {
+		$("input[type=text][placeholder]").each(
+				function() {
+					var _this = $(this);
+					_this.val(_this.attr("placeholder")).focus(function() {
+						if (_this.val() === _this.attr("placeholder")) {
+							_this.val("").css('color', '#000');
+						}
+					}).blur(
+							function() {
+								if (_this.val().length === 0) {
+									_this.val(_this.attr("placeholder")).css(
+											'color', '#999999');
+								}
+							}).css('color', '#999999');
+				})
+		}			
+}
+
+
+function show(){ 
+
+    var cover = document.getElementById("cover"); 
+    cover.style.width = document.documentElement.scrollWidth+"px"; 
+    cover.style.height = document.documentElement.scrollHeight+"px"; 
+    cover.style.display = "block"; 
+
+} 
+</script>
+<div class="main">
+	<div id="first" >
+		<form action="" method="" id="form1" >
+			<span class="span3">填写以下信息，方便我们联系</span>
+			
+			<input type="hidden" name="type" id="type" value="2"/>
+			<input type="hidden" name="id" id="id" value={$reservation.id}></input>
+			<input type="text" name="name" id="name" placeholder="您的称呼:"/>
+				
+			<input type="text" name="price" id="price" placeholder="预约金额:" />
+		
+	
+			
+			<input type="text" name="telephone" id="tl" placeholder="您的手机号:" />
+		
+			<input type="button"  onclick="save();" value="提 交" class="input1"></input>
+			<input type="button"  onclick="cancel();" value="取 消" class="input1" style="background-color:#787878;color:white;"></input>
+		
+			<span style="display:block;text-align:center;margin-top:10px;">我们的客服电话是<span style="color:red;">0512-62853600</span>,请您留意</span>
+		</form>
+	</div>
+		
+	<div id="cover"></div>	
+
+	<div class="invest">	
+		<img src="__ROOT__/Style/H/images/bg_yylist.png"></img>
+		<table>
+			<tr>
+				<td>名称</td>
+				<td style="width:40px;">年化收益</td><td>金额</td><td>期限</td>
+			</tr>
+			<tr>
+				<td>{$reservation.name}</td>
+				<td style="font-size:25px;color:#FF7416;">{$reservation.interest_rate}</td>
+				<td style="color:#FF7416;">{$reservation.amount|num_format=###}元</td>
+				
+				<td>{$reservation.duration}</td>
+			</tr>
+		</table>
+		
+		<table id="table2" style="border:none;table-layout:fixed;cellspacing:100px;">
+			<tr>
+				<td style="">门槛:</td>
+				<td style="align:left;">{$reservation.min_invest|num_format=###}元起投</td>
+				<td   style="">还需金额:</td>
+				<td style="align:left;">{$reservation.need|num_format=###}元</td>
+			</tr>
+			
+			<tr>	
+				<td colspan="4">
+				<if condition="$reservation.need eq 0">
+				<div id="toinvest1" >我要预约</div></td>
+				<else/>
+				<div id="toinvest">我要预约</div></td> 
+				</if>
+			</tr>		
+		</table>
+	</div >
+	<script>
+$(function(){
+$('#back_time').datepicker({
+			changeMonth : true,
+			changeYear : true,
+		});
+});
+	function save(){
+			var tl=$("#tl").val();
+			var name=$("#name").val();
+			var price=$("#price").val();
+			var id=$("#id").val();
+			var	type = $("#type").val();		
+			$.ajax({
+				url: "__URL__/save",
+				type:"POST",
+				dataType: "json",
+				async:false,
+				data: {"telephone":tl,"name":name,"price":price,"type":type,"id":id},
+				success: function(d){
+					if(d.status == 1){
+						$.jBox.tip("请将内容填写完整");
+					}
+					else if(d.status==2){
+						$.jBox.tip("号码输入格式错误");
+					}
+					else if(d.status==3){
+						$.jBox.tip("请输入数字");
+					}
+					else if(d.status==4){
+					
+						$.jBox.tip("信息提交成功,我们的客服会联系您");
+				            clear();
+							$("#first").hide();	
+							$("#cover").hide();							
+					}
+					else{
+					$.jBox.tip("系统出错");
+					}
+				}
+			});	
+	}
+	function cancel(){
+		clear();
+		$("#first").hide();
+		$("#cover").hide();
+	}
+</script>	
+	
+	<div style="margin-top:50px;position:relative;" class="div2">
+		<div class="switch">
+			<div class="left"></div>
+			<div class="right"></div>
+		</div>
+		
+		
+		
+		<div style="padding:50px 20px;background-color:white">
+			<div class="intro1" style="margin:0 100px;height:400px;">
+				
+				<div style="width:100%;margin-top:10px;margin-bottom:20px;text-align:left;font-size:20px;">
+				{$reservation.detail}
+				</div>
+				
+				
+			</div>
+			<div class="intro1" style="height:400px;">
+				<table>
+					 <tr>
+						<th>投资人</th><th>投资金额</th>
+					</tr>
+					<volist name="list" id="vb">
+					<tr>
+						<td>{$vb.user_name|hidecard=###,4}</td><td>{$vb.invest_amount|num_format=###}</td>
+					</tr>
+					</volist> 
+						
+				</table>
+				<div class="list_bottom">
+					<div class="list_bottom_right">
+						<ul>
+						{$list.page}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>     
+          
+<include file="Public:_righter" />

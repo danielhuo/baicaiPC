@@ -1,0 +1,108 @@
+﻿<include file="Pub:header" /> 
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/fancybox/jquery.fancybox-1.3.2.css" media="screen" />
+<link type="text/css"  rel="stylesheet" href="/Style/My97DatePicker/jquery.ui.datepicker.css"/>
+<link rel="stylesheet" href="__ROOT__/Style/M/css/loan.css" />
+<h2 id="title">我有票据</h2>
+<div class="main">
+	<div class="process">
+		<h1>手有承兑汇票</h1>	
+		<ul>
+			<li>联系客服</li>
+			<li>线下洽谈</li>	
+			<li>审核票据</li>
+			<li>签订协议</li>
+			<li>融资发布</li>
+		</ul>
+		<div id="showForm">点击留下联系方式</div>
+	</div>
+	<div class="cover">	
+		<form action="" method="" id="form1" >
+			<input type="text" name="name" id="name" placeholder="您的称呼:"/>
+				
+			<input type="text" name="price" id="price" placeholder="票面金额:"/>
+				
+			<input type="text" name="back_time" id="back_time" placeholder="承兑日期:" readonly/>
+			<input type="text" name="telephone" id="tl"
+				placeholder="您的手机号码:"/>
+				
+			<input type="button" onclick="save();" value="提交" class="input1" />
+			<input type="button" onclick="giveup();" value="取消" class="input2" />
+			<p>我们会以客服电话<span style="color:red;">0512-62853600</span>联系您<br/>请您留意接听</p>
+		</form>
+	</div>
+</div>
+ <script type="text/javascript" src="__ROOT__/Style/My97DatePicker/jquery.ui.datepicker.js" language="javascript"></script>
+ 
+<script>
+$(function(){
+	$('#showForm').click(function(){
+	
+		$('.cover').show();
+	
+	})
+	$('#back_time').datepicker({
+				changeMonth : true,
+				changeYear : true,
+			});
+
+	});
+	function save(){	
+			var tl=$("#tl").val();
+			var name=$("#name").val();
+			var price=$("#price").val();
+			var back_time=$("#back_time").val();
+			
+			$.ajax({
+				url: "__URL__/save",
+				type:"POST",
+				dataType: "json",
+				data: {"telephone":tl,"name":name,"price":price,"back_time":back_time},
+				success: function(d){
+			
+					if(d.status == 1){
+						Apprise('<font color=red>内容填写不完整！</font>');
+					}
+					else if(d.status==2){
+						Apprise('<font color=red>号码格式错误！</font>');
+					}
+					else if(d.status==3){
+							Apprise('<font color=red>信息提交成功！</font>');
+						clear();
+						$('.cover').hide();
+					}
+				}
+			});	
+	}
+	function giveup(){
+		$('.cover').hide();
+	}
+	function clear(){
+		if (!("placeholder" in document.createElement("input"))) {
+		$("input[type=text][placeholder]").each(
+				function() {
+					var _this = $(this);
+					_this.val(_this.attr("placeholder")).focus(function() {
+						if (_this.val() === _this.attr("placeholder")) {
+							_this.val("").css('color', '#000');
+						}
+					}).blur(
+							function() {
+								if (_this.val().length === 0) {
+									_this.val(_this.attr("placeholder")).css(
+											'color', '#999999');
+								}
+							}).css('color', '#999999');
+				})
+		}
+		else{
+		 	$("input[type=text]").each(
+				function() {
+					var _this = $(this);
+					_this.val("");
+				})
+						
+		}
+	}
+
+</script>
+﻿<include file="Pub:footer" /> 

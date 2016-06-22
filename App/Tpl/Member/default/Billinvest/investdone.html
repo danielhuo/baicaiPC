@@ -1,0 +1,83 @@
+<tagLib name="htmlA" />
+<style type="text/css">
+.fontred { color: #005B9F; }
+.infolist { margin: 5px 0 10px 20px; border: solid 1px #ddd; padding: 2px; width: 715px; text-align: left; }
+.infolist table td { height: 28px; }
+.infolist .myfont { color: #ff6500; font-weight: bold; }
+#pager a.current { background-color: #ddd; border: solid 1px #ccc; color: #fff; }
+#pager a:hover { background-color: #ddd; border: solid 1px #ccc; color: red; }
+.tdHeard, .tdContent { border: solid 1px #ccc; }
+.tdContent a { text-decoration: underline; }
+.tdHeard { background-image: url(__ROOT__/Style/H/images/thbg.jpg); height: 29px; }
+.divtitle { height: 20px; line-height: 30px; text-align: left; padding-left: 20px; font-size: 12px; text-indent: 25px; margin-top: 8px; margin-bottom: 1PX; }
+#noinfotip .tdContent{width:auto}
+#noinfotip a{text-decoration:none}
+</style>
+<div class="divtitle" style="width: 100%;">
+	您目前已回收的投资总额是：<span class="fontred">￥{$total|default="0.00"}</span>，共<span class="fontred">{$num|default="0"}</span>笔投标。
+</div>
+<div style="margin: 10px 0px; overflow: hidden; text-align: left; clear: both; float: left;
+	padding-left: 8px; width: 785px;">
+	<table id="content" style="width: 785px; border-collapse: collapse;" cellspacing="0">
+		<tbody><tr>
+			<th scope="col" class="tdHeard" style="width: 63px;">
+				融资标号
+			</th>
+			<th scope="col" class="tdHeard" style="width: 83px;">
+				投标日期
+			</th>
+			<th scope="col" class="tdHeard" style="width: 93px;">
+				借款金额
+			</th>
+			<th scope="col" class="tdHeard" style="width: 63px;">
+				年化利率
+			</th>
+			<th scope="col" class="tdHeard" style="width: 100px;">
+				还款日期
+			</th>
+			<th scope="col" class="tdHeard" style="width: 93px;">
+				我的投资金额
+			</th>
+			<th scope="col" class="tdHeard" style="width: 83px;">
+				预期利息
+			</th>
+		</tr>
+		
+		<volist name="list" id="vo">
+		<tr id="noinfotip" style="">
+			<td class="tdContent">{$vo.bid}</td>
+			<td class="tdContent">{$vo.review|date="Y-m-d",###}</td>
+			<td class="tdContent">{$vo.amount}</td>
+			<td class="tdContent">{$vo.interest_rate}%</td>
+			<td class="tdContent">{$vo.deadline|date="Y-m-d",###}</td>
+			<td class="tdContent">{$vo.invest_amount}</td>
+			<td class="tdContent">{$vo.invest_interest}</td>
+		</tr>
+		</volist>
+	</tbody></table>
+<div data="fragment-5" id="pager" style="float: right; text-align: right; width: 500px; padding-right: 0px;" class="yahoo2 ajaxpagebar">{$pagebar}</div>
+</div>
+<div style="clear: both;">
+</div>
+
+<script type="text/javascript">
+$('.ajaxpagebar a').click(function(){
+	try{	
+		var geturl = $(this).attr('href');
+		var id = $(this).parent().attr('data');
+		var x={};
+        $.ajax({
+            url: geturl,
+            data: x,
+            timeout: 5000,
+            cache: false,
+            type: "get",
+            dataType: "json",
+            success: function (d, s, r) {
+              	if(d) $("#"+id).html(d.html);//更新客户端竞拍信息 作个判断，避免报错
+            }
+        });
+	}catch(e){};
+	return false;
+})
+</script>

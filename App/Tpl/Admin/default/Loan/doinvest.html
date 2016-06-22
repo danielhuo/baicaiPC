@@ -1,0 +1,59 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+	var delUrl = '__URL__/doDel';
+	var addUrl = '__URL__/add';
+	var isSearchHidden = 1;
+</script>
+<div class="so_main">
+  <div class="page_tit">投资者列表</div>
+<!--搜索/筛选会员-->
+  <include file="search" />
+<!--搜索/筛选会员-->
+
+  <div class="Toolbar_inbox">
+  	<div class="page right">{$pagebar}</div>
+     <htmlA:commonBtn type="back" action="" value="返回列表" style="search_action" />
+  </div>
+  
+  <div class="list">
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th style="width:30px;">
+        <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+        <label for="checkbox"></label>
+    </th>
+	<th class="line_l">融资标题</th>
+   
+	
+	<th class="line_l">投资人</th>
+    <th class="line_l">投资金额</th>
+    <th class="line_l">应得利息</th>
+    <th class="line_l">操作</th>
+  </tr>
+  <volist id="vo" name="list">
+      <tr overstyle='on' id="list_{$vo.bid}">
+        <td><input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.bid}"></td>
+        <td>
+		<a href="__APP__/Billinvest/detail?id={$vo.id}" title="{$vo.name}" target="_blank">JK{$vo.id}&nbsp;{$vo.loan_name|cnsubstr=###,12}</a>
+		</td>
+		<td><htmlA:user id="vo.invest_uid" uname="vo.user_name" /></td>
+		<td>{$vo.invest_amount}</td>
+		<td>{$vo.invest_interest}</td>
+		<td>
+			<a href="/admin/remark/index.html?user_name={$vo.user_name}">备注</a>&nbsp;&nbsp;&nbsp;
+          <a href="javascript:void()" onclick="ui.box.load('/admin/common/sms?tab=1&user_name={$vo.user_name}', {title:'通讯系统'})">通知</a>
+		  
+        </td>
+      </tr>
+  </volist>
+  </table>
+
+  </div>
+  
+  <div class="Toolbar_inbox">
+  	<div class="page right">{$pagebar}</div>
+     <htmlA:commonBtn type="back" action="" value="返回列表" style="search_action" />
+  </div>
+</div>
+<include file="Public:_footer" />

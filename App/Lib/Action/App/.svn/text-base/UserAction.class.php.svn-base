@@ -1,0 +1,108 @@
+<?php
+    /**
+    * 手机版 用户中心
+    */
+    class UserAction extends AppAction
+    {
+         var $needlogin=true;
+         public function index()
+         {   
+             $this->display();
+         }
+         
+         /**
+         * 个人资料
+         */
+         public function myinfo()
+         {
+             
+             $minfo =getMinfo($this->uid,true);
+             ajaxmsg($minfo,0);
+         }
+         
+         
+        /**
+		*修改用户名	
+		*/
+		public function changename(){
+			$uname=trim(text($_POST['uname']));
+            (!$uname)&&ajaxmsg("用户名不能为空",1);
+            (!preg_match('/^[a-zA-Z\x{4e00}-\x{9fa5}][0-9a-zA-Z\x{4e00}-\x{9fa5}_]{3,11}$/u',$uname))&&ajaxmsg("用户名格式不正确",1);
+            $map['user_name|user_phone']=$uname;
+			(M('members')->where($map)->count())&&ajaxmsg("用户名已被使用",1);
+			if (M('members')->where("id = {$this->uid}")->setField("user_name",$uname)){
+				session('u_user_name',$uname);
+				ajaxmsg("修改成功",0);
+			}else{
+				ajaxmsg("修改失败",1);
+			}
+		 }
+		 
+		
+        
+         
+        public function msg()
+        {
+            $id=$_POST['id'];
+
+            if($id){
+               
+                $msg = M('inner_msg')->field('msg')->where('id='.$id.' and uid='.$this->uid)->find();
+                if(count($msg)){
+                M('inner_msg')->where('id='.$id)->save(array('status'=>1));
+                
+                ajaxmsg($msg['msg'],0);
+                }else{
+                ajaxmsg("读取错误",1);
+                }
+
+            }else{
+                $map['uid'] = $this->uid;
+                //分页处理
+                import("ORG.Util.Page");
+                $count = M('inner_msg')->where($map)->count('id');
+                $p = new Page($count, 15);
+                $page = $p->show();
+                $Lsql = "{$p->firstRow},{$p->listRows}";
+                //分页处理
+                $list = M('inner_msg')->where($map)->order('status asc,id DESC')->limit($Lsql)->select();
+                $result['list']=$list;
+                ajaxmsg($result,0);
+            }
+
+        }
+		 public function promote()
+         {       
+				
+                $this->display();                
+         }
+		
+		
+		public function loan()
+         {
+            $map['loan_uid']=$this->uid;
+            $parm['map'] = $map;
+            $parm['pagesize'] = 5;
+            $sort = "desc";
+            $parm['orderby']="l.status ASC,l.id DESC";
+            $list = getLoanList($parm);
+			if(($list['page']['nowPage']>$list['page']['total'])||!$list|!$list['list'])
+                ajaxmsg("加载失败",1);
+            else ajaxmsg($list,0);  
+            
+         }
+		 public function loaninvest()
+         {
+            $map['li.invest_uid']=$this->uid;
+            $parm['map'] = $map;
+            $parm['pagesize'] =8;
+            $sort = "desc";
+            $parm['orderby']="l.status ASC,li.id DESC";
+            $list = getLoaninvestList($parm);
+			if(($list['page']['nowPage']>$list['page']['total'])||!$list|!$list['list'])
+                ajaxmsg("加载失败",1);
+            else ajaxmsg($list,0);    
+            
+         }
+    }
+?>

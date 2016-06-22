@@ -1,0 +1,90 @@
+﻿<include file="Public:_header_common" />
+<title>社区论坛首页-{$glo.index_title}</title>
+<include file="Public:_header_main" />
+
+<script type="text/jscript">
+    $(document).ready(function(){ 
+        // 收缩展开效果
+        $(".left_tiezi_title a").click(function(){ 
+        	$(this).parent().parent().find(".tiezi_category").slideToggle("slow"); 
+        	$(this).parent().find(".tiezi_min_ico").toggleClass("active");
+            return false; 
+        }); 
+    }); 
+</script>
+
+<!--中部模块开始-->
+<div class="wp_center_contont">
+	<!--中部1024px模块开始-->
+	<div class="wp_center_M1">	
+        <!--左侧帖子模块开始-->
+        <div class="left_tiezi_block">
+        	<div class="left_block_item1">
+            	<!--帖子模块标题开始-->
+            	<div class="left_tiezi_title">
+                	<a class="tiezi_min_ico active" href="javascript:void(0);" title="收起/展开"></a>
+                    <a class="left_tiezi_bj" href="javascript:;"></a>
+                </div>
+            	<!--帖子模块标题结束-->
+                
+                <!--帖子可折叠模块开始-->
+                <div id="panel" class="tiezi_category">
+                	<!--专题版块子模块开始-->
+				  	<div class="forum_topics_item">
+                  		<ul>
+                            <volist id="vo" name="list" key="k">
+                        	<li>
+                  				<div class="topics_ico_{$k-1}"><a href="/bbs/list?menu={$vo.id}"></a></div>
+       			    			<div class="topics_block">
+                        			<div class="topics_title"><a href="/bbs/list?menu={$vo.id}">{$vo.type_name}</a><span class="Statistics">（贴数:{$num[$vo['id']]|default=0}）</span></div>
+                            		<div class="content_description">{$vo.type_keyword}</div>
+                        		</div>
+                            </li>
+                            </volist>
+                     	</ul>
+               	 	</div>
+                <!--专题版块子模块结束-->
+                </div>
+                <!--帖子可折叠模块结束-->
+            </div>
+            
+            <!--左侧推荐专区模块开始02-->
+            <div class="left_block_item2">
+            	<!--帖子模块标题开始-->
+            	<div class="left_tiezi_title">
+                	<a class="tiezi_min_ico active" href="javascript:;" title="收起/展开"></a>
+                    <a class="left_tiezi_bj1" href="javascript:;"></a>
+                </div>
+            	<!--帖子模块标题结束-->
+                
+                <!--帖子可折叠模块开始-->
+                <div id="panel" class="tiezi_category">
+                	<!--专题版块子模块开始-->
+				  	<div class="forum_topics_item_1">
+                  		<ul>
+                            <volist id="vo" name="list2" key="k2">
+                            <li>
+                                <div class="topics_ico_{$k2+5}"><a href="/bbs/list?menu={$vo.id}"></a></div>
+                                <div class="topics_block">
+                                    <div class="topics_title"><a href="/bbs/list?menu={$vo.id}">{$vo.type_name}</a><span class="Statistics">（贴数:{$num[$vo['id']]|default=0}）</span></div>
+                                    <div class="content_description">{$vo.type_keyword}</div>
+                                </div>
+                            </li>
+                            </volist>
+                     	</ul>
+               	 	</div>
+                <!--专题版块子模块结束-->
+                </div>
+                <!--帖子可折叠模块结束-->
+            </div>
+            <!--左侧推荐专区模块结束02-->
+        </div>
+        <!--左侧帖子模块结束-->
+        
+        <include file="Public:_right" />
+    </div>
+	<!--中部1024px模块结束-->
+</div>
+<!--中部模块结束-->
+
+<include file="Public:_footer" />

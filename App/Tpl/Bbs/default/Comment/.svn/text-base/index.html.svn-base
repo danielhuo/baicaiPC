@@ -1,0 +1,223 @@
+<include file="Public:_header_common" />
+<title>{$data.title}-{$glo.index_title}</title>
+<SCRIPT type="text/javascript" src="__ROOT__/Style/JBox/jquery.jBox.min.js" ></SCRIPT>
+<SCRIPT type="text/javascript" src="__ROOT__/Style/JBox/jquery.jBoxConfig.js" ></SCRIPT>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Style/JBox/Skins/Currently/jbox.css"/>
+<include file="Public:_header_main" />
+
+<script language=javascript>
+    $(function (){
+        $("a.face").smohanfacebox({
+            Event : "click",    //触发事件  
+            divid : "Smohan_FaceBox", //外层DIV ID
+            textid : "Smohan_text" //文本框 ID
+        });
+        //解析表情  $('#Zones').replaceface($('#Zones').html());
+    
+        $('#Smohan_Showface').click(function() {
+            $('#Zones').fadeIn(360);
+            $('#Zones').html($('#Smohan_text').val());
+            $('#Zones').replaceface($('#Zones').html());//替换表情
+        });
+
+        $(".is_hidden").click(function(){
+            var obj = $(this);
+
+            $.post(
+                "/bbs/comment/hidden_repay",
+                {id:$(this).attr("data")},
+                function(d){
+                    if (d.status == 0) {
+                        $.jBox.tip(d.info,'fail');
+                    }else if(d.status==1) {
+                        $.jBox.tip(d.info, "success");
+                        
+                        if(obj.text()=="屏蔽"){
+                            obj.text("显示");
+                            obj.parent().parent().find(".post_replies_it").html('<p style="width:100%;display: block;"><span style="border: 1px solid #FF9999; padding: 5px; text-align: center; display: block; width: 200px;text-decoration :line-through ;margin:10px auto 0;">该回复已被屏蔽</span></p>');
+                        }else{
+                            obj.text("屏蔽");
+                            window.location.reload();
+                        }
+                    }
+                },
+                "json"
+            );
+            return false;
+        });
+    });
+
+    //限制文本框可输入字符数量
+    function cls(max){
+        var count_font=document.getElementById('count_font');
+
+        var reg=/[^x00-xff]/gm;
+        var obj = document.getElementById('Smohan_text');
+        var text= $.trim(obj.value);
+        var str=text.replace(reg,'aa');//全换成单字节字符计算
+       
+        if(str.length>max){
+        	alert("超过字数限制，多出的字将被截断！" );
+            var n=0;
+            var strr=[];
+            //得到150字节以内的字符
+            for(var i=0;i<text.length;i++){
+                /[^x00-xff]/.test(text.charAt(n))?n+=2:n+=1;//中文字符与英文字符判断
+
+                if(n>max) break;
+                strr.push(text.charAt(i));
+
+            }
+            text=strr.join('');
+            obj.value = text;
+            count_font.innerHTML=0;
+        }else{
+            count_font.innerHTML=max-str.length;
+        }
+    }
+
+  function check_repay() {
+    var str=$.trim(document.getElementById('Smohan_text').value);
+    if(str.length==0 || str=="说点什么吧……"){
+        alert("评论里面说点什么吧.");
+        return false;
+    }
+    document.repay.submit();
+    return false;
+  }
+</script>
+</head>
+<body>
+<!--中部模块开始-->
+<div class="wp_center_contont">
+	<!--中部1024px模块开始-->
+	<div class="wp_center_M1">
+    	<!--左侧帖子模块开始-->
+        <div class="left_tiezi_block">
+        	<div class="left_block_item1">
+            	<!--帖子详细模块开始-->
+                <div class="left_post_detail">
+                	<!--帖子信息模块开始-->
+                	<div class="post_detail_tit">
+                   		<div class="post_detail_avatar"><img style="width: 50px; height: 50px;" src="{$data.art_uid|default=1|get_avatar=###}" border="0" /></div>
+                        <div class="post_detail_text">
+                            <div class="post_detail_title">
+                          		<div class="post_detail_bold">{$data.title}</div>
+                                <div class="post_r_num">
+                                    <span class="y_replies"><a href="javascript:;" title="查看">{$data.click_num|default=0}</a></span>
+                                    <span class="y_views"><a href="javascript:;" title="回复">{$data.repay_num|default=0}</a></span>
+                                </div>
+                            </div>
+                            
+                            <div class="post_detail_name">
+                            	<span class="post_detail_mx">{$data.user_name|default="官方"}</span>
+                                <span class="post_detail_mx"><if condition="$data.is_vip eq true"><a href="/member/vip" title="VIP会员"><img src="/Style/B/images/verify_icon.png" /></a></if></span>
+                                <span class="post_detail_mx">于 {$data.art_time|date="Y-m-d H:i",###} 发表在 <a href="/bbs/list?menu={$data.menu}&cat={$data.cat}">[{$data.type_name}]</a></span>
+                                <span class="post_detail_mx"><if condition="$data.pre_id gt 0"><a href="/bbs/comment?aid={$data.pre_id}" title="上一主题">[上一主题]</a><else/>上面没有了</if></span>
+                                <span class="post_detail_mx"><if condition="$data.next_id gt 0"><a href="/bbs/comment?aid={$data.next_id}" title="下一主题">[下一主题]</a><else/>下面没有了</if></span>
+                                
+                                <if condition="$data.owner eq true">
+                                <span class="post_detail_mx"><a href="/bbs/send/edit?aid={$data.id}" title="编辑">[编辑]</a></span>
+								<span class="post_detail_mx"><a href="/bbs/send/del?aid={$data.id}" title="删除">[删除]</a></span>
+                                </if>
+                            </div>
+                        </div>
+                  	</div>
+                    <!--帖子信息模块结束-->
+                    
+                    <!--正文内容模块开始-->
+                    <div class="post_detail_content">
+                        <p style="padding: 10px;margin: 7.5pt 11.25pt 20px;color:rgb(0, 0, 0);font-family:Microsoft YaHei, Hiragino Sans GB, STHeiti, Tahoma, SimHei, sans-serif;background-color:rgb(246, 246, 246);">
+                            <span style="font-size:9pt;color:rgb(255, 102, 0);font-family:Tahoma;">摘要</span>
+                            <span style="font-size:9pt;color:rgb(153, 153, 153);font-family:Tahoma;">{$data.art_content|stripslashes=###|cnsubstr=###,200}</span>
+                        </p>
+
+                        {$data.art_content|stripslashes=###}
+                    </div>
+                    <!--正文内容模块结束-->
+
+                    <div class="post_detail_replies">
+                    	<ul>
+                            <volist id="vo" name="repayArr" key="k">
+                        	<li>
+                                <div class="left_detail_block">
+                                    <div class="left_detail_avatar"><img style="width: 50px; height: 50px;" src="{$vo.art_uid|get_avatar=###}" border="0" /></div>
+                                </div>
+                                <div class="right_detail_block">
+                                    
+                                    <div class="detail_Publication">
+                                        <div class="right_detail_tit">{$vo.user_name|default="官方"}</div>
+                                        <span class="authortitle"><if condition="$vo.is_vip eq true"><a href="/member/vip" title="VIP会员"><img src="/Style/B/images/verify_icon.png" /></a></if></span>
+                                        <span class="Publication_time">发表于 {$vo.art_date}</span>
+                                        <if condition="$pos+$k eq 1"><span class="floor_ck_{$pos+$k}">沙发</span><elseif condition="$pos+$k eq 2"/><span class="floor_ck_{$pos+$k}">板凳</span><elseif condition="$pos+$k eq 3"/><span class="floor_ck_{$pos+$k}">地板</span><else/><span class="floor_ck_4">#{$pos+$k}</span></if>
+                                    </div>
+                                </div>
+
+                                <!--回复模块开始-->
+                                <if condition="$vo.is_hidden eq 0">
+                                <div class="post_replies_it"><p>{$vo.content}</p></div>
+                                <else/>
+                                <div class="post_replies_it"><p style="width:100%;display: block;"><span style="border: 1px solid #FF9999; padding: 5px; text-align: center; display: block; width: 200px;text-decoration :line-through ;margin:10px auto 0;">该回复已被屏蔽</span></p></div>       
+                                </if>
+                                <!--回复模块结束--> 
+                                
+                                <!--回复支持举报模块开始-->
+                                <div class="post_repl_ts">
+                                    <if condition="$data.owner eq true">
+                                    <span class="is_hidden" data="{$vo.id}"><if condition="$vo.is_hidden eq 0">屏蔽<else/>显示</if></span>
+                                    </if>
+                                </div>
+                                <!--回复支持举报模块结束--> 
+                            </li>
+                            </volist>
+                        </ul>
+                    </div>
+                    
+                    <div class="space_pages">
+                        <div class="pages_item_list pages">{$page}</div>
+                    </div>
+
+                    <!--回复模块结束-->
+              </div>
+                <!--帖子详细模块结束-->
+          </div>
+        <!--帖子回复模块开始-->
+        <if condition="$data.is_repay eq 1">
+		<div class="f_reply_block">
+        	<div class="f_reply_tit">
+            	<span class="f_reply_t">帖子回复</span>
+            	<span id="Smohan_FaceBox" class="FaceBox"><a href="javascript:void(0)" class="face" title="表情"></a></span>
+            </div>
+            <div class="f_reply_text">
+              <form id="repay" name="repay" action="/bbs/comment/repay?aid={$data.id}" method="post">
+                <input type="hidden" name="tid" value="{$data.id}"/>
+                <textarea class="reply_text_cf" name="text" id="Smohan_text" cols="" rows="" onFocus="if(this.value==defaultValue) {this.value='';this.type='text'}" onBlur="if(!value) {value=defaultValue; this.type='text';}" onKeyUp="cls(150)">说点什么吧……</textarea>
+             	<div class="f_reply_submit">
+                	<a onClick="check_repay()" name="submit" class="rep_sub" title="发表回复">发表回复</a>
+                    <a onClick="javascript:document.repay.reset();return false;" name="reset" class="rep_Reset" title="重置内容">重置内容</a>
+                </div>
+                
+                <!--统计textarea可输入字数模块开始-->
+                <div class="count_textarea">友情提醒：您还可以输入<span id="count_font">150</span>个字符</div>
+                
+                <!--统计textarea可输入字数模块结束-->
+              </form>
+            </div>
+        </div>
+        </if>
+        <!--帖子回复模块结束-->
+        
+        </div>
+        <!--左侧帖子模块结束-->
+        
+        <include file="Public:_right" />
+    </div>
+	<!--中部1024px模块结束-->
+</div>
+<!--中部模块结束-->
+
+
+<include file="Public:_footer" />
+
+</body>
+</html>

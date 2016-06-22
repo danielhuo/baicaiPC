@@ -1,0 +1,58 @@
+﻿<include file="Pub:header" />
+<style type="text/css">
+.cashForm{font-weight:bold;}
+.cashForm div{margin-top:15px;padding-left:20px;padding-right:20px;}
+
+.div0,.div1,.div3,.div5{
+	background-color:#fff;padding-top:10px;padding-bottom:10px;}
+.div2,.div4{color:#A0A0A0;}
+.butt{width:100%;display:block;height:40px;border:none;color:#fff;background-color:#00A0C8;border-radius:2px;}
+.money,.paypass{border:none;margin-left:20px;color:#A0A0A0;}
+.color1{color:#1C1C1C}
+.color2{color:#404040}
+.color3{color:#A5A5A6}
+.size1{font-size:18px}
+.size2{font-size:16px}
+.size3(font-size:14px)
+</style>
+<h2 id="title">提现</h2>
+<div class="body">
+ 
+   <form action="" method="post" class="cashForm" id="cashForm" style="width:100%">
+		<div class="div0 size1 color1" style="padding-left:80px;height:60px;line-height:30px;background:#fff url({$vo.bank_img}) no-repeat 20px center;background-size:40px 40px;">
+		{$vo.bank_name}<br/><span class="size2 color2"> {$vo.bank_num|hidecard=###,3,'还没有登记您的银行账号'}</span></div>
+		<div class="div1 color1 size1">到账时间<span class="color2 size2"style="float:right;">72小时内打款,到帐时间银行各异</span></div>
+		<div class="div2 color3 size3">可转出余额:<span style="color:#E3783D">{$vo.all_money}</span>元</div>
+		<div class="div3 size2 color1">金额<input type="text" name='money' id="money" class="money color2 size2" placeholder="转出金额" /></div>
+		<div class="div4 color3 size3">每笔限额为100-{$fee.2.0}万元</div>
+		<div class="div5 size2 color1">密码<input type="password" name="paypass" id="paypass" class="paypass  size2" placeholder="支付密码"/></div>
+		<div class="div6"><input type="button" id="dobutton" class="butt size1" value="确认提现"/></div>
+   </form>
+
+ 
+</div>
+<script language="javascript">
+$(function() {
+    $("#dobutton").click(function() {
+        var e = $("#money").val(),
+            t = $("#paypass").val(),
+            r = "money=" + e + "&paypass=" + t;
+        if ($.trim(e) == "") return Apprise("<font color=red>请输入要提取的金额!</font>"), !1;
+        if ($.trim(t) == "") return Apprise("<font color=red>请输入支付密码！</font>"), !1;
+        $.ajax({
+            type: "POST",
+            url: "",
+            data: r,
+            success: function(e) {
+                e == "TRUE" ? (Apprise("恭喜您申请成功，等待网站处理！"), $("#apprise-btn-confirm").click(function() {
+                    window.location.href = "{:U('M/user/index')}"
+                })) : Apprise("<font color=red>" + e + "</font>")
+            },
+            error: function(e) {
+                Apprise("<font color=red>提交发生错误！请重试</font>")
+            }
+        })
+    })
+})
+</script>
+﻿<include file="Pub:footer" /> 

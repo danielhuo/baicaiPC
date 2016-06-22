@@ -1,0 +1,83 @@
+﻿<include file="Pub:header" />  
+	
+<table class="table table-striped">
+   <thead>
+      <tr>
+         <th>投资项目</th>
+         <th>投资金额</th>
+         <th>投资状态</th>
+		  <th></th>
+      </tr>
+   </thead>
+   <tbody>
+   <volist name="list.list" id='vo'>
+      <tr onclick="href({$vo.lid});">
+         <td class="JK">JK{$vo.lid}</td>
+         <td class="amount">{$vo.invest_amount}</td>
+         <td>{$vo.status2}</td>
+		 <td>></td>
+      </tr>
+	</volist>
+   </tbody>
+</table>
+<div class="fixed_div text-center" style="margin-top:10px;">
+		<span class="loading"><i class="fa fa-spinner fa-pulse"></i>加载中</span>
+	    <span class="nomore" style="display: none;">没有更多记录了</span>
+</div>
+	
+<script type="text/javascript">
+localStorage.title="我的投资";
+function href(loan_id){
+	parent.location="__ROOT__/M/loaninvest/detail?id="+loan_id;
+
+}
+    var nowPage = {$list.page.nowPage};
+    var total = {$list.page.total};
+	if (nowPage==1) {
+         	$(".fixed_div .loading").hide();
+    }
+    function getInfo() {
+    	var scrollTop = $(this).scrollTop();
+    	var docHeight = $(document).height();
+    	var windowHeight = document.documentElement.clientHeight;
+
+		if(scrollTop+windowHeight==docHeight){			
+      		  nextPage = nowPage+1;
+      		  	$(".fixed_div .loading").show();
+        $.ajax({
+            url: location.href,
+            data:{"p":nextPage},
+            type: 'get',
+            async: false,
+            success: function (res) {
+            	var res = eval('(' + res + ')');
+              	for(var i in res){
+              		var html="<tr onclick='href("+res[i].lid+");'>";
+              		html+="<td class='JK'>JK"+res[i].lid+"</td>";
+              		html+="<td class='amount'>"+res[i].invest_amount+"</td>";
+              		html+="<td>"+res[i].status2+"</td>";
+              		html+="<td>></td>";
+
+						$(".table-striped").append(html);
+						$(".fixed_div .loading").hide();
+
+              	}
+              	nowPage++;
+             }
+        });
+	        }
+		
+    }
+
+	 $(window).scroll(function(){
+		if(nowPage<total){
+			  	$(".fixed_div .loading").show();
+		    getInfo();
+	    }else{
+			$(".fixed_div .loading").hide();
+			$(".fixed_div .nomore").show();
+		}
+	
+	})
+</script>
+﻿<include file="Pub:footer" />  

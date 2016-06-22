@@ -1,0 +1,293 @@
+<include file="Public:_header_common" />
+<title>财日升合同-{$glo.web_name}</title>
+<include file="default:Public:_header_main" group="Home"/>
+
+<style>
+  .Lending_Agreement {
+  	width:100%;
+  	height:auto;
+  	margin:0px;
+  	padding:0px;
+  }
+  .Lending_Agreement_center {
+  	width:1024px;
+  	height:auto;
+  	margin:0 auto;
+  	border:1px solid #EEEEEE;
+  }
+  .lending_ageeement_tit {
+  	width:960px;
+  	height:45px;
+  	line-height:45px;
+  	color:#666666;
+  	font-family:Arial, Helvetica, sans-serif;
+  	font-size:16px;
+  	font-weight:bold;
+  	text-align:center;
+  	margin:0 auto;
+  	margin-top:30px;
+  	border-bottom:1px solid #EEEEEE;
+  }
+  .ageeement_content {
+  	width:800px;
+  	height:auto;
+  	margin:0 auto;
+  	margin-top:30px;
+  	font-size:14px;
+  	font-weight:bold;
+  	color:#666666;
+  	overflow:auto;
+  	font-family:Arial, Helvetica, sans-serif;
+  }
+  .ageeement_content h3 {
+  	font-size:14px;
+  	font-weight:bold;
+  	color:#999999;
+  	font-family:Arial, Helvetica, sans-serif;
+  	padding-left:10px;
+  }
+  .font_lendig {
+  	font-size:14px;
+  	font-weight:bold;
+  	color:#666666;
+  	font-family:Arial, Helvetica, sans-serif;
+  	padding-left:10px;
+  	margin-bottom:10px;
+  	display:block;
+  	margin-top:20px;
+  }
+  .ageeement_content p {
+  	line-height:26px;
+  	font-family:Tahoma, Geneva, sans-serif;
+  	font-size:16px;
+  	color:#999999;
+	
+  	margin:0px;
+  	font-weight:normal;
+  	padding-left:10px;
+  	margin-top:6px;
+  }
+  .ageement_tab {
+  	height:40px;
+  	line-height:40px;
+  }
+  .ageement_tab_ite {
+  	height:40px;
+  	line-height:40px;
+  	font-weight:normal;
+  }
+  .lending_top_inf {
+  	width:1000px;
+  	height:auto;
+  	margin-left:10px;
+  }
+  .lending_logo {
+  	width:1000px;
+  	height:100px;
+  	border-bottom:2px solid #EEEEEE;
+  }
+  .lenging_left_logo {
+  	width:252px;
+  	height:100px;
+  	float:left;
+  	border-bottom:2px solid #00ADEE;
+  }
+  .name_inf {
+  	width:400px;
+  	height:65px;
+  	float:left;
+  	margin-left:40px;
+  	margin-top:2px;
+  }
+  .lenging_right_inf {
+  	width:260px;
+  	height:50px;
+  	float:left;
+  	margin-top:9px;
+  }
+  .lenging_right_inf ul {
+  	margin:0px;
+  	padding:0px;
+  }
+  .lenging_right_inf ul li {
+  	width:400px;
+  	height:25px;
+  	line-height:25px;
+  	font-family:Arial, Helvetica, sans-serif;
+  	font-size:14px;
+  	color:#999999;
+  	list-style:none;
+  	float:left;
+  	padding-left:0px;
+  }
+  .lenging_right_inf ul li a {
+  	color:#999999;
+  	text-decoration:none;
+  }
+  .lenging_right_inf ul li a:hover {
+  	color:#FF9900;
+  	text-decoration:none;
+  }
+  .Seal {
+  	width:auto;
+  	height:auto;
+  	margin-right:20px;
+  	float:right;
+  	text-align:center;
+  }
+  .seal_text {
+  	font-family:Arial, Helvetica, sans-serif;
+  	font-size:13px;
+  	color:#999999;
+  	margin-top:6px;
+  	margin-bottom:40px;
+  	display:block;
+  	font-weight:normal;
+  }
+  .Agreement_pic {
+  	width:200px;
+  	height:45px;
+  	margin:0 auto;
+  }
+  a,a:visited{color: #E67714; text-decoration:none;}
+</style>
+<script type="text/javascript" language="javascript">
+	function printht(){
+		window.print();
+	} 
+</script>
+</head>
+<div class="Lending_Agreement" style="background-color:#333333;">  
+  <div class="Lending_Agreement_center" style="background-color:white;">
+    <!--顶部信息开始-->
+    
+    <!--顶部信息结束-->
+    <div class="lending_ageeement_tit"><span class="Agreement_pic"><h3>债权转让服务协议</h3></span><span style="float:right; padding-right:10px;"><a href="javascrīpt:void(0);" onclick="printht();" target="_self">【打印协议】</a> </span></div>
+    <div class="ageeement_content" >
+	 <p >协议编号：{$bid}{$loan.birth_time|date="Ymd",###}{$invest_id}</p>
+     <p >     本《债权转让服务协议》(以下简称“本协议”)为三方协议，签署的四方为： </p>
+		    <p > 甲方（债权受让人）：{$mInvest.real_name}<br/>
+				百财网用户名：{$mInvest.user_name}<br/>
+				身份证号码：{$mInvest.idcard|hidecard=###,1}<br/>
+				乙方（借款人）：{$mLoan.real_name} <br/>
+				百财网用户名：{$mLoan.user_name}<br/>
+				身份证号码：{$mLoan.idcard|hidecard=###,1}<br/>
+				
+				丙方（平台服务方）：百财网络科技（苏州）有限公司<br/>
+				住所： 苏州市工业园区苏雅路318号天翔国际大厦1505室
+			</p>
+		    <p >  特别提醒：<br/>
+			鉴于：<br/>
+				1.乙方出借资金给第三方债务人（以下简称“债务人”），拥有大量合法、有效的债权。<br/>
+				2.甲方为丙方平台客户，拥有富余资金，拟于丙方平台上受让乙方债权以获取收益。<br/>
+				3. 乙方愿意按本协议约定对甲方受让的债权到期不能回购承担不可撤销担保责任。<br/>
+				4.丙方愿意为该等债权转让交易提供服务，主要包括信息发布、投资人资料核查登记、投资咨询、制作、登记、管理并保存债权受让人清单等。甲方和乙方愿意接受丙方提供该等服务。<br/>
+				　　根据《中华人民共和国合同法》及相关法律法规的规定，各方遵循平等、自愿、互利和诚实信用原则，友好协商， 就各方在丙方运营管理的百财网平台（包括但不限于网页端、移动客户端，以下简称“平台”）上进行投资、债权转让、回购、投资咨询、风险管理及其他管理服务达成一致，以资信守。甲方、乙方、丙方签订本协议，即认为各方已理解并同意本协议的所有条款。具体条款如下：
+		  <br/> <br>
+				<span style="font-weight:bold;font-size:20px;">第一条、债权转让条款：</span></p>
+				<table width="800" border="1" cellspacing="0">
+					<tr>
+						<td width="400">借款金额</td><td>{$loan_invest.invest_amount}</td>
+					</tr>
+					<tr>
+						<td>借款期限</td><td>{$loan.loan_duration}<if condition="$loan.duration_type eq 1">个月<else/>天</if></td>
+					</tr>
+					<tr>
+						<td>年利率</td><td>{$loan.interest_rate}%</td>
+					</tr>
+					<tr>
+						<td>借款开始日</td><td>{$loan.begin_time|date="Y年m月d日",###}</td>
+					</tr>
+					<tr>
+						<td>借款到期日</td><td>{$loan.deadline|date="Y年m月d日",###}</td>
+					</tr>
+					<tr>
+						<td>还款方式</td><td>到期还本还息</td>
+					</tr>
+					<tr>
+						<td>到期付息</td><td>{$loan_invest.invest_interest}</td>
+					</tr>
+				</table>
+				<p>债权实现方式：债权到期日由债务人向债权受让人直接偿还转让债权额及对应的债权附带收益，若债权到期日债务人不履行债务，则乙方应在债权到期日下午4点前无条件按转让债权额等值的价格回购并支付债权附带收益。
+					<br><br>
+				债权附带收益支付：本合同项下的债权到期后，乙方将应还本息一次性支付至甲方在第三方支付平台开设的账户。若甲方申请提现，本金及收益需在次日提现，若次日为工作日当天可提，若次日非工作日顺延到下一个工作日。
+
+		  <br>      <br>
+				<span style="font-weight:bold;font-size:20px;">第二条、甲方的权利与义务：</span><br/>
+				2.1甲方有利用丙方提供的平台按约定价格受让相应债权额的权利。<br/>
+				2.2甲方有权按照约定时间实现约定受让债权的权利。<br/>2.3甲方有义务按照丙方平台要求向丙方提供真实的个人信息，因甲方提供虚假信息而造成的一切法律后果（包括但不限于民事赔偿，行政处罚等）均由甲方承担。<br/>
+				2.4甲方有义务按照丙方要求操作平台软件以及查收丙方发出的所有消息（包括但不限于站内通知、电子邮件、手机短信等）。因甲方个人操作不当以及疏于查收信息造成的损失由甲方自行承担。<br/>
+				2.5未经协议其他方一致同意，甲方不得在债权到期日前将受让债权转让或赠与给协议外的任何人，或对债权进行任何形式的处分。<br/>
+				2.6甲方受让债权项下的债务人可以提前还款，若债务人提前还款，则甲方受让债权的期限至债务人提前还款之日止，甲方仅能取得实际债权受让期限内的收益，甲方对此表示同意。<br/>
+				
+		  <br>
+				<span style="font-weight:bold;font-size:20px;">第三条、乙方的权利与义务：</span><br/>
+				3.1乙方有向甲方推荐优质债权的权利。<br/>
+				3.2乙方有义务按照丙方平台要求向丙方及其客户提供真实的债权信息，因乙方提供虚假信息而造成的一切法律后果(包括但不限于民事赔偿，行政处罚等)均由乙方承担。<br/>
+				3.3乙方承诺，若债务人未能在债权到期日下午3点前向甲方偿还债务的，则乙方应在债权到期日下午4点前无条件按债权转让价格加债权附带收益回购甲方所受让的债权。<br/>
+				
+		  <br/>
+				<span style="font-weight:bold;font-size:20px;">第四条、丙方的权利和义务：</span><br/>
+				4.1丙方应当按照本协议的规定，恪尽职守，以诚实、守信、谨慎、有效管理的原则为甲方、乙方进行服务。<br/>
+				4.2丙方须对甲方、乙方信息、资产情况及其他服务相关事务的具体情况和资料依法保密；当其中一方出现违约时，丙方有义务在平台上向其他各方披露公开违约方个人或企业的全部相关信息，并有义务协助各方维护自身权益。 <br/>
+				4.3丙方有义务对甲方、乙方的资格进行严格审查，保证在平台上交易方真实存在并取得相关资质。<br/>
+				4.4丙方应当对于甲方受让的债权进行记录，并由丙方以债权受让人清单的形式予以标明。丙方应当保证所提供债权受让人清单的准确性。<br/>
+				
+		  <br/>
+				<span style="font-weight:bold;font-size:20px;">第五条、逾期利息： </span><br/>
+				5.1若债权到期日，乙方无法从债务人处足额收回债权本金和债权收益并转付至甲方账户，或乙方应当回购而未回购，乙方应当承担逾期利息，逾期利息的支付方式如下：<br/>
+				逾期利息=拖欠款项×逾期天数×逾期利率。<br/>
+				拖欠款项是指截止债权到期日，转让债权中乙方应当回购未回购的部分。<br/> 
+				逾期天数是指从债权到期日（不含当日）起至拖欠款项及逾期利息/其他费用等清偿完毕之日止（含到账日）的自然日天数。<br/>
+				逾期利息：<br/>
+				（1）逾期天数<=30天的，逾期利率为每日0.03%；<br/>
+				（2）逾期天数>30天的，逾期利率为每日0.05%。
+		  <br/> <br>
+				<span style="font-weight:bold;font-size:20px;">第六条、风险提示：</span><br/>
+				6.1政策风险:国家因宏观政策、财政政策、货币政策、行业政策、地区发展、法律法规等因素引起的政策风险。<br/>
+				6.2不可抗力:由于战争、动乱、自然灾害等不可抗力因素的出现而可能导致甲方资产损失的风险。<br/>
+		  <br/>
+				<span style="font-weight:bold;font-size:20px;">第七条、税务处理：</span><br/>
+				7.1各方根据中国法律规定，由各方自行向其主管税务机关申报、缴纳相关税费。
+		  <br/> <br>
+		  <span style="font-weight:bold;font-size:20px;">第八条、保密条款：</span><br/>
+		8.1本协议签署后，除非事先得到其他方的书面同意，本协议各方均应承担以下保密义务：<br/>
+		（1） 任何一方不得向非本协议方披露本协议以及本协议项下的事宜以及与此等事宜有关的任何文件、资料或信息（“保密信息”）；<br/>
+		（2） 任何一方只能将保密信息和其内容用于本协议项下的目的，不得用于任何其他目的。本款的约定不适用于下列保密信息：<br/>
+		A、从披露方获得时，已是公开的；<br/>
+		B、从披露方获得前，接受方已经获知的；<br/>
+		C、从有正当权限并不受保密义务制约的第三方获得的；<br/>
+		8.2本协议各方因下列原因披露保密信息，不受前款的限制：<br/>
+		（1）向本协议各方的董事、监事、高级管理人员和雇员及其聘请的会计师、律师、咨询公司披露；<br/>
+		（2）因遵循可适用的法律、法规的强制性规定而披露；<br/>
+		（3）依据其他应遵守的法规向审批机构或权力机构进行的披露；<br/>
+		8.3甲方和乙方提供给丙方的信息，及甲方和乙方享受丙方服务产生的信息（包括本协议签署之前提供和产生的），可由丙方享有，法律禁止的除外。<br/>
+		8.4本协议任何一方应采取所有其他必要、适当和可采取的措施，以确保保密信息的保密性。<br/>
+		8.5本协议各方应促使其向之披露保密信息的人亦严格遵守本条约定。<br/>
+		8.6各方在本条项下的权利和义务应在本协议终止或到期后继续有效。<br/>
+		
+		  <br>
+		<span style="font-weight:bold;font-size:20px;"> 第九条、协议的订立及支付：</span><br>	9.1本协议及其修改或补充均采用通过丙方百财网站以电子文本形式制成，可以有一份或者多份并且每一份具有同等法律效力，并永久保存在丙方为此设立的专用服务器上备查和保管。各方均认可该形式的协议效力并通过自行或授权有关方根据丙方百财网站有关规则和说明，在丙方百财网站进行债权转让申购或投标操作等方式确认签署本协议。<br/>
+		9.2各方通过上述方式接受本协议且丙方审核通过时，本协议立即成立；协议成立的同时甲方不可撤销地授权丙方将债权转让款在扣除相关费用后划转、支付给乙方推荐的债权转让人，债权转让款由丙方根据授权划转完毕时本协议正式生效。<br/>
+		9.3各方同意，若乙方对本合同项下债务人的全部债权未能在7日内实现全部或者部分出让的，本协议自始不生效，乙方和丙方应配合将甲方已支付的债权申购款无息全额退还给甲方。 <br/>
+		9.4甲方同意并授权丙方按本协议及百财网站有关收费规则的约定对债权转让款进行划扣和支付，并由丙方代为收取债务人支付的款项或乙方支付的债权回购款、收益、逾期利息等。<br/>
+		
+		  <br/>
+		<span style="font-weight:bold;font-size:20px;"> 第十条、其他条款：</span><br/>10.1若债务人不履行到期债务且乙方不履行回购义务的，甲方享有向乙方追索权。甲方因行使上述追索权而支出的合理费用（包括但不限于诉讼费（或仲裁费）、保全费、公告费、执行费、律师费、差旅及其他为实现权利而发生的费用），均由乙方承担。 <br/>
+		  10.2若债权到期日，乙方无法从债务人处足额收回债权本金和债权附带收益并转付至甲方，或乙方应当回购而未回购债权的，丙方有权收购甲方所受让的债权，甲、乙双方同意，当丙方出示向甲方支付债权收购款项的支付凭证时，甲、乙双方均认可丙方已获得相应债权的所有权利，同时丙方有权要求乙方按债权转让价格收购债权并支付债权附带收益和逾期利息等损失。若乙方不履行该收购义务，丙方享有向乙方追索权。丙方因行使上述追索权而支出的合理费用（包括但不限于诉讼费（或仲裁费）、保全费、公告费、执行费、律师费、差旅及其他为实现权利而发生的费用），由乙方承担。<br/>
+		   10.3如果甲方出现债权的继承，必须由主张权利的继承人向丙方出示经国家权威机关认证的继承权利归属证明文件，丙方确认后方予协助进行债权的转移。由此产生的相关税费，由主张权利的继承人，向其主管税务机关申报、缴纳，丙方不负责相关事宜处理。<br/>
+		    10.4本协议签订之日起至甲方债权实现之日止，甲方、乙方的下列信息如发生变更的，其应当在相关信息发生变更三个工作日内将更新后的信息提供给丙方：本方、本方的家庭联系人及紧急联系人、工作单位、居住地址、住所电话、手机号码、电子邮箱、银行账户的变更。若因任何一方不及时提供上述变更信息而带来的损失或额外费用应由该方自行承担。<br/>
+			10.5本合同任何条款因法律、法规、政策的变化而无效或不可执行时，不影响其他部分的法律效力。<br/>
+			10.6本合同的传真件、复印件、扫描件等有效复本的效力与本协议原件效力一致。<br/>
+			10.7如果各方在本协议履行过程中发生任何争议，应友好协商解决；如协商不成，则均可向丙方住所地有管辖权的人民法院提起诉讼。<br/>
+			10.8本协议一式叁份，甲方保留壹份，乙方保留壹份，丙方保留壹份，具同等法律效力。<br/>
+			
+		10.9丙方（百财网www.baicai58.com）拥有对本协议的最终解释权。<br/>
+
+		  </p>
+		  <div style="text-align:right">签署日期：{$loan.begin_time|date="Y年m月d日",###}</div>
+		 <div style="text-align:right">签订地点：苏州市工业园区</div>
+    </div>
+  </div>
+</div>
+<include file="default:Public:_footer" group="Home" />

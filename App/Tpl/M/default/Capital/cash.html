@@ -1,0 +1,75 @@
+﻿<include file="Pub:header" />
+<style>
+.userCenter .container:first-child .row{height:60px;line-height: 60px;}
+</style>
+<div class="userCenter">
+   <div class="container container-block container-row-nml">
+       <div class="row">
+            <div class="col-xs-3"><img src="{$vo.bank_img}" height="60px;"></div>
+            <div class="col-xs-8">{$vo.bank_name}/{$vo.bank_num|hidecard=###,3,'还没有登记您的银行账号'}</div>
+            <div class="col-xs-1"></div>
+       </div>
+   </div>
+   <div class="container container-block container-row-nml">
+        <div class="row">
+            <div class="col-xs-3">可提余额</div>
+            <div class="col-xs-9 text-danger">{:Fmoney($vo['all_money'])}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">到账时间</div>
+            <div class="col-xs-9">72小时内打款,到帐时间银行各异</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">限额</div>
+            <div class="col-xs-9">每笔100-{$fee.2.0}万元</div>
+        </div>
+   </div>
+   <div  class="form container" id="cashForm" >
+		<div class="form-alert text-center" id="formAlert"></div>
+		<div class="form-group ">
+           
+            <input type="text" id="money" class="form-control input-lg" placeholder="转出金额">
+        </div>
+		
+		<div class="form-group ">
+           
+            <input type="password" id="paypass" class="form-control input-lg" placeholder="支付密码">
+        </div>
+		<button id="dobutton" class="btn btn-info btn-block btn-lg">确 认</button>
+   </div>
+</div>
+ 
+
+<script language="javascript">
+ localStorage.title="提现";
+$(function() {
+
+    $alert=$("#formAlert");
+    $("#dobutton").click(function() {
+        var e = $("#money").val(),
+            t = $("#paypass").val(),
+            r = "money=" + e + "&paypass=" + t;
+        if ($.trim(e) == "") return formAlert("请输入金额",$alert,"danger");
+        if ($.trim(t) == "") return formAlert("请输入支付密码",$alert,"danger");
+        $.ajax({
+            type: "POST",
+            url: "",
+            data: r,
+            dataType:"json",
+            success: function(e) {
+                if (e.status==0) {
+                    formAlert(e.message,$alert,"success");
+                    window.location.href = "{:U('M/user/index')}";
+                }
+                else{
+                    formAlert(e.message,$alert,"danger");
+                }
+            },
+            error: function(e) {
+                formAlert("提交发生错误,请重试",$alert,"danger");
+            }
+        })
+    })
+})
+</script>
+﻿<include file="Pub:footer" /> 

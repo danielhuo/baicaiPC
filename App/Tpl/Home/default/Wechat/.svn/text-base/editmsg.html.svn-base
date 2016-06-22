@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8">
+		<title>群发</title>
+		<link rel="stylesheet" type="text/css" href="/Style/H/css/css.css">
+		<link rel="stylesheet" type="text/css" href="/Style/H/css/home.css">
+		<link type="text/css" rel="stylesheet" href="/Style/JBox/Skins/Currently/jbox.css"/>
+		<script language=javascript type="text/javascript" src="/Style/Js/jquery.js"></script>
+		<script language=javascript src="/Style/JBox/jquery.jBox.min.js" type=text/javascript></script>
+		<script language=javascript src="/Style/JBox/jquery.jBoxConfig.js" type=text/javascript></script>
+		<style>
+			.main{background-color:#fff;padding:10px 0;}
+			.formDiv{
+				background-color:#DBEAF9;text-align:center;
+				padding:20px;width:80%;
+				margin:0 auto;}
+			.formDiv h2{text-align:center;color:#31B7E8;background-color:inherit;}
+			.formDiv form{margin:0 auto;padding:20px;width:50%;}
+			.formDiv p{margin-top:20px;}
+			.formDiv input,.formDiv select{
+				width:250px;height:30px;
+				line-height:30px;margin-left:10px;
+				padding:0;border:0;text-align:center;
+			}
+			input[type=button]{
+				background-color:#31B7E8;color:#fff;
+				font-weight:bold;font-size:18px;
+			}
+		</style>
+		<script>
+			function send(){	
+				var title=$("#title").val();
+				var name=$("#name").val();
+				var id=$("#id").val();
+				var interest_rate=$("#interest_rate").val();
+				var duration=$("#duration").val();	
+				var repay_type=$("#repay_type").val();
+				if(!title||!name||!id||!interest_rate||!duration||!repay_type) {
+					alert("请将内容填写完整");
+					return;
+				}
+					
+				$.ajax({
+					url: "__URL__/sendmsg",
+					type:"POST",
+					dataType: "json",
+					async:false,
+					data: {
+						"title":title,
+						"name":name,
+						"id":id,
+						"interest_rate":interest_rate,
+						"duration":duration,
+						"repay_type":repay_type,
+					},
+					success: function(d){
+						if(d.status == 1){
+							alert("共发给"+d.message+"个用户");
+							$("#title").val("");
+							$("#name").val("");
+							$("#id").val("");
+							$("#interest_rate").val("");
+							$("#duration").val("");	
+							$("#repay_type").val("");
+						}else if(d.status == 0){
+							alert(d.message);
+						}
+					}
+				});	
+		}
+
+		</script>
+	</head>
+	<body>
+		<div class="main">
+			<nav>
+				<ul  class="navigation-list">
+					<li class="navigation-item"><a href="__URL__/grouplist">分组列表</a></li>
+					<li class="navigation-item"><a href="__URL__/userlist">用户列表</a></li>
+					<li class="navigation-item"><a href="__URL__/editmsg">发布信息</a></li>	
+				</ul>
+			</nav>
+			<div class="formDiv">
+				<h2>公众号群发</h2>
+				<form action="" method="" id="weiForm">
+					<p><span>标　　题:</span><input id="title" type="text" name="title" value="理财项目发布"/></p>
+					<p><span>项目标号:</span><input id="id" type="number" name="id"/></p>
+					<p>
+						<span>项目名称:</span>
+						<select id="name" name="name"/>
+							<volist id="name" name="names">
+							<option value="{$name}">{$name}</option>
+							</volist>
+						</select>
+					</p>
+					<p><span>年化收益:</span><input type="text" name="interest_rate" id="interest_rate"/></p>
+					<p><span>项目期限:</span><input id="duration" type="text" name="duration"/></p>
+					<p>
+						<span>还款方式:</span>
+						<select name="repay_type" id="repay_type"/>
+							<volist id="repay_type" name="repay_types">
+							<option value="{$repay_type}">{$repay_type}</option>
+							</volist>
+						</select>
+					</p>
+					<p><span>　　　 </span><input type="button" onclick="send()" value="提 交"/></p>
+				</form>
+			
+			</div>
+		</div>
+	</body>
+</html>	

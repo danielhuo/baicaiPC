@@ -1,0 +1,217 @@
+<style type="text/css">
+	body { margin: 0; _height: 100%; }
+	.tdTitle { text-align: right; padding-left: 10px; font-size: 12px; height: 40; line-height: 40px; vertical-align: middle; width: 160px; font-weight: bold; background-color: #F9F9F9; border: #E9E8E7 solid 1px; }
+	.tdContent { text-align: left; padding-left: 10px; font-size: 12px; height: 40; line-height: 40px; vertical-align: middle; border: #E9E8E7 solid 1px; }
+	.alertDiv_pin { margin: 0px auto; background-color: #FEFACF; border: 1px solid green; line-height: 25px; background-image: url(http://img.anxindai.com/images/info/001_30.png); background-position: 20px 4px; background-repeat: no-repeat; }
+	.alertDiv_pin li { margin: 5px 0; list-style-type: decimal; color: #005B9F; padding: 0px; line-height: 20px; }
+	.alertDiv_pin ul { text-align: left; list-style-type: decimal; display: block; padding: 0px; margin: 0px 0px 0px 75px; }
+	.font666 { color: #666; }
+	.dv_header_8 { background-image: url(); }
+	.dv_account_0 { margin-top: 8px; }
+</style>
+<script type="text/javascript">
+	$(function(){
+		var timer1 = null;
+		var leftsecond1 = 60;
+		var msg = "";
+		function setLeftTimeX() {
+			var second = Math.floor(leftsecond1);
+			$("#spTipx").html(msg + second + "秒后可点击重发");
+			leftsecond1--;
+			if (leftsecond1 < 1) {
+				$("#sendVerifyCode").click(sendCode);
+				$("#spTipx").html("现在可重新发送！");
+				clearInterval(timer1);
+				leftsecond1=60;
+				try {
+					//$("#btnSendMsg").attr("disabled", false);
+					//$("#txt_phone").attr("readonly", false);
+				} catch (E) { }
+				return;
+			}
+		}
+		function sendCode(){
+			$.jBox.tip("发送中......","loading");
+			$.ajax({
+				url: "__URL__/sendVerifyCode",
+				type: "post",
+				dataType: "json",
+				data: {},
+				success: function(d) {
+					if (d.status == 1) {
+						$.jBox.tip("发送成功","success");
+						leftsecond1 = 60;
+						msg = "校验码发送成功，如未收到";
+						clearInterval(timer1);
+						$("#sendVerifyCode").unbind();
+						
+						timer1 = setInterval(setLeftTimeX,1000);
+					}else {
+						leftsecond1 = 60;
+						msg = "校验码发送失败.";
+						clearInterval(timer1);
+						timer1 = setInterval(setLeftTimeX, 1000);
+					}
+				}
+			});
+		
+	    }
+		$('#sendVerifyCode').click(sendCode);
+		
+		
+	})
+	
+	
+	function showErr_pin() {
+		$(".alertDiv_pin").css("display", "");
+	}
+	function clearErr_pin() {
+		$(".alertDiv_pin ul").html("");
+	}
+	function addErr_pin(err) {
+		$(".alertDiv_pin ul").append("<li>" + err + "</li>");
+	}
+	function hideErr_pin() {
+		$(".alertDiv_pin").css("display", "none");
+	}
+	function hasErr_pin() {
+		return $(".alertDiv_pin ul li").length > 0;
+	}
+</script>
+<div style="width: 766px; display: none;" class="alertDiv_pin">
+	<ul style="display: block;">
+	</ul>
+</div>
+
+<div style="width: 100%; height:300px; margin-top: 15px;">
+				
+	<div style="color: #2f2f2f; margin: 0px 20px;">
+		<label>
+			<input id="rad1" name="findWay" onclick="ShowPart1()" value="oldPin" type="radio" checked>
+			通过旧密码修改</label>
+	    <br/>
+		<label>
+			<input id="rad2" name="findWay" onclick="ShowPart2()" value="verifyCode" type="radio">
+			通过短信验证码修改</label>
+	</div>
+	<table style="width: 762px; float: left; margin:20px;
+		padding: 0px; border-collapse: collapse; text-align: left;" id="formTb" cellpadding="0" cellspacing="0">
+		
+		<tr id="byPin">
+			<td class="tdTitle">
+				请输入原支付密码：
+			</td>
+			<td class="tdContent">
+				<input id="oldpassword_pin" name="oldpassword_pin" class="text2" type="password"><span class="font666">(如未修改过，则与原登陆密码相同)</span>
+			</td>
+		</tr>
+		<tr style="display:none" id="byPhone">
+			<td class="tdTitle">
+				请输入手机验证码：
+			</td>
+			<td class="tdContent">
+				<input id="verifyCode" name="txtResetCodeVX" class="text2" type="text">
+				<input id="sendVerifyCode" style="background-image: url(__ROOT__/Style/M/images/btnbg02.gif);
+				width: 94px; height: 27px; border: none; font-weight: bold; color: #fff; cursor: pointer;" value="发送验证码" type="button"/>
+				<span class="spTip" id="spTipx"></span>
+			</td>
+		</tr>
+		<tr>
+			<td class="tdTitle">
+				请输入新支付密码：
+			</td>
+			<td class="tdContent">
+				<input id="newpassword_pin" name="newpassword_pin" class="text2" type="password">
+				<span class="font666">(输入您的新支付密码)</span>
+			</td>
+		</tr>
+		<tr>
+			<td class="tdTitle">
+				请再输入新支付密码：
+			</td>
+			<td class="tdContent">
+				<input id="newpassword_pin1" name="newpassword_pin1" class="text2" type="password">
+				<span class="font666">(再输入一次您的新支付密码)</span>
+			</td>
+		</tr>
+	</table>
+	<div style="text-align: center; width: 740px; height: 30px; margin: 10px;">
+		<img id="btn_set" class="img_button" onclick="UpdatePwd_pin()" src="__ROOT__/Style/M/images/btnsubupdate.jpg">
+		<img class="img_button" onclick="location.href=location.href;" src="__ROOT__/Style/M/images/btncancel.jpg">
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	var newTitle = '{$glo.web_name}提醒您：';
+	
+	function ShowPart1() {
+		$("#byPin").show();
+		$("#verifyCode").val('');
+		$("#newpassword_pin").val('');
+		$("#newpassword_pin1").val('');
+		$("#byPhone").hide();
+	}
+	function ShowPart2() {
+		$("#byPhone").show();
+		$("#oldpassword_pin").val('');
+		$("#newpassword_pin").val('');
+		$("#newpassword_pin1").val('');
+		$("#byPin").hide();
+	}
+	
+	function UpdatePwd_pin() {
+	    var findWay=$('input[name=findWay]:checked').val();
+		var oldpwd = $("#oldpassword_pin").val();
+		var verifyCode = $("#verifyCode").val();
+		var newpwd1 = $("#newpassword_pin").val();
+		var newpwd2 = $("#newpassword_pin1").val();
+		
+		clearErr_pin();
+		hideErr_pin();
+		if (findWay=="oldPin"&&oldpwd == '') {
+			addErr_pin('原支付密码必须填写！');
+		}
+		if (findWay=="verifyCode"&&verifyCode.length != 6) {
+			addErr_pin('验证码长度不对！');
+		}
+		if (newpwd1 == '') {
+			addErr_pin('新支付密码必须填写！');
+		}
+		if (newpwd2 == '') {
+			addErr_pin('确认新支付密码必须填写！');
+		}
+	    var pat = new RegExp("^.{6,20}$", "i");
+		if (!pat.test(newpwd1) || !pat.test(newpwd2) ) {
+		//格式正确
+		addErr_pin('支付密码必须6-20位！');
+		}
+		if (newpwd2 != newpwd1) {
+			addErr_pin('两次支付密码不一致！');
+		}
+		if (hasErr_pin()) {
+			showErr_pin();
+			return false;
+		}
+		else {
+			$.ajax({
+				url: "__URL__/changepin/",
+				type: "post",
+				dataType: "json",
+				data: {"findWay":findWay,"oldpwd":oldpwd,"verifyCode":verifyCode,"newpwd1":newpwd1,"newpwd2":newpwd2},
+				success: function(d) {
+					if (d.status == "2") {
+						addErr_pin(d.message);
+						showErr_pin();
+						return;
+					} else if (d.status == "1") {
+						$.jBox.tip('恭喜，支付密码修改成功！','success');
+					} else {
+						$.jBox.tip(d.message,'fail');
+					}
+				}
+			})
+		}
+	}
+</script>
+

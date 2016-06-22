@@ -1,0 +1,27 @@
+﻿<include file="header" /> 
+<link type="text/css" rel="stylesheet" href="/Style/Mobile/css/error.css">
+<script>
+	function Jump(){
+	    window.location.href = '{$jumpUrl}';
+	}
+	document.onload = setTimeout("Jump()" , 3* 1000);
+</script>
+<base target="_self" />
+	<div class="Prompt">
+    	<div class="Prompt_top success_top"></div>
+  		<div class="Prompt_con">
+			<dl>
+				<!-- <dd><span class="Prompt_ok"></span></dd> -->
+			 	<dd>
+			   		<h2 style="color:green;">{$message}</h2>
+			   		<!--<p>系统将在 <span style="color:blue;font-weight:bold">{$waitSecond}</span> 秒后自动关闭，如果不想等待,直接点击 <A HREF="{$jumpUrl}">这里</A> 关闭</p>  -->
+			   		
+			    </dd>
+			</dl> 
+			  
+			
+		</div>
+    	
+  </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<include file="Public:_header" />
+<script type="text/javascript" src="__ROOT__/Style/My97DatePicker/WdatePicker.js" language="javascript"></script>
+<tagLib name="htmlA" />
+<script type="text/javascript">
+  var isSearchHidden = 1;
+  var searchName = "搜索/筛选标的数量统计";
+</script>
+<div class="so_main">
+  <div class="page_tit">标的数量统计 ——— 按标的种类统计</div>
+  <include file="search_tj" />
+  <div class="Toolbar_inbox">
+    <div class="pages" style="float:right; padding:0px;">{$pagebar}</div>
+    <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索/筛选借款" style="search_action" />
+    <htmlA:commonBtn type="href" action="__URL__/index?withdraw_status={$kds}" value="{$vds}"/>
+  </div>
+  
+  <div class="list">
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th style="width:30px;">
+        <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+        <label for="checkbox"></label>
+    </th>
+    <th class="line_l">标类</th>
+    <th class="line_l">一天</th>
+    <th class="line_l">一周</th>
+    <th class="line_l">一月</th>
+    <th class="line_l">六月</th>
+    <th class="line_l">一年</th>
+    <th class="line_l">一年以前</th>
+    <th class="line_l">全部</th>
+  </tr>
+  <volist id="vo" name="list">
+      <tr overstyle='on' id="list_{$vo.id}">
+        <td><input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.id}"></td>
+        <td>{$vo.name|default=0}</td>
+        <td>{$vo.money.0|Fmoney=###}【{$vo.num.0|default=0}】</td>
+        <td>{$vo.money.1|Fmoney=###}【{$vo.num.1|default=0}】</td>
+        <td>{$vo.money.2|Fmoney=###}【{$vo.num.2|default=0}】</td>
+        <td>{$vo.money.3|Fmoney=###}【{$vo.num.3|default=0}】</td>
+        <td>{$vo.money.4|Fmoney=###}【{$vo.num.4|default=0}】</td>
+        <td>{$vo['money'][5]-$vo['money'][4]|Fmoney=###}【{$vo['num'][5]-$vo['num'][4]|default=0}】</td>
+        <td><font style="color:red;font-weight:bold;">{$vo.money.5|Fmoney=###}【{$vo.num.5|default=0}】</font></td>
+      </tr>
+  </volist>
+  </table>
+
+  </div>
+  
+  <div class="Toolbar_inbox">
+    <div class="pages" style="float:right; padding:0px;">{$pagebar}</div>
+    <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索/筛选借款" style="search_action" />
+    <htmlA:commonBtn type="href" action="__URL__/index?withdraw_status={$kds}" value="{$vds}"/>
+  </div>
+</div>
+<include file="Public:_footer" />

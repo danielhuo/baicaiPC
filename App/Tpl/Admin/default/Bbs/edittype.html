@@ -1,0 +1,28 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<div class="so_main">
+
+<div class="page_tit">添加/修改论坛分类</div>
+<div class="page_tab"><span data="tab_1" class="active">基本设置</span></div>
+<div class="form2">
+	<form method="post" action="__URL__/doEditType">
+	<input type="hidden" name="id" value="{$vo.id}" />
+	<div id="tab_1">
+	
+	<dl class="lineD"><dt>分类名称：</dt><dd><htmlA:input id="type_name" value="{$vo.type_name}" tip="*"/></dd></dl>
+	<dl class="lineD"><dt>上级分类：</dt><dd><htmlA:select id="parent_id" value="id|vo.parent_id" vt='id|type_name' datakey='type_list' default="顶级分类" tip="顶级分类则无父分类"/></dd></dl>
+
+	<dl class="lineD"><dt>分类关键词：</dt><dd><htmlA:input id="type_keyword" value="{$vo.type_keyword}" tip="*"/></dd></dl>
+	<dl class="lineD"><dt>分类唯一标志：</dt><dd><htmlA:input id="type_nid" value="{$vo.type_nid}" tip="*分类链接的网址标识"/></dd></dl>
+	<dl class="lineD"><dt>是否显示：</dt><dd><htmlA:radio id="is_show" value="key|vo.is_show" default="1|显示分类,0|隐藏分类" tip=''/></dd></dl>
+	<dl class="lineD"><dt>是否官方发布：</dt><dd><htmlA:radio id="is_sys" value="key|vo.is_sys" default="1|官方发布,0|用户发布" tip=''/></dd></dl>
+	<dl class="lineD"><dt>是否可以回复：</dt><dd><htmlA:radio id="is_repay" value="key|vo.is_repay" default="1|可以回复,0|不可以回复" tip=''/></dd></dl>
+
+	</div>
+	<div class="page_btm">
+	  <input type="submit" class="btn_b" value="确定" />
+	</div>
+	</form>
+</div>
+</div>
+<include file="Public:_footer" />

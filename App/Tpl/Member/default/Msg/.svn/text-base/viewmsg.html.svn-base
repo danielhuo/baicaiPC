@@ -1,0 +1,12 @@
+<style type="text/css">
+.msgbox{padding:20px; line-height:25px; width:400px}
+</style>
+<div class="msgbox">
+
+{$msg}
+
+</div>
+<script type="text/javascript">
+var mid = "{$mid}";
+$("#msg_"+mid).find("img").attr("src",readimg);
+</script>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>产品解读</title>
+	
+	<script src="/Style/Js/jquery.js"></script>
+	<script src="/Style/H/js/jquery.mousewheel.min.js"></script>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			
+		}
+		body{    
+			font-family: "微软雅黑",Arial,"Microsoft YaHei","Hiragino Sans GB",sans-serif;
+		}
+		.pageUl{
+			list-style: none;
+			top:0;
+			width:100%;
+			height:100%;
+			position: absolute;
+			
+		}
+		.pageUl li{
+			width:100%;
+			height:100%;
+			display: block;
+			position:relative;
+			display:none;
+		}
+		.header{
+			position:fixed;top:0px;
+			left:0px;
+			background-color:#CCC;
+			background:rgba(255,255,255,0.7);
+			width:100%;height:60px;
+			z-index:1000;
+			min-width:670px;border-bottom:1px solid #DDD;
+		}
+		.logo{
+			float:left;font-size:24px;
+			margin-left:20px;
+			line-height:60px;color:black;
+			text-shadow:3px 2px 3px silver;
+			letter-spacing:4px;}
+		.nav{float:right;margin-right:-30px;}
+		.nav li{
+			float:left;list-style:none;margin-right:50px;cursor:pointer;
+			position:relative;height:60px;display:block;
+		}
+		.nav a{line-height:60px;color:#6A6A6A;text-decoration:none;font-size:16px;}
+		.nav li:hover a{color:#00A0E9;}
+		.nav li:hover div{display:block}
+		.connect_us{position:absolute;top:60px;right:-20px;
+				background-color:#fff;display:none;
+				width:600px;border-radius:5px;text-align:center;}
+		.connect_us div{float:left;width:200px;height:240px;}
+		.connect_us h2{height:80px;line-height:80px;font-size:14px;}
+		.connect_us p{padding-top:20px;}
+		.connect_us p span{margin-top:20px;}
+		
+		.pageUl div{
+			width:1100px;
+			height:500px;position:absolute;
+			top:50%;left:50%;
+			margin:-250px -550px;
+		}
+		.pageUl .img1{position:absolute;left:0;top:0px;display:none;}
+		.pageUl .img2{position:absolute;right:0;bottom:50%;display:none;}
+	</style>
+	<script type="text/javascript">
+		var flag=false;
+		var liIndex=0;
+		$(function(){
+			var plis=$('.pageUl li');
+			var size=plis.length;
+			plis.eq(0).fadeIn(500,function(){
+				$(this).find('img').first().fadeIn(300,function showNext(){
+					nextImg=$(this).next();
+					if(nextImg.length)
+						nextImg.fadeIn(200,showNext);
+					else 
+						flag=true;
+				})
+			});
+			$(window).mousewheel(function(event, delta, deltaX, deltaY){
+				if(!flag||(liIndex==0&&deltaY==1)) return;
+				flag=false;
+				obj_hide=plis.eq(liIndex);
+				liIndex=Math.max((liIndex-deltaY)%size,0);
+				obj_show=plis.eq(liIndex);
+				obj_hide.find('img').fadeOut(100,function(){
+					obj_hide.fadeOut(200,function(){
+						obj_show.fadeIn(500,function(){
+							$(this).find('img').first().fadeIn(300,function showNext(){
+								nextImg=$(this).next();
+								if(nextImg.length)
+									nextImg.fadeIn(200,showNext);
+								else 
+									flag=true;
+							})
+						})
+					});
+					
+				});
+				
+			});
+			
+		})
+		
+		
+	</script>
+</head>
+<body>
+	<div class="header">
+			<div class="logo">百财金融</div>
+			<div class="nav">
+				<ul>
+					<li><a href="__APP__/index">首页</span></a>
+					<li><a href="__APP__/loaninvest">我要理财</a></li>
+					<li><a href="__APP__/bangzhu/billguide">帮助中心</a></li>
+					<li><a>联系我们</a>
+						<div class="connect_us">
+							<div class="weixin">
+								<h2>官方微信</h2>
+								<p>
+									<img src="http://www.baicai58.com/Style/A/images/erweima.png"style="width:120px;height:120px;"></img>
+								</p>
+								
+							</div>
+							<div class="qq">
+								<h2>QQ客服</h2>
+								<p>
+									<img style="width:80px;height:80px;" src="http://www.iconpng.com/png/tencentlogo/qq.png"></img><br>
+									
+									<span>3083483550</span>
+								</p>
+							</div>
+							<div class="tel">
+								<h2>客服电话</h2>
+								<p>
+									<img src="http://luyou.360.cn/resource/img/nav_phone_icon.png"></img><br>
+									<span style="color:#6A8EB2;font-size:20px;">0512-62853600</span><br>
+									<span style="font-size:12px;">(周一到周五9:00-17:00)</span>
+									
+								</p>
+							</div>
+						</div>
+					</li>			
+				</ul>			
+			</div>
+		
+	</div>
+	<div class="pages">
+		<ul class="pageUl"  >
+			
+			<li style="background-color:#FFCC99;">
+				<div>
+					
+					<img class="img1"src="/Style/H/product_intro/ge0.png"/>
+					<img class="img2"src="/Style/H/product_intro/ge1.png" style="margin-right:180px;margin-bottom:90px;"/>
+					<img class="img2"src="/Style/H/product_intro/ge2.png" style="margin-right:150px;margin-bottom:60px;" />
+					<img class="img2"src="/Style/H/product_intro/ge3.png" style="margin-right:120px;margin-bottom:30px;"/>
+					<img class="img2"src="/Style/H/product_intro/ge4.png" style="margin-right:150px;margin-bottom:0px;"/>
+					<img class="img2"src="/Style/H/product_intro/ge5.png" style="margin-right:180px;margin-bottom:-30px;"/>
+				
+				</div>
+			</li>
+			<li style="background-color:#FFFFCC;">
+				<div>
+					<img class="img1"src="/Style/H/product_intro/cai0.png"/>
+					<img class="img2"src="/Style/H/product_intro/cai1.png" />
+				</div>
+			</li>
+			<li style="background-color:#CCFFFF;">
+				<div>
+					<img class="img1"src="/Style/H/product_intro/che0.png"/>
+					<img class="img2"src="/Style/H/product_intro/che1.png"/>
+					
+				</div>
+			</li>
+			<li style="background-color:#CCFFCC;">
+				<div>
+					<img class="img1"src="/Style/H/product_intro/piao0.png"/>
+					<img class="img2"src="/Style/H/product_intro/piao1.png"/>
+				</div>
+			</li>
+			<!--
+			<li style="background-color:#CCCCCC;">
+				<div>
+					
+				</div>
+			</li>-->
+			
+		</ul>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+</html>

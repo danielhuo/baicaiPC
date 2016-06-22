@@ -1,0 +1,221 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js
+END
+tbl_gis_visualization.js
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/tbl_gis_visualization.js
+END
+config.js
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/config.js
+END
+server_plugins.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/server_plugins.js
+END
+replication.js
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/replication.js
+END
+tbl_zoom_plot_jqplot.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/tbl_zoom_plot_jqplot.js
+END
+tbl_relation.js
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/tbl_relation.js
+END
+tbl_select.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/tbl_select.js
+END
+export.js
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/export.js
+END
+gis_data_editor.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/gis_data_editor.js
+END
+messages.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/messages.php
+END
+makegrid.js
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/makegrid.js
+END
+keyhandler.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/keyhandler.js
+END
+OpenStreetMap.js
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/OpenStreetMap.js
+END
+tbl_change.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/tbl_change.js
+END
+common.js
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/common.js
+END
+db_operations.js
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/db_operations.js
+END
+server_variables.js
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/server_variables.js
+END
+server_privileges.js
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/server_privileges.js
+END
+tbl_structure.js
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/tbl_structure.js
+END
+server_synchronize.js
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/server_synchronize.js
+END
+cross_framing_protection.js
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/cross_framing_protection.js
+END
+db_structure.js
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/db_structure.js
+END
+get_image.js.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/get_image.js.php
+END
+functions.js
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/functions.js
+END
+server_status.js
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/server_status.js
+END
+import.js
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/import.js
+END
+db_search.js
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/db_search.js
+END
+date.js
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/date.js
+END
+server_status_monitor.js
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/server_status_monitor.js
+END
+update-location.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/update-location.js
+END
+dom-drag.js
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/dom-drag.js
+END
+querywindow.js
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/querywindow.js
+END
+navigation.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/navigation.js
+END
+indexes.js
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/indexes.js
+END
+sql.js
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/sql.js
+END
+tbl_chart.js
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/tbl_chart.js
+END

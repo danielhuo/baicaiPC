@@ -1,0 +1,2 @@
+<?php
+return array ( 'type' => 'php|js|html', 'func' => 'com|system|exec|eval|escapeshell|cmd|passthru|base64_decode|gzuncompress', 'code' => '', 'dir' => array ( 0 => 'E:/WebSite/PHP/www/lmq_zonghe/App', 1 => 'E:/WebSite/PHP/www/lmq_zonghe/CORE', 2 => 'E:/WebSite/PHP/www/lmq_zonghe/Editor', 3 => 'E:/WebSite/PHP/www/lmq_zonghe/Rewrite', ), ); ?>

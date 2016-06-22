@@ -1,0 +1,435 @@
+﻿<include file="Public:_header_common" />
+<title>{$glo.index_title}</title>
+<meta name="keywords" content="{$glo.web_keywords}" />
+<meta name="description" content="{$glo.web_descript}" />
+<script type="text/javascript" src="__ROOT__/Style/H/js/common.js" language="javascript"></script>
+<style type="text/css">
+.tablemodel{
+float:left;
+height:100px;
+width:100%;
+border-top:1px dashed #FF9D0E;
+
+padding-top:20px;
+}
+</style>
+<script type="text/javascript">
+var Transfer_invest_url = "__APP__/tinvest";
+</script>
+<script type="text/javascript" src="__ROOT__/Style/H/js/area.js"></script>
+<include file="Public:_header_main" />
+<tagLib name="htmlA" />
+<script type="text/javascript">
+	$(function(){
+		$('#dw_ul li a:eq(2)').attr('class','nowNavItem');
+	
+	});
+	var url = window.location.href;
+	if(url)var allargs = url.split("?")[1];
+	if(allargs)var tab1= allargs.split("=")[1];
+	if(tab1)var tab= tab1.split("&")[0];
+
+	$(function(){ 
+		if(tab==9){
+			$('#a1').addClass("show_style");
+		}
+		if(tab==4){
+			$('#a2').addClass("show_style");
+			$('#a1').removeClass("show_style");
+		}
+		if(tab==6){
+			$('#a3').addClass("show_style");
+			$('#a1').removeClass("show_style");
+		};
+		if(tab==7){
+			$('#a4').addClass("show_style");
+			$('#a1').removeClass("show_style");
+		};
+		if(tab==10){
+			$('#a5').addClass("show_style");
+			$('#a1').removeClass("show_style");
+			$('#black').attr('style','display:block');
+			$('#con').attr('style','display:none');
+		};
+	});
+
+</script>
+<div>
+<div style="width:1000px; margin:10px auto 10px;border:#E7EAEC ; height:250 ">
+<div style=" margin:10px auto 10px;padding-bottom:10px;float:left; width:727px ">
+<div class="list_banner" style="width:727px">
+  <div class="list_banner_left" style="box-shadow:0px 0px 2px 1px #FF9D0E;background-color:#FFF;">
+    <div class="list_banner_left_l">
+      <h2>筛选理财项目</h2>
+      <ul>
+        <li class="saixuanlx">标的状态</li>
+        <php>foreach($searchMap['borrow_status'] as $key=>$v){</php>
+        <php>if($key==$searchUrl['borrow_status']['cur']){</php>
+        <li class="buxz"><a>{$v}</a></li>
+        <php>}else{</php>
+        <li><a class="a_lb_2" href="__URL__/index.html?type=search&{$searchUrl.borrow_status.url}&borrow_status={$key}">{$v}</a></li>
+        <php>}</php>
+        <php>}</php>
+      </ul>
+      <!--<ul class="dierge">
+        <li  class="saixuanlx">信用等级</li>
+        <php>foreach($searchMap['leve'] as $key=>$v){</php>
+        <php>if($key==$searchUrl['leve']['cur']){</php>
+        <li class="buxz"><a>{$v}</a></li>
+        <php>}else{</php>
+        <li><a class="a_lb_2" href="__URL__/index.html?type=search&{$searchUrl.leve.url}&leve={$key}">{$v}</a></li>
+        <php>}</php>
+        <php>}</php>
+      </ul>-->
+      <ul>
+        <li class="saixuanlx">借款期限</li>
+        <php>foreach($searchMap['borrow_duration'] as $key=>$v){</php>
+        <php>if($key==$searchUrl['borrow_duration']['cur']){</php>
+        <li class="buxz"><a href="__ROOT__/invest/index.html">{$v}</a></li>
+        <php>}else{</php>
+        <li><a class="a_lb_2" href="__URL__/index.html?type=search&{$searchUrl.borrow_duration.url}&borrow_duration={$key}">{$v}</a></li>
+        <php>}</php>
+        <php>}</php>
+      </ul>
+      <!--<ul style="border-bottom:none;">
+        <form name="searchform" action="__URL__/index" method="get">
+          <li  class="saixuanlx">关键词搜索:</li>
+          <!--li style="width:250px;">
+            <htmlA:radio id="is_keyword" value="key|vo.is_show" default="0|不限制,1|借款用户,2|借款名称"/>
+          </li>
+          <li>
+            <input class="searchkeywords" name="searchkeywords" type="text"    value="{$searchMap.searchkeywords}" style="margin-top:6px;"/>
+          </li>
+          <li>
+            <input type="submit" name="btnSubmit" id="btnSubmit" value=" " style="height:29px; margin-left:77px; cursor: pointer; margin-top:3px;" class="btn">
+          </li>
+        </form>
+      </ul>-->
+    </div>
+  </div>
+</div>
+<div class="list_main main" style="width:727px;box-shadow:0px 0px 2px 1px #FF9D0E;margin-top:10px;background-color:#FFF;">
+  <div class="list_main_top" style="float:left;width:727px;">
+    <div class="wleft" style="width:720px;border-bottom:1px dashed #FF9D0E;"><h3 class="title_03">投资列表<a id="wpass" class="more" href="/tools/tool.html">理财计算器</a></h3>
+    </div>
+  </div>
+<div>
+
+
+
+  	<ul  style="float:left;width:707px;margin:10px;">
+
+    <div class="sort-bar">
+        <span>排序：</span>
+        <!--a href="{url:$sort/0}" {if:$sort==0} class="buxz"{/if}>默认排序<i></i></a>
+        <a href="{url:'$url/Member/common/sort/1'}" {if:$sort==3} class="buxz"{/if}>借款金额<i></i></a>
+        <a href="{url:'$url/Member/common/sort/2'}" {if:$sort==5} class="buxz"{/if}>年利率<i></i></a-->
+		<php>if($Sorder['Csort']=='desc'&& $Sorder['Corderby']=='borrow_money'){</php>
+        	<a href="__URL__/index.html?type=search&{$searchUrl.borrow_duration.url}&{$searchUrl.borrow_status.url}&orderby=borrow_money&sort=asc" class="cls2">&nbsp&nbsp借款金额&nbsp&nbsp&nbsp&nbsp&nbsp<i></i></a>
+         <php>}else if($Sorder['Csort']=='asc'&& $Sorder['Corderby']=='borrow_money'){</php>
+        	<a href="__URL__/index.html?type=search&{$searchUrl.borrow_duration.url}&{$searchUrl.borrow_status.url}&orderby=borrow_money&sort=desc" class="cls1">&nbsp&nbsp借款金额&nbsp&nbsp&nbsp&nbsp&nbsp<i></i></a>
+        <php>}else{</php>
+        	<a href="__URL__/index.html?type=search&{$searchUrl.borrow_duration.url}&{$searchUrl.borrow_status.url}&orderby=borrow_money&sort=desc" class="cls">&nbsp&nbsp借款金额&nbsp&nbsp&nbsp&nbsp&nbsp<i></i></a>
+        <php>}</php>
+		
+	<php>if($Sorder['Csort']=='desc'&& $Sorder['Corderby']=='rate'){</php>
+      <a href="__URL__/index.html?type=search&{$searchUrl.borrow_duration.url}&{$searchUrl.borrow_status.url}&orderby=rate&sort=asc" class="cls4">&nbsp&nbsp年利率&nbsp&nbsp&nbsp&nbsp&nbsp<i></i></a> 
+	  <php>}
+	   elseif($Sorder['Csort']=='asc'&& $Sorder['Corderby']=='rate'){</php>
+      <a href="__URL__/index.html?type=search&{$searchUrl.borrow_duration.url}&{$searchUrl.borrow_status.url}&orderby=rate&sort=desc" class="cls3">&nbsp&nbsp年利率&nbsp&nbsp&nbsp&nbsp&nbsp<i></i></a> 
+	  <php>}else{</php>
+	  <a href="__URL__/index.html?type=search&{$searchUrl.borrow_duration.url}&{$searchUrl.borrow_status.url}&orderby=rate&sort=desc" class="cls">&nbsp&nbsp年利率&nbsp&nbsp&nbsp&nbsp&nbsp</i></a>
+		
+		<php>}</php>
+		
+      <volist name="list.list" id="vb">
+	  
+	  <if condition="$vb['repayment_type'] eq 1">
+	  <else/>
+        <li class="tablemodel">
+         
+		 
+		
+		  		  <style>
+                  li {
+                  }
+                  a{
+                  opacity: 1;
+                  }
+                  a:hover{
+                  opacity: 1;
+                  }
+                 </style>
+		  <ul align="center">
+		  <li style="height:100px ;float:left;width:100px">
+				<div class="dengji" style="margin-top:0px;">{$vb.borrow_name|cnsubstr=###,12}</div>
+						<div width="110" class="dengji" style="margin-top:0px;">
+							<span style="color:#de002a" class="BL_time"><a href="{$vb.id|getInvestUrl=###}"title="{$vb.borrow_name}" >JK{$vb.id}</a></span>
+						</div>
+		  </li>
+		  <li style="height:100px ;float:left;width:100px"><div class="dengji" style="margin-top:0px;">年利率</div>
+		  <div width="110" class="dengji" style="margin-top:0px;"><span style="color:#de002a" class="BL_time">{$vb.borrow_interest_rate}</span>&nbsp;%</div>
+		  </li>
+		  <li style="height:100px ;float:left;width:100px"><div class="dengji" style="margin-top:0px;">借款金额</div>
+		  <div width="100" class="dengji" style="margin-top:0px;"><span style="color:#de002a" class="BL_time">{$vb.borrow_money|getMoneyFormt=###} </span></div>
+		  </li>
+		  <li style="height:100px ;float:left;width:100px"><div class="dengji" style="margin-top:0px;">还款时间</div>
+		  <div width="100" class="dengji" style="margin-top:0px;"><span class="BL_time">{$vb.borrow_duration}</span>&nbsp;个月</div>
+		  </li>
+		  <li style="height:100px ;float:left;width:90px;margin-top:20px;">
+		  <div width="100" class="dengji jindu" style="margin-top:0px;"><span class="ui-list-field"> <span class="ui-progressbar-mid ui-progressbar-mid-{$vb.progress|intval}"><em>{$vb.progress|intval}%</em></span> </span></div>
+		  </li>
+		  
+		 	<li style="height:100px ;float:left;width:90px">
+				<div class="dengji" style="margin-top:0px;">还需资额</div>
+					<div width="100" class="dengji" style="margin-top:0px;">
+						<span style="color:#de002a" class="BL_time">{$vb.need|getMoneyFormt=###}</span>
+				    </div>
+			</li>
+
+		  <li style="height:100px ;float:left;width:80px；height:100px"><div width="420px"  style="margin-top:30px" class="dengji">
+		      <if condition="$vb.borrow_status eq 3"> 
+		      <a href="javascript:;"><img class="anNiuYLB" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"src="__ROOT__/Style/H/images/status/touM.gif" /></a>		 
+
+              <elseif condition="$vb.borrow_status eq 4"/>
+
+              <a href="javascript:;"><img class="anNiuDDFS" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'" src="__ROOT__/Style/H/images/status/touM.gif" /></a>
+
+              <elseif condition="$vb.borrow_status eq 6"/>
+
+              <a href="javascript:;"><img  class="anNiuHKZ"onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'" src="__ROOT__/Style/H/images/status/touM.gif"  /></a>
+
+              <elseif condition="$vb.borrow_status gt 6"/>
+
+              <a href="{$vb.id|getInvestUrl=###}"><img class="anNiuYWC"onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'" src="__ROOT__/Style/H/images/status/touM.gif"  /></a>
+              <else/>
+
+              <a href="{$vb.id|getInvestUrl=###}"><img class="anNiuTB" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'" src="__ROOT__/Style/H/images/status/touM.gif" /></a> </if></div>
+	
+	
+	
+	
+	 	   </li>
+		  </ul>
+		 
+			  
+			  </li>
+			  
+			  </if>
+			  </volist>
+			  </ul>
+ </div>
+</div>
+
+<div class="list_bottom">
+  <div class="list_bottom_right">
+    <ul>
+      {$list.page}
+    </ul>
+  </div>
+</div>
+</div>
+
+
+<!-- 侧面开始结束  --> 
+<div class="bd-5-r" style="box-shadow:0px 0px 2px 1px #FF9D0E;">
+    <div class="bd-5-r1">
+    	<dl class="t1" style="border-bottom:1px dashed #FF9D0E;">
+        	<dt>专属客服</dt>
+            <dd>全程协助解决流程中的问题</dd>
+        </dl>
+        <dl class="t2" style="border-bottom:1px dashed #FF9D0E;">
+        	<dt>资金管理</dt>
+            <dd>封闭管理，专款专用</dd>
+        </dl>
+        <dl class="t3" style="border-bottom:1px dashed #FF9D0E;">
+        	<dt>100元起投</dt>
+            <dd>投资零门槛，简单又轻松</dd>
+        </dl> 
+    </div>
+      <div class="bd-5-r2">
+    	<h3 style="background-color:#FF9D0E;"><a href="__ROOT__/bangzhu/index.html">更多></a>新手投钱攻略</h3>
+        <ul>
+        	<li style="border-bottom:1px dashed #FF9D0E;"><a href="__ROOT__/bangzhu/index.html">如何注册、激活本平台账户？</a></li>
+            <li style="border-bottom:1px dashed #FF9D0E;><a href="__ROOT__/bangzhu/index.html">如何充值？</a></li>
+            <li style="border-bottom:1px dashed #FF9D0E;><a href="__ROOT__/bangzhu/index.html">如何开始理财投资？</a></li>
+            <li style="border-bottom:1px dashed #FF9D0E;><a href="__ROOT__/bangzhu/index.html">如何提现？</a></li>
+        </ul>
+    </div>
+    <div class="bd-5-r2">
+    	<h3 style="background-color:#FF9D0E;">最新转入 </h3>                      
+        <div class="oll">
+            <ol>
+				<li>
+					<span>
+						<i></i>
+            					
+					</span>
+            		<strong></strong>
+			    </li>
+				<li>
+				    <span>
+            		    <i></i>
+            					
+            		</span>
+            		<strong></strong>
+            	</li>
+        		<li>
+				    <span>
+            		    <i></i>           		
+            		</span>
+            	    <strong></strong>
+            	</li>
+        	    <li>
+				    <span>
+            			<i></i>		
+            		</span>
+            		<strong></strong>
+            	</li>
+        		<li>
+				    <span>
+            		    <i></i>			
+            		</span>
+            		<strong></strong>
+            	</li>
+        	    <li>
+				    <span>
+            		    <i></i>	
+            		</span>
+            		<strong></strong>
+				</li>
+				<li>
+				    <span>
+						<i></i>			
+					</span>
+					<strong></strong>
+				</li>
+        		<li>
+				    <span>
+            		    <i></i>	
+            		</span>
+            		<strong></strong>
+            	</li>
+        		<li>
+				    <span>
+            			<i></i>		
+            		</span>
+            		<strong></strong>
+            	</li>
+        		<li>
+				    <span>
+            			<i></i>			
+            	    </span>
+            		<strong></strong>
+            	</li>
+        	</ol>
+        </div>
+        <script>
+			$(function(){
+				//循环轮播
+				var divObj = $('.oll');  
+				var ulObj = $('.oll ol');
+				var liObj = $('.oll ol li');			
+				var strObj =ulObj.find('strong');
+				var iObj =ulObj.find('i');
+				var jine=[100,200,300,500,800,1000,200,5000,10000,20000];
+				var phone=["139*****182",
+						   "159*****769",
+						   "189*****404",
+						   "189*****687",
+						   "189*****629",
+						   "158*****546",
+						   "139*****276",
+						   "159*****765",
+						   "139*****209",
+						   "158*****532"];
+				strObj.each(function(){		    
+							var n=parseInt(Math.random()*10);     
+							$(this).text(jine[n]);
+						});
+				iObj.each(function(){
+								var date=new Date();
+								var hours=date.getHours();
+								var minutes=date.getMinutes();
+								var seconds=date.getSeconds();
+								if(hours<10)hours="0"+hours;
+								if(minutes<10)minutes="0"+minutes;
+								if(seconds<10)seconds="0"+seconds;
+								$(this).text(hours+":"+minutes+":"+seconds);
+								var n=parseInt(Math.random()*10);
+								$(this).after(phone[n])
+							});
+				var ulObjH = ulObj.outerHeight(true);  
+				var liObjH = ulObj.children('li').outerHeight(true);  
+			/*  setInterval(function(){  
+							ulObj.animate({top:'+'+liObjH+'px'},500,function(){  
+							ulObj.css({top:0}).children('li').last().after(ulObj.children('li').first());    					
+							});
+							strObj.each(function(){	    
+								var n=parseInt(Math.random()*7);     
+								$(this).text(jine[n]);
+							});
+							var timeRed=0;
+							var nowDate=new Date();
+							iObj.each(function(){
+								timeRed+=parseInt(Math.random()*1000*10);
+								var needDate=new Date(nowDate-timeRed);  
+								var hours=needDate.getHours();
+								var minutes=needDate.getMinutes();
+								if(hours<10)hours="0"+hours;
+								if(minutes<10)minutes="0"+minutes;
+								$(this).text(hours+":"+minutes);
+							});
+							},3*1000);*/
+				setInterval(function(){
+					var nowDate=new Date();
+					var n=parseInt(Math.random()*10);
+					var timeRed=1000*n/4;
+					var needDate=new Date(nowDate-timeRed); 
+					var hours=needDate.getHours();
+					var minutes=needDate.getMinutes();
+					var seconds=needDate.getSeconds();
+					if(hours<10)hours="0"+hours;
+					if(minutes<10)minutes="0"+minutes;
+					if(seconds<10)seconds="0"+seconds;
+					liObj.remove(':last-of-type');
+					ulObj.prepend("<li><span><i>"+
+						   hours+":"+minutes+":"+seconds+
+						   "</i>"+phone[n]+"</span><strong>"+jine[n]+"</strong></li>");
+				},3000);
+			})
+            		
+			
+        </script>
+    </div>	
+</div>
+
+<!-- 侧面结束  --> 
+</div>
+</div>
+<script language="javascript">
+		$(function() {
+			$(".borrowlistp").bind("mouseover", function(){
+				$(this).css("background", "#fce8e1");
+			})
+
+			$(".borrowlistp").bind("mouseout", function(){
+				$(this).css("background", "#fff");
+			})
+
+
+			$(".borrowlistl").bind("mouseover", function(){
+				$(this).css("background", "#f8f8f8");
+			})
+
+			$(".borrowlistl").bind("mouseout", function(){
+				$(this).css("background", "#fff");
+			})
+		});
+
+	</script>
+<!--中部结束-->
+
+
+<include file="Public:_righter" />
+<include file="Public:_footer" />

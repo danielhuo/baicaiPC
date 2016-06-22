@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/export
+END
+csv.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/export/csv.php
+END
+texytext.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/export/texytext.php
+END
+sql.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/export/sql.php
+END
+xml.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/export/xml.php
+END
+htmlword.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/export/htmlword.php
+END
+excel.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/export/excel.php
+END
+yaml.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/export/yaml.php
+END
+mediawiki.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/export/mediawiki.php
+END
+codegen.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/export/codegen.php
+END
+pdf.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/export/pdf.php
+END
+json.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/export/json.php
+END
+latex.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/export/latex.php
+END
+php_array.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/export/php_array.php
+END
+ods.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/export/ods.php
+END
+odt.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/export/odt.php
+END

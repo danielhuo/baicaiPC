@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/config
+END
+ConfigFile.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/config/ConfigFile.class.php
+END
+FormDisplay.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/config/FormDisplay.class.php
+END
+validate.lib.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/config/validate.lib.php
+END
+messages.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/config/messages.inc.php
+END
+config_functions.lib.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/config/config_functions.lib.php
+END
+user_preferences.forms.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/config/user_preferences.forms.php
+END
+setup.forms.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/config/setup.forms.php
+END
+Form.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/config/Form.class.php
+END
+FormDisplay.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/config/FormDisplay.tpl.php
+END

@@ -1,0 +1,45 @@
+<style type="text/css">
+.x_member_form{width:750px; overflow:hidden}
+.x_member_form .form2{height:auto; overflow:auto;}
+.x_member_form .form2 h1{text-align:center;display: block;font-weight:bold;font-size:16px;}
+.x_member_form .form2 .lineD{overflow:hidden}
+.x_member_form .form2 .lineD dt{width:150px; color:#9CB8CC; font-weight:bold}
+.x_member_form .form2 .lineD dd{width:200px; float:left; margin-left:0px}
+.x_member_form .form2 .lineD dd.xwidth{width:500px;}
+.x_member_form .form2 .lineD dt.title{color:#F00}
+</style>
+<div class="so_main x_member_form">
+	<div class="page_tab">
+		<span data="tab_1" class="active">账单信息</span>
+	</div>
+	<div class="form2">
+		<div id="tab_1">
+			<h1>还款方</h1>
+			<dl class="lineD">
+				<dt>还款人</dt>
+				<dd>{$repay.user_name}</dd>
+				<dt>应还金额</dt>
+				<dd>{$repay.repay_amount}</dd>
+			</dl>
+			<h1>收款方</h1>
+			<volist id="return" name="returns">
+			<dl class="lineD">
+				<dt >收款人</dt>
+				<dd>{$return.user_name}</dd>
+				<dt >应收金额</dt>
+				<dd>{$return.return_amount}</dd>
+			</dl>
+			</volist>
+			
+		</div>
+	</div>
+	<div class="page_btm">
+		<a href="__URL__/dorepay?id={$id}" class="btn_b" style="display:inline-block;text-align:center">结算</a>
+	</div>
+</div>
+<script type="text/javascript">
+	function closeui(){
+		ui.box.close();
+	}
+</script>
+<script type="text/javascript" src="__ROOT__/Style/A/js/adminbase.js"></script>

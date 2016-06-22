@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+/*错误或成功提示*/
+* { word-wrap:break-word }	
+.Prompt_ok, .Prompt_x { background:url(/Style/tip/images/message.gif); display:inline-block;}
+body{width:100%;height:100%;background-color:#E1E6F6;}
+.Prompt { width:80%;position:fixed;left:10%;top:20%; text-align:left; }
+.Prompt_top { height:30px; width:100%;}
+.success_top{background-color:#2AA198;}
+.error_top{background-color:#DC322F;}
+.Prompt_con { width:100%;background:#fff; overflow:hidden;}
+.Prompt_con dl { overflow:hidden;}
+.Prompt_con dd { float:left; display:block;margin:15px;}
+.Prompt_con dd h2 { font-size:14px;margin-top:0px;}
+.Prompt_con dd p { font-size:14px;margin-bottom:0px;}
+.Prompt_ok { background-position:-72px -39px;  width:68px; height:68px; }
+.Prompt_x { background-position:0 -39px; width:68px; height:68px; }

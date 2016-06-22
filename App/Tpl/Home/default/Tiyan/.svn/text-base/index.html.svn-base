@@ -1,0 +1,19 @@
+﻿<include file="Public:_header_common" /><include file="Public:_header_main" />
+<title>123456</title>
+<meta name="keywords" content="{$glo.web_keywords}" />
+<meta name="description" content="{$glo.web_descript}" />
+<LINK rel=stylesheet type=text/css href="__ROOT__/Style/Help/css/bangzhu.css">
+<LINK rel=stylesheet type=text/css href="__ROOT__/Style/Help/css/bangzhu-min.css">
+<SCRIPT type=text/javascript src="__ROOT__/Style/Help/js/jquery-1.8.3.min.js"></SCRIPT>
+<DIV class=main_kan_new>
+  <
+    <DIV class=title-sub>
+      <H2 id=htop>会员相关</H2>
+      
+           <SPAN>     注册成功您可以直接选择进行实名认证或银行卡认证。 </SPAN></P>
+        
+</div>
+
+</div>
+
+<include file="Public:_footer" /> 

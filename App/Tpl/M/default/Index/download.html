@@ -1,0 +1,16 @@
+﻿<include file="Pub:header" /> 
+<!-- <input type="file" accept="video/*;capture=camcorder">
+<input type="file" accept="audio/*;capture=microphone">
+<input type="file" accept="image/*;capture=camera">
+<input type="file" accept="image/*" /> -->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xbQ2LgG9XC0GVU0BpqNqgifYyKfP2Yvj"></script>
+<script type="text/javascript">
+	var geo=navigator.geolocation;
+	if (geo) console.log(1);
+	geo.getCurrentPosition(function(p){
+		console.log(2);
+	},function(e){
+		console.log(e.message);
+	})
+</script>
+﻿<include file="Pub:footer" />  

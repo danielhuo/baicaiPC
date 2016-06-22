@@ -1,0 +1,83 @@
+<include file="Public:_header_common" />
+<title>社区论坛帖子列表-{$glo.index_title}</title>
+<include file="Public:_header_main" />
+
+<script language="javascript">
+ $(function(){
+  //当鼠标滑入时将div的class换成divOver
+  $('.post_list_item ul li').hover(function(){
+    $(this).addClass('divOver');  
+   },function(){
+    //鼠标离开时移除divOver样式
+    $(this).removeClass('divOver'); 
+   }
+  );
+ });
+</script>
+</head>
+<body>
+<!--中部模块开始-->
+<div class="wp_center_contont">
+	<!--中部1024px模块开始-->
+	<div class="wp_center_M1">
+    	<!--左侧帖子模块开始-->
+        <div class="left_tiezi_block">
+        	<div class="left_block_item1">
+            	<!--版块列表模块开始-->
+				<div class="left_post_list ui-tabs-panel">
+                	<div class="post_list_tit">
+                    	<ul>
+                        	<li class="list_font">{$type_name}</li>
+
+                            <volist id="vt" name="type_son">
+                            <li style="width:80px;"><a style="text-decoration:none;" href="/bbs/list?cat={$vt.id}" title="{$vt.type_name}">{$vt.type_name}</a></li>
+                            </volist>
+
+                            <li style="background:none;">全部帖子：<span class="min_num">{$type_num|default=0}</span></li>
+                        </ul>
+                    </div>
+                    <!--列表开始-->
+                    <div class="post_list_item">
+                    	<ul>
+                            <volist id="vo" name="list">
+                        	<li>
+                            	<div class="avatar_box"><a href="/bbs/comment?aid={$vo.id}"><img style="width: 50px; height: 50px;" src="{$vo.art_uid|default=1|get_avatar=###}" /></a></div>
+                                <div class="post_text_tit">
+                                	<div class="post_bold_tit"><a href="/bbs/comment?aid={$vo.id}">{$vo.title|cnsubstr=###,30}</a>
+                                    	<span class="post_min_ico">
+                                            <if condition="$vo.sort_order gt 0"><img src="/Style/B/images/digest_3.gif" title="精华帖子" /></if>
+                                        </span>
+                                    </div>
+                                    <div class="post_name">
+                                    	<span class="post_mx_block">{$vo.user_name|default="官方"}</span>
+                                        <span class="post_mx_block"><if condition="$vo.is_vip eq true"><a href="/member/vip" title="VIP会员"><img src="/Style/B/images/verify_icon.png" /></a></if></span>
+                                        <span class="post_mx_block">于 {$vo.art_time|date="Y-m-d H:i",###} 发表在 <a href="/bbs/list?menu={$vo.menu}&cat={$vo.cat}">[{$vo.type_name}]</a></span>
+                                        <span class="post_mx_block"><if condition="$vo.last_repay_time neq 0">最后回复  {$vo.last_repay_time|date="Y-m-d H:i",###}</if></span>
+                                   	</div>
+                                </div>
+                                <!--右边数字统计开始-->
+                                <div class="statistics_num">
+                                	<span class="statics_bold_min">{$vo.repay_num|default=0}</span>
+                                    <span class="statics_min">{$vo.click_num|default=0}</span>
+                                </div>
+                                <!--右边数字统计结束-->
+                            </li>
+                            </volist>
+                        </ul>
+                    </div>
+                    
+                    <div class="space_pages">
+                        <div class="pages_item_list pages">{$page}</div>
+                    </div>
+                    <!--列表结束-->  
+                </div>
+                <!--版块列表模块结束-->
+            </div>
+        </div>
+        <!--左侧帖子模块结束-->
+        <include file="Public:_right" />
+    </div>
+	<!--中部1024px模块结束-->
+</div>
+<!--中部模块结束-->
+<include file="Public:_footer" /></body>

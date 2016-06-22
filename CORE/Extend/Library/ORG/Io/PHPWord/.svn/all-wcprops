@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/BaiCai/!svn/ver/346/trunk/CORE/Extend/Library/ORG/Io/PHPWord
+END
+DocumentProperties.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/DocumentProperties.php
+END
+Template.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Template.php
+END
+Autoloader.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Autoloader.php
+END
+IOFactory.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/IOFactory.php
+END
+Media.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Media.php
+END
+Style.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Style.php
+END
+Section.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/Section.php
+END
+TOC.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/BaiCai/!svn/ver/342/trunk/CORE/Extend/Library/ORG/Io/PHPWord/TOC.php
+END

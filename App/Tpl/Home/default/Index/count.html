@@ -1,0 +1,699 @@
+﻿<include file="Public:_header_common" />
+<tagLib name="htmlA" />
+<title>{$glo.index_title}</title>
+<include file="Public:_header_main" />
+<link type="text/css"  rel="stylesheet" href="/Style/My97DatePicker/jquery.ui.datepicker.css"/>
+	<div style="position：fixed;margin-top:30px;margin-left:500px;">
+		<span>开始时间：</span>
+		<input  name="start_time" id="start_time"  class="input Wdate" type="text" value="{$start_time}">
+		<span>结束时间：</span>
+		<input  name="end_time" id="end_time"  class="input Wdate" type="text" value="{$end_time}">
+	</div>
+	
+
+<div style="margin-top:30px;margin-left:150px;">
+<div id='canvasDiv1'></div>
+</div>
+<div style="position：fixed;margin-top:30px;margin-left:500px;">
+		<span>开始时间：</span>
+		<input  name="start_time1" id="start_time1"  class="input Wdate" type="text" value="{$start_time}">
+		<span>结束时间：</span>
+		<input  name="end_time1" id="end_time1"  class="input Wdate" type="text" value="{$end_time}">
+	</div>
+<div style="margin-top:30px;margin-left:150px;">
+<div id='canvasDiv'></div>
+</div>
+
+
+ 
+  <script type="text/javascript" src="__ROOT__/Style/My97DatePicker/jquery.ui.datepicker.js" language="javascript"></script>
+<script type="text/javascript" src="__ROOT__/Style/ichart.1.2.min.js" language="javascript"></script>
+
+
+
+<script type="text/javascript">
+
+
+	$(function(){
+		$('#start_time').datepicker({
+			changeMonth : true,
+			changeYear : true,
+		});
+		$('#end_time').datepicker({
+			changeMonth : true,
+			changeYear : true,
+		});
+		$('#start_time1').datepicker({
+			changeMonth : true,
+			changeYear : true,
+		});
+		$('#end_time1').datepicker({
+			changeMonth : true,
+			changeYear : true,
+		});
+		$('#start_time').change(function(){
+			var start_time = $('#start_time').val();
+		    var end_time = $('#end_time').val();
+			$.ajax({
+				url: "__URL__/countmoney/",
+				type: "post",
+				dataType: "json",
+				async: false,
+				data: {"start_time":start_time,"end_time":end_time},
+				success: function(result) {	
+				var flow=new Array();
+				var current_time=start_time;
+				current_time = current_time.replace(/-/g,"/");
+				end_time=end_time.replace(/-/g,"/");
+				var labels=new Array();	
+				var p=(result.data.length-1)/9;
+				   for(var i=0;i<result.data.length;i++){
+					 flow[i]=result.data[i]/10000;
+				}
+			    var i=0;
+				var j=0;
+			
+				while(current_time<=end_time&&i<result.data.length){
+				var  elem=GetDateStr(current_time);
+				for( j=0;j<=8;j++){
+				var t=Math.round(j*p);
+					
+				if(i==0||i==result.data.length-1){
+				labels[i]=elem;	
+				}
+				else if(i==t){
+				labels[i]=elem;
+				break;
+				}else{
+				labels[i]="";
+				}
+				}
+				current_time=addday(current_time);						
+				i++;	 
+				}		
+				var data = [
+			         	{
+			         		name : 'PV',
+			         		value:flow,
+			         		color:'#ec4646',
+			         		line_width:2
+			         	}
+			         ];
+			
+			var chart = new iChart.LineBasic2D({
+				render : 'canvasDiv1',
+				data: data,
+				align:'center',
+				title : {
+					text:'投标金额总额',
+					font : '微软雅黑',
+					fontsize:24,
+					color:'#b4b4b4'
+				},
+			
+				footnote : {
+					text:'ichartjs.com',
+					font : '微软雅黑',
+					fontsize:11,
+					fontweight:600,
+					padding:'0 28',
+					color:'#b4b4b4'
+				},
+				width : 1100,
+				height : 400,
+				shadow:true,
+				shadow_color : '#202020',
+				shadow_blur : 8,
+				shadow_offsetx : 0,
+				shadow_offsety : 0,
+				background_color:'#2e2e2e',
+				tip:{
+					enable:true,
+					shadow:true,
+					listeners:{
+						 //tip:提示框对象、name:数据名称、value:数据值、text:当前文本、i:数据点的索引
+						parseText:function(tip,name,value,text,i){
+							return "<span style='color:#005268;font-size:12px;'>"+labels[i]+"配资款约为:<br/>"+
+							"</span><span style='color:#005268;font-size:20px;'>"+value+"万</span>";
+						}
+					}
+				},
+				
+				
+				crosshair:{
+					enable:true,
+					line_color:'#ec4646'
+				},
+				sub_option : {
+					smooth : true,
+					label:false,
+					hollow:false,
+					hollow_inside:false,
+					point_size:8
+				},
+				coordinate:{
+					width:1000,
+					height:260,
+					striped_factor : 0.18,
+					grid_color:'#4e4e4e',
+					axis:{
+						color:'#252525',
+						width:[0,0,4,4]
+					},
+					scale:[{
+						 position:'left',	
+						 start_scale:0,
+						 end_scale:100,
+						 scale_space:10,
+						 scale_size:2,
+						 scale_enable : false,
+						 label : {color:'#9d987a',font : '微软雅黑',fontsize:11,fontweight:600},
+						 scale_color:'#9f9f9f'
+					},{
+						 position:'bottom',	
+						 label : {color:'#9d987a',font : '微软雅黑',fontsize:11,fontweight:600},
+						 scale_enable : false,
+						 labels:labels
+					}]
+				}
+			});
+			//利用自定义组件构造左侧说明文本
+			chart.plugin(new iChart.Custom({
+					drawFn:function(){
+						//计算位置
+						var coo = chart.getCoordinate(),
+							x = coo.get('originx'),
+							y = coo.get('originy'),
+							w = coo.width,
+							h = coo.height;
+						//在左上侧的位置，渲染一个单位的文字
+						chart.target.textAlign('start')
+						.textBaseline('bottom')
+						.textFont('600 11px 微软雅黑')
+						.fillText('总额(万)',x-40,y-12,false,'#9d987a')
+						.textBaseline('top')
+						.fillText('(日期)',x+w+12,y+h+10,false,'#9d987a');
+						
+					}
+			}));
+		//开始画图
+		chart.draw();
+
+			
+			
+			
+			
+					
+				}
+			});
+		});
+		$('#end_time').change(function(){
+			var start_time = $('#start_time').val();
+		    var end_time = $('#end_time').val();
+			$.ajax({
+				url: "__URL__/countmoney/",
+				type: "post",
+				dataType: "json",
+				async: false,
+				data: {"start_time":start_time,"end_time":end_time},
+				success: function(result) {
+					var flow=new Array();
+				var current_time=start_time;
+				current_time = current_time.replace(/-/g,"/");
+				end_time=end_time.replace(/-/g,"/");
+				var labels=new Array();	
+				var p=(result.data.length-1)/9;
+				   for(var i=0;i<result.data.length;i++){
+					 flow[i]=result.data[i]/10000;
+				}
+			    var i=0;
+				var j=0;
+			
+				while(current_time<=end_time&&i<result.data.length){
+				var  elem=GetDateStr(current_time);
+				for( j=0;j<=8;j++){
+				var t=Math.round(j*p);
+					
+				if(i==0||i==result.data.length-1){
+				labels[i]=elem;	
+				}
+				else if(i==t){
+				labels[i]=elem;
+				break;
+				}else{
+				labels[i]="";
+				}
+				}
+				current_time=addday(current_time);						
+				i++;	 
+				}		
+				var data = [
+			         	{
+			         		name : 'PV',
+			         		value:flow,
+			         		color:'#ec4646',
+			         		line_width:2
+			         	}
+			         ];
+			
+			var chart = new iChart.LineBasic2D({
+				render : 'canvasDiv1',
+				data: data,
+				align:'center',
+				title : {
+					text:'投标金额总额',
+					font : '微软雅黑',
+					fontsize:24,
+					color:'#b4b4b4'
+				},
+				
+				footnote : {
+					text:'ichartjs.com',
+					font : '微软雅黑',
+					fontsize:11,
+					fontweight:600,
+					padding:'0 28',
+					color:'#b4b4b4'
+				},
+				width : 1100,
+				height : 400,
+				shadow:true,
+				shadow_color : '#202020',
+				shadow_blur : 8,
+				shadow_offsetx : 0,
+				shadow_offsety : 0,
+				background_color:'#2e2e2e',
+				tip:{
+					enable:true,
+					shadow:true,
+					listeners:{
+						 //tip:提示框对象、name:数据名称、value:数据值、text:当前文本、i:数据点的索引
+						parseText:function(tip,name,value,text,i){
+							return "<span style='color:#005268;font-size:12px;'>"+labels[i]+"配资款约为:<br/>"+
+							"</span><span style='color:#005268;font-size:20px;'>"+value+"万</span>";
+						}
+					}
+				},
+				
+				
+				crosshair:{
+					enable:true,
+					line_color:'#ec4646'
+				},
+				sub_option : {
+					smooth : true,
+					label:false,
+					hollow:false,
+					hollow_inside:false,
+					point_size:8
+				},
+				coordinate:{
+					width:1000,
+					height:260,
+					striped_factor : 0.18,
+					grid_color:'#4e4e4e',
+					axis:{
+						color:'#252525',
+						width:[0,0,4,4]
+					},
+					scale:[{
+						 position:'left',	
+						 start_scale:0,
+						 end_scale:100,
+						 scale_space:10,
+						 scale_size:2,
+						 scale_enable : false,
+						 label : {color:'#9d987a',font : '微软雅黑',fontsize:11,fontweight:600},
+						 scale_color:'#9f9f9f'
+					},{
+						 position:'bottom',	
+						 label : {color:'#9d987a',font : '微软雅黑',fontsize:11,fontweight:600},
+						 scale_enable : false,
+						 labels:labels
+					}]
+				}
+			});
+			//利用自定义组件构造左侧说明文本
+			chart.plugin(new iChart.Custom({
+					drawFn:function(){
+						//计算位置
+						var coo = chart.getCoordinate(),
+							x = coo.get('originx'),
+							y = coo.get('originy'),
+							w = coo.width,
+							h = coo.height;
+						//在左上侧的位置，渲染一个单位的文字
+						chart.target.textAlign('start')
+						.textBaseline('bottom')
+						.textFont('600 11px 微软雅黑')
+						.fillText('总额(万)',x-40,y-12,false,'#9d987a')
+						.textBaseline('top')
+						.fillText('(日期)',x+w+12,y+h+10,false,'#9d987a');
+						
+					}
+			}));
+		//开始画图
+		chart.draw();
+
+				
+					
+				}
+			});
+		});
+		$('#start_time1').change(function(){
+			var start_time1 = $('#start_time1').val();
+		    var end_time1 = $('#end_time1').val();
+		
+			$.ajax({
+				url: "__URL__/countmember/",
+				type: "post",
+				dataType: "json",
+				async: false,
+				data: {"start_time1":start_time1,"end_time1":end_time1},
+				success: function(result) {
+					var flow=new Array();
+				var current_time=start_time1;
+				current_time = current_time.replace(/-/g,"/");
+				end_time=end_time1.replace(/-/g,"/");
+				var labels=new Array();	
+				var p=(result.data.length-1)/9;
+				   for(var i=0;i<result.data.length;i++){
+					 flow[i]=result.data[i];
+				}
+			    var i=0;
+				var j=0;
+			
+				while(current_time<=end_time&&i<result.data.length){
+				var  elem=GetDateStr(current_time);
+				for( j=0;j<=8;j++){
+				var t=Math.round(j*p);
+					
+				if(i==0||i==result.data.length-1){
+				labels[i]=elem;	
+				}
+				else if(i==t){
+				labels[i]=elem;
+				break;
+				}else{
+				labels[i]="";
+				}
+				}
+				current_time=addday(current_time);						
+				i++;	 
+				}		
+				var data = [
+			         	{
+			         		name : 'PV',
+			         		value:flow,
+			         		color:'#ec4646',
+			         		line_width:2
+			         	}
+			         ];
+			
+			var chart = new iChart.LineBasic2D({
+				render : 'canvasDiv',
+				data: data,
+				align:'center',
+				title : {
+					text:'每日注册人数',
+					font : '微软雅黑',
+					fontsize:24,
+					color:'#b4b4b4'
+				},
+			
+				footnote : {
+					text:'ichartjs.com',
+					font : '微软雅黑',
+					fontsize:11,
+					fontweight:600,
+					padding:'0 28',
+					color:'#b4b4b4'
+				},
+				width : 1100,
+				height : 400,
+				shadow:true,
+				shadow_color : '#202020',
+				shadow_blur : 8,
+				shadow_offsetx : 0,
+				shadow_offsety : 0,
+				background_color:'#2e2e2e',
+				tip:{
+					enable:true,
+					shadow:true,
+					listeners:{
+						 //tip:提示框对象、name:数据名称、value:数据值、text:当前文本、i:数据点的索引
+						parseText:function(tip,name,value,text,i){
+							return "<span style='color:#005268;font-size:12px;'>"+labels[i]+"注册人数约为:<br/>"+
+							"</span><span style='color:#005268;font-size:20px;'>"+value+"人</span>";
+						}
+					}
+				},
+				
+				
+				crosshair:{
+					enable:true,
+					line_color:'#ec4646'
+				},
+				sub_option : {
+					smooth : true,
+					label:false,
+					hollow:false,
+					hollow_inside:false,
+					point_size:8
+				},
+				coordinate:{
+					width:1000,
+					height:260,
+					striped_factor : 0.18,
+					grid_color:'#4e4e4e',
+					axis:{
+						color:'#252525',
+						width:[0,0,4,4]
+					},
+					scale:[{
+						 position:'left',	
+						 start_scale:0,
+						 end_scale:100,
+						 scale_space:10,
+						 scale_size:2,
+						 scale_enable : false,
+						 label : {color:'#9d987a',font : '微软雅黑',fontsize:11,fontweight:600},
+						 scale_color:'#9f9f9f'
+					},{
+						 position:'bottom',	
+						 label : {color:'#9d987a',font : '微软雅黑',fontsize:11,fontweight:600},
+						 scale_enable : false,
+						 labels:labels
+					}]
+				}
+			});
+			//利用自定义组件构造左侧说明文本
+			chart.plugin(new iChart.Custom({
+					drawFn:function(){
+						//计算位置
+						var coo = chart.getCoordinate(),
+							x = coo.get('originx'),
+							y = coo.get('originy'),
+							w = coo.width,
+							h = coo.height;
+						//在左上侧的位置，渲染一个单位的文字
+						chart.target.textAlign('start')
+						.textBaseline('bottom')
+						.textFont('600 11px 微软雅黑')
+						.fillText('注册人数(人)',x-40,y-12,false,'#9d987a')
+						.textBaseline('top')
+						.fillText('(日期)',x+w+12,y+h+10,false,'#9d987a');
+						
+					}
+			}));
+		//开始画图
+		chart.draw();
+
+			
+					
+				},
+			});
+		});
+		$('#end_time1').change(function(){
+			var start_time1 = $('#start_time1').val();
+		    var end_time1 = $('#end_time1').val();
+		
+			$.ajax({
+				url: "__URL__/countmember/",
+				type: "post",
+				dataType: "json",
+				async: false,
+				data: {"start_time1":start_time1,"end_time1":end_time1},
+				success: function(result) {
+					var flow=new Array();
+				var current_time=start_time1;
+				current_time = current_time.replace(/-/g,"/");
+				end_time=end_time1.replace(/-/g,"/");
+				var labels=new Array();	
+				var p=(result.data.length-1)/9;
+				   for(var i=0;i<result.data.length;i++){
+					 flow[i]=result.data[i];
+				}
+			    var i=0;
+				var j=0;
+			
+				while(current_time<=end_time&&i<result.data.length){
+				var  elem=GetDateStr(current_time);
+				for( j=0;j<=8;j++){
+				var t=Math.round(j*p);
+					
+				if(i==0||i==result.data.length-1){
+				labels[i]=elem;	
+				}
+				else if(i==t){
+				labels[i]=elem;
+				break;
+				}else{
+				labels[i]="";
+				}
+				}
+				current_time=addday(current_time);						
+				i++;	 
+				}		
+				var data = [
+			         	{
+			         		name : 'PV',
+			         		value:flow,
+			         		color:'#ec4646',
+			         		line_width:2
+			         	}
+			         ];
+			
+			var chart = new iChart.LineBasic2D({
+				render : 'canvasDiv',
+				data: data,
+				align:'center',
+				title : {
+					text:'每日注册人数',
+					font : '微软雅黑',
+					fontsize:24,
+					color:'#b4b4b4'
+				},
+				
+				footnote : {
+					text:'ichartjs.com',
+					font : '微软雅黑',
+					fontsize:11,
+					fontweight:600,
+					padding:'0 28',
+					color:'#b4b4b4'
+				},
+				width : 1100,
+				height : 400,
+				shadow:true,
+				shadow_color : '#202020',
+				shadow_blur : 8,
+				shadow_offsetx : 0,
+				shadow_offsety : 0,
+				background_color:'#2e2e2e',
+				tip:{
+					enable:true,
+					shadow:true,
+					listeners:{
+						 //tip:提示框对象、name:数据名称、value:数据值、text:当前文本、i:数据点的索引
+						parseText:function(tip,name,value,text,i){
+							return "<span style='color:#005268;font-size:12px;'>"+labels[i]+"注册人数约为:<br/>"+
+							"</span><span style='color:#005268;font-size:20px;'>"+value+"人</span>";
+						}
+					}
+				},
+				
+				
+				crosshair:{
+					enable:true,
+					line_color:'#ec4646'
+				},
+				sub_option : {
+					smooth : true,
+					label:false,
+					hollow:false,
+					hollow_inside:false,
+					point_size:8
+				},
+				coordinate:{
+					width:1000,
+					height:260,
+					striped_factor : 0.18,
+					grid_color:'#4e4e4e',
+					axis:{
+						color:'#252525',
+						width:[0,0,4,4]
+					},
+					scale:[{
+						 position:'left',	
+						 start_scale:0,
+						 end_scale:100,
+						 scale_space:10,
+						 scale_size:2,
+						 scale_enable : false,
+						 label : {color:'#9d987a',font : '微软雅黑',fontsize:11,fontweight:600},
+						 scale_color:'#9f9f9f'
+					},{
+						 position:'bottom',	
+						 label : {color:'#9d987a',font : '微软雅黑',fontsize:11,fontweight:600},
+						 scale_enable : false,
+						 labels:labels
+					}]
+				}
+			});
+			//利用自定义组件构造左侧说明文本
+			chart.plugin(new iChart.Custom({
+					drawFn:function(){
+						//计算位置
+						var coo = chart.getCoordinate(),
+							x = coo.get('originx'),
+							y = coo.get('originy'),
+							w = coo.width,
+							h = coo.height;
+						//在左上侧的位置，渲染一个单位的文字
+						chart.target.textAlign('start')
+						.textBaseline('bottom')
+						.textFont('600 11px 微软雅黑')
+						.fillText('注册人数(人)',x-40,y-12,false,'#9d987a')
+						.textBaseline('top')
+						.fillText('(日期)',x+w+12,y+h+10,false,'#9d987a');
+						
+					}
+			}));
+		//开始画图
+		chart.draw();
+
+			
+				
+				},
+			});
+		});
+	})
+	function GetDateStr(dateTemp)   
+{   
+
+var dd = new Date(dateTemp);   
+//获取AddDayCount天后的日期   
+var y = dd.getYear();   
+var m = dd.getMonth()+1;//获取当前月份的日期   
+var d = dd.getDate();   
+return m+"."+d;   
+}   
+
+function addday(dt){
+    dt = dt.replace('-', '/');//js不认2000-1-31,只认2000/1/31
+    var t1 = new Date(new Date(dt).valueOf() + 24*60*60*1000);// 日期加上指定的天数
+   
+	  y = t1.getFullYear();
+    m = t1.getMonth() + 1;
+    d = t1.getDate();
+	return y +"/"+ (m < 10 ? '0' + m : m)+"/" + (d < 10 ? '0' + d : d);
+	
+	 
+}
+
+</script>
+
+
+</body>
+</html>

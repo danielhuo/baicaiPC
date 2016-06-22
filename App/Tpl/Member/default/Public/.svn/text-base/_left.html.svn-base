@@ -1,0 +1,55 @@
+
+	<div class="space-main">
+			<dl> 
+				<dt>
+					<i class="fa fa-user"></i>
+						账号设置
+					
+				</dt>
+				<dd ><a href="__APP__/member/mytrade/index?type=loan#fragment-0">基本信息</a></dd>
+				<dd ><a href="__APP__/member/user#fragment-1">密码安全</a></dd>
+				<dd ><a href="__APP__/member/memberinfo#fragment-1">信息补全</a></dd>
+				<dd ><a href="/member/promotion#fragment-1">推广赚钱</a></dd>
+				
+				<dt>
+					<i class="fa fa-dollar"></i>
+					我的账户
+				</dt>  
+				<dd ><a href="__APP__/member/charge#fragment-1">账户充值</a></dd>
+				<dd ><a href="__APP__/member/withdraw#fragment-1">我要提款</a></dd>
+				<dd ><a href="__APP__/member/capital#fragment-1">资金流水</a></dd>
+				
+
+				<dt>
+					<i class="fa fa-database"></i>
+					我的交易
+				</dt>
+				
+				<dd ><a href="__APP__/member/mytrade/index?type=loan#fragment-0">我的借款</a></dd>
+				<dd ><a href="__APP__/member/mytrade/index?type=loaninvest#fragment-2">我的投资</a></dd>
+				
+				
+			</dl>
+		
+	</div>           	
+
+<script type="text/javascript">
+	$(window).load(function(){
+		$('body,html').animate({scrollTop:0},1);
+	});
+</script>
+
+
+<script type="text/javascript">
+	var q_url = window.location.pathname ;
+	var w_url = window.location.hash  ;
+	 
+	var curr_url=q_url+w_url; //获取当前URL
+	$('.space-main  a').each(function(i,n){  //循环导航的a标签
+		var href = $(this).attr('href');//a标签中的href链接
+		if(href == curr_url){  //如果当前URL,和a标签中的href相等。
+			$(this).addClass('asdasd');  //那么就给这个a标签增加home_page类。
+		}
+	})
+
+</script>

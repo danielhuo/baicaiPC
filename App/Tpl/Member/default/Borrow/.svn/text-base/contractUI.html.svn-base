@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>续约-{$glo.web_name}</title>
+<style>
+  .Lending_Agreement {
+  	width:100%;
+  	height:auto;
+  	margin:0px;
+  	padding:0px;
+  }
+  .Lending_Agreement_center {
+  	width:800px;
+  	height:auto;
+  	margin:0 auto;
+  	border:1px solid #EEEEEE;
+  }
+  .lending_ageeement_tit {
+  	width:800px;
+  	height:45px;
+  	line-height:45px;
+  	color:#666666;
+  	font-family:Arial, Helvetica, sans-serif;
+  	font-size:16px;
+  	font-weight:bold;
+  	text-align:center;
+  	margin:0 auto;
+  	margin-top:30px;
+  	border-bottom:1px solid #EEEEEE;
+  }
+  .ageeement_content {
+  	width:800px;
+  	height:auto;
+  	margin:0 auto;
+  	margin-top:30px;
+  	font-size:14px;
+  	font-weight:bold;
+  	color:#666666;
+  	overflow:auto;
+  	font-family:Arial, Helvetica, sans-serif;
+  }
+  .ageeement_content h3 {
+  	font-size:14px;
+  	font-weight:bold;
+  	color:#999999;
+  	font-family:Arial, Helvetica, sans-serif;
+  	padding-left:10px;
+  }
+  .font_lendig {
+  	font-size:14px;
+  	font-weight:bold;
+  	color:#666666;
+  	font-family:Arial, Helvetica, sans-serif;
+  	padding-left:10px;
+  	margin-bottom:10px;
+  	display:block;
+  	margin-top:20px;
+  }
+  .ageeement_content p {
+  	line-height:26px;
+  	font-family:Tahoma, Geneva, sans-serif;
+  	font-size:14px;
+  	color:#999999;
+  	margin:0px;
+  	font-weight:normal;
+  	padding-left:10px;
+  	margin-top:6px;
+  }
+  .ageement_tab {
+  	height:40px;
+  	line-height:40px;
+  }
+  .ageement_tab_ite {
+  	height:40px;
+  	line-height:40px;
+  	font-weight:normal;
+  }
+  .lending_top_inf {
+  	width:800px;
+  	height:auto;
+  	margin-left:10px;
+  }
+  .lending_logo {
+  	width:800px;
+  	height:100px;
+  	border-bottom:2px solid #EEEEEE;
+  }
+  .lenging_left_logo {
+  	width:252px;
+  	height:100px;
+  	float:left;
+  	border-bottom:2px solid #00ADEE;
+  }
+  .name_inf {
+  	width:400px;
+  	height:65px;
+  	float:left;
+  	margin-left:40px;
+  	margin-top:2px;
+  }
+  .lenging_right_inf {
+  	width:260px;
+  	height:50px;
+  	float:left;
+  	margin-top:9px;
+  }
+  .lenging_right_inf ul {
+  	margin:0px;
+  	padding:0px;
+  }
+  .lenging_right_inf ul li {
+  	width:400px;
+  	height:25px;
+  	line-height:25px;
+  	font-family:Arial, Helvetica, sans-serif;
+  	font-size:14px;
+  	color:#999999;
+  	list-style:none;
+  	float:left;
+  	padding-left:0px;
+  }
+  .lenging_right_inf ul li a {
+  	color:#999999;
+  	text-decoration:none;
+  }
+  .lenging_right_inf ul li a:hover {
+  	color:#FF9900;
+  	text-decoration:none;
+  }
+  .Seal {
+  	width:auto;
+  	height:auto;
+  	margin-right:20px;
+  	float:right;
+  	text-align:center;
+  }
+  .seal_text {
+  	font-family:Arial, Helvetica, sans-serif;
+  	font-size:13px;
+  	color:#999999;
+  	margin-top:6px;
+  	margin-bottom:40px;
+  	display:block;
+  	font-weight:normal;
+  }
+  .Agreement_pic {
+  	width:200px;
+  	height:45px;
+  	margin:0 auto;
+  }
+  a,a:visited{color: #E67714; text-decoration:none;}
+  .text{
+  width:70px;}
+</style>
+<script type="text/javascript"; language="javascript">
+$(function(){
+	$("#button").click(function(){
+		return confirm("是否确认？");
+	    
+})
+	
+	})
+</script>
+</head>
+<body>
+<div class="Lending_Agreement">
+  <div class="Lending_Agreement_center">
+    <!--顶部信息开始-->
+    <div class="lending_top_inf">
+      <div class="lending_logo">
+        <div class="lenging_left_logo"><a href="/" target="_blank">{:get_ad(1)}</a></div>
+        <div class="name_inf"></div>
+        <div class="lenging_right_inf">
+          <ul>
+            <li class="tel400"><!-- {:get_ad(3)} -->
+              </p>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--顶部信息结束-->
+    <div class="lending_ageeement_tit"><span class="Agreement_pic">续约</span></div>
+	<div align="center">
+	<form action="__ROOT__/member/borrow/addDeposit" method="post">
+	<input type="hidden" name="borrow_info.id" value="{$borrow_info.id}"/>
+	<div style="border:1px solid black">
+	<table style="width:600px">
+	<tr style="height:50px">
+	<th style="width:300px">续约时间：</th>
+	<td style="width:300px"><select style="width:70px">
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	</select> 月</td>
+	</tr>
+	<tr style="height:50px">
+	<th>年利率：</th>
+	<td><input class="text" type="text" value="10.8"/>%</td>
+	</tr>
+	<tr style="height:50px">
+	<th>管理费：</th>
+	<td><input class="text" type="text" value=""/>元</td>
+	</tr>
+	<tr style="height:50px">
+	<th>利息：</th>
+	<td><input class="text" type="text" value=""/>元</td>
+	</tr>
+	<tr style="height:50px">
+	<th>应付款：</th>
+	<td><input class="text" type="text" value=""/>元</td>
+	</tr>
+	</table>
+	</div>
+	<p></p>
+	<div><input type="submit"  id="button" value="续约"  /> </div>
+	
+	</form>
+	</div>
+    
+	
+  </div>
+</div>
+
+</body>
+</html>

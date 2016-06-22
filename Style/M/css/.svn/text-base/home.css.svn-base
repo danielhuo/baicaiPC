@@ -1,0 +1,21 @@
+.home li{margin-top:15px;}
+.home a{
+		font-size:20px;
+		color:rgb(0,160,200);
+		background-size:26px 26px;
+		background-color:#fff;
+		background-repeat:no-repeat;
+		background-position:30px center;
+		display:block;width:92%;
+		height:40px;line-height: 40px;
+		text-indent:80px;margin:5px auto;
+		font-weight:bold;box-shadow: 1px 1px 1px 2px silver;
+		border-radius:2px;
+	  }
+.home a.a0{background-image:url(/Style/Mobile/images/index0.png)}
+.home a.a1{background-image:url(/Style/Mobile/images/index1.png)}
+.home a.a2{background-image:url(/Style/Mobile/images/index2.png)}
+.home a.a3{background-image:url(/Style/Mobile/images/index3.png)}
+.home a.a4{background-image:url(/Style/Mobile/images/index4.png)}
+.home a.a5{background-image:url(/Style/Mobile/images/index5.png)}
+.home a.a6{background-image:url(/Style/Mobile/images/index6.png)}

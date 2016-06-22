@@ -1,0 +1,31 @@
+﻿<include file="Pub:header" /> 
+	<style>
+	.downDiv{font-size:20px;color:#2AA198;overflow:hidden;padding:10px;}
+	.downDiv a{display:block;width:150px;
+		border-radius: 2px;
+		box-shadow: 1px 1px 1px 1px gray;text-indent:60px;
+		color: #ffffff;margin:10px 100px;
+		padding:10px 0;background:#F68E07  no-repeat 20px center;font-size:18px;}
+	a.iphone{
+		background-image:url(/Style/Mobile/images/iphone.png)
+	}
+	a.android{
+		background-image:url(/Style/Mobile/images/android.png)
+	}
+	</style>
+	<h2 id="title">交易软件</h2>
+	<div class="main">
+		<div class="downDiv">
+			<span>恒生电子:</span><br/>
+			<a href="http://www.ihoms.com/file/xunlei/downloadxunlei/HOMS_YONGJINBAN_YRZS.ipa?fileCode=86&sourceType=4" class="iphone">
+				iPhone
+			</a>
+			<a href="http://112.124.212.23:6003/apk/?channel=test" class="android">
+				Android
+			</a>
+		</div>		
+		<div class="downDiv">
+			<span>大　智慧:</span><br/>
+		</div>
+	</div>
+﻿<include file="Pub:footer" />  

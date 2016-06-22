@@ -1,0 +1,10 @@
+.binvests{width:100%;margin-top:20px;padding-top:15px;background:url(/Style/H/images/binvest.png) no-repeat;}
+.binvest{background-color:#E2F7FC;margin-top:20px;padding:30px 60px;overflow:hidden;}
+.binvest table{width:880px;height:90px;text-align:center;font-size:16px;color:#5F5D5B;margin:0 auto;}
+.binvest table:hover{background-color:#BFF2FC}
+.binvest td{width:110px;}
+a.borowwing, a.repaying{display:block;width:120px;height:40px;line-height:40px;color:#fff;text-align:center;border-radius:5px;
+font-size:16px;}
+a.borowwing{background-color:#6ADBF7;box-shadow:1px 1px 1px 0px gray;}
+a.repaying{background-color:#C0C0C0;line-height:40px;box-shadow:1px 1px 1px 0px gray;color:#fff;}
+a.borowwing:hover{opacity:0.5;box-shadow:none;color:#2AA198;}

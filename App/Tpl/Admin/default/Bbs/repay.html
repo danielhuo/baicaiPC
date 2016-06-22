@@ -1,0 +1,53 @@
+<include file="Public:_header" />
+<tagLib name="htmlA" />
+<div class="so_main">
+  <div class="page_tit">帖子回复管理</div>
+  <include file="search" />
+  <div class="Toolbar_inbox">
+  	<div class="pages" style="float:right; padding:0px;">{$pagebar}</div>
+    <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索/筛选" style="search_action" />
+  </div>
+  
+  <div class="list">
+  <table id="area_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th style="width:30px;">
+        <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+        <label for="checkbox"></label>
+    </th>
+    <th class="line_l">ID</th>
+    <th class="line_l">帖子ID</th>
+    <th class="line_l" width="20%">帖子标题</th>
+    <th class="line_l">回帖内容</th>
+    <th class="line_l">是否显示</th>
+    <th class="line_l">回帖人</th>
+    <th class="line_l">回帖时间</th>
+    <th class="line_l">操作</th>
+  </tr>
+  <volist id="vo" name="list">
+      <tr overstyle='on' id="list_{$vo.id}" class="leve_1" typeid="{$vo.id}" parentid="{$vo.parent_id}">
+        <td><input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.id}"></td>
+        <td>{$vo.id}</td>
+        <td>{$vo.tid}</td>
+        <td>{$vo.title}</td>
+        <td>{$vo.content}</td>
+        <td><if condition="$vo.is_hidden eq 0">显示<else/>隐藏</if></td>
+        <td>{$vo.user_name}</td>
+        <td>{$vo.art_time|date='Y-m-d H:i',###}</td>
+
+        <td>
+            <a href="__URL__/editRepay?id={$vo['id']}">编辑</a> 
+            <a href="__URL__/delRepay?id={$vo['id']}">删除</a>  
+        </td>
+      </tr>
+  </volist>
+  </table>
+
+  </div>
+  
+  <div class="Toolbar_inbox">
+  	<div class="pages" style="float:right; padding:0px;">{$pagebar}</div>
+    <htmlA:commonBtn type="jsfun" action="dosearch();" value="搜索/筛选" style="search_action" />
+  </div>
+</div>
+<include file="Public:_footer" />

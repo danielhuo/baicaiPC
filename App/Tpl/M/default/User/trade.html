@@ -1,0 +1,34 @@
+<include file="Pub:header" />
+<style>
+	.main{padding-left:0;padding-right:0;width:100%;}
+	.trade{}
+	.trade li{margin-top:10px;}
+	.trade a{
+display:block;height:50px;line-height:50px;font-size:20px;margin:1px 0;background-color:#fff;color:#3E3E3E;font-weight:bold;background-repeat:no-repeat;background-position:15px center;background-size:36px 36px;padding:0 20px 0 80px;}
+	a.borrow{background-image:url(/Style/Mobile/images/fund_borrow.png)}
+	a.invest{background-image:url(/Style/Mobile/images/fund_invest.png)}
+.arrow{float:right;color:#E5E5E5;font-size:28px;}
+</style>
+<div class="container container-block container-row-nml">
+		
+	<a class="borrow" href="{:U('M/user/loan')}" >
+		<div class="row">
+			<div class="col-xs-2"></div>
+			<div class="col-xs-8">借款项目</div>
+			<div class="col-xs-2"><i class="fa fa-angle-right"></i></div>
+		</div>
+	</a>
+	<a class="invest"href="{:U('M/user/loaninvest')}">
+		<div class="row">
+			<div class="col-xs-2"></div>
+			<div class="col-xs-8">投资项目</div>
+			<div class="col-xs-2"><i class="fa fa-angle-right"></i></div>
+		</div>
+	</a>
+			
+</div>
+<script>
+localStorage.title="我的交易";		
+
+</script>
+﻿<include file="Pub:footer"/> 

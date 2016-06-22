@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Sdk/lib
+END
+BaeException.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Sdk/lib/BaeException.class.php
+END
+ChannelException.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Sdk/lib/ChannelException.class.php
+END
+RequestCore.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Sdk/lib/RequestCore.class.php
+END
+BaeBase.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/BaiCai/!svn/ver/271/trunk/App/Lib/Sdk/lib/BaeBase.class.php
+END

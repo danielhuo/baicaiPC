@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/jqplot/plugins
+END
+jqplot.pointLabels.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/jqplot/plugins/jqplot.pointLabels.js
+END
+jqplot.cursor.js
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/jqplot/plugins/jqplot.cursor.js
+END
+jqplot.highlighter.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/jqplot/plugins/jqplot.highlighter.js
+END
+jqplot.pieRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/jqplot/plugins/jqplot.pieRenderer.js
+END
+jqplot.canvasAxisLabelRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/jqplot/plugins/jqplot.canvasAxisLabelRenderer.js
+END
+jqplot.canvasTextRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/jqplot/plugins/jqplot.canvasTextRenderer.js
+END
+jqplot.categoryAxisRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/jqplot/plugins/jqplot.categoryAxisRenderer.js
+END
+jqplot.dateAxisRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/jqplot/plugins/jqplot.dateAxisRenderer.js
+END
+jqplot.barRenderer.js
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/js/jqplot/plugins/jqplot.barRenderer.js
+END

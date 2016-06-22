@@ -1,0 +1,190 @@
+﻿<include file="Pub:header" /> 
+<link rel="stylesheet" href="__ROOT__/Style/M/css/login.css" />
+<style type="text/css">
+	.vul li{
+		background-color:#fff;margin-bottom:2px;
+		padding-left:50px;height:50px;line-height:50px;font-size:18px;
+		font-weight:bold;}
+	.arrow{float:right;color:#E5E5E5;font-size:28px;margin-right:20px;}
+	
+</style>
+<div class="body">
+	<ul class="vul" id="vul">
+		<li>通过原支付密码修改<span class="arrow">></span></li>
+		<li>通过手机验证码修改<span class="arrow">></span></li>
+	</ul>
+	<div id="pw" class="cover">
+		<form  action="" method="post" class="loginForm" id="setpayForm">
+			<div >
+				<input type="password" name='oldpass' id="oldpass" placeholder="输入原支付密码" class="inpToDiv" />
+			</div>
+			<div>
+				<input type="password" name="paypass" id="paypass" placeholder="设置新密码" class="inpToDiv" />
+			</div>
+			<div>
+				<input type="password" name="paypass2" id="paypass2" placeholder="确认新密码" class="inpToDiv"  />
+			</div>     
+			<!--<button id="butt" class="butt">确定</button>-->
+			<input type="button" id="butt" class="butt submit" value="确定"></input>
+			<a href="javascript:void(0)" class="butt cancel">取消</a>
+		</form>
+	</div>
+	
+	<div id="sj" class="cover">
+		<form  action="" method="post" class="loginForm" id="setpayForm">
+			
+				<div >
+					<input type="text" name='phone' id="phone" class="inpToDiv" value="{$user.user_phone}" readonly/>			
+				</div>
+				<div class="inpToDiv">
+					<input type="text" name="verify" id="verify" placeholder="请输入验证码"/>
+					<a href="javascript:void(0)" class="getVerifyCode" id="getVerifyCode" onclick="sendmail()">获取验证码</a>
+				</div>
+				<div>
+					<input type="password" name="password" id="password" class="inpToDiv" placeholder="请设置新支付密码"/>
+				</div>
+				<!--<button id="button" class="butt" onclick="editByMail()">确定</button>-->
+				<input type="button" id="button" class="butt" onclick="editByMail()" value="确定"></input>
+				<a href="javascript:void(0)" class="butt cancel">取消</a>
+		</form>
+	</div>
+</div>
+<script language="javascript">
+localStorage.title="支付密码";
+var mbTest = /^(13|14|15|18)[0-9]{9}$/;
+var timer = null;
+var leftsecond = 60; //倒计时
+var msg = "";
+function setLeftTime() {
+	var second = Math.floor(leftsecond);
+	$("#getVerifyCode").text(second + "秒后可重发");
+	leftsecond--;
+	if (leftsecond < 1) {
+		$("#getVerifyCode").text("重新发送").attr("onclick","sendmail()").removeClass("disBtn");
+		clearInterval(timer);
+		
+	}
+}
+function sendmail(){
+	$("#getVerifyCode").text("发送中...").attr("onclick","").addClass("disBtn");
+	$.ajax({
+		url: "__URL__/sendphone/",
+		type: "post",
+		dataType: "json",
+		data: {"phone":$("#phone").val(),"type":2},
+		success: function(d) {
+			leftsecond = 60;
+			if (d.status == 0) {
+				clearInterval(timer);
+				timer = setInterval(setLeftTime, 1000, "1");
+			}else {
+				Apprise('<font color=red>校验码发送失败,请重试！</font>');
+				$("#getVerifyCode").text("获取验证码").attr("onclick","sendmail()").removeClass("disBtn");
+			}
+		}
+	});
+}
+
+function editByMail(){
+		var password = $.trim($("#password").val());
+		var verify =  $.trim($("#verify").val());
+		if(verify.length<6){
+            return Apprise('<font color=red>请输入6位验证码！</font>'); 
+        }
+		if(password == ''){
+            return Apprise('<font color=red>请输入密码！</font>'); 
+        }
+		if(password.length<6){
+            return Apprise('<font color=red>请输入6位以上密码</font>'); 
+        }
+		$.ajax({
+            type: "POST",
+            url: "__URL__/changepin",
+			dataType: "json",
+            data: {"password":password,"verify":verify},
+            success: function(e) {
+                if(e.status==1){
+                	setTimeout(window.location.href ="{:U('M/user/index')}",3);
+					Apprise("<font color=#00945D>修改成功!</font>");
+                    $("#apprise-btn-confirm").click(function() {
+                        window.location.href = "{:U('M/user/index')}" ;
+                    })
+                }else{
+                    Apprise("<font color=red>"+e.message+"</font>");  
+                } 
+            },
+            error: function(e) {
+                Apprise("<font color=red>提交发生错误！请重试</font>")
+            }
+        })
+	
+}
+
+$(function(){
+	var form0=$('#pw');
+	var form1=$('#sj');
+	$('#vul li').each(function(){
+		$(this).click(function(){
+			var index=$(this).index();
+			if(index==0){
+				form0.show();
+				form1.hide();
+			}else{
+				form0.hide();
+				form1.show();
+				form0[0].reset();
+			}
+		})
+	})
+	$('.cancel').each(function(){
+		$(this).click(function(){
+			$(this).parents('.cover').hide();
+		})
+	})
+	
+    $("#butt").click(function(){
+        var oldpass = $.trim($("#oldpass").val());
+        var paypass = $.trim($("#paypass").val());
+        var paypass2 = $.trim($("#paypass2").val());
+        if(!oldpass){
+            Apprise('<font color=red>请输入旧支付密码！</font>');
+            return false;
+        }
+        if(!paypass){
+            Apprise('<font color=red>请输入新的支付密码！</font>'); 
+            return false;
+        }
+        if(!paypass2){
+            Apprise('<font color=red>请输入确认支付密码！</font>'); 
+            return false;
+        }
+        if(paypass2 != paypass){
+            Apprise('<font color=red>新密码两次输入不相同！</font>'); 
+            return false;
+        }
+        if(paypass.length<6){
+            Apprise('<font color=red>支付密码必须大于等于6位字符</font>'); 
+            return false;
+        }
+        $.ajax({
+           type: "POST",
+           url: "",
+           data: 'oldpass='+oldpass+'&paypass='+paypass+'&paypass2='+paypass2,
+           success: function(msg){
+               if(msg=='TRUE'){
+                  Apprise("<font color=#00945D>修改成功!</font>");
+                  $("#apprise-btn-confirm").click(function(){
+                     window.location.href="{:U('M/user/index')}";
+                  })
+               }else{
+                  Apprise('<font color=red>'+msg+'</font>');
+               }
+           },
+           error:function(err){
+               Apprise("<font color=red>提交发生错误!请重试</font>");
+           }
+       });
+    })
+})
+</script>
+﻿<include file="Pub:footer" />

@@ -1,0 +1,65 @@
+﻿<include file="Pub:header" />
+<h2 id="title">个人资料</h2>
+<style>
+.change{cursor:pointer;}
+#changebox {box-shadow:0 0 1px 0 #5EA8F5;background:white;width:80%;position:absolute;left:10%;top:80px;}
+#changebox h2{text-align:center;color:#2AA198;background-color:#EBEBF5;padding:10px 0;}
+#changebox .content{padding:10px 20px;}
+#changebox input{
+    height:30px;
+	padding:0;
+}
+#changebox input{
+	width:100%;
+	
+}
+.content input:nth-child(1){margin:20px 0;}
+.content input:nth-child(2){background:#2AA198;}
+.content input:nth-child(3){background:#666;}
+#changebox input[type=button]{color:white;font-size:18px;margin-top:10px;}
+
+</style>
+<div id='mcover'></div>
+<div class="main">
+ <div class="box7">
+   <table cellpadding="0" cellspacing="0" border="0">
+    <tr align="left" height="28"><td>用户名：</td><td><span id="name">{$minfo.user_name}</span> <span class="change">【修改】</span></td></tr>
+   </table>
+ </div>
+ 
+</div>
+<script type="text/javascript">
+	$(function(){
+		$('.change').click(function(){
+			$('.box7').append("<div id='changebox'><h2>  请输入新的用户名</h2><div class='content'><input type='text' id='user_name'/><input type='button' onclick='ensure()'  value='确定'/><input type='button' onclick='cancel()'  value='取消'/></div></div>");
+			
+		})
+	})
+	function cancel(){
+		$('#changebox').remove();
+	}
+	function ensure(){
+		var name = $('#user_name').val();
+		if(name.length<4){
+			return Apprise('<font color=red>请输入4位以上用户名！</font>'); 
+		} 
+		$.ajax({
+				type: "POST",
+				url: "__URL__/changename/",
+				dataType:"json",
+				async: false,
+				data: {"name":name},
+				success: function(e) {
+					if(e.status==1){   
+						Apprise(e.message);
+					}else{
+						Apprise('<font color=red>用户名修改成功！</font>');
+						$('#changebox').remove();
+						$('#name').html(e.message);
+					}
+				},
+			})
+	}
+</script>
+﻿<include file="Pub:footer" /> 
+

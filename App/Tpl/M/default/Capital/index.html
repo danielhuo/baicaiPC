@@ -1,0 +1,50 @@
+﻿<include file="Pub:header" /> 
+<div>
+	
+		<div class="container container-block container-row-nml">
+            <div class="row">
+                <div class="col-xs-6 row-title">可用余额</div>
+                <div class="col-xs-6 text-danger">{:Fmoney($minfo['account_money'])}</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 row-title">冻结金额</div>
+                <div class="col-xs-6 text-danger">{$minfo.money_freeze|Fmoney=###}</div>
+            </div>
+        </div>
+        <div class="container container-block container-row-nml">
+			
+            <a href="{:U('M/user/loaninvest')}" >
+            <div class="row">
+                
+                <div class="col-xs-4 row-title">投资中</div>
+                <div class="col-xs-4">{$return_amount|Fmoney=###}</div>
+                <div class="col-xs-4"><span class="glyphicon glyphicon-menu-right"></span></div>
+            </div>
+            </a>
+            <a href="{:U('M/user/loan')}" >
+            <div class="row" >
+                <div class="col-xs-4 row-title">还款中</div>
+                <div class="col-xs-4">{$repay_amount|Fmoney=###}</div>
+                <div class="col-xs-4"><span class="glyphicon glyphicon-menu-right"></span></div>  
+                
+            </div>
+            </a>
+        </div> 
+        
+        <div class="container container-block container-row-nml">
+            <a href="__URL__/records">
+                <div class="row row-title">资金记录</div>
+            </a>
+        </div>
+    
+   
+        <div class="container container-block container-row-nml">
+             <a href="__URL__/cash">
+                <div class="row row-title">我要提现</div>
+             </a>
+        </div>
+</div>
+<script>
+    localStorage.title="我的帐户";
+</script>
+<include file="Pub:footer" /> 

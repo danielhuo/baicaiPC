@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<div style="width:800px; height:400px">
+ <div>
+   <table width="500" height="100" border="0">
+      <tr>
+        <td width="120" align="right">黄马甲账户：</td>
+        <td width="369">&nbsp;&nbsp;<select name="select" size="1" id="select" style="width:100px; height:30px">
+        <option>黄马甲1号</option>
+        <option>黄马甲2号</option>
+      </select></td>
+      </tr>
+      <tr>
+        <td align="right">资金余额：</td>
+        <td>&nbsp;&nbsp;<input name="textfield" type="text" id="textfield1"  style="width:100px; height:25px" /></td>
+      </tr>
+      <tr>
+        <td align="right">余额清算：</td>
+        <td>&nbsp;&nbsp;<input name="textfield" type="text" id="textfield1"  style="width:100px; height:25px" /></td>
+      </tr>
+    </table>
+ </div>
+  <div>
+    <table width="500" height="100" border="0">
+      <tr>
+        <td width="120" height="36">&nbsp;</td>
+        <td width="138">&nbsp;&nbsp;借款人结余</td>
+        <td width="104">&nbsp;</td>
+        <td width="118">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="36" align="right">借款人：</td>
+        <td>&nbsp;&nbsp;<input name="textfield" type="text" id="textfield1"  style="width:100px; height:25px" /></td>
+        <td>&nbsp;</td>
+        <td><input type="submit" name="button" id="button2" value="划款" style="width:80px; height:30px" /></td>
+      </tr>
+    </table>
+  </div>
+ <div>
+   <table width="500" height="200" border="0">
+     <tr>
+       <td width="120" align="right">投资人列表</td>
+       <td width="137">&nbsp;&nbsp;投资人本金</td>
+       <td width="104">投资人利息</td>
+       <td width="114">&nbsp;</td>
+     </tr>
+     <tr>
+       <td align="right">投资人1：</td>
+       <td>&nbsp;&nbsp;<input name="textfield" type="text" id="textfield1"  style="width:100px; height:25px" /></td>
+       <td><input name="textfield" type="text" id="textfield1"  style="width:100px; height:25px" /></td>
+       <td rowspan="3"><input type="submit" name="button" id="button2" value="全部划款" style="width:80px; height:30px" /></td>
+     </tr>
+     <tr>
+       <td align="right">投资人2：</td>
+       <td>&nbsp;&nbsp;<input name="textfield" type="text" id="textfield1"  style="width:100px; height:25px" /></td>
+       <td><input name="textfield" type="text" id="textfield1"  style="width:100px; height:25px" /></td>
+      </tr>
+     <tr>
+       <td align="right">投资人3：</td>
+       <td>&nbsp;&nbsp;<input name="textfield" type="text" id="textfield1"  style="width:100px; height:25px" /></td>
+       <td><input name="textfield" type="text" id="textfield1"  style="width:100px; height:25px" /></td>
+      </tr>
+   </table>
+ </div>
+</div>
+</body>
+</html>

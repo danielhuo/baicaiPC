@@ -1,0 +1,42 @@
+<include file="Public:_header" />
+
+<div align="center" class="verifyDiv">
+	
+	<table class="verifyTab">
+		<tr><td>{$borrower.name}</td><td>JK{$borrower.id}</td></tr>
+		<tr><td>融资人</td><td>{$borrower.user_name}</td></tr>
+		<tr><td>融资额</td><td>{$borrower.amount}</td></tr>
+		<tr><td>年利率</td><td>{$borrower.interest_rate}%</td></tr>
+		<tr><td>期  限</td><td>{$borrower.duration}天</td></tr>
+		<tr><td>承兑日</td><td>{$borrower.deadline|date="Y-m-d",###}</td></tr>
+	</table>
+	<table class="verifyTab">
+		
+		 <tr>
+		   <td>投资人列表</td>
+		   <td>投资人本金</td>
+		   <td>应得利息</td>
+		 </tr>
+		 <volist name="{investors}" id="investor">
+			 <tr>
+			   <td>
+				{$investor.user_name}
+			   </td>
+			   <td>
+				{$investor.invest_amount}
+			   </td>  
+				<td>
+				{$investor.invest_interest}
+			   </td>  
+			 </tr>
+		 
+		 </volist>
+		
+	</table>
+
+		<div width="50%">{$plat.user_name}余额:{$plat.account_money|num_format=###}</div>
+		<div width="50%">需还金额:{$borrower.amount|num_format=###}</div>
+		<a onclick="return confirm('清算确认');" class="do" href="__URL__/doqingsuan?id={$borrower.id}">清算</a>
+		
+	
+</div>

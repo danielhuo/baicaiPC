@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/dbi
+END
+drizzle-wrappers.lib.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/dbi/drizzle-wrappers.lib.php
+END
+mysqli.dbi.lib.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/dbi/mysqli.dbi.lib.php
+END
+drizzle.dbi.lib.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/dbi/drizzle.dbi.lib.php
+END
+mysql.dbi.lib.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/BaiCai/!svn/ver/1545/trunk/phpMyAdmin/libraries/dbi/mysql.dbi.lib.php
+END
